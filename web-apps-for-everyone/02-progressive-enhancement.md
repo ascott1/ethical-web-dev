@@ -57,9 +57,3 @@ Render landing/home page as HTML while async load JS
 Isomorphic/Universal JS/Ember Fastboot
 Lazymorphic JS
 Progressive web apps
-
-
-
-
-
-
