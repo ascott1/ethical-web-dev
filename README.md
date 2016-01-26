@@ -16,7 +16,3 @@ As web developers, we are responsible for shaping the experiences of user's onli
 - User Attention & Advertising
 
 The books will be released throughout 2016.
-
-## License
-
-Content licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
