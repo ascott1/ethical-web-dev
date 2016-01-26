@@ -19,7 +19,7 @@ _Ethical Web Development_ will be a series of short digital books that explore t
 - Automating accessibility tests
 - Building inclusive forms
 
-## Title 2: Building Apps the Work Everywhere
+## Title 2: Building Apps that Work Everywhere
 
 - Performance introduction
 - Understanding performance blockers & setting a performance budget
