@@ -12,4 +12,6 @@ To Berners-Lee the "universality" of the web is what allowed the web to grow fro
 - Unknown users and user settings
 
 
-Examples: 
+Examples:
+
+- [How Betty, Who is 89, Gets Her News](https://melodykramer.github.io/how-betty-who-is-89-gets-her-news/) & [News for Betty](http://newsforbetty.com/)
