@@ -8,7 +8,7 @@ In Tim Berners-Lee's [The World Wide Web: A very short personal history](https:/
 
 We have the opportunity to drive that vision of a universal web for everyone forward.
 
-"Ethical Web Development" will be a series of short digital books that explore the ethics of practical development topics. The books will be released throughout 2016 and early 2017 as _free_ downloads from [O'Reilly](http://www.oreilly.com/).
+_Ethical Web Development_ will be a series of short digital books that explore the ethics of practical development topics. The books will be released throughout 2016 and early 2017 as free downloads from [O'Reilly](http://www.oreilly.com/).
 
 ## Title 1: Building Web Apps that Work For Everyone
 
