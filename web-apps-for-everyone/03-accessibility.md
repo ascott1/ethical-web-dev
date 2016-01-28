@@ -22,7 +22,6 @@ POUR principle: Perceivable, Operable, Understandable, and Robust.
 - [VoiceOver for Mac](https://www.apple.com/accessibility/osx/voiceover/): CMD + F5 to enable
 - [Narrator for Windows](http://windows.microsoft.com/en-us/windows/hear-text-read-aloud-narrator#1TC=windows-8)
 
-Navigate Twitter with a screen reader
 
 GitHub as an example of an accessible web application
 
