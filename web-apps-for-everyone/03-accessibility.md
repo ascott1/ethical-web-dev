@@ -2,8 +2,6 @@
 
 ## Introduction
 
-[WCAG 2.0](https://www.w3.org/TR/WCAG20/)
-
 POUR principle: Perceivable, Operable, Understandable, and Robust.
 
 ## Accessibility as a social issue
@@ -12,6 +10,8 @@ POUR principle: Perceivable, Operable, Understandable, and Robust.
 - [W3's Designing for Inclusion](https://www.w3.org/WAI/users/Overview.html)
 
 ## Understanding WCAG 2.0
+
+[WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 
 ## Using a screen reader to navigate the web
 
@@ -34,7 +34,7 @@ Medium.com article page - just adding a "Skip to article" link would be a *huge*
 At the time of writing [NY.gov's site](http://www.ny.gov/) as well as the NY State's [Office of Temporary and Disability Assistance site](http://otda.ny.gov/accessibility.asp) are beautiful, full of accessible information, and touts an [accessibility policy](http://www.ny.gov/accessibility). Unfortunately, the site that handles the applications for core services such as school meals and nutrition assistance is [anying but accessible](https://mybenefits.ny.gov/mybenefits/NewAccountCreation!input.nysmybw).
 
 
-## Creating an accessible page
+## Writing accessible markup
 
 ## Accessibility tools
 
@@ -42,8 +42,32 @@ At the time of writing [NY.gov's site](http://www.ny.gov/) as well as the NY Sta
 - pa11y
 - aXe
 - WAVE
+- a11y
 
 ## Automating accessibility tests
+
+As an npm script in package.json:
+
+```javascript
+"scripts": {
+    "accessibility": "a11y localhost:3000",
+  }
+```
+
+As a Gulp task:
+
+```javascript
+var exec = require('child_process').exec;
+
+gulp.task('accessibility', function (){
+  exec('a11y localhost:3000', function(err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
+```
+
+Paired with a continuous integration system, such as [Travis CI](https://travis-ci.com/), we could run these accessibility checks against every build, failing if there are accessibility errors.
 
 
 ## Reading/Viewing
@@ -52,3 +76,5 @@ At the time of writing [NY.gov's site](http://www.ny.gov/) as well as the NY Sta
 - [The Accessibility Project](http://a11yproject.com/)
 - [HIKE](http://accessibility.parseapp.com/)
 - [WebAIM](http://webaim.org/)
+- [MDN ARIA Resources](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+- [The WAI Forward](https://www.smashingmagazine.com/2014/07/the-wai-forward/)
