@@ -15,3 +15,12 @@ To Berners-Lee the "universality" of the web is what allowed the web to grow fro
 Examples:
 
 - [How Betty, Who is 89, Gets Her News](https://melodykramer.github.io/how-betty-who-is-89-gets-her-news/) & [News for Betty](http://newsforbetty.com/)
+
+## Unite Nations Convention on the Rights of Persons with Disabilities
+
+Article 9 - Accessibility
+
+### 9.2
+
+> g. Promote access for persons with disabilities to new information and communications technologies and systems, including the Internet;
+> h. Promote the design, development, production and distribution of accessible information and communications technologies and systems at an early stage, so that these technologies and systems become accessible at minimum cost.
