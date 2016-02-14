@@ -21,7 +21,7 @@ In his 2012 article, [Stumbling on the Escalator](https://www.christianheilmann.
 
 As a person who has spent a lot of time in the Washington DC metro system, I can really appreciate this analogy. Thankfully, when an escalator is out I am not trapped underground, but instead can huff up the now stairs to the street.
 
-Oftentimes, when beginning a project, I am presented with a set of business requirements or a beautiful design. From these, it can be easy to see the end goal, but skip the baseline experience. If, in the case of the escalator, my requirement was to “build a transportation system that will allow Metro riders to travel from the terminal to the street,” my initial reaction may be to create an elevator. You can imagine how this might become problematic.
+Oftentimes, when beginning a project, I am presented with a set of business requirements or a beautiful design. From these, it can be easy to see the end goal, but skip the core functionality. If, in the case of the escalator, my requirement was to “build a transportation system that will allow Metro riders to travel from the terminal to the street,” my initial reaction may be to create an elevator. You can imagine how this might become problematic.
 
 Developing web apps works in much the same way. If we only consider the end goal, we run the risk of leaving our users stranded. By focusing on and providing a solid baseline for our users, we set ourselves up for success in many other aspects of ethical web development, such as accessibility and performance.
 
@@ -35,15 +35,15 @@ Progressive enhancement isn't "making the whole thing work without JavaScript" o
 - Easier to archive and index
 - Faster initial load times
 
-## Defining the baseline experience
+## Defining the core functionality
 
-If progressive enhancement is the process of defining a baseline experience and building up from there, how do we define that initial baseline? The goal is to consider what the bare minimum is that a user requires to be able to user our application. Once we have defined this, we can layer on additional style and functionality. For some applications this may be a completely JavaScript free version of the experience, while for others it may be a less fully featured version, and still others it may be providing some server rendered content on the initial page load only.
+If progressive enhancement is the process of defining a core functionality and building up from there, how do we define that initial baseline? The goal is to consider what the bare minimum is that a user requires to be able to user our application. Once we have defined this, we can layer on additional style and functionality. For some applications this may be a completely JavaScript free version of the experience, while for others it may be a less fully featured version, and still others it may be providing some server rendered content on the initial page load only.
 
 The key is to not think of progressive enhancement not as an either/or option, but instead as a range, determining what is the best decision for users.
 
 ![GRAPHIC OF PROGRESSIVE ENHANCEMENT GRADIENT](IMG LINK)
 
-I'd encourage you to take a few minutes and consider what the baseline experience might look like for a few different types of websites and applications. Identify the primary goal of the site and determine the minimum amount of technology needed to implement it. To take it a step further, write some markup or psuedo code explaining how you might implement those baseline features.
+I'd encourage you to take a few minutes and consider what the core functionality might look like for a few different types of websites and applications. Identify the primary goal of the site and determine the minimum amount of technology needed to implement it. To take it a step further, write some markup or psuedo code explaining how you might implement those baseline features.
 
 - News website
 - Social network (write text posts and read the feed of friends)
@@ -51,7 +51,7 @@ I'd encourage you to take a few minutes and consider what the baseline experienc
 - Web chat application
 - Video chat application
 
-When working on your own applications, I would encourage you to do the same. First, determine the baseline experience for your users and build the application from there. This programatic approach also pairs well with the [Agile](LINK) approach to software development, where the goal is to deliver working software at the end of each development sprint.
+When working on your own applications, I would encourage you to do the same. First, determine the core functionality for your users and build the application from there. This programatic approach also pairs well with the [Agile](LINK) approach to software development, where the goal is to deliver working software at the end of each development sprint.
 
 
 ## Is progressive enhancement still relative?
@@ -119,6 +119,6 @@ Lastly, the term Progressive web apps has recently taken hold. Rather than speci
 ## Quick tips
 
 - Focus on user needs.
-- Define a baseline experience and build from there.
+- Define the core functionality and build from there.
 - Remember that your site doesn’t have to look the same in every device and browser.
 - Avoid the assumption that all assets will be available.
