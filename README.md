@@ -59,3 +59,16 @@ For each title I will be donating a percentage (roughly 20% after taxes) of my p
 - Title 2: [World Wide Web Foundation](http://webfoundation.org/)
 - Title 3: [Electronic Freedom Foundation](https://www.eff.org/)
 - Title 4: [Mozilla](https://www.mozilla.org/en-US/)
+
+## Contributing
+
+I really appreciate feedback and contributions to this project.
+
+For feedback, please [create an issue](https://github.com/ascott1/ethical-web-dev/issues) or you can email me directly at [adamdscott@protonmail.com](mailto:adamdscott@protonmail.com).
+
+If you are interested in contributing, please read the [CONTRIBUTING.md](https://github.com/ascott1/ethical-web-dev/blob/master/CONTRIBUTING.md) file for more details.
+
+### Code of Conduct
+
+This project adheres to the [Open Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
+[code-of-conduct]: http://todogroup.org/opencodeofconduct/#EthicalWeb/adamdscott@protonmail.com

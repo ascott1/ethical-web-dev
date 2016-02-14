@@ -1,0 +1,9 @@
+Ethical Web Development is a project by:
+
+Adam Scott
+  - adamscott.website
+  - twitter.com/adamdscott
+
+Contributors to the ethicalweb.org site can be found at https://ethicalweb.org/humans.txt
+
+Additional contributions and feedback have been provided by:
