@@ -1,49 +1,12 @@
 ## Introduction to progressive enhancement
 
-Progressive enhancement is a term that often insights intense debate. For many, progressive enhancement can be summed up as “make your site work without JavaScript.” While, developing a site that works without JavaScript often does fall under the web of progressive enhancement, it can define a much more nuanced experience.
+If progressive enhancement is the process of defining a core functionality and building up from there, how do we define that initial baseline? The goal is to consider the bare minimum that a user requires to use our application. Once we have defined this, we can layer on additional style and functionality. For some applications this may be a completely JavaScript free version of the experience, while for others it may be a less fully featured version, and still others it may be providing some server rendered content on the initial page load only.
 
-In Aaron Gustafson’s seminal A List Apart Article, [Understanding Progressive Enhancement](http://alistapart.com/article/understandingprogressiveenhancement), he describes progressive enhancement as a peanut M&M. The peanut being the core experience, which is essential to the user. The chocolate encompasses the features and design that take us beyond the naked peanut experience and add some much loved flavor. Finally, the candy shell, though not necessarily needed, provides added features, such as not melting in your hand. Oftentimes this example is translated to HTML as the peanut, CSS as the chocolate and JavaScript as the candy shell.
+The key is to think of progressive enhancement not as a binary option, but instead as a range, determining what is the best decision for users. In this way, progressive enhancement is a gradient rather than an either/or option. Our responsibility is to decide where on this gradient our particular application falls.
 
-In today’s web application landscape it may be over simplified to consider progressive enhancement as simply “works without JavaScript.” In fact, many of the rich interactions and immersive experiences that have come to define the modern web certainly require JavaScript. For progressive enhancement to be considered an ethical issue in web development, we must tie it back to user needs. Progressive enhancement is about defining what a user *needs* and ensuring that it is always delivered to them, in a way that will work regardless of network conditions, device, or browser.
+![gradient image representing progressive enhancement](img/progressive-enhancement-gradient.png)
 
-I prefer [Jeremy Keith’s take](https://youtu.be/-yIbKaA3wCo) that progressive enhancement is a “process” rather than a specific technique or set of technologies. By Keith’s definition this process looks like:
-
-1. Identify the core functionality
-2. Make that functionality available using the simplest technology
-3. Enhance!
-
-As a developer it is our job to determine the “core functionality” of our application and what is an enhancement. This allows us to develop a baseline to build from, yet the baseline for any given project may be different.
-
-
-In his 2012 article, [Stumbling on the Escalator](https://www.christianheilmann.com/2012/02/16/stumbling-on-the-escalator/), Christian Heilmann appropriated a Mitch Helberg comedy bit about escalators for progressive enhancement:
-
-> An escalator can never break – it can only become stairs. You would never see an “Escalator Temporarily Out Of Order” sign, just “Escalator Temporarily Stairs. Sorry for the convenience. We apologize for the fact that you can still get up there.”
-
-As a person who has spent a lot of time in the Washington DC metro system, I can really appreciate this analogy. Thankfully, when an escalator is out I am not trapped underground, but instead can huff up the now stairs to the street.
-
-Oftentimes, when beginning a project, I am presented with a set of business requirements or a beautiful design. From these, it can be easy to see the end goal, but skip the core functionality. If, in the case of the escalator, my requirement was to “build a transportation system that will allow Metro riders to travel from the terminal to the street,” my initial reaction may be to create an elevator. You can imagine how this might become problematic.
-
-Developing web apps works in much the same way. If we only consider the end goal, we run the risk of leaving our users stranded. By focusing on and providing a solid baseline for our users, we set ourselves up for success in many other aspects of ethical web development, such as accessibility and performance.
-
-## It's not no JS
-
-Progressive enhancement isn't "making the whole thing work without JavaScript" or taking an "all or nothing" approach.
-
-## Benefits of progressive enhancement
-
-- Works if a resource fails to load
-- Easier to archive and index
-- Faster initial load times
-
-## Defining the core functionality
-
-If progressive enhancement is the process of defining a core functionality and building up from there, how do we define that initial baseline? The goal is to consider what the bare minimum is that a user requires to be able to user our application. Once we have defined this, we can layer on additional style and functionality. For some applications this may be a completely JavaScript free version of the experience, while for others it may be a less fully featured version, and still others it may be providing some server rendered content on the initial page load only.
-
-The key is to not think of progressive enhancement not as an either/or option, but instead as a range, determining what is the best decision for users.
-
-![GRAPHIC OF PROGRESSIVE ENHANCEMENT GRADIENT](IMG LINK)
-
-I'd encourage you to take a few minutes and consider what the core functionality might look like for a few different types of websites and applications. Identify the primary goal of the site and determine the minimum amount of technology needed to implement it. To take it a step further, write some markup or psuedo code explaining how you might implement those baseline features.
+I’d encourage you to take a few minutes and consider what the core functionality might look like for a few different types of websites and applications. Identify the primary goal of the site and determine the minimum amount of technology needed to implement it. To take it a step further, write some markup or pseudo code explaining how you might implement those baseline and features.
 
 - News website
 - Social network (write text posts and read the feed of friends)
@@ -51,29 +14,73 @@ I'd encourage you to take a few minutes and consider what the core functionality
 - Web chat application
 - Video chat application
 
-When working on your own applications, I would encourage you to do the same. First, determine the core functionality for your users and build the application from there. This programatic approach also pairs well with the [Agile](LINK) approach to software development, where the goal is to deliver working software at the end of each development sprint.
+When working on your own applications, try to perform the same exercise First, determine the core functionality for your users and build the application from there. This programatic approach also pairs well with the [Agile](http://www.agilemanifesto.org/) approach to software development, where the goal is to deliver working software at the end of each development sprint. If we first deliver a core experience, we can iteratively build upon that experience while continuing to deliver value.
 
+## Is progressive enhancement still relavent?
 
-## Is progressive enhancement still relative?
+Some may question how relative progressive enhancement is today, when a very small percentage of user's browse the web with JavaScript disabled[^1]. This places the focus too heavily on progressive enhancement as a JavaScript free version of a site. In fact, some types of applications, such as video chat, absolutely require some form of JavaScript to work in the browser. The goal of progressive enhancement is to provide the absolute minimum for a working product and ensure that it is delivered to user's browser.
 
-Some may question how relative progressive enhancement is today, when [GET PERCENTAGE] of user's browse the web with JavaScript enabled. This puts the focus too heavily on progressive enhancement as a JavaScript free version of a site. In fact, some types of applications, such as video chat, absolutely require some form of JavaScript to work in the browser. The goal is to provide the absolute minimum for a working product and ensure that it is delivered to user's browser.
+Ideally, this working minimum product is simply HTML without any external resources such as images, video CSS, or JavaScript. When a user's browser requests our site we can be certain that they will receive HTML (or nothing at all). By creating a working version of our application, even with a minimal experience, using the smallest number of assets, we can be sure that the user is able to access our content in some form.
 
-[PARAGRAPH ABOUT RURAL AND DEVELOPING AREAS WEB CONNECTIONS]
+The Digital Services team at Gov.uk [provides a number of scenarios](https://www.gov.uk/service-manual/making-software/progressive-enhancement.html#it-isnt-about-javascript-off) where asset requests may fail:
 
-[PARAGRAPH ABOUT OPERA MINI]
+> - temporary network errors
+> - DNS lookup failures
+> - server that the resource is found on could be overloaded or down, and fail to respond in time or at all
+> - large institutions (eg banks and financial institutions, some government departments) having corporate firewalls that block, remove or alter content from the Internet
+> - mobile network providers resampling images and altering content so that load times faster and reduce bandwidth consumed
+> - antivirus and personal firewall software that will alter and/or block content
 
-For those of us in developed or urban areas, we most likely have experienced what [Jake Archibald]() has termed "Lie-Fi." This is a connection where our mobile device seems to think it is connected to wifi, but the signal strength is so weak that pages or sites are slow.
+Additionaly, in the blog post [How many people are missing out on JavaScript enhancement?](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/), they add:
 
-[SCREENSHOT OF Lie-Fi]
+> - existing JavaScript errors in the browser (ie from browser add-ons, toolbars etc)
+> - page being left between requesting the base image and the script/noscript image
+> - browsers that pre-load pages they incorrectly predict you will visit
+
+While those of us developing for the web often have nice hardware and speedy web connections, that may not be true for many of our potential users. Those in developing or rural areas may have limited or outdated devices and slow connections. In 2015 the Facebook development team began participating in [2G Tuesdays](http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10), which allows them to experience their applications as though they are being served over these slower networks. I would encourage you to do the same.
+
+Today's browser development tools [allow us to mimic network conditions](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/network-conditions), experiencing what it is like for these users to access our sites. We will explore these topics in detail when considering web performance.
+
+![screenshot of the network connectivity tools in Google Chrome](img/network-connectivity-chrome.png)
+
+Though you may have never used, tested an application with, or maybe even heard of, but the [Opera Mini](http://www.opera.com/mobile) browser currently has over 300 million users worldwide[^2]. The browser is designed to greatly decrease mobile bandwidth usage by routing pages through Opera's servers and optimizing them. To do this, Opera Mini only supports a subset of modern web standards. Here are a few of the things that are unsupported by Opera Mini:
+
+- Web fonts (which also means no icon fonts)
+- HTML5 structural elements and form features
+- Text decoration styling
+- Video and audio elements
+
+The site [WTF Opera Mini](http://wtfoperamini.com/) collects the full set of modern web standards that are not supported in the browser. As you can imagine, without a progressive enhancement strategy, our sites may be completely inaccessible for all 300 million+ Opera Mini users.
+
+If developing an application that is exclusively for users who are likely in an urban area with strong Internet speeds and nice hardware, it may feel as if we are exempt from concerning ourselves with connection issues. Recently, developer [Jake Archibald]() coined the termed "Lie-Fi." This is a connection where our mobile device seems to be connected to wifi, but sites are slow to load as they feebly connect to our struggling signal.
+
+![Lie Fi: The weak wifi signal](img/lie-fi.png)
+
+Proxy browsers?
+
+Search bots?
 
 In 2014 the UK's Sky broadband accidentally briefly [blocked the jQuery CDN](http://www.thinkbroadband.com/news/6261-sky-parental-controls-break-jquery-website.html), presumably leaving many users perplexed with broken websites. If you choose to serve a library from a CDN, I would recommend following the [HTML5 Boilerplate's](https://html5boilerplate.com/) lead and provide a local fallback as well.
+
+Privacy blockers may block JS from an external CDN.
 
 ```html
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
 ```
 
-## How do we do progressive enhancement today?
+Run your own experiment:
+
+https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/
+
+Base the decision to support (or not support) Javascript-disabled users on those results, rather than assumptions or world averages.
+
+
+[^1]: In 2010 Yahoo conducted what is considered the [definitive study of JavaScript usage](https://developer.yahoo.com/blogs/ydn/many-users-javascript-disabled-14121.html) finding that the percentage of users with JavaScript disabled ranged from 0.26% to 2.06%, depending on the country of origin. Sadly, these statistics are woefully out of date. In 2013 the UK's Digital Services team did a [similar study](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) and found that 1.1% of their users were not receiving JavaScript. The German site [darwe.de](http://darwe.de) analyzes JavaScript enablement in real time and shows a [much larger percentage](http://www.darw.de/statistik/statistik-js.php) of users with JavaScript disabled visiting their site.
+
+[^2]: [The unknown browser with 300 million users that’s breaking your site](http://thenextweb.com/dd/2015/12/24/the-unknown-browser-with-300-million-users-thats-breaking-your-site/)
+
+## How can we approach progressive enhancement today?
 
 In the world of modern JavaScript driven web applications, there are still several practical approaches we can take to build progressively enhanced sites. These approaches can be very simple or leverage exciting web technology buzz words such as Isomorphic JavaScript or Progressive web applications. Since progressive enhancement is not a one sized fits all approach, you may want to evaluate this options and choose the one that best works for your project.
 
@@ -114,11 +121,28 @@ If a fully Isomorphic JavaScript approach is overkill for an application, Henrik
 
 Lastly, the term Progressive web apps has recently taken hold. Rather than specific technology, this term has come to encompass several inter-related techniques for web development.
 
+From the [Google+ redesign](https://developers.google.com/web/showcase/case-study/googleplus):
+
+> With server-side rendering we make sure that the user can begin reading as soon as the HTML is loaded, and no JavaScript needs to run in order to update the contents of the page. Once the page is loaded and the user clicks on a link, we do not want to perform a full round-trip to render everything again. This is where client-side rendering becomes important — we just need to fetch the data and the templates, and render the new page on the client. This involves lots of tradeoffs; so we used a framework that makes server-side and client-side rendering easy without the downside of having to implement everything twice — on the server and on the client.
+
 ## In summary
 
-## Quick tips
+By following the progressive enhancement process of beginning with the core functionality, we are able to ensure that our application works for the maximum number of people. This provides us with a baseline to provide working software for all users in a range of situations.
+
+### Benefits of progressive enhancement
+
+- Works if a resource fails to load
+- Easier to archive and index
+- Faster initial load times
+
+### Quick tips
 
 - Focus on user needs.
 - Define the core functionality and build from there.
 - Remember that your site doesn’t have to look the same in every device and browser.
 - Avoid the assumption that all assets will be available.
+
+### Additional resources
+
+- [Understanding Progressive Enhancement](http://alistapart.com/article/understandingprogressiveenhancement)
+- [Progressive enhancement: How to create pages that work regardless of browser capability](https://www.gov.uk/service-manual/making-software/progressive-enhancement.html)
