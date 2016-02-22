@@ -57,7 +57,7 @@ The Digital Services team at Gov.uk [provides a number of scenarios](https://www
 > - mobile network providers resampling images and altering content so that load times faster and reduce bandwidth consumed
 > - antivirus and personal firewall software that will alter and/or block content
 
-Additionaly, in the blog post [How many people are missing out on JavaScript enhancement?](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/), they add:
+Additionally, in the blog post [How many people are missing out on JavaScript enhancement?](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/), they add:
 
 > - existing JavaScript errors in the browser (ie from browser add-ons, toolbars etc)
 > - page being left between requesting the base image and the script/noscript image
@@ -94,7 +94,7 @@ The gov.uk's digital services team was curious to see how many users were missin
 
 The results of this experiment are really fascinating. Though only a fraction of a percentage of users requested the JavaScript disabled image, those that failed to load the image requested via JavaScript were significantly higher.
 
-If possible, I'd encourage you and your teams to conduct a similar experiement. This allows us to base the decision to support (or not support) Javascript-disabled users on real world data, rather than assumptions or world averages.
+If possible, I'd encourage you and your teams to conduct a similar experiment. This allows us to base the decision to support (or not support) Javascript-disabled users on real world data, rather than assumptions or world averages.
 
 [^1]: In 2010 Yahoo conducted what is considered the [definitive study of JavaScript usage](https://developer.yahoo.com/blogs/ydn/many-users-javascript-disabled-14121.html) finding that the percentage of users with JavaScript disabled ranged from 0.26% to 2.06%, depending on the country of origin. Sadly, these statistics are woefully out of date. In 2013 the UK's Digital Services team did a [similar study](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) and found that 1.1% of their users were not receiving JavaScript. The German site [darwe.de](http://darwe.de) analyzes JavaScript enablement in real time and shows a [much larger percentage](http://www.darw.de/statistik/statistik-js.php) of users with JavaScript disabled visiting their site.
 
@@ -137,7 +137,7 @@ For JavaScript dependent applications we could render the landing page as HTML o
 <script async src="app.js">
 ```
 
-This allows gives our user's the opportunity to download and cacher the application's JavaScript, while not impacting the peformance or requirement on a mostly static page.
+This allows gives our user's the opportunity to download and cacher the application's JavaScript, while not impacting the performance or requirement on a mostly static page.
 
 You may be thinking, "but I want to build *modern* web applications and these are old techniques!" Certainly these techniques feel out of sync with the approaches of some of the popular JavaScript frameworks, but recently we've seen the most popular web application approaches trend back towards a progressive enhancement model.
 
@@ -148,7 +148,11 @@ A similar approach was taken by the team behind the recent [Google+ redesign](ht
 > With server-side rendering we make sure that the user can begin reading as soon as the HTML is loaded, and no JavaScript needs to run in order to update the contents of the page. Once the page is loaded and the user clicks on a link, we do not want to perform a full round-trip to render everything again. This is where client-side rendering becomes important — we just need to fetch the data and the templates, and render the new page on the client. This involves lots of tradeoffs; so we used a framework that makes server-side and client-side rendering easy without the downside of having to implement everything twice — on the server and on the client.
 
 <ASIDE>
-Though my description may be over simplified, Isomorphic JavaScript is an exciting approach for developers and teams who are using server side JavaScript. To learn more about Isomorphic JavaScript, I recommend taking a look at...
+Though my description may be over simplified, Isomorphic JavaScript is an exciting approach for developers and teams who are using server side JavaScript. To learn more about Isomorphic JavaScript, I recommend taking a look at
+
+- [Building Isomorphic JavaScript Apps](http://shop.oreilly.com/product/0636920042846.do) by Jason Strimpel
+- [Isomorphic JavaScript: The Future of Web Apps](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/)
+- [Universal React](https://24ways.org/2015/universal-react/)
 </ASIDE>
 
 If a fully Isomorphic JavaScript approach is overkill for an application, Henrik Joreteg has coined the term ["Lazymorphic" applications](https://blog.andyet.com/2015/05/18/lazymorphic-apps-bringing-back-static-web/). A Lazymorphic app is simply one where the developer we simply pre-renders as much of the application as possible as static files at build-time. Using this approach we can choose what we rendeder, making something useful for the user while withholding JavaScript depndent features.
@@ -172,6 +176,12 @@ The Progressive Web Application approach described above is well aligned to an e
 
 <ASIDE>
 Progressive Web App resources
+
+Though rooted in several technologies, the overarching concept of progressive web apps is just starting to take hold. Here are a few of the resources that I've found most useful for getting started.
+
+- [Google Developers: Progressive Web Apps](https://developers.google.com/web/progressive-web-apps)
+- [Progressive Web Apps: Escaping Tabs Without Losing Our Soul](https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/)
+- [Getting started with Progressive Web Apps](https://addyosmani.com/blog/getting-started-with-progressive-web-apps/)
 </ASIDE>
 
 
@@ -196,3 +206,6 @@ To make the most of the progressive enhancement approach, be sure to:
 
 - [Understanding Progressive Enhancement](http://alistapart.com/article/understandingprogressiveenhancement)
 - [Progressive enhancement: How to create pages that work regardless of browser capability](https://www.gov.uk/service-manual/making-software/progressive-enhancement.html)
+- [Cutting the Mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard)
+- [Progressive enhancement is still important](https://jakearchibald.com/2013/progressive-enhancement-still-important/)
+- [Stop Breaking the Web](https://ponyfoo.com/articles/stop-breaking-the-web)
