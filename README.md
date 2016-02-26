@@ -70,5 +70,5 @@ If you are interested in contributing, please read the [CONTRIBUTING.md](https:/
 
 ### Code of Conduct
 
-This project adheres to the [Open Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
-[code-of-conduct]: http://todogroup.org/opencodeofconduct/#EthicalWeb/adamdscott@protonmail.com
+This project adheres to the [Contributor Covenant 1.4][code-of-conduct]. By participating, you are expected to honor this code. Please report unacceptable behavior to adamdscott@protonmail.com.
+[code-of-conduct]: http://contributor-covenant.org/version/1/4/
