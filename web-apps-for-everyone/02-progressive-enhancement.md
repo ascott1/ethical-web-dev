@@ -131,17 +131,29 @@ To sniff out older browsers, we can use a technique demonstrated by Jake Archiba
 }());
 ```
 
-For JavaScript dependent applications we could render the landing page as HTML on the server while async loading the JavaScript for the rest of the application.
+For JavaScript dependent applications we could render the landing page as HTML on the server while prefetching the JavaScript for the rest of the application.
 
 ```
-<script async src="app.js">
+<link rel="prefetch" href=“app.js”>
 ```
 
-This allows gives our user's the opportunity to download and cacher the application's JavaScript, while not impacting the performance or requirement on a mostly static page.
+This allows gives our user's the opportunity to download and cache the application's JavaScript, without impacting the performance or requirement on a mostly static page. Soon browsers will begin implementing the [Preload specification](https://w3c.github.io/preload/), which will be similar to Prefetch, but enable additional browser features.
 
-You may be thinking, "but I want to build *modern* web applications and these are old techniques!" Certainly these techniques feel out of sync with the approaches of some of the popular JavaScript frameworks, but recently we've seen the most popular web application approaches trend back towards a progressive enhancement model.
+In action preload looks very similar:
 
-Isomorphic or Universal JavaScript is a technique that allows the a developer to pair server and client side JavaScript into a "write once, run everywhere approach." This technique means that the initial application will render on the server, using Node.JS and then run in the browser. When building a progressively enhanced Isomorphic app we can start by building our server rendered version of the applicationa and layer on the Isomorphic approach.
+```
+<link rel="preload" href=“app.js" as="script">
+```
+
+### Prefetch and Preload resources
+
+- [Prefetching, preloading, prebrowsing](https://css-tricks.com/prefetching-preloading-prebrowsing/)
+- [HTML5 Prefetch](https://medium.com/@luisvieira_gmr/html5-prefetch-1e54f6dda15d)
+- [Preload: What Is It Good For?](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/)
+
+You may be thinking, "but I want to build *modern* JavaScript web applications and these are old techniques!" Certainly these techniques feel out of sync with the approaches of some of the popular JavaScript frameworks, but recently we've seen the most popular web application approaches trend back towards a progressive enhancement model.
+
+Isomorphic or Universal JavaScript is a technique that allows the a developer to pair server and client side JavaScript into a "write once, run everywhere approach." This technique means that the initial application will render on the server, using Node.JS and then run in the browser. When building a progressively enhanced Isomorphic app we can start by building our server rendered version of the applications and layer on the Isomorphic approach.
 
 A similar approach was taken by the team behind the recent [Google+ redesign](https://developers.google.com/web/showcase/case-study/googleplus):
 
