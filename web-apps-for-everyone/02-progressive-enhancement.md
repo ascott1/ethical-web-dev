@@ -139,7 +139,7 @@ For JavaScript dependent applications we could render the landing page as HTML o
 
 This allows gives our user's the opportunity to download and cache the application's JavaScript, without impacting the performance or requirement on a mostly static page. Soon browsers will begin implementing the [Preload specification](https://w3c.github.io/preload/), which will be similar to Prefetch, but enable additional browser features.
 
-In action preload looks very similar:
+In action preload looks very similar to prefetch:
 
 ```
 <link rel="preload" href=“app.js" as="script">
