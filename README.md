@@ -57,7 +57,7 @@ For each title I will be donating a percentage (roughly 20% after taxes) of my p
 
 - Title 1: [W3C Web For All Initiative](https://www.w3.org/Consortium/sponsor/webforall)
 - Title 2: [World Wide Web Foundation](http://webfoundation.org/)
-- Title 3: [Electronic Freedom Foundation](https://www.eff.org/)
+- Title 3: [Electronic Frontier Foundation](https://www.eff.org/)
 - Title 4: [Mozilla](https://www.mozilla.org/en-US/)
 
 ## Contributing
