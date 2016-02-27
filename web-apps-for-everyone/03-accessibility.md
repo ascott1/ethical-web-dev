@@ -9,7 +9,7 @@ Building accessible web sites and applications means making those sites availabl
 Today, as web users we access government services, educational resources, bank transactions, social interactions, work tasks, health care, entertainment, and more through our web browsers. As the web continues to play an increasingly large role in our daily lives, this causes inaccessible websites to be a hurdle to fully participating in society. With the importance the web plays in our society, it has become our responsibility as developers to ensure its equal access to all.
 
 The W3C has summarizes the social issues around web accessibility in [three principles](https://www.w3.org/WAI/bcase/soc#social):
- 
+
 -  It is essential that the Web is accessible in order to provide equal access and equal opportunity to people with disabilities.
 - The Web is an opportunity for unprecedented access to information for people with disabilities.
 - The Web is an opportunity for unprecedented interaction for people with disabilities.
@@ -31,7 +31,8 @@ When done correctly, an accessible web not only provides equal access to service
 
 ## Broadening the scope of accessibility
 
-Web accessibility for older people
+- Web accessibility for older people
+- Web accessibility for those with temporary disabilities
 
 > Older Web users are an increasing market segment and an important target group for many businesses, governments, and other organizations.
 
