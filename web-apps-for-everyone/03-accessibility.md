@@ -31,12 +31,11 @@ When done correctly, an accessible web not only provides equal access to service
 
 ## Broadening the scope of accessibility
 
-- Web accessibility for older people
-- Web accessibility for those with temporary disabilities
+The need for accessibility is not limited to those with permanent disabilities. Accessible web interfaces may benefit a range of users.
 
-> Older Web users are an increasing market segment and an important target group for many businesses, governments, and other organizations.
+As of the [2010 census](http://www.census.gov/prod/cen2010/briefs/c2010br-09.pdf), there are 17 million people 75 years of age and older living in the United States. World wide, over [8% of the earth’s total population](http://www.indexmundi.com/world/demographics_profile.html) falls into the 65 and above category. This age group has consistently grown as a percentage of the total population, creating an increasing market segment. With an aging population, there are several factors that can impact the use of the web, most notable motor and vision impairments. By building with accessibility in mind, we are able to accommodate users of all ages.
 
-Include census data
+In addition to those with permanent or age related disabilities, many users may have temporary disabilities. Often these may be related to an injury where vision or motor abilities are impaired. 
 
 ### Further reading
 
@@ -46,24 +45,40 @@ Include census data
 
 ## POUR
 
-[POUR principle](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head): Perceivable, Operable, Understandable, and Robust.
+The guiding principle of building accessible web applications is referred to as the [POUR principle](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head), stating for Perceivable, Operable, Understandable, and Robust. Following these guidelines allow us to build web sites and applications that are usable by all.
 
->The guidelines and Success Criteria are organized around the following four principles, which lay the foundation necessary for anyone to access and use Web content. Anyone who wants to use the Web must have content that is:
-
->Perceivable - Information and user interface components must be presentable to users in ways they can perceive.
+> Perceivable - Information and user interface components must be presentable to users in ways they can perceive.
 This means that users must be able to perceive the information being presented (it can't be invisible to all of their senses)
-Operable - User interface components and navigation must be operable.
-This means that users must be able to operate the interface (the interface cannot require interaction that a user cannot perform)
-Understandable - Information and the operation of user interface must be understandable.
-This means that users must be able to understand the information as well as the operation of the user interface (the content or operation cannot be beyond their understanding)
-Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
-This means that users must be able to access the content as technologies advance (as technologies and user agents evolve, the content should remain accessible)
-If any of these are not true, users with disabilities will not be able to use the Web.
+
+Links: two perceptions
+
+> Operable - User interface components and navigation must be operable. This means that users must be able to operate the interface (the interface cannot require interaction that a user cannot perform)
+
+Tab-able interface
+
+> Understandable - Information and the operation of user interface must be understandable. This means that users must be able to understand the information as well as the operation of the user interface (the content or operation cannot be beyond their understanding)
+
+Simplicity? Reading level?
+
+> Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.This means that users must be able to access the content as technologies advance (as technologies and user agents evolve, the content should remain accessible)
+
+range of browsers, devices, screen readers, etc
 
 
 ## Understanding WCAG 2.0
 
-[WCAG 2.0](https://www.w3.org/TR/WCAG20/)
+> Rather than issuing a simple checklist of "do’s and don'ts," WCAG 2 instead establishes a series of Success Criteria to address various online content barriers. The Success Criteria are written as testable statements that are not technology-specific. This approach ensures that content authors are not told that they cannot do a particular thing, but instead offers means and suggestions for ensuring that whatever is created can be made accessible.
+
+— https://soap.stanford.edu/guidelines-standards/understanding-wcag-20
+
+- [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
+- [Understanding WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/)
+
+Overview of WCAG requirements. Make this non-intimidating.
+
+Explain conformance levels.
+
+
 
 ## ARIA
 
@@ -94,6 +109,8 @@ At the time of writing [NY.gov's site](http://www.ny.gov/) as well as the NY Sta
 
 
 ## Writing accessible markup
+
+
 
 ## Accessibility checklist
 
