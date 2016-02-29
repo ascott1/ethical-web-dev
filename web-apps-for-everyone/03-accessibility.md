@@ -43,46 +43,87 @@ In addition to those with permanent or age related disabilities, many users may 
 - [Meeting the Needs of Aging Web Users](https://www.w3.org/WAI/older-users/Overview.php)
 
 
-## POUR
+## WCAG 2.0
 
-The guiding principle of building accessible web applications is referred to as the [POUR principle](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head), stating for Perceivable, Operable, Understandable, and Robust. Following these guidelines allow us to build web sites and applications that are usable by all.
+In 2008 the W3C released an update to the Web Content Accessibility Guidelines, commonly referred to as (WCAG) 2.0. This document covers a range of success criteria for creating accessible web content. Rather than focusing on specific technologies, the document offers a suggestions for making all web sites and applications more accessible.
+
+### POUR
+
+The guidelines and success criteria of building WCAG 2.0 accessible web applications are organized around the [POUR principle](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head). POUR stands for Perceivable, Operable, Understandable, and Robust. Following these guidelines allow us to build web sites and applications that are usable by all.
 
 > Perceivable - Information and user interface components must be presentable to users in ways they can perceive.
-This means that users must be able to perceive the information being presented (it can't be invisible to all of their senses)
 
-Links: two perceptions
+Perceivable means that a user should be provided the opportunity to perceive the content of our web applications. To do this, we must ensure that the information being presented is visible to their senses. When we limit content to a single sense, we run the risk of alienating users.
 
-> Operable - User interface components and navigation must be operable. This means that users must be able to operate the interface (the interface cannot require interaction that a user cannot perform)
+An obvious use case of perception is providing written transcripts of audio material or captioning video material. Perhaps a less obvious example is the style of links across the web. A link that is only a different color from the text would be imperceptible to a color blind users. Instead, we should be sure to alter the color as well as provide an underline to the link. This provides a multi sensory option to the user.
 
-Tab-able interface
+!(Perceptible link demonstration)[img/link-perception.png]
+<figcaption>Retaining the default link behavior of including an underline allows them to be perceptible to color blind users.</figcaption>
 
-> Understandable - Information and the operation of user interface must be understandable. This means that users must be able to understand the information as well as the operation of the user interface (the content or operation cannot be beyond their understanding)
+> Operable - User interface components and navigation must be operable. 
 
-Simplicity? Reading level?
+By being operable, all users are able to operate and navigate the interface of the web application. Perhaps a simple example of this is providing users the ability to easily “tab through” our sites. A user who is unable to operate a mouse or track pad may navigate sites using only the keyboard. Ensuring that our sites are keyboard accessible is one way to ensure that they are  operable by all  users.
 
-> Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.This means that users must be able to access the content as technologies advance (as technologies and user agents evolve, the content should remain accessible)
+> Understandable - Information and the operation of user interface must be understandable. 
 
-range of browsers, devices, screen readers, etc
+When we build understandable interfaces, we follow common development patterns of hierarchy and user interaction. Though, when working with a team, these may often fall in the domain of a designer, as developers we make choices about how we develop these patterns. 
+
+One common anti-pattern is using form label `placeholder` text in the place of a form label.
+
+```
+<label for=“password”>Password:</label>
+<input type=“text” name=“password”>
+```
 
 
-## Understanding WCAG 2.0
+```
+<input type=“text” name=“password” placeholder=“Password”>
+```
 
-> Rather than issuing a simple checklist of "do’s and don'ts," WCAG 2 instead establishes a series of Success Criteria to address various online content barriers. The Success Criteria are written as testable statements that are not technology-specific. This approach ensures that content authors are not told that they cannot do a particular thing, but instead offers means and suggestions for ensuring that whatever is created can be made accessible.
 
-— https://soap.stanford.edu/guidelines-standards/understanding-wcag-20
+[IMG OF PLACEHOLDER TEXT REPLACING LABEL]
 
+The use of placeholder text in the place of labels raises several potential [usability and accessibility concerns](https://www.nngroup.com/articles/form-design-placeholders/) due to low contrast, extra cognitive burden as users must recall the  purpose of the field, and unreliable screen reader support. By making solid development decisions such as proper form markup, we can develop more understandable sites.
+
+> Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
+
+By building robust web applications, we build [future friendly](http://futurefriendlyweb.com/) sites that are device and browser agnostic. When we develop without a specific platform in mind and do not limit our browser support, we are able to build sites that are accessible to any user. This is a topic that we will cover in depth in a future title, “Building Web Applications that Work Everywhere.”
+
+### WCAG conformance
+
+The WCAG 2.0 is separated into three levels of conformance, based on success criteria that is defined in the [WCAG 2.0 specification](https://www.w3.org/TR/WCAG20/):
+
+- Level A – Level A provides basic web accessibility support. This meets all Level A success criteria, or provides an alternate content version that does. 
+- Level AA – Level AA addresses the most common accessibility issues. This meets all Level A and Level AA success criteria or provides an alternate content version that does. 
+- Level AAA – Level AAA provides highest level of web accessibility support for users. This meets all Level A, Level AA, and Level AAA success criteria, or provides an alternate version.
+
+It is worth noting that the W3C does not recommended that Level AAA conformance be required for entire sites as it is not possible to satisfy all Level AAA Success Criteria for some content. If you choose to put an accessibility policy in place for your organization, I recommend aiming for Level AA support.
+
+### WCAG 2.0 Guidelines
+
+- Guideline 1.1 Text Alternatives: Provide text alternatives for any non-text content 
+- Guideline 1.2 Time-based Media: Provide alternatives for time-based media
+- Guideline 1.3 Adaptable: Create content that can be presented in different ways (for example simpler layout) without losing information or structure
+- Guideline 1.4 Distinguishable: Make it easier for users to see and hear content including separating foreground from background.
+- Guideline 2.1 Keyboard Accessible: Make all functionality available from a keyboard.
+- Guideline 2.2 Enough Time: Provide users enough time to read and use content.
+- Guideline 2.3 Seizures: Do not design content in a way that is known to cause seizures.
+- Guideline 2.4 Navigable: Provide ways to help users navigate, find content, and determine where they are.
+- Guideline 3.1 Readable: Make text content readable and understandable.
+- Guideline 3.2 Predictable: Make Web pages appear and operate in predictable ways.
+- Guideline 3.3 Input Assistance: Help users avoid and correct mistakes.
+- Guideline 4.1 Compatible: Maximize compatibility with current and future user agents, including assistive technologies.
+
+WebAIM.org provides a [helpful checklist](http://webaim.org/standards/wcag/checklist) of recommendations for implementing HTML-related principles and techniques for WCAG 2.0 conformance, along with the associated support level..
+
+### Further WCAG reading
+
+- [Techniques for WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/)
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [Understanding WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/)
 
-Overview of WCAG requirements. Make this non-intimidating.
 
-Explain conformance levels.
-
-
-
-## ARIA
-
-https://www.w3.org/TR/WCAG20-TECHS/aria
+## Using just your keyboard to navigate the web
 
 ## Using a screen reader to navigate the web
 
@@ -110,9 +151,11 @@ At the time of writing [NY.gov's site](http://www.ny.gov/) as well as the NY Sta
 
 ## Writing accessible markup
 
+### ARIA roles
 
+https://www.w3.org/TR/WCAG20-TECHS/aria
 
-## Accessibility checklist
+## Accessibility checklists
 
 http://webaim.org/standards/wcag/checklist
 http://a11yproject.com/checklist.html
@@ -122,7 +165,7 @@ http://a11yproject.com/checklist.html
 - tota11y
 - pa11y
 - aXe
-- WAVE
+- [WAVE Chrome Extension](http://wave.webaim.org/extension/)
 - a11y
 - [Chrome Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en)
 
@@ -182,3 +225,4 @@ From <https://www.w3.org/WAI/bcase/soc#social>
 - [HIKE](http://accessibility.parseapp.com/)
 - [WebAIM](http://webaim.org/)
 - [MDN ARIA Resources](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+- [It’s Tired In Here: Web Accessibility](http://itstiredinhere.com/accessibility/)
