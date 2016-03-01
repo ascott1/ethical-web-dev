@@ -122,27 +122,38 @@ WebAIM.org provides a [helpful checklist](http://webaim.org/standards/wcag/check
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [Understanding WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/)
 
+## Building Empathy
 
-## Using just your keyboard to navigate the web
-
-## Using a screen reader to navigate the web
-
-- [ChromeVox](http://www.chromevox.com/) & [ChromeVox tutorial](http://www.chromevox.com/tutorial/index.html)
-
-(NOTE: Be sure to include instructions for testing a screen reader *visually* so as not to exclude anyone with auditory disabilities)
-
-### OS screen readers
-
-- [VoiceOver for Mac](https://www.apple.com/accessibility/osx/voiceover/): CMD + F5 to enable
-- [Narrator for Windows](http://windows.microsoft.com/en-us/windows/hear-text-read-aloud-narrator#1TC=windows-8)
-
-### Other popular screen readers
+### Using just your keyboard to navigate the web
 
 GitHub as an example of an accessible web application
 
 Medium.com article page - just adding a "Skip to article" link would be a *huge* improvement!
 
-### Using a screen reader to apply for social assistance programs
+### Using a screen reader to navigate the web
+
+- [ChromeVox](http://www.chromevox.com/) & [ChromeVox tutorial](http://www.chromevox.com/tutorial/index.html)
+
+(NOTE: Be sure to include instructions for testing a screen reader *visually* so as not to exclude anyone with auditory disabilities)
+
+WebAIM screen reader survey http://webaim.org/projects/screenreadersurvey6/
+
+#### OS screen readers
+
+- [VoiceOver for Mac](https://www.apple.com/accessibility/osx/voiceover/): CMD + F5 to enable
+- [Narrator for Windows](http://windows.microsoft.com/en-us/windows/hear-text-read-aloud-narrator#1TC=windows-8)
+
+#### Popular screen readers
+
+The most popular screen readers, according to the [WebAIM screen reader survey](WebAIM screen reader survey http://webaim.org/projects/screenreadersurvey6/):
+
+- [JAWS](http://www.freedomscientific.com/JAWSHQ/JAWSHeadquarters01)
+- [ZoomText](http://www.aisquared.com/products/)
+- [Window-Eyes](http://www.gwmicro.com/Window-Eyes/)
+- [NVDA](http://www.nvaccess.org/)
+
+
+#### Using a screen reader to apply for social assistance programs
 
 [Applying for Social Security Benefits](https://secure.ssa.gov/iClaim/dib) &  seems to be a good example of accessible content!
 
