@@ -1,8 +1,11 @@
+
 # Accessibility
+
 
 > The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
 
 — Tim Berners-Lee, Inventor of the World Wide Web
+
 
 Building accessible web sites and applications means making those sites available to users regardless of physical ability. This covers a broad range of disabilities, such as visual, physical, auditory, cognitive, and age related disabilities. When we build with accessibility in mind, we make an ethical decision of inclusion. Alternatively, when we choose to ignore accessibility, it excludes people with disabilities from participating in the web.
 
@@ -41,6 +44,7 @@ In addition to those with permanent or age related disabilities, many users may 
 
 - [News for Betty](https://melodykramer.github.io/how-betty-who-is-89-gets-her-news/)
 - [Meeting the Needs of Aging Web Users](https://www.w3.org/WAI/older-users/Overview.php)
+- [MYTH: Accessibility is “blind people”](http://a11yproject.com/posts/myth-accessibility-is-blind-people/)
 
 
 ## WCAG 2.0
@@ -70,11 +74,14 @@ When we build understandable interfaces, we follow common development patterns o
 
 One common anti-pattern is using form label `placeholder` text in the place of a form label.
 
+Here is a form element, properly marked up with a label and placeholder text:
+
 ```
 <label for=“password”>Password:</label>
 <input type=“text” name=“password”>
 ```
 
+Here is one that uses the placeholder to replace the the label:
 
 ```
 <input type=“text” name=“password” placeholder=“Password”>
@@ -126,9 +133,101 @@ WebAIM.org provides a [helpful checklist](http://webaim.org/standards/wcag/check
 
 ### Using just your keyboard to navigate the web
 
-GitHub as an example of an accessible web application
+For many desktop users, navigating through web sites with a keyboard is an essential function. These users may have motor disabilities, vision disabilities, limb loss, or injuries that make mouse usage impractical. By ensuring that our sites are keyboard navigable, we are increasing the availability of our applications to these users.
 
-Medium.com article page - just adding a "Skip to article" link would be a *huge* improvement!
+The basics of keyboard navigation are simple:
+
+- Press the Tab key to navigate through the page
+- Press Tab + Shift to go backwards in your navigation
+
+Using the tab key, we are able to navigate to links, buttons, and form elements on the page. This allows us to quickly interact with elements on the page.
+
+There are a few ways that as developers we can ensure the best possible keyboard navigation experience for our users. Primarily, we should aim to:
+
+- Keep or apply custom :focus styles
+- Be aware of navigation order and length
+- Use default navigation elements
+
+#### Keep or Add :focus style
+
+When a user navigates to an element with the Tab key, it is visually indicated using a `:focus` style. By default, in most browsers this either a thin dotted line a blue highlighted border around the focused element. Unfortunately, it has become a fairly common trend to remove this focus style by applying an `outline:0` or `outline:none` in CSS. This can be avoided by either retaining that default behavior or adding a custom focus style through CSS.
+
+```
+a:focus { 
+	background-color: #01FF70;
+}
+```
+
+##### Further reading:
+
+- [Quick Tip: Never remove CSS outlines](http://a11yproject.com/posts/never-remove-css-outlines/)
+
+#### Navigation Order and Length
+
+When users navigate a site using the keyboard, the order and length of keyboard navigable items becomes more important. Imagine the frustration of a user pressing tab through every link presented in a sidebar (such as Twitter or Facebooks “trends”) before being able to access the main content of the application. By using a “skip to content link,” in our applications we can provide an extra guidepost that directs our users to the most valuable content.
+
+Skip to navigation links are hidden links that when “tabbed” to or read by a screen reader, allow the user to skip to the main content of the page, rather than needing to navigate through navigation and other content that occurs earlier in the document order. These can be visually hidden, appearing only when a user presses the tab key.
+
+To begin, add a skip to navigation link at the top of the document, linking directly to the main content of the page:
+
+```
+<body>
+  <a href=“#main” class=“skip-link”>Skip to main content</a>
+	…
+  <main id=“main” role=“main”>
+		<h1>Page Content</h1>
+	…
+```
+
+For styles, we can first hide the skip link visually while keeping it visible to screen readers:
+
+```
+.skip-link {
+	position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+```
+
+Then make it appear visually when the link receives focus with the Tab key:
+
+```
+.skip-link:focus {
+    top: 0;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    clip: auto;
+}
+```
+
+##### Further reading
+- [How–to: Use Skip Navigation links](http://a11yproject.com/posts/skip-nav-links/)
+- [“Skip Navigation” Links](http://webaim.org/techniques/skipnav/)
+- [Fixing “Skip to content” links](https://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/)
+
+#### Default navigation elements
+
+By default links, buttons, and form items are navigable using the tab key. However, there are times that we may want to include additional items that are tabbable by our users. To do this we can set a “tab index” value to an HTML element:
+
+```
+<h3 tabindex=“0”>This heading is tabbable</h3>
+```
+
+The approach should generally be to set a tab index value to zero. A number greater than 1 sets an explicit tab order, and should be avoided.
+
+##### Further Reading
+
+- [Tabindex](http://webaim.org/techniques/keyboard/tabindex)
+
+
+#### Further Keyboard Accessibility Reading
+
+- [Keyboard Accessibility](http://webaim.org/techniques/keyboard/)
+- [Keyboard-Only Navigation for Improved Accessibility](https://www.nngroup.com/articles/keyboard-accessibility)
 
 ### Using a screen reader to navigate the web
 
@@ -136,12 +235,12 @@ Medium.com article page - just adding a "Skip to article" link would be a *huge*
 
 (NOTE: Be sure to include instructions for testing a screen reader *visually* so as not to exclude anyone with auditory disabilities)
 
-WebAIM screen reader survey http://webaim.org/projects/screenreadersurvey6/
-
 #### OS screen readers
 
 - [VoiceOver for Mac](https://www.apple.com/accessibility/osx/voiceover/): CMD + F5 to enable
 - [Narrator for Windows](http://windows.microsoft.com/en-us/windows/hear-text-read-aloud-narrator#1TC=windows-8)
+- [VoiceOver for iOS](https://www.apple.com/accessibility/ios/voiceover/)
+- [Google Talkback](https://play.google.com/store/apps/details?id=com.google.android.marvin.talkback)
 
 #### Popular screen readers
 
@@ -206,26 +305,8 @@ gulp.task('accessibility', function (){
 Paired with a continuous integration system, such as [Travis CI](https://travis-ci.com/), we could run these accessibility checks against every build, failing if there are accessibility errors.
 
 
-## Convincing your organization
-
-From <https://www.w3.org/WAI/bcase/soc#social>
-
-> Web accessibility provides improved access, interaction, and social inclusion for the people described above, which is a primary aspect of corporate social responsibility (CSR).
-
-> Corporate social responsibility, also called corporate citizenship, corporate responsibility, or responsible business, generally means conducting business ethically and operating an organization in such a way that treats internal and external stakeholders ethically, increases human development, and is good for society and the environment. Web accessibility can impact an organization's employees, stockholders and board members, suppliers and vendors, partners and collaborators, customers, and others. Thus Web accessibility is an integral part of CSR in demonstrating an organization's commitment to providing equal opportunities.
-
-> Just as an accessible website can demonstrate CSR, an inaccessible website can undermine an organization's other CSR efforts.
-
-> When an organization's website is not accessible, it further excludes people with disabilities from society. When an organization's website is accessible, it empowers people with disabilities to participate in society. Providing an accessible website is one way an organization can demonstrate that it strives to meet the access needs of a diverse society.
-
-> An organization's efforts in Web accessibility are a public relations opportunity to increase its positive image, which can increase website use. The Social Factors page discusses Web accessibility as a social issue and an aspect of corporate social responsibility (CSR). CSR has been shown to improve financial performance, enhance brand image and reputation, increase sales and customer loyalty, increase ability to attract and retain employees, and provide access to capital and funding. Additional perspectives on CSR, such as statistics that show how CSR impacts customers, are available on the Web.
-
 ## In Summary
 
-## Videos of users
-
-- http://www.dingoaccess.com/accessibility/refreshable-braille-and-the-web/
-- https://dotsub.com/view/9787ebec-941f-4e04-a5dc-f6ed7fde7247
 
 ### Additional resources
 
