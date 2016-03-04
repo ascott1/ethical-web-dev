@@ -223,11 +223,11 @@ The approach should generally be to set a tab index value to zero. A number grea
 
 - [Tabindex](http://webaim.org/techniques/keyboard/tabindex)
 
-
 #### Further Keyboard Accessibility Reading
 
 - [Keyboard Accessibility](http://webaim.org/techniques/keyboard/)
 - [Keyboard-Only Navigation for Improved Accessibility](https://www.nngroup.com/articles/keyboard-accessibility)
+- [Keyboard Testing Guide](https://pages.18f.gov/accessibility/keyboard/)
 
 ### Using a screen reader to navigate the web
 
@@ -235,53 +235,95 @@ The approach should generally be to set a tab index value to zero. A number grea
 
 (NOTE: Be sure to include instructions for testing a screen reader *visually* so as not to exclude anyone with auditory disabilities)
 
-#### OS screen readers
 
-- [VoiceOver for Mac](https://www.apple.com/accessibility/osx/voiceover/): CMD + F5 to enable
-- [Narrator for Windows](http://windows.microsoft.com/en-us/windows/hear-text-read-aloud-narrator#1TC=windows-8)
-- [VoiceOver for iOS](https://www.apple.com/accessibility/ios/voiceover/)
-- [Google Talkback](https://play.google.com/store/apps/details?id=com.google.android.marvin.talkback)
+#### Other screen readers
 
-#### Popular screen readers
-
-The most popular screen readers, according to the [WebAIM screen reader survey](WebAIM screen reader survey http://webaim.org/projects/screenreadersurvey6/):
+Though ChromeVox is great you may want to explore the use of more commonly used screen readers. Here are the most popular screen readers, according to the [WebAIM screen reader survey](WebAIM screen reader survey http://webaim.org/projects/screenreadersurvey6/).
 
 - [JAWS](http://www.freedomscientific.com/JAWSHQ/JAWSHeadquarters01)
 - [ZoomText](http://www.aisquared.com/products/)
 - [Window-Eyes](http://www.gwmicro.com/Window-Eyes/)
 - [NVDA](http://www.nvaccess.org/)
 
+Additionally, most operating systems ship with built in screen reader support. These can particularly useful for testing web applications on mobile devices.
 
-#### Using a screen reader to apply for social assistance programs
-
-[Applying for Social Security Benefits](https://secure.ssa.gov/iClaim/dib) &  seems to be a good example of accessible content!
-
-At the time of writing [NY.gov's site](http://www.ny.gov/) as well as the NY State's [Office of Temporary and Disability Assistance site](http://otda.ny.gov/accessibility.asp) are beautiful, full of accessible information, and touts an [accessibility policy](http://www.ny.gov/accessibility). Unfortunately, the site that handles the applications for core services such as school meals and nutrition assistance is [anything but accessible](https://mybenefits.ny.gov/mybenefits/NewAccountCreation!input.nysmybw).
+- [VoiceOver for Mac](https://www.apple.com/accessibility/osx/voiceover/): CMD + F5 to enable
+- [Narrator for Windows](http://windows.microsoft.com/en-us/windows/hear-text-read-aloud-narrator#1TC=windows-8)
+- [VoiceOver for iOS](https://www.apple.com/accessibility/ios/voiceover/)
+- [Google Talkback](https://play.google.com/store/apps/details?id=com.google.android.marvin.talkback)
 
 
 ## Writing accessible markup
 
-### ARIA roles
+Perhaps the most important aspect of an accessible web application is providing users with semantic HTML, whether it is  delivered server or client side. When writing semantic, well structured HTML we can ensure that our users will receive content that is perceptible to them in a variety of ways.
 
-https://www.w3.org/TR/WCAG20-TECHS/aria
+Here are a few tips for writing semantic and useful HTML:
 
-## Accessibility checklists
+- Make use of HTML5 content tags such as <header>, <nav>, <main>, <footer>, and <aside>.
+- Mark up the HTML content in the order you would expect the user to read it and use CSS to change the order appearance when necessary. 
+- Use semantic heading tags that follow a clear outline of page content and avoid using styled paragraphs or other elements as headers.
+- Use <label> elements to associate the label of form field with it’s input element.
+- Always provide alternate text for images using the alt attribute. When an image is purely decorative, give the alt attribute an empty value (alt=“”) so that screen readers know to ignore it.
 
-http://webaim.org/standards/wcag/checklist
-http://a11yproject.com/checklist.html
+### ARIA
+
+In addition to writing clear and semantic markup as detailed above, we can make use of ARIA to provide additional guideposts to screen reader users.	 ARIA stands for Accessible Rich Internet Applications and is a specification designed to make modern web application experiences more accessible. ARIA provides additional attributes that can be added to our markup and provide screen reader users with additional information to describe the role, state, and properties of elements on our page.
+
+Perhaps one of the most immediately useful aspects of ARIA is the use of ARIA roles. ARIA roles allow us to provide specific information to screen readers about the context of HTML elements. Doing this allows screen reader users to quickly navigate to these subsections of our page. I’ve found that watching [these videos](http://zomigi.com/blog/videos-of-screen-readers-using-aria-updated/) of screen readers using ARIA roles to be a really helpful exercise in understanding the usefulness of ARIA.
+
+To use an ARIA role, we add a role attribute to an HTML element and provide it with an ARIA value.
+
+```
+<div class=“main-content” role=“main”>
+```
+
+There are two categories of ARIA roles that may commonly be used by web application developers:
+
+- Landmark - Landmark roles define content areas that a screen reader user may want to quickly navigate to, such as navigation menus and the main content of the page.
+- Widget - Widget roles are used for common interactive UI patterns such as tooltips, tabs, and progress bars. 
+
+The [W3C helfpully provides a list](https://www.w3.org/TR/wai-aria/roles#role_definitions) of all of the possible ARIA role definitions. Here are some common ARIA role values that are useful to web application developers:
+
+- application - Content that is declared as a web application rather then a web document. 
+- banner - Typically the header of the page with the site name.
+- search - Indicates a search input.
+- main - The main content of the page.
+- navigation - Defines any navigation area of the page.
+- contentinfo - An area that contains information about the page such as author or organization title and copyright information. This is often the footer.
+- group - A collection of UI elements that are not intended to be included in a page summary or table of contents by assistive technologies.
+- menu - A list of user choices.
+- toolbar - A collection of commonly used functions “represented in a compact visual form.”
+
+ARIA  is more than just roles. ARIA can be used to define values on progress bars, hidden states, dynamic content updates, and more that are outside of the scope of this introduction. I’ve provided additional links and tutorials in the “further reading” section that detail the usefulness of these additional values.
+
+#### Further reading
+
+- [Notes on Using ARIA in HTML](https://w3c.github.io/aria-in-html/)
+- [WAI-ARIA 1.1 Authoring Practices](https://w3c.github.io/aria/practices/aria-practices.html)
+- [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+- [Getting Started with ARIA](http://a11yproject.com/posts/getting-started-aria/)
+- [Quick Tip: Aria Landmark Roles and HTML5 Implicit Mapping](http://a11yproject.com/posts/aria-landmark-roles/)
 
 ## Accessibility tools
 
-- tota11y
-- pa11y
-- aXe
+There are a number of tools that make can improve accessibility testing for developers. These allow us to quickly or automatically spot accessibility issues on our sites.
+
+### Browser Extensions and Bookmarklets
+- [tota11y](https://khan.github.io/tota11y/)
 - [WAVE Chrome Extension](http://wave.webaim.org/extension/)
-- a11y
 - [Chrome Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en)
+- [aXe](http://www.deque.com/products/aXe/)
 
-## Automating accessibility tests
+### Command Line Tools
 
-As an npm script in package.json:
+- [pa11y](http://pa11y.org/)
+- [a11y](https://addyosmani.com/a11y/)
+
+### Automating accessibility tests
+
+We can also integrate the above command line tools into an automated build process. Here are a couple of simple examples of how we might do that.
+
+As an npm script in package.json, we could automate the running of accessibility steps with [a11y](https://addyosmani.com/a11y/)  against our localhost server.
 
 ```javascript
 "scripts": {
@@ -289,7 +331,7 @@ As an npm script in package.json:
   }
 ```
 
-As a Gulp task:
+We could also run those tests as a [Gulp](http://gulpjs.com/) task:
 
 ```javascript
 var exec = require('child_process').exec;
@@ -302,7 +344,17 @@ gulp.task('accessibility', function (){
 });
 ```
 
-Paired with a continuous integration system, such as [Travis CI](https://travis-ci.com/), we could run these accessibility checks against every build, failing if there are accessibility errors.
+When paired with a continuous integration system, such as [Travis CI](https://travis-ci.com/), we could run these accessibility checks against every build, failing if there are accessibility errors. This would ensure that our codebase remains accessibility compliant when new code is added.
+
+### Accessibility checklists
+
+http://webaim.org/standards/wcag/checklist
+http://a11yproject.com/checklist.html
+
+## Creating an accessibility policy
+
+- W3C’s social responsibility content
+- Example policies
 
 
 ## In Summary
@@ -314,7 +366,5 @@ Paired with a continuous integration system, such as [Travis CI](https://travis-
 - [W3C Web Accessibility Guidelines](https://www.w3.org/standards/webdesign/accessibility)
 - [W3C Web Accessibility Tutorials](https://www.w3.org/WAI/tutorials/)
 - [The Accessibility Project](http://a11yproject.com/)
-- [HIKE](http://accessibility.parseapp.com/)
 - [WebAIM](http://webaim.org/)
-- [MDN ARIA Resources](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 - [It’s Tired In Here: Web Accessibility](http://itstiredinhere.com/accessibility/)
