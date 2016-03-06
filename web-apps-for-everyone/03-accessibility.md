@@ -231,9 +231,13 @@ The approach should generally be to set a tab index value to zero. A number grea
 
 ### Using a screen reader to navigate the web
 
-- [ChromeVox](http://www.chromevox.com/) & [ChromeVox tutorial](http://www.chromevox.com/tutorial/index.html)
+For the visually impaired, a screen reader may provide access to our sites and applications. Screen readers also provide a means to test the simplicity of navigation through the application. There are many screen readers available, but for quick testing I recommend [ChromeVox](http://www.chromevox.com/) for the Google Chrome Browser. The ChromeVox screenreader also adds additional focus styles to the active element, which make it possible for those with auditory issues to test screenreader support.
 
-(NOTE: Be sure to include instructions for testing a screen reader *visually* so as not to exclude anyone with auditory disabilities)
+To get started with ChromeVox:
+
+1. Install the [Google Chrome Browser](https://www.google.com/chrome/)
+2. Install the [ChromeVox Extension]([ChromeVox](http://www.chromevox.com/)
+3. Follow the [ChromeVox interactive tutorial](http://www.chromevox.com/tutorial/index.html)
 
 
 #### Other screen readers
@@ -309,6 +313,11 @@ ARIA  is more than just roles. ARIA can be used to define values on progress bar
 There are a number of tools that make can improve accessibility testing for developers. These allow us to quickly or automatically spot accessibility issues on our sites.
 
 ### Browser Extensions and Bookmarklets
+
+Browser extensions and bookmarklets allow us to test the accessibility of a page as we are interacting with it. These are a great option for quickly doing spot checks for thins like ARIA role usage, color contrast ratios, descriptive alt text, and form label usage.
+
+Useful browser extensions and bookmarklets:
+
 - [tota11y](https://khan.github.io/tota11y/)
 - [WAVE Chrome Extension](http://wave.webaim.org/extension/)
 - [Chrome Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en)
@@ -316,8 +325,13 @@ There are a number of tools that make can improve accessibility testing for deve
 
 ### Command Line Tools
 
+In addition to browser extensions or bookmarklets, we can automate common accessibility checks from the command line. This allows us, as developers, to integrate accessibility checks into our workflow. Typically these tools run our site in a headless browser and test for accessibility concerns such as color contrast, heading order, link content, and alt text.
+
+Useful command line accessibility tools:
+
 - [pa11y](http://pa11y.org/)
 - [a11y](https://addyosmani.com/a11y/)
+- [node-wcag](https://github.com/cfpb/node-wcag)
 
 ### Automating accessibility tests
 
@@ -331,7 +345,7 @@ As an npm script in package.json, we could automate the running of accessibility
   }
 ```
 
-We could also run those tests as a [Gulp](http://gulpjs.com/) task:
+We could also run those tests as a [Gulp](http://gulpjs.com/) task. This is a simple task that will log the accessibility audit checks and failures to the console.
 
 ```javascript
 var exec = require('child_process').exec;
@@ -348,17 +362,45 @@ When paired with a continuous integration system, such as [Travis CI](https://tr
 
 ### Accessibility checklists
 
-http://webaim.org/standards/wcag/checklist
-http://a11yproject.com/checklist.html
+While we may aim to build our applications with accessibility in mind throughout the development process, it is possible to overlook an accessibility issue. I’ve found it useful in past projects to reference an accessibility checklist prior to launch of a new project. This allows the team I am working with and myself to add a final check for accessibility into the workflow of the project. For a straightforward checklist, I recommend
+[The A11Y Project’s Web Accessibility Checklist](http://a11yproject.com/checklist.html), which provides a concise checklist of accessibility best practices. For a more thorough check of WCAG compliance there is [WebAIM's WCAG 2.0 Checklist](http://webaim.org/standards/wcag/checklist). Both of these lists allow you to quickly check for possible accessibility oversights.
 
 ## Creating an accessibility policy
 
-- W3C’s social responsibility content
-- Example policies
+Adopting an accessibility policy for your project or organization is a way of demonstrating both within and outside of the organization that you are dedicated to accessibility. If an organization is unclear of the value of creating such a policy, the W3C provides [Developing a Web Accessibility Business Case for Your Organization](https://www.w3.org/WAI/bcase/Overview), which clearly outlines the positive outcomes of promoting accessibility.
+
+The majority of national or federal government, state government, and public university web sites offer some form of web accessibility policy. I recommend taking a look at your local and national government sites to see what they are. Additionally a smaller number of corporations and non-profits do the same. I have begun cataloging these policies at [github.com/ascott1/accessibility-policies](https://github.com/ascott1/accessibility-policies). 
+
+Here are a few contrast accessibility policies that you may want to explore when developing one for your organization:
+
+- [The Economist](http://www.economist.com/help/accessibilitypolicy)
+- [Travelocity](https://www.travelocity.com/p/info-other/web-accessibility-policy)
+- [Goodwill Industries](https://www.goodwill.org/uncategorized/accessibility-policy/)
+- [Lloyds Bank](https://www.lloydsbank.com/accessibility/policy.asp)
+- [Elsevier](https://www.elsevier.com/about/company-information/policies/accessibility)
+
+
+The W3C provides guidance on [Developing Organizational Policies on Web Accessibility](https://www.w3.org/WAI/impl/pol), complete with a template. I have adapted that template to a more human readable format, in Markdown, which includes a list of commitments:
+
+```
+[ORGANIZATION OR PROJECT NAME] is committed to ensuring the accessibility of this project for people with disabilities. We pledge to meet [W3C WAI's Web Content Accessibility Guidelines 2.0](https://www.w3.org/TR/WCAG/), Level AA conformance. Any issues should be reported to [EMAIL ADDRESS].
+
+We are committed to the ensuring accessibility through:
+
+- Use of ARIA landmark roles.
+- Proper use of HTML headings.
+- Perceptible link text and focus states.
+- Sufficient color contrast.
+- The use of appropriate alt text for images.
+- Keyboard navigable forms inputs with descriptive labels.
+- Text transcripts for audio and closed captioning for video content.
+- Navigation without the need for a mouse or track pad.
+```
 
 
 ## In Summary
 
+Accessibility is a core value to ethical web development. By ensuring that our applications are accessible, we are providing access to everyone.
 
 ### Additional resources
 
