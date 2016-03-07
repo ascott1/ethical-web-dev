@@ -197,7 +197,7 @@ Though rooted in several technologies, the overarching concept of progressive we
 </ASIDE>
 
 
-## In summary
+## In Summary
 
 There are a variety of techniques and approaches that allows us to build  progressively enhanced modern web sites and applications. I've outlined a few of them above. By beginning with the core functionality, we are able to ensure that our application works for the maximum number of people. This provides us with a baseline to provide working software for all users in a range of situations.
 
