@@ -263,11 +263,11 @@ Perhaps the most important aspect of an accessible web application is providing 
 
 Here are a few tips for writing semantic and useful HTML:
 
-- Make use of HTML5 content tags such as <header>, <nav>, <main>, <footer>, and <aside>.
+- Make use of HTML5 content tags such as `<header>`, `<nav>`, `<main>`, `<footer>`, and `<aside>`.
 - Mark up the HTML content in the order you would expect the user to read it and use CSS to change the order appearance when necessary. 
 - Use semantic heading tags that follow a clear outline of page content and avoid using styled paragraphs or other elements as headers.
-- Use <label> elements to associate the label of form field with it’s input element.
-- Always provide alternate text for images using the alt attribute. When an image is purely decorative, give the alt attribute an empty value (alt=“”) so that screen readers know to ignore it.
+- Use `<label>` elements to associate the label of form field with it’s input element.
+- Always provide alternate text for images using the alt attribute. When an image is purely decorative, give the alt attribute an empty value (`alt=“”`) so that screen readers know to ignore it.
 
 ### ARIA
 
@@ -365,7 +365,7 @@ When paired with a continuous integration system, such as [Travis CI](https://tr
 While we may aim to build our applications with accessibility in mind throughout the development process, it is possible to overlook an accessibility issue. I’ve found it useful in past projects to reference an accessibility checklist prior to launch of a new project. This allows the team I am working with and myself to add a final check for accessibility into the workflow of the project. For a straightforward checklist, I recommend
 [The A11Y Project’s Web Accessibility Checklist](http://a11yproject.com/checklist.html), which provides a concise checklist of accessibility best practices. For a more thorough check of WCAG compliance there is [WebAIM's WCAG 2.0 Checklist](http://webaim.org/standards/wcag/checklist). Both of these lists allow you to quickly check for possible accessibility oversights.
 
-## Creating an accessibility policy
+## Creating an Accessibility Policy
 
 Adopting an accessibility policy for your project or organization is a way of demonstrating both within and outside of the organization that you are dedicated to accessibility. If an organization is unclear of the value of creating such a policy, the W3C provides [Developing a Web Accessibility Business Case for Your Organization](https://www.w3.org/WAI/bcase/Overview), which clearly outlines the positive outcomes of promoting accessibility.
 
@@ -383,7 +383,7 @@ Here are a few contrast accessibility policies that you may want to explore when
 The W3C provides guidance on [Developing Organizational Policies on Web Accessibility](https://www.w3.org/WAI/impl/pol), complete with a template. I have adapted that template to a more human readable format, in Markdown, which includes a list of commitments:
 
 ```
-[ORGANIZATION OR PROJECT NAME] is committed to ensuring the accessibility of this project for people with disabilities. We pledge to meet [W3C WAI's Web Content Accessibility Guidelines 2.0](https://www.w3.org/TR/WCAG/), Level AA conformance. Any issues should be reported to [EMAIL ADDRESS].
+[ORGANIZATION OR PROJECT NAME] is committed to ensuring the accessibility of this site for people with disabilities. We pledge to meet [W3C WAI's Web Content Accessibility Guidelines 2.0](https://www.w3.org/TR/WCAG/), Level AA conformance. Any issues should be reported to [EMAIL ADDRESS].
 
 We are committed to the ensuring accessibility through:
 
