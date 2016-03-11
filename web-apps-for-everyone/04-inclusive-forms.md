@@ -34,12 +34,26 @@ Names around the world: W3C’s [Personal names around the world](https://www.w3
 
 ### Mojibake
 
-[Mojibake](https://en.wikipedia.org/wiki/Mojibake) is a term used to describe the garbled set of characters that are produced through an improper use of character encoding. Mojibake is typically caused by text that lacks proper (or any) Unicode encoding.Though
+[Mojibake](https://en.wikipedia.org/wiki/Mojibake) is a term used to describe the garbled set of characters that are produced through an improper use of character encoding. Mojibake is typically caused by text that lacks proper (or any) Unicode encoding. When a user’s name contains special characters it may not be uncommon for them to often see mojibake versions of their name. A quick Twitter image search results for mojibake reveals many encoding issues across the web, though it is likely that the majority go undocumented or are documented without knowing the term.
+
+In his talk, [Hello, my name is __________.](http://patch.codes/talks/hello-my-name-is/), developer Nova Patch surfaced several examples of Mojibake affecting users of web services. Perhaps the most well documented and consistent mojibake mangling of a name belongs to Nóirín Plunkett, who shared several instances of their mojibaked named on Twitter[^1].
+
+![image OF Nóirín’s tweets displaying mojibake](img/mojibake-tweets.png)
+
+<aside>
+Through the research of this book, I discovered that Nóirín Plunkett passed away in July 2015. Nóirín was an invaluable part of the open source community and an advocate for good in the world of software development. Both the [Apache Foundation](https://www.apache.org/memorials/noirin.html) and [Ada Initiative](http://adainitiative.org/2015/07/29/remembering-noirin-plunkett/) have offered heartfelt tributes to Nóirín.
+</aside>
 
 [Postman corrects mojibake](http://text-mode.tumblr.com/post/31409503070/russian-postmen-fix-an-error-caused-by-an)
 
-The Twitter image search results for Mojibake reveal many encoding issues across the web, though it is likely that the majority go undocumented or are documented without knowing the term.
+Tweet and reply: https://twitter.com/omengue/status/376677438576947200
 
+[1]: Here are the Tweets referenced in the image:
+- https://twitter.com/noirinp/status/77745010547769344
+- https://twitter.com/noirinp/status/151004631818977281
+- https://twitter.com/noirinp/status/162264316203114498
+- https://twitter.com/noirinp/status/394893223145271296
+- https://twitter.com/noirinp/status/600750084410642432
 
 ### Unicode
 
