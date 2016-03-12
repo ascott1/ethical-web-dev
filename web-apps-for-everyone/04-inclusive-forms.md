@@ -30,7 +30,63 @@ As developers, we can take a more inclusive strategy to working with names, trea
 
 ### International names
 
-Names around the world: W3C’s [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
+Names come in many different formats around the world, however it is easy to apply our own cultural biases when designing systems that deal with names. As an American, for instance, my bias is to consider names in the format of a first name followed by a surname. Based on that format I make several, potentially false assumptions, about things such as familial relationship. However, there are many different ways that a name can be constructed even with a single country or culture. Let’s look at a few of these structures to see how they may challenge our assumptions.
+
+### Chinese
+
+> Modern Chinese names consist of a surname known as xing (Chinese: 姓; pinyin: xìng), which comes first and is usually monosyllabic, but not always, followed by a personal name called ming (Chinese: 名; pinyin: míng), 
+
+> Chinese people, except for those traveling or living outside of China, rarely reverse their names to the western naming order (given name, then family name). 
+
+### Icelandic names
+> Icelandic names differ from most current Western family name systems by being patronymic (occasionally matronymic): they reflect the father (or mother) of the child and not the historic family lineage. 
+
+> Lists of names are not always sorted by family name around the world. For example, Thai and Icelandic people expect lists to be sorted by given name instead.
+
+ Jón Birgisson
+ 
+Jón “Birgi’s son”
+ 
+ Sigrún Jónsdóttir
+ 
+Sigrún “Jon’s daughter”
+
+### Malaysian names
+
+### Arabic names
+
+> Arabic names were historically based on a long naming system; most Arabs did not simply have given/middle/family names, but a full chain of names.
+
+https://en.wikipedia.org/wiki/Arabic_name
+
+> With "Abdul": Arabic names may be written "Abdul (something)", but "Abdul" means "servant of the" and is not, by itself, a name. Thus for example, to address Abdul Rahman bin Omar al-Ahmad by his given name, one says "Abdul Rahman", not merely "Abdul". If he introduces himself as "Abdul Rahman" (which means "the servant of the Merciful"), one does not say "Mr. Rahman" (as "Rahman" is not a family name but part of his (theophoric) personal name); instead it would be Mr. al-Ahmad, the latter being the family name.
+
+### Indian
+
+### Portugese
+
+> A Portuguese name is typically composed of one or two given names, and a number of family names (rarely one, but often two or three, seldom more). The first surname(s) are usually the mother's family surname(s) and the final surname(s) are the father's family surname(s).
+
+Sofia Matilde Almeida Pais
+António Borges Santos
+
+### Russian names
+
+First name, patronymic name, surname:
+
+Romanized: Yelе́na Savvichna Razumovsky
+Cyrillic: Еле́на Саввична Разумовский
+
+Double surnames are allowed, but are rare
+
+### Irish names
+
+Francis O'Neill
+
+### Spanish names
+
+
+These are only a few examples of how names may differ around the world. The W3C’s article [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names) dives into greater detail and links to several additional Wikipedia articles discussing naming formats. 
 
 ### Mojibake
 
@@ -44,9 +100,11 @@ In his talk, [Hello, my name is __________.](http://patch.codes/talks/hello-my-n
 Through the research of this book, I discovered that Nóirín Plunkett passed away in July 2015. Nóirín was an invaluable part of the open source community and an advocate for good in the world of software development. Both the [Apache Foundation](https://www.apache.org/memorials/noirin.html) and [Ada Initiative](http://adainitiative.org/2015/07/29/remembering-noirin-plunkett/) have offered heartfelt tributes to Nóirín.
 </aside>
 
-[Postman corrects mojibake](http://text-mode.tumblr.com/post/31409503070/russian-postmen-fix-an-error-caused-by-an)
+Perhaps one of the more impressive mojibake instances, was of a Russian postal worker who hand [corrected a package’s mojibake](http://text-mode.tumblr.com/post/31409503070/russian-postmen-fix-an-error-caused-by-an). This illustrates how common encoding problems can be when working with Cyrillic languages. In fact, there is even a Russian specific term for mojibake, krakozyabrı. 
 
-Tweet and reply: https://twitter.com/omengue/status/376677438576947200
+![image of hand decoded mojibake](img/russian-post.jpg)
+
+(Image via http://text-mode.tumblr.com/)
 
 [1]: Here are the Tweets referenced in the image:
 - https://twitter.com/noirinp/status/77745010547769344
