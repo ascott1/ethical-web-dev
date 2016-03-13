@@ -32,61 +32,29 @@ As developers, we can take a more inclusive strategy to working with names, trea
 
 Names come in many different formats around the world, however it is easy to apply our own cultural biases when designing systems that deal with names. As an American, for instance, my bias is to consider names in the format of a first name followed by a surname. Based on that format I make several, potentially false assumptions, about things such as familial relationship. However, there are many different ways that a name can be constructed even with a single country or culture. Let’s look at a few of these structures to see how they may challenge our assumptions.
 
-### Chinese
 
-> Modern Chinese names consist of a surname known as xing (Chinese: 姓; pinyin: xìng), which comes first and is usually monosyllabic, but not always, followed by a personal name called ming (Chinese: 名; pinyin: míng), 
+#### Multiple names
 
-> Chinese people, except for those traveling or living outside of China, rarely reverse their names to the western naming order (given name, then family name). 
+Many names may be longer than a given name and a single family name. In many Spanish and Portuguese speaking countries it is common to compose a name of one or two given names and two or three family names consisting of the mother’s surname followed by the father’s surname. In some cases, the conjunction de (“of”) may be added between the maternal and paternal surnames, or sometimes surname’s may reflect geographical origin.
 
-### Icelandic names
-> Icelandic names differ from most current Western family name systems by being patronymic (occasionally matronymic): they reflect the father (or mother) of the child and not the historic family lineage. 
+Arabic names are traditionally much longer than given and family names, often having specific meaning. This description from [Wikipedia](https://en.wikipedia.org/wiki/Arabic_name) highlights the false assumptions that a non-Arabic speaking person may make about the traditional Arabic name Abdul Rahman bin Omar al-Ahmad:
 
-> Lists of names are not always sorted by family name around the world. For example, Thai and Icelandic people expect lists to be sorted by given name instead.
-
- Jón Birgisson
- 
-Jón “Birgi’s son”
- 
- Sigrún Jónsdóttir
- 
-Sigrún “Jon’s daughter”
-
-### Malaysian names
-
-### Arabic names
-
-> Arabic names were historically based on a long naming system; most Arabs did not simply have given/middle/family names, but a full chain of names.
-
-https://en.wikipedia.org/wiki/Arabic_name
-
-> With "Abdul": Arabic names may be written "Abdul (something)", but "Abdul" means "servant of the" and is not, by itself, a name. Thus for example, to address Abdul Rahman bin Omar al-Ahmad by his given name, one says "Abdul Rahman", not merely "Abdul". If he introduces himself as "Abdul Rahman" (which means "the servant of the Merciful"), one does not say "Mr. Rahman" (as "Rahman" is not a family name but part of his (theophoric) personal name); instead it would be Mr. al-Ahmad, the latter being the family name.
-
-### Indian
-
-### Portugese
-
-> A Portuguese name is typically composed of one or two given names, and a number of family names (rarely one, but often two or three, seldom more). The first surname(s) are usually the mother's family surname(s) and the final surname(s) are the father's family surname(s).
-
-Sofia Matilde Almeida Pais
-António Borges Santos
-
-### Russian names
-
-First name, patronymic name, surname:
-
-Romanized: Yelе́na Savvichna Razumovsky
-Cyrillic: Еле́на Саввична Разумовский
-
-Double surnames are allowed, but are rare
-
-### Irish names
-
-Francis O'Neill
-
-### Spanish names
+> With "Abdul": Arabic names may be written "Abdul (something),” but "Abdul" means "servant of the" and is not, by itself, a name. Thus for example, to address Abdul Rahman bin Omar al-Ahmad by his given name, one says "Abdul Rahman,” not merely "Abdul". If he introduces himself as "Abdul Rahman" (which means "the servant of the Merciful"), one does not say "Mr. Rahman" (as "Rahman" is not a family name but part of his (theophoric) personal name); instead it would be Mr. al-Ahmad, the latter being the family name.
 
 
-These are only a few examples of how names may differ around the world. The W3C’s article [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names) dives into greater detail and links to several additional Wikipedia articles discussing naming formats. 
+#### Name order
+
+Names do not always appear in the format of a given name followed by a family name, meaning that a typical form field of “First name” followed by “Last name,” may not produce the intended results. As an example, Chinese names place the surname before the personal name.
+
+Rather than a family surname, Icelandic names follow a patronymic (and, occasionally,  matronymic) naming format. For example if an Icelandic man named Birgir has a son named Jón, Jón’s full name would be Jón Birgisson (“Birgir’s son”). If Jón then had a daughter named Sigrún, Sigrún would be named Sigrún Jónsdóttir (“Jon’s daughter”). Because of this, a list of Icelandic names would be expected to be sorted by given name rather than family name.
+
+#### Characters
+
+Names from many regions may consist of characters outside of the latin alphabet. There are, those may not make use of the latin alphabet in written form such as Arabic, Cyrillic, or Japanese. Though many of these languages also have Romanized versions, such as the Japanese name Yamada Tarō (山田太郎). There are also accented characters such as ó, ü, and ñ. Names may also contain a mix of ß. Names may contain non letter characters such as apostrophes, such as the Irish name Francis O'Neill, which forms may attempt to strip during validation as unaccepted characters.
+
+#### Further reading
+
+These are only a few examples of how names may differ around the world. Additionally, they assume that a person’s name is derived from a single culture, ignoring the possibility that name attributes from multiple cultures may be applied to a person’s name. The W3C’s article [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names) dives into greater detail and links to several additional Wikipedia articles discussing naming formats. 
 
 ### Mojibake
 
@@ -113,25 +81,38 @@ Perhaps one of the more impressive mojibake instances, was of a Russian postal w
 - https://twitter.com/noirinp/status/394893223145271296
 - https://twitter.com/noirinp/status/600750084410642432
 
-### Unicode
-
-[No Such Thing as Plain Text](https://www.cqse.eu/en/blog/no-such-thing-as-plain-text/)
-
-[The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](http://www.joelonsoftware.com/articles/Unicode.html)
-
-[UTF-8 Everywhere](http://utf8everywhere.org/)
-
 ### What are we to do?
 
-If possible include a single text input and don’t use names as the unique identifier. Allow the input field to take in long names and if possible avoid limiting the length of the field in your database.
+Now that we’ve taken a quick look at the importance and value of  names, we can consider how we can best implement name inclusive fields in our forms. We can do this by considering the format of the field itself and the way we handle the character encoding of the field.
 
-“What should we call you?”
+#### Input format
 
-If splitting *must* occur, use more inclusive language such as “family name” and “other/given names.”
+If possible include create name fields that are a single text input. Allow the input field to take in long names as well as accepting special characters and spaces. If possible, avoid limiting the length of the field in your database as well, so that the individual’s name is never truncated when it is returned to them.
 
-Legal names flowchart? https://twitter.com/duckinator/status/545934151610675200
+[SCREEN SHOT FIRST/LAST x]
+[SCREEN SHOT LONG NAME FIELD]
 
-Allow punctuation such as hyphens, apostrophes, etc. and spaces in names
+If you plan to address the user through the web interface, email or other means, it may be worth adding an additional field that asks “What should we call you?” This allows the user to enter the name they most associate themselves with.
+
+[SCREEN SHOT LONG NAME FIELD W/ WHAT SHOULD WE CALL YOU]
+
+#### Character Encoding
+
+As we’ve seen with Mojibake, character encoding can present its own unique set of challenges. To avoid the accidental mangling of names, we should permit punctuation (such as hyphens and apostrophes), allow spaces, and avoid changing character encoding formats between systems, such as form to database. I’ll save a complete explanation of character encoding for developers who are much smarter than I, but as a rule of thumb use “UTF-8” encoding both on the front-end and database. 
+
+In HTML, simply add the character set meta tag specifying UTF-8:
+
+```
+<meta charset="utf-8">
+```
+
+##### Further reading
+
+- [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](http://www.joelonsoftware.com/articles/Unicode.html)
+- [No Such Thing as Plain Text](https://www.cqse.eu/en/blog/no-such-thing-as-plain-text/)
+- [UTF-8 Everywhere](http://utf8everywhere.org/)
+- [Multilingual form encoding](https://www.w3.org/International/questions/qa-forms-utf-8)
+
 
 ## Inclusive gender
 
