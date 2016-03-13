@@ -81,7 +81,7 @@ Here is a form element, properly marked up with a label and placeholder text:
 <input type=“text” name=“password”>
 ```
 
-Here is one that uses the placeholder to replace the the label:
+Here is one that uses the placeholder to replace the label:
 
 ```
 <input type=“text” name=“password” placeholder=“Password”>

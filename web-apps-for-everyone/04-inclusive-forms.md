@@ -119,6 +119,9 @@ Perhaps one of the more impressive mojibake instances, was of a Russian postal w
 
 [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](http://www.joelonsoftware.com/articles/Unicode.html)
 
+[UTF-8 Everywhere](http://utf8everywhere.org/)
+
+### What are we to do?
 
 If possible include a single text input and don’t use names as the unique identifier. Allow the input field to take in long names and if possible avoid limiting the length of the field in your database.
 
