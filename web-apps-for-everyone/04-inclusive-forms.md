@@ -35,7 +35,7 @@ Names come in many different formats around the world, however it is easy to app
 
 #### Multiple names
 
-Many names may be longer than a given name and a single family name. In many Spanish and Portuguese speaking countries it is common to compose a name of one or two given names and two or three family names consisting of the mother’s surname followed by the father’s surname. In some cases, the conjunction de (“of”) may be added between the maternal and paternal surnames, or sometimes surname’s may reflect geographical origin.
+Many names may be longer than a given name and a single family name. In many Spanish and Portuguese speaking countries it is common to compose a name of one or two given names and two or three family names consisting of the mother’s surname followed by the father’s surname. In some cases, the conjunction de (“of”) may be added between the maternal and paternal surnames, or sometimes surname’s may reflect geographic origin.
 
 Arabic names are traditionally much longer than given and family names, often having specific meaning. This description from [Wikipedia](https://en.wikipedia.org/wiki/Arabic_name) highlights the false assumptions that a non-Arabic speaking person may make about the traditional Arabic name Abdul Rahman bin Omar al-Ahmad:
 
@@ -106,8 +106,15 @@ In HTML, simply add the character set meta tag specifying UTF-8:
 <meta charset="utf-8">
 ```
 
-##### Further reading
 
+
+### Further Reading
+
+- [Hello, my name is __________.](http://patch.codes/talks/hello-my-name-is/)
+- [Falsehoods Programmers Believe About Names](http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
+- [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
+- [Hello, My Name is <Error>](http://alistapart.com/article/hello-my-name-is-error)
+- [Personal Histories](http://www.sarawb.com/2015/01/13/personal-histories/)
 - [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](http://www.joelonsoftware.com/articles/Unicode.html)
 - [No Such Thing as Plain Text](https://www.cqse.eu/en/blog/no-such-thing-as-plain-text/)
 - [UTF-8 Everywhere](http://utf8everywhere.org/)
@@ -116,22 +123,31 @@ In HTML, simply add the character set meta tag specifying UTF-8:
 
 ## Inclusive gender
 
-Facebook & Google’s patterns!
+For many gender is not simply the binary sex of either male or female as determined at birth. The advocacy group, [GLAAD](http://www.glaad.org/) defines transgender as:
 
-http://www.yoomee.com/how-to-ask-about-gender
+> An umbrella term (adj.) for people whose gender identity and/or gender expression differs from the sex they were assigned at birth. The term may include but is not limited to: transsexuals, cross-dressers and other gender-variant people.
 
-http://www.lgbt.cusu.cam.ac.uk/campaigns/think/forms/
+The [most cited study](http://williamsinstitute.law.ucla.edu/wp-content/uploads/Gates-How-Many-People-LGBT-Apr-2011.pdf) on transgender population numbers in the United States places the transgender population at 0.3% or roughly 700,000 adults in the United States. As the the author of the report and the FiveThirtyEight article, [Why We Don’t Know The Size Of The Transgender Population](https://fivethirtyeight.com/features/why-we-dont-know-the-size-of-the-transgender-population/) these numbers may be inaccurate, tending towards low, due to the lack of non-binary gender options on official forms such as the census as well as a reluctance to provide the information when asked. 
 
+To be as inclusive as possible, we can build systems that accept and respect non-binary gender options. When including gender in a form, my recommendation is to:
 
-http://www.formulate.com.au/blog/sex-and-gender
+1. Provide male and female options
+2. Provide an “other” text input. If data collection is important, you may provide autocomplete suggestions, but still allow custom inputs.
+3. Offer a “prefer not to say” option
 
+[SCREEN SHOT OF IDEAL GENDER FORM]
 
-## Further Reading
+[Facebook & Google’s patterns]
 
-- [Hello, I’m Mr. Null. My Name Makes Me Invisible to Computers](http://www.wired.com/2015/11/null/)
-- [Hello, my name is __________.](http://patch.codes/talks/hello-my-name-is/)
-- [Falsehoods Programmers Believe About Names](http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
-- [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
-- [Hello, My Name is <Error>](http://alistapart.com/article/hello-my-name-is-error)
-- [Personal Histories](http://www.sarawb.com/2015/01/13/personal-histories/)
+### What about titles?
 
+Forms may often include a title field, with gendered choices such as Mr., Ms., and Mrs. Not requiring these fields or providing a text input option gives users the most control over this option. By doing so, we allow those who prefer not to use a title to do so as well as those with a non-binary gender to not be forced into using a gendered titled.
+
+### Further Reading
+- [How to ask about gender](http://www.yoomee.com/how-to-ask-about-gender)
+- [Think Outside The Box recommendations for forms](http://www.lgbt.cusu.cam.ac.uk/campaigns/think/forms/)
+- [Sex and Gender](http://www.formulate.com.au/blog/sex-and-gender)
+
+## In summary
+
+When we ask users to complete a form with personal information we are asking about their personal identity. By considering name formats, internationalization, and gender we provide online spaces that are welcoming and inclusive to all.
