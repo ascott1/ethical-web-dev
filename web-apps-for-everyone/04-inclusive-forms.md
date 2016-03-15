@@ -89,12 +89,11 @@ Now that we’ve taken a quick look at the importance and value of  names, we ca
 
 If possible include create name fields that are a single text input. Allow the input field to take in long names as well as accepting special characters and spaces. If possible, avoid limiting the length of the field in your database as well, so that the individual’s name is never truncated when it is returned to them.
 
-[SCREEN SHOT FIRST/LAST x]
-[SCREEN SHOT LONG NAME FIELD]
+![When possible use a single input for name fields](img/name-fields.png)
 
 If you plan to address the user through the web interface, email or other means, it may be worth adding an additional field that asks “What should we call you?” This allows the user to enter the name they most associate themselves with.
 
-[SCREEN SHOT LONG NAME FIELD W/ WHAT SHOULD WE CALL YOU]
+![If you will address the person add a “what should we call you” field](img/name-what.png)
 
 #### Character Encoding
 
