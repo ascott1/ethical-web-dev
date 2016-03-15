@@ -135,9 +135,25 @@ To be as inclusive as possible, we can build systems that accept and respect non
 2. Provide an “other” text input. If data collection is important, you may provide autocomplete suggestions, but still allow custom inputs.
 3. Offer a “prefer not to say” option
 
-[SCREEN SHOT OF IDEAL GENDER FORM]
+Both Facebook and Google follow patterns similar to those described above.
 
-[Facebook & Google’s patterns]
+Google offers the choices of Male, Female, Decline to State, and Custom in a select menu.
+
+![Google offers four gender choices in a select menu](img/google-gender-options.png)
+
+If a user chooses “Custom,” they are presented with a text input box and a choice of pronoun to be addressed by.
+
+![A selection of other displays a text input and choice of pronoun](img/google-gender-other.png)
+
+Facebook requires a binary gender choice during sign up.
+
+![Facebook’s sign up form presents users with a binary gender choice](img/facebook-signup.png)
+
+However, once a person has created a Facebook account they are able to select a more inclusive gender. Facebook’s pattern offers three choices: Male, Female, and Custom. When a user selects “Custom” they are given a text input box with auto-complete suggestions as well as a selection of pronouns to be addressed by.
+
+![Facebook allows a user to select a custom gender, offers auto-complete gender suggestions, and provides a choice of pronouns](img/facebook-gender.png)
+
+
 
 ### What about titles?
 
