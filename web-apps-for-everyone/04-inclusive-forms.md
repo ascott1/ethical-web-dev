@@ -74,7 +74,7 @@ Perhaps one of the more impressive mojibake instances, was of a Russian postal w
 
 (Image via http://text-mode.tumblr.com/)
 
-[1]: Here are the Tweets referenced in the image:
+[^1]: Here are the Tweets referenced in the image:
 - https://twitter.com/noirinp/status/77745010547769344
 - https://twitter.com/noirinp/status/151004631818977281
 - https://twitter.com/noirinp/status/162264316203114498
