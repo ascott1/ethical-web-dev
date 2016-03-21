@@ -6,3 +6,4 @@
 - [Accessibility](03-accessibility.md)
 - [Inclusive Forms](04-inclusive-forms.md)
 - [Conclusion](05-conclusion.md)
+- [Contributors](contributors.md)
