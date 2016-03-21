@@ -44,7 +44,7 @@ When working on your own applications, try to perform the same exercise First, d
 
 ## Is progressive enhancement still relevant?
 
-Some may question how relative progressive enhancement is today, when a small percentage of user's browse the web with JavaScript disabled[^1]. This places the focus too heavily on progressive enhancement as a JavaScript free version of a site. In fact, some types of applications, such as video chat, absolutely require some form of JavaScript to work in the browser. The goal of progressive enhancement is to provide the absolute minimum for a working product and ensure that it is delivered to user's browser.
+Some may question how relative progressive enhancement is today, when a small percentage of users browse the web with JavaScript disabled[^1]. This places the focus too heavily on progressive enhancement as a JavaScript free version of a site. In fact, some types of applications, such as video chat, absolutely require some form of JavaScript to work in the browser. The goal of progressive enhancement is to provide the absolute minimum for a working product and ensure that it is delivered to user's browser.
 
 Ideally, this working minimum product is simply HTML without any external resources such as images, video CSS, or JavaScript. When a user's browser requests our site we can be certain that they will receive HTML (or nothing at all). By creating a working version of our application, even with a minimal experience, using the smallest number of assets, we can be sure that the user is able to access our content in some form.
 
@@ -137,7 +137,7 @@ For JavaScript dependent applications we could render the landing page as HTML o
 <link rel="prefetch" href=“app.js”>
 ```
 
-This allows gives our user's the opportunity to download and cache the application's JavaScript, without impacting the performance or requirement on a mostly static page. Soon browsers will begin implementing the [Preload specification](https://w3c.github.io/preload/), which will be similar to Prefetch, but enable additional browser features.
+This approach gives our user's the opportunity to download and cache the application's JavaScript, without impacting the performance or requirement on a mostly static page. Soon browsers will begin implementing the [Preload specification](https://w3c.github.io/preload/), which will be similar to Prefetch, but enable additional browser features.
 
 In action preload looks similar to prefetch:
 

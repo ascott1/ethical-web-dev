@@ -265,7 +265,7 @@ Here are a few tips for writing semantic and useful HTML:
 - Make use of HTML5 content tags such as `<header>`, `<nav>`, `<main>`, `<footer>`, and `<aside>`.
 - Mark up the HTML content in the order you would expect the user to read it and use CSS to change the order appearance when necessary. 
 - Use semantic heading tags that follow a clear outline of page content and avoid using styled paragraphs or other elements as headers.
-- Use `<label>` elements to associate the label of form field with it’s input element.
+- Use `<label>` elements to associate the label of form field with its input element.
 - Always provide alternate text for images using the alt attribute. When an image is purely decorative, give the alt attribute an empty value (`alt=“”`) so that screen readers know to ignore it.
 
 ### ARIA
