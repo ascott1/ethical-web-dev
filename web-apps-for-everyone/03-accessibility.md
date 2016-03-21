@@ -87,7 +87,7 @@ Here is one that uses the placeholder to replace the label:
 <input type=“text” name=“password” placeholder=“Password”>
 ```
 
-![Image of placeholder as label](img/plaheholder-field.png)
+![Image of placeholder as label](img/placeholder-field.png)
 
 The use of placeholder text in the place of labels raises several potential [usability and accessibility concerns](https://www.nngroup.com/articles/form-design-placeholders/) due to low contrast, extra cognitive burden as users must recall the purpose of the field, and unreliable screen reader support. By making solid development decisions such as proper form markup, we can develop more understandable sites.
 
