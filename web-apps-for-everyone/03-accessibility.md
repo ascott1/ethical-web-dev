@@ -61,7 +61,7 @@ Perceivable means that a user should be provided the opportunity to perceive the
 
 An obvious use case of perception is providing written transcripts of audio material or captioning video material. Perhaps a less obvious example is the style of links across the web. A link that is only a different color from the text would be imperceptible to a color blind users. Instead, we should be sure to alter the color as well as provide an underline to the link. This provides a multi sensory option to the user.
 
-!(Perceptible link demonstration)[img/link-perception.png]
+![Perceptible link demonstration](img/link-perception.png)
 <figcaption>Retaining the default link behavior of including an underline allows them to be perceptible to color blind users.</figcaption>
 
 > Operable - User interface components and navigation must be operable. 
@@ -87,8 +87,7 @@ Here is one that uses the placeholder to replace the label:
 <input type=“text” name=“password” placeholder=“Password”>
 ```
 
-
-[IMG OF PLACEHOLDER TEXT REPLACING LABEL]
+![Image of placeholder as label](img/plaheholder-field.png)
 
 The use of placeholder text in the place of labels raises several potential [usability and accessibility concerns](https://www.nngroup.com/articles/form-design-placeholders/) due to low contrast, extra cognitive burden as users must recall the purpose of the field, and unreliable screen reader support. By making solid development decisions such as proper form markup, we can develop more understandable sites.
 
