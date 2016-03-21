@@ -9,9 +9,9 @@
 
 Building accessible web sites and applications means making those sites available to users regardless of physical ability. This covers a broad range of disabilities, such as visual, physical, auditory, cognitive, and age related disabilities. When we build with accessibility in mind, we make an ethical decision of inclusion. Alternatively, when we choose to ignore accessibility, it excludes people with disabilities from participating in the web.
 
-Today, as web users we access government services, educational resources, bank transactions, social interactions, work tasks, health care, entertainment, and more through our web browsers. As the web continues to play an increasingly large role in our daily lives, this causes inaccessible websites to be a hurdle to fully participating in society. With the importance the web plays in our society, it has become our responsibility as developers to ensure its equal access to all.
+Today, as web users, we access government services, educational resources, bank transactions, social interactions, work tasks, health care, entertainment, and more through our web browsers. As the web continues to play an increasingly large role in our daily lives, this causes inaccessible websites to be a hurdle to fully participating in society. With the importance the web plays in our society, it has become our responsibility as developers to ensure its equal access to all.
 
-The W3C has summarizes the social issues around web accessibility in [three principles](https://www.w3.org/WAI/bcase/soc#social):
+The W3C summarizes the social issues around web accessibility in [three principles](https://www.w3.org/WAI/bcase/soc#social):
 
 -  It is essential that the Web is accessible in order to provide equal access and equal opportunity to people with disabilities.
 - The Web is an opportunity for unprecedented access to information for people with disabilities.
@@ -66,7 +66,7 @@ An obvious use case of perception is providing written transcripts of audio mate
 
 > Operable - User interface components and navigation must be operable. 
 
-By being operable, all users are able to operate and navigate the interface of the web application. Perhaps a simple example of this is providing users the ability to easily “tab through” our sites. A user who is unable to operate a mouse or track pad may navigate sites using only the keyboard. Ensuring that our sites are keyboard accessible is one way to ensure that they are  operable by all  users.
+By being operable, all users are able to operate and navigate the interface of the web application. Perhaps a simple example of this is providing users the ability to easily “tab through” our sites. A user who is unable to operate a mouse or track pad may navigate sites using only the keyboard. Ensuring that our sites are keyboard accessible is one way to ensure that they are  operable by all users.
 
 > Understandable - Information and the operation of user interface must be understandable. 
 
@@ -90,7 +90,7 @@ Here is one that uses the placeholder to replace the label:
 
 [IMG OF PLACEHOLDER TEXT REPLACING LABEL]
 
-The use of placeholder text in the place of labels raises several potential [usability and accessibility concerns](https://www.nngroup.com/articles/form-design-placeholders/) due to low contrast, extra cognitive burden as users must recall the  purpose of the field, and unreliable screen reader support. By making solid development decisions such as proper form markup, we can develop more understandable sites.
+The use of placeholder text in the place of labels raises several potential [usability and accessibility concerns](https://www.nngroup.com/articles/form-design-placeholders/) due to low contrast, extra cognitive burden as users must recall the purpose of the field, and unreliable screen reader support. By making solid development decisions such as proper form markup, we can develop more understandable sites.
 
 > Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
 
@@ -121,7 +121,7 @@ It is worth noting that the W3C does not recommended that Level AAA conformance 
 - Guideline 3.3 Input Assistance: Help users avoid and correct mistakes.
 - Guideline 4.1 Compatible: Maximize compatibility with current and future user agents, including assistive technologies.
 
-WebAIM.org provides a [helpful checklist](http://webaim.org/standards/wcag/checklist) of recommendations for implementing HTML-related principles and techniques for WCAG 2.0 conformance, along with the associated support level..
+WebAIM.org provides a [helpful checklist](http://webaim.org/standards/wcag/checklist) of recommendations for implementing HTML-related principles and techniques for WCAG 2.0 conformance, along with the associated support level.
 
 ### Further WCAG reading
 
@@ -211,7 +211,7 @@ Then make it appear visually when the link receives focus with the Tab key:
 
 #### Default navigation elements
 
-By default links, buttons, and form items are navigable using the tab key. However, there are times that we may want to include additional items that are tabbable by our users. To do this we can set a “tab index” value to an HTML element:
+By default, links, buttons, and form items are navigable using the tab key. However, there are times that we may want to include additional items that are tabbable by our users. To do this we can set a “tab index” value to an HTML element:
 
 ```
 <h3 tabindex=“0”>This heading is tabbable</h3>
@@ -249,7 +249,7 @@ Though ChromeVox is great you may want to explore the use of more commonly used 
 - [Window-Eyes](http://www.gwmicro.com/Window-Eyes/)
 - [NVDA](http://www.nvaccess.org/)
 
-Additionally, most operating systems ship with built in screen reader support. These can particularly useful for testing web applications on mobile devices.
+Additionally, most operating systems ship with built in screen reader support. These can be particularly useful for testing web applications on mobile devices.
 
 - [VoiceOver for Mac](https://www.apple.com/accessibility/osx/voiceover/): CMD + F5 to enable
 - [Narrator for Windows](http://windows.microsoft.com/en-us/windows/hear-text-read-aloud-narrator#1TC=windows-8)
@@ -271,7 +271,7 @@ Here are a few tips for writing semantic and useful HTML:
 
 ### ARIA
 
-In addition to writing clear and semantic markup as detailed above, we can make use of ARIA to provide additional guideposts to screen reader users.	 ARIA stands for Accessible Rich Internet Applications and is a specification designed to make modern web application experiences more accessible. ARIA provides additional attributes that can be added to our markup and provide screen reader users with additional information to describe the role, state, and properties of elements on our page.
+In addition to writing clear and semantic markup as detailed above, we can make use of ARIA to provide additional guideposts to screen reader users. ARIA stands for Accessible Rich Internet Applications and is a specification designed to make modern web application experiences more accessible. ARIA provides additional attributes that can be added to our markup and provide screen reader users with additional information to describe the role, state, and properties of elements on our page.
 
 Perhaps one of the most immediately useful aspects of ARIA is the use of ARIA roles. ARIA roles allow us to provide specific information to screen readers about the context of HTML elements. Doing this allows screen reader users to quickly navigate to these subsections of our page. I’ve found that watching [these videos](http://zomigi.com/blog/videos-of-screen-readers-using-aria-updated/) of screen readers using ARIA roles to be a really helpful exercise in understanding the usefulness of ARIA.
 
@@ -298,7 +298,7 @@ The [W3C helfpully provides a list](https://www.w3.org/TR/wai-aria/roles#role_de
 - menu - A list of user choices.
 - toolbar - A collection of commonly used functions “represented in a compact visual form.”
 
-ARIA  is more than just roles. ARIA can be used to define values on progress bars, hidden states, dynamic content updates, and more that are outside of the scope of this introduction. I’ve provided additional links and tutorials in the “further reading” section that detail the usefulness of these additional values.
+ARIA is more than just roles. ARIA can be used to define values on progress bars, hidden states, dynamic content updates, and more that are outside of the scope of this introduction. I’ve provided additional links and tutorials in the “further reading” section that detail the usefulness of these additional values.
 
 #### Further reading
 
@@ -310,11 +310,11 @@ ARIA  is more than just roles. ARIA can be used to define values on progress bar
 
 ## Accessibility tools
 
-There are a number of tools that make can improve accessibility testing for developers. These allow us to quickly or automatically spot accessibility issues on our sites.
+There are a number of tools that can improve accessibility testing for developers. These allow us to quickly or automatically spot accessibility issues on our sites.
 
 ### Browser Extensions and Bookmarklets
 
-Browser extensions and bookmarklets allow us to test the accessibility of a page as we are interacting with it. These are a great option for quickly doing spot checks for thins like ARIA role usage, color contrast ratios, descriptive alt text, and form label usage.
+Browser extensions and bookmarklets allow us to test the accessibility of a page as we are interacting with it. These are a great option for quickly doing spot checks for things like ARIA role usage, color contrast ratios, descriptive alt text, and form label usage.
 
 Useful browser extensions and bookmarklets:
 
@@ -337,7 +337,7 @@ Useful command line accessibility tools:
 
 We can also integrate the above command line tools into an automated build process. Here are a couple of simple examples of how we might do that.
 
-As an npm script in package.json, we could automate the running of accessibility steps with [a11y](https://addyosmani.com/a11y/)  against our localhost server.
+As an npm script in package.json, we could automate the running of accessibility steps with [a11y](https://addyosmani.com/a11y/) against our localhost server.
 
 ```javascript
 "scripts": {
@@ -385,7 +385,7 @@ The W3C provides guidance on [Developing Organizational Policies on Web Accessib
 ```
 [ORGANIZATION OR PROJECT NAME] is committed to ensuring the accessibility of this site for people with disabilities. We pledge to meet [W3C WAI's Web Content Accessibility Guidelines 2.0](https://www.w3.org/TR/WCAG/), Level AA conformance. Any issues should be reported to [EMAIL ADDRESS].
 
-We are committed to the ensuring accessibility through:
+We are committed to ensuring accessibility through:
 
 - Use of ARIA landmark roles.
 - Proper use of HTML headings.
