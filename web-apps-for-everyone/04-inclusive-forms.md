@@ -1,6 +1,6 @@
 # Developing inclusive forms
 
-We forms allow users to interact directly with a site. They are often the thing that separates a web site from a web application.s
+We forms allow users to interact directly with a site. They are often the thing that separates a web site from a web applications.
 
 ## What’s in a name?
 
@@ -8,7 +8,7 @@ In Dale Carnegie’s influential 1936 self-help book, *How To Win Friends and In
 
 Unfortunately, as web developers, it is possible make assumptions about names that lead to their incorrect handling. When working with names, we should be prepared for a variety of characters, spacing, and unique international formats.
 
-In his article [Falsehoods Programmers Believe About Names](Falsehoods Programmers Believe About Names), Patrick McKenzie lists out 40 common misconceptions. Among them, the assumptions that:
+In his article [Falsehoods Programmers Believe About Names](http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/), Patrick McKenzie lists out 40 common misconceptions. Among them, the assumptions that:
 
 > - People have exactly one canonical full name.
 > - People’s names fit within a certain defined amount of space.
@@ -99,7 +99,7 @@ If you plan to address the user through the web interface, email or other means,
 
 As we’ve seen with Mojibake, character encoding can present its own unique set of challenges. To avoid the accidental mangling of names, we should permit punctuation (such as hyphens and apostrophes), allow spaces, and avoid changing character encoding formats between systems, such as form to database. I’ll save a complete explanation of character encoding for developers who are much smarter than I, but as a rule of thumb use “UTF-8” encoding both on the front-end and database. 
 
-In HTML, simply add the character set meta tag specifying UTF-8:
+In HTML, simply add the character set meta tag specifying UTF-8 to the `<head>` of the page:
 
 ```
 <meta charset="utf-8">
