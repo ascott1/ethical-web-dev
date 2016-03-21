@@ -12,5 +12,5 @@ A portion of the proceeds (20% after taxes), from each Ethical Web Development t
 
 If you are interested in supporting the W3C’s work please consider making a donation at [w3.org/support](https://www.w3.org/support/).
 
-This title is the first in a series of digital reports I am authoring on the subject ethical web development. Future titles in the series will cover building web applications that work everywhere, building web applications that respect a user's privacy and security, and working with development peers. You can learn more about the series at <ethicalweb.org>.
+This title is the first in a series of digital reports I am authoring on the subject of ethical web development. Future titles in the series will cover building web applications that work everywhere, building web applications that respect a user's privacy and security, and working with development peers. You can learn more about the series at <ethicalweb.org>.
 

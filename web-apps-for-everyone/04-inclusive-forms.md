@@ -1,12 +1,16 @@
 # Developing inclusive forms
 
+<<<<<<< HEAD
 We forms allow users to interact directly with a site. They are often the thing that separates a web site from a web applications.
+=======
+Forms allow users to interact directly with a site. They are often the thing that differentiates a web site from a web application.
+>>>>>>> 750bf23659815aa738bc0c0cc22d053017fa86af
 
 ## What’s in a name?
 
 In Dale Carnegie’s influential 1936 self-help book, *How To Win Friends and Influence People*, he states “a person's name is, to that person, the sweetest and most important sound in any language.” Names are a core part of our personal identities. We often identify with them, turn at the sound of them said across the room, and intuitively appreciate when a person we have just met understands our names.
 
-Unfortunately, as web developers, it is possible make assumptions about names that lead to their incorrect handling. When working with names, we should be prepared for a variety of characters, spacing, and unique international formats.
+Unfortunately, as web developers, it is possible to make assumptions about names that lead to their incorrect handling. When working with names, we should be prepared for a variety of characters, spacing, and unique international formats.
 
 In his article [Falsehoods Programmers Believe About Names](http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/), Patrick McKenzie lists out 40 common misconceptions. Among them, the assumptions that:
 
@@ -35,7 +39,7 @@ Names come in many different formats around the world, however it is easy to app
 
 #### Multiple names
 
-Many names may be longer than a given name and a single family name. In many Spanish and Portuguese speaking countries it is common to compose a name of one or two given names and two or three family names consisting of the mother’s surname followed by the father’s surname. In some cases, the conjunction de (“of”) may be added between the maternal and paternal surnames, or sometimes surname’s may reflect geographic origin.
+Many names may be longer than a given name and a single family name. In many Spanish and Portuguese speaking countries it is common to compose a name of one or two given names and two or three family names consisting of the mother’s surname followed by the father’s surname. In some cases, the conjunction de (“of”) may be added between the maternal and paternal surnames, or sometimes surnames may reflect geographic origin.
 
 Arabic names are traditionally much longer than given and family names, often having specific meaning. This description from [Wikipedia](https://en.wikipedia.org/wiki/Arabic_name) highlights the false assumptions that a non-Arabic speaking person may make about the traditional Arabic name Abdul Rahman bin Omar al-Ahmad:
 
@@ -46,11 +50,11 @@ Arabic names are traditionally much longer than given and family names, often ha
 
 Names do not always appear in the format of a given name followed by a family name, meaning that a typical form field of “First name” followed by “Last name,” may not produce the intended results. As an example, Chinese names place the surname before the personal name.
 
-Rather than a family surname, Icelandic names follow a patronymic (and, occasionally,  matronymic) naming format. For example if an Icelandic man named Birgir has a son named Jón, Jón’s full name would be Jón Birgisson (“Birgir’s son”). If Jón then had a daughter named Sigrún, Sigrún would be named Sigrún Jónsdóttir (“Jon’s daughter”). Because of this, a list of Icelandic names would be expected to be sorted by given name rather than family name.
+Rather than a family surname, Icelandic names follow a patronymic (and, occasionally, matronymic) naming format. For example if an Icelandic man named Birgir has a son named Jón, Jón’s full name would be Jón Birgisson (“Birgir’s son”). If Jón then had a daughter named Sigrún, Sigrún would be named Sigrún Jónsdóttir (“Jon’s daughter”). Because of this, a list of Icelandic names would be expected to be sorted by given name rather than family name.
 
 #### Characters
 
-Names from many regions may consist of characters outside of the latin alphabet. There are, those may not make use of the latin alphabet in written form such as Arabic, Cyrillic, or Japanese. Though many of these languages also have Romanized versions, such as the Japanese name Yamada Tarō (山田太郎). There are also accented characters such as ó, ü, and ñ. Names may also contain a mix of ß. Names may contain non letter characters such as apostrophes, such as the Irish name Francis O'Neill, which forms may attempt to strip during validation as unaccepted characters.
+Names from many regions may consist of characters outside of the latin alphabet. There are those that may not make use of the latin alphabet in written form such as Arabic, Cyrillic, or Japanese. Though many of these languages also have Romanized versions, such as the Japanese name Yamada Tarō (山田太郎). There are also accented characters such as ó, ü, and ñ. Names may also contain a mix of ß. Names may contain non letter characters such as apostrophes, such as the Irish name Francis O'Neill, which forms may attempt to strip during validation as unacceptable characters.
 
 #### Further reading
 
@@ -83,11 +87,11 @@ Perhaps one of the more impressive mojibake instances, was of a Russian postal w
 
 ### What are we to do?
 
-Now that we’ve taken a quick look at the importance and value of  names, we can consider how we can best implement name inclusive fields in our forms. We can do this by considering the format of the field itself and the way we handle the character encoding of the field.
+Now that we’ve taken a quick look at the importance and value of names, we can consider how we can best implement name inclusive fields in our forms. We can do this by considering the format of the field itself and the way we handle the character encoding of the field.
 
 #### Input format
 
-If possible include create name fields that are a single text input. Allow the input field to take in long names as well as accepting special characters and spaces. If possible, avoid limiting the length of the field in your database as well, so that the individual’s name is never truncated when it is returned to them.
+If possible, create name fields that are a single text input. Allow the input field to take in long names as well as accepting special characters and spaces. If possible, avoid limiting the length of the field in your database as well, so that the individual’s name is never truncated when it is returned to them.
 
 ![When possible use a single input for name fields](img/name-fields.png)
 
@@ -122,7 +126,7 @@ In HTML, simply add the character set meta tag specifying UTF-8 to the `<head>` 
 
 ## Inclusive gender
 
-For many gender is not simply the binary sex of either male or female as determined at birth. The advocacy group, [GLAAD](http://www.glaad.org/) defines transgender as:
+For many, gender is not simply the binary sex of either male or female as determined at birth. The advocacy group, [GLAAD](http://www.glaad.org/) defines transgender as:
 
 > An umbrella term (adj.) for people whose gender identity and/or gender expression differs from the sex they were assigned at birth. The term may include but is not limited to: transsexuals, cross-dressers and other gender-variant people.
 
