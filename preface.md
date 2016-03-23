@@ -1,8 +1,8 @@
 # Preface
 
-As web developers, we are responsible for shaping the experiences of user's online lives. By making choices that are ethical and user-centered, we create a better web for everyone. This series of short books aims to take a look at the ethical issues of web development. 
+As web developers, we are responsible for shaping the experiences of user's online lives. By making choices that are ethical and user-centered, we create a better web for everyone. The Ethical Web Development series aims to take a look at the ethical issues of web development. 
 
-I’ve divided these ethical issues into four principles.
+With this in mind, I’ve attempted to divide the ethical issues of web development into four core principles.
 
 1. Web applications should work for everyone.
 2. Web applications should work everywhere.
@@ -24,16 +24,16 @@ If we’re going to be discussing the ethics of web development, let’s first c
 
 For our purposes we will be doing our best to determine a normative set of standards of ethics as applied to web development and then take an applied approach. Within normative ethical theory there is the idea of Consequentialism, which argues that the ethical value of an action is based on the result of the action. In short, the consequences of doing something become the standard of right or wrong. 
 
-One form of Consequentialism, called Utilitarianism, states that an action is right if it leads to the most happiness, or well-being, for the greatest number of people. 
+One form of Consequentialism, called Utilitarianism, states that an action is right if it leads to the most happiness, or well-being, for the greatest number of people. This utilitarian approach is the framework I’ve chosen to use as we explore the ethics of web development.
 
 Whew! We fell down a deep dark hole of philosophical terminology, but I think it all boils down to this:
 
-**Make choices that have the most positive effect for the largest number of people possible.**
+**Make choices that have the most positive effect for the largest number of people.**
 
 
 ### Professional Ethics
 
-Many professions have a standard expectation of behavior. These may be legally mandated or a social norm, but often take the form of a code of ethics that details conventions, standards, and expectations of those who practice the profession. The idea of a professional code ethics can be traced back to the Hippocratic Oath, an oath taken by medical professionals first written during the fifth century BC. Today, medical schools continue to administer the Hippocratic Oath or other similar professional oath. 
+Many professions have a standard expectation of behavior. These may be legally mandated or a social norm, but often take the form of a code of ethics that details conventions, standards, and expectations of those who practice the profession. The idea of a professional code ethics can be traced back to the Hippocratic Oath, an oath taken by medical professionals first written during the fifth century BC. Today, medical schools continue to administer the Hippocratic or similar professional oath. 
 
 ![A fragment of the Hippocratic Oath from the 3rd-century](img/Hippocratic_oath.jpg)
 
@@ -43,9 +43,7 @@ In the book, [“Thinking Like an Engineer,”](http://ethics.iit.edu/publicatio
 
 My hope is that this work helps to inspire a code of ethics for web development, guiding our work in a way that is professional and inclusive.
 
-## In conclusion
-
-The approaches I’ve laid out are merely my take on how web development can provide the greatest happiness for the greatest number of people. These are likely to evolve and be unique for many situations. Invite you to read my practical application of these ideas and hope that you apply them in some fashion to your own work. 
+The approaches I’ve laid out are merely my take on how web development can provide the greatest happiness for the greatest number of people. These approaches are likely to evolve as technology changes and may be unique for many development situations. I invite you to read my practical application of these ideas and hope that you apply them in some fashion to your own work. 
 
 This series is a work in progress and I invite you to contribute. To learn more, visit ethicalweb.org.
     
