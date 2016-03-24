@@ -12,7 +12,7 @@ I prefer [Jeremy Keith’s take](https://youtu.be/-yIbKaA3wCo) that progressive 
 2. Make that functionality available using the simplest technology
 3. Enhance!
 
-As a developer it is our job to determine the “core functionality” of our application and what is an enhancement. This allows us to develop a baseline to build from, yet the baseline for any given project may be different.
+As a developer it is our job to define what is the core functionality of our application and what is an enhancement. This allows us to develop a baseline to build from, yet the baseline for any given project may be different.
 
 In his 2012 article, [Stumbling on the Escalator](https://www.christianheilmann.com/2012/02/16/stumbling-on-the-escalator/), Christian Heilmann appropriated a Mitch Helberg comedy bit about escalators for progressive enhancement:
 
@@ -65,7 +65,7 @@ Additionally, in the blog post [How many people are missing out on JavaScript en
 
 While those of us developing for the web often have nice hardware and speedy web connections, that may not be true for many of our potential users. Those in developing or rural areas may have limited or outdated devices and slow connections. In 2015 the Facebook development team began participating in [2G Tuesdays](http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10), which allows them to experience their applications as though they are being served over these slower networks. I would encourage you to do the same.
 
-Today's browser development tools [allow us to mimic network conditions](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/network-conditions), experiencing what it is like for these users to access our sites. We will explore these topics in detail when considering web performance.
+Today's browser development tools [allow us to mimic network conditions](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/network-conditions), experiencing what it is like for these users to access our sites. We will explore these topics in greater detail in the a forthcoming title in this series.
 
 ![screenshot of the network connectivity tools in Google Chrome](img/network-connectivity-chrome.png)
 
@@ -119,7 +119,7 @@ With this (or any approach), if you choose to serve a library from a CDN, I woul
 
 Another option, or one that may paired with the previous, is to sniff out outdated browsers and avoid serving JavaScript to those browsers. We can continue to serve our core content and functionality to those browsers (it was progressively enhanced after all!), but offer a significantly simpler experience.
 
-To sniff out older browsers, we can use a technique demonstrated by Jake Archibald from [his talk](https://youtu.be/EVEiIlJSx_Y) at Nordic.js in 2015:
+To sniff out older browsers, we can use a technique demonstrated by Jake Archibald from [his talk](https://youtu.be/EVEiIlJSx_Y) at Nordic.js in 2015. This checks for the availability of the Page Visibility JavaScript API, which is available in only present in modern browsers [^3]. If Page Visibility is unavailable, the code exits without attempting to execute.
 
 ```javascript
 (function() {
@@ -130,6 +130,8 @@ To sniff out older browsers, we can use a technique demonstrated by Jake Archiba
   // rest of your code
 }());
 ```
+
+[^3]: http://caniuse.com/#feat=pagevisibility
 
 For JavaScript dependent applications we could render the landing page as HTML on the server while prefetching the JavaScript for the rest of the application.
 

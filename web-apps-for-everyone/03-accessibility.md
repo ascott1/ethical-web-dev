@@ -59,7 +59,7 @@ The guidelines and success criteria of building WCAG 2.0 accessible web applicat
 
 Perceivable means that a user should be provided the opportunity to perceive the content of our web applications. To do this, we must ensure that the information being presented is visible to their senses. When we limit content to a single sense, we run the risk of alienating users.
 
-An obvious use case of perception is providing written transcripts of audio material or captioning video material. Perhaps a less obvious example is the style of links across the web. A link that is only a different color from the text would be imperceptible to a color blind users. Instead, we should be sure to alter the color as well as provide an underline to the link. This provides a multi sensory option to the user.
+One common use case of perception is providing written transcripts of audio material or captioning video material. Perhaps a less obvious example is the style of links across the web. A link that is only a different color from the text would be imperceptible to a color blind users. Instead, we should be sure to alter the color as well as provide an underline to the link. This provides a multi sensory option to the user.
 
 ![Perceptible link demonstration](img/link-perception.png)
 <figcaption>Retaining the default link behavior of including an underline allows them to be perceptible to color blind users.</figcaption>
@@ -97,7 +97,7 @@ By building robust web applications, we build [future friendly](http://futurefri
 
 ### WCAG conformance
 
-The WCAG 2.0 is separated into three levels of conformance, based on success criteria that is defined in the [WCAG 2.0 specification](https://www.w3.org/TR/WCAG20/):
+WCAG 2.0 is separated into three levels of conformance, based on success criteria that is defined in the [WCAG 2.0 specification](https://www.w3.org/TR/WCAG20/):
 
 - Level A – Level A provides basic web accessibility support. This meets all Level A success criteria, or provides an alternate content version that does. 
 - Level AA – Level AA addresses the most common accessibility issues. This meets all Level A and Level AA success criteria or provides an alternate content version that does. 
@@ -163,7 +163,7 @@ a:focus {
 
 #### Navigation Order and Length
 
-When users navigate a site using the keyboard, the order and length of keyboard navigable items becomes more important. Imagine the frustration of a user pressing tab through every link presented in a sidebar (such as Twitter or Facebooks “trends”) before being able to access the main content of the application. By using a “skip to content link,” in our applications we can provide an extra guidepost that directs our users to the most valuable content.
+When a user navigates through a site using the keyboard, the order and length of keyboard navigable items become critically important. Imagine the frustration of a user pressing tab through every link presented in a sidebar (such as Twitter or Facebooks “trends”) before being able to access the main content of the application. By using a “skip to content link,” in our applications we can provide an extra guidepost that directs our users to the most valuable content.
 
 Skip to navigation links are hidden links that when “tabbed” to or read by a screen reader, allow the user to skip to the main content of the page, rather than needing to navigate through navigation and other content that occurs earlier in the document order. These can be visually hidden, appearing only when a user presses the tab key.
 
@@ -235,7 +235,7 @@ For the visually impaired, a screen reader may provide access to our sites and a
 To get started with ChromeVox:
 
 1. Install the [Google Chrome Browser](https://www.google.com/chrome/)
-2. Install the [ChromeVox Extension]([ChromeVox](http://www.chromevox.com/)
+2. Install the [ChromeVox Extension]((http://www.chromevox.com/)
 3. Follow the [ChromeVox interactive tutorial](http://www.chromevox.com/tutorial/index.html)
 
 
@@ -297,7 +297,7 @@ The [W3C helfpully provides a list](https://www.w3.org/TR/wai-aria/roles#role_de
 - menu - A list of user choices.
 - toolbar - A collection of commonly used functions “represented in a compact visual form.”
 
-ARIA is more than just roles. ARIA can be used to define values on progress bars, hidden states, dynamic content updates, and more that are outside of the scope of this introduction. I’ve provided additional links and tutorials in the “further reading” section that detail the usefulness of these additional values.
+ARIA is more than just roles, however. ARIA can be used to define values on progress bars, hidden states, dynamic content updates, and more that are outside of the scope of this introduction. I’ve provided additional links and tutorials in the “further reading” section that detail the usefulness of these additional values.
 
 #### Further reading
 
@@ -370,7 +370,7 @@ Adopting an accessibility policy for your project or organization is a way of de
 
 The majority of national or federal government, state government, and public university web sites offer some form of web accessibility policy. I recommend taking a look at your local and national government sites to see what they are. Additionally a smaller number of corporations and non-profits do the same. I have begun cataloging these policies at [github.com/ascott1/accessibility-policies](https://github.com/ascott1/accessibility-policies). 
 
-Here are a few contrast accessibility policies that you may want to explore when developing one for your organization:
+Here are a few accessibility policies that you may want to explore when developing one for your organization:
 
 - [The Economist](http://www.economist.com/help/accessibilitypolicy)
 - [Travelocity](https://www.travelocity.com/p/info-other/web-accessibility-policy)

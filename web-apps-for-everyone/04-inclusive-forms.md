@@ -35,7 +35,7 @@ Names come in many different formats around the world, however it is easy to app
 
 #### Multiple names
 
-Many names may be longer than a given name and a single family name. In many Spanish and Portuguese speaking countries it is common to compose a name of one or two given names and two or three family names consisting of the mother’s surname followed by the father’s surname. In some cases, the conjunction de (“of”) may be added between the maternal and paternal surnames, or sometimes surnames may reflect geographic origin.
+Many names may be longer than the given name, family name format. In many Spanish and Portuguese speaking countries it is common to compose a name of one or two given names and two or three family names consisting of the mother’s surname followed by the father’s surname. In some cases, the conjunction de (“of”) may be added between the maternal and paternal surnames, or sometimes surnames may reflect geographic origin.
 
 Arabic names are traditionally much longer than given and family names, often having specific meaning. This description from [Wikipedia](https://en.wikipedia.org/wiki/Arabic_name) highlights the false assumptions that a non-Arabic speaking person may make about the traditional Arabic name Abdul Rahman bin Omar al-Ahmad:
 
