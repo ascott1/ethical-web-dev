@@ -8,7 +8,7 @@ To Berners-Lee the universality of the web is exactly that which allowed the web
 
 With the rise of information and immersive applications on the web, we have created a global network that is heavily relied upon by society. Pausing to think about this, it is a beautiful thing and, true to Berners-Lee’s vision, there remains little barrier to entry to publishing a site or application. However, as web developers it is a professional and social responsibility to ensure that our sites and applications work for as many people as possible. 
 
-I have often been tempted to disregard browser or device testing so that it allows me to use the latest and greatest tools and browser features. Learning to use these new tools is one of the things that make web development so enjoyable, but we must temper this desire with the ability to build sites that work for as many users as possible. These may be lesser featured, but we should avoid shutting out users or denying them our services. When we do this, we are taking an elite position, potentially shutting out the poor, disabled, and elderly. Imagine a storefront who didn’t allow customers to enter if their shoes and clothes were too old. As a society we would find that offensive and the shopkeeper would likely be publicly disgraced on the evening news. However, we often put banners on our site that say “This site only supports X browser or newer” when a visitor accesses it with an older browser. Or worse, the site will silently fail, akin the shopkeeper refusing to open the till and take payment.
+I have often been tempted to regard browser or device testing casually in favor of using the latest and greatest tools and browser features. Learning to use these new tools is one of the things that make web development so enjoyable, but we must temper this desire with the ability to build sites that work for as many users as possible. We should avoid shutting out users or denying them our services due to technical constraints. When we do this, we are taking an elite position, potentially shutting out the poor, disabled, and elderly. Imagine a storefront who didn’t allow customers to enter if their shoes and clothes were too old. As a society we would find that offensive and the shopkeeper would likely be publicly disgraced on the evening news. However, we often put banners on our site that say, “This site only supports X browser or newer,” when a visitor accesses it with an older browser. Or worse, the site will silently fail, akin the shopkeeper refusing to open the till and take payment.
 
 ## It Just Works
 
@@ -16,7 +16,13 @@ My wife and I began dating in 2003 and within a year or so I became her family�
 
 When my grandfather passed away my grandmother, Kathy, wanted to learn to use a computer and connect the web. Her primary device is an inexpensive and outdated Android tablet that connects to the web through a wireless connection from the rural area where she lives. She uses it to check Facebook, read the news, read books, and play solitaire.  
 
-As developer we want to assume that people like Marty and Kathy are edge cases. I can look through my family and friends and find many other examples of less than ideal web connecting experiences. Though these users may not be a “target demographic” for our applications and services, by not making accommodations for them we are denying them the opportunity to participate.
+As developer we want to assume that people like Marty and Kathy are edge cases. Looking at the top browsers currently in use, when grouped together, device specific browsers, outdated “evergreen” browser versions, and uncommon open source browsers occupy the second largest percentage of market share[^2]. Though each of these browsers and versions may only show up in our analytics as a fraction of a percent, when grouped together they become a powerful representation of the market.
+
+![Chart of browser market share](img/browser-chart.png)
+
+Though the users of these browsers may not be the target demographic for our applications and services, by not making accommodations for them we are denying them the opportunity to participate.
+
+[^2]: The site StatCounter provides these metrics http://gs.statcounter.com/#all-browser_version_partially_combined-ww-yearly-2015-2016-bar. I’ve made the full list available as a css at https://gist.github.com/ascott1/1f9b8fdc7529e4dd7823.
 
 ## A Responsibility
 
