@@ -144,7 +144,7 @@ If a user chooses “Custom,” they are presented with a text input box and a c
 
 ![A selection of other displays a text input and choice of pronoun](img/google-gender-other.png)
 
-Facebook requires a binary gender choice during sign up.
+By contrast, Facebook requires a binary gender choice during account creation.
 
 ![Facebook’s sign up form presents users with a binary gender choice](img/facebook-signup.png)
 
