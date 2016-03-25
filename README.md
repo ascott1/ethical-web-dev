@@ -28,7 +28,6 @@ _Ethical Web Development_ will be a series of short digital books that explore t
   - Improving performance
 - Deep links
 - Offline
-
 - Building offline-first apps
 
 ## Building Web Apps that Respect A User's Privacy and Security
@@ -45,15 +44,15 @@ _Ethical Web Development_ will be a series of short digital books that explore t
 
 ## Building Web Apps with Others
 
-- Code is for other people (title introduction/narrative)
 - Coding standards
   - Linting
-- Testing
-- Continuous Integration
-- Contributing to open source
-- Using an open source license
-- Consuming open source code
-- Treat other developers with respect
+  - Testing
+  - Continuous Integration
+- Open Source
+  - Contributing to open source
+  - Using an open source license
+  - Consuming open source code
+- Treating other developers with respect
 - Offering and following a code of conduct for open source projects
 
 ## Charities
