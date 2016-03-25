@@ -10,37 +10,40 @@ We have the opportunity to drive that vision of a universal web for everyone for
 
 _Ethical Web Development_ will be a series of short digital books that explore the ethics of practical development topics. The books will be released throughout 2016 and early 2017 as free downloads from [O'Reilly](http://www.oreilly.com/).
 
-## Title 1: Building Web Apps that Work For Everyone
+## [Building Web Apps that Work For Everyone](web-apps-for-everyone/README.md)
 
-- Building blocks: Introduction to progressive enhancement
-- Web accessibility introduction/
-- Using a screen reader to navigate the web
-- Creating an accessible page
-- Automating accessibility tests
+- Progressive enhancement
+- Web accessibility
+  - Using a screen readers and the keyboard to navigate the web
+  - WCAG 2.0
+  - Accessibility testing
 - Building inclusive forms
 
-## Title 2: Building Apps that Work Everywhere
+## [Building Web Apps that Work Everywhere](web-apps-for-everyone/README.md)
 
-- Performance introduction
-- Understanding performance blockers & setting a performance budget
-- Measuring web performance
-- Improving performance
 - Responsive design
+- Web Performance
+  - Performance Budgets
+  - Measuring Web Performance
+  - Improving performance
+- Deep links
+- Offline
+
 - Building offline-first apps
 
-## Title 3: Building Apps that Respect A User's Privacy
+## Building Web Apps that Respect A User's Privacy and Security
 
 - https
   - Why https everywhere?
   - How to implement https
 - Web tracking
   - Introduction
-- Browser’s "do not track"
   - Detecting "do no track"
   - Establishing a "do not track" policy
-- Web application security best practices
+- Secure user data
+- Data exporting
 
-## Title 4: Writing Code for Others
+## Building Web Apps with Others
 
 - Code is for other people (title introduction/narrative)
 - Coding standards
@@ -50,15 +53,17 @@ _Ethical Web Development_ will be a series of short digital books that explore t
 - Contributing to open source
 - Using an open source license
 - Consuming open source code
+- Treat other developers with respect
+- Offering and following a code of conduct for open source projects
 
 ## Charities
 
-For each title I will be donating a percentage (roughly 20% after taxes) of my proceeds to a charity that promotes and encourages the open web.
+For each title I will be donating 20% of the proceeds to a charity that promotes and encourages the open web.
 
-- Title 1: [W3C Web For All Initiative](https://www.w3.org/Consortium/sponsor/webforall)
-- Title 2: [World Wide Web Foundation](http://webfoundation.org/)
-- Title 3: [Electronic Frontier Foundation](https://www.eff.org/)
-- Title 4: [Mozilla](https://www.mozilla.org/en-US/)
+- Building Web Apps that Work For Everyone: [W3C](https://www.w3.org/support/)
+- Building Web Apps that Work Everywhere: [World Wide Web Foundation](http://webfoundation.org/)
+- Building Web Apps that Respect A User's Privacy and Security: [Electronic Frontier Foundation](https://www.eff.org/)
+- Building Web Apps with Others: [Mozilla](https://www.mozilla.org/en-US/) and [Girl Develop It](https://www.girldevelopit.com/)
 
 ## Contributing
 
