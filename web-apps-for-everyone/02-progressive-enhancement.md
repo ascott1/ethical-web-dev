@@ -65,7 +65,7 @@ Additionally, in the blog post [How many people are missing out on JavaScript en
 
 While those of us developing for the web often have nice hardware and speedy web connections, that may not be true for many of our potential users. Those in developing or rural areas may have limited or outdated devices and slow connections. In 2015 the Facebook development team began participating in [2G Tuesdays](http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10), which allows them to experience their applications as though they are being served over these slower networks. I would encourage you to do the same.
 
-Today's browser development tools [allow us to mimic network conditions](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/network-conditions), experiencing what it is like for these users to access our sites. We will explore these topics in greater detail in the a forthcoming title in this series.
+Today's browser development tools [allow us to mimic network conditions](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/network-conditions), experiencing what it is like for these users to access our sites. We will explore the topic of web performance in greater detail in the an upcoming title in this series.
 
 ![screenshot of the network connectivity tools in Google Chrome](img/network-connectivity-chrome.png)
 
@@ -82,7 +82,7 @@ If developing an application that is exclusively for users who are likely in an 
 
 ![Lie Fi: The weak wifi signal](img/lie-fi.png)
 
-In addition to the conditions described above, there may be external factors at play. In 2014 the UK's Sky broadband accidentally briefly [blocked the jQuery CDN](http://www.thinkbroadband.com/news/6261-sky-parental-controls-break-jquery-website.html), presumably leaving many users perplexed with broken websites.
+In addition to the conditions described above, there may be external factors at play. In 2014 the UK's Sky broadband accidentally briefly [blocked the jQuery CDN](http://www.thinkbroadband.com/news/6261-sky-parental-controls-break-jquery-website.html), presumably leaving many users perplexed with broken websites. More recently the ability to compose and publish a Tweet [became unavailable in the Twitter web client](http://molily.de/javascript-failure/). This was caused by a regular expression which was being served by a CDN without the proper character encoding. Though the JavaScript likely worked in all local and quality assurance testing, once it was available on the web it disabled one of the site’s most critical features.
 
 ### Run your own experiment
 
@@ -94,7 +94,7 @@ The gov.uk's digital services team was curious to see how many users were missin
 
 The results of this experiment are really fascinating. Though only a fraction of a percentage of users requested the JavaScript disabled image, those that failed to load the image requested via JavaScript were significantly higher.
 
-If possible, I'd encourage you and your teams to conduct a similar experiment. This allows us to base the decision to support (or not support) Javascript-disabled users on real world data, rather than assumptions or world averages.
+If possible, I'd encourage you and your teams to conduct a similar experiment. This allows us to base the decision to support (or not support) Javascript-disabled users with data, rather than assumptions or world averages.
 
 [^1]: In 2010 Yahoo conducted what is considered the [definitive study of JavaScript usage](https://developer.yahoo.com/blogs/ydn/many-users-javascript-disabled-14121.html) finding that the percentage of users with JavaScript disabled ranged from 0.26% to 2.06%, depending on the country of origin. Sadly, these statistics are woefully out of date. In 2013 the UK's Digital Services team did a [similar study](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) and found that 1.1% of their users were not receiving JavaScript. The German site [darwe.de](http://darwe.de) analyzes JavaScript enablement in real time and shows a [much larger percentage](http://www.darw.de/statistik/statistik-js.php) of users with JavaScript disabled visiting their site.
 
@@ -104,7 +104,7 @@ If possible, I'd encourage you and your teams to conduct a similar experiment. T
 
 Recently, I was talking with my friend and colleague [Scott Cranfill](http://www.scottcranfill.com) about a progressive enhancement strategy for a project he was working on. This project was mostly static content, but also included an auto loan calculator. When discussing how he might approach this from a progressive enhancement angle, he mentioned that he thought he default markup should simple include the formula that the calculator uses. Once the page's assets load, a fully functional dynamic calculator will display. This means that nearly every user will only see and interact with the calculator, but should something go wrong, a user will still be presented with something that is potentially useful. I loved this pragmatic approach. It wasn't about "making it work without JavaScript," but instead about making it work for everyone.
 
-In the world of modern JavaScript driven web applications, there are still several practical approaches we can take to build progressively enhanced sites. These approaches can be simple or leverage exciting web technology buzz words such as Isomorphic JavaScript or Progressive web applications. Since progressive enhancement is not a one sized fits all approach, you may want to evaluate this options and choose the one that best works for your project.
+In the world of modern JavaScript driven web applications, there are still several practical approaches we can take to build progressively enhanced sites. These approaches can be simple or leverage exciting web technology buzz words such as Isomorphic JavaScript or Progressive Web Applications. Since progressive enhancement is not a one sized fits all approach, you may want to evaluate this options and choose the one that best works for your project.
 
 Let's take a look at a few of these options and how they may be used to build the best possible experience for a user.
 
@@ -153,7 +153,7 @@ In action preload looks similar to prefetch:
 - [HTML5 Prefetch](https://medium.com/@luisvieira_gmr/html5-prefetch-1e54f6dda15d)
 - [Preload: What Is It Good For?](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/)
 
-You may be thinking, "but I want to build *modern* JavaScript web applications and these are old techniques." Certainly these techniques feel out of sync with the approaches of some of the popular JavaScript frameworks, but recently we've seen the most popular web application approaches trend back towards a progressive enhancement model.
+You may be thinking, "but I want to build *modern* JavaScript web applications." Certainly these techniques feel out of sync with the approaches of some of the popular JavaScript frameworks, but recently we've seen the most popular web application approaches trend back towards a progressive enhancement model.
 
 Isomorphic or Universal JavaScript is a technique that allows a developer to pair server and client side JavaScript into a "write once, run everywhere approach." This technique means that the initial application will render on the server, using Node.js and then run in the browser. When building a progressively enhanced Isomorphic app we can start by building our server rendered version of the applications and layer on the Isomorphic approach.
 
