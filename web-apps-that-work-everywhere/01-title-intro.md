@@ -27,3 +27,11 @@ Emerging nations
 > Smartphone ownership rates have skyrocketed in many countries since 2013. This includes increases of over 25 percentage points among the total population in large emerging economies such as Turkey (+42 points), Malaysia (+34), Chile (+26) and Brazil (+26)
 
 http://www.pewglobal.org/2016/02/22/smartphone-ownership-and-internet-usage-continues-to-climb-in-emerging-economies/
+
+> By 2020 there will be 1.5 mobile devices per capita. There will be 11.6 billion mobile-connected devices by 2020, including M2M modules—exceeding the world’s projected population at that time (7.8 billion).
+
+[source: https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/mobile-white-paper-c11-520862.html]
+
+> 526 million of its monthly active users access Facebook solely from their mobile devices.
+
+http://techcrunch.com/2015/01/28/facebook-mobile-only-2/
