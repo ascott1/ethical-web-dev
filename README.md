@@ -19,7 +19,7 @@ _Ethical Web Development_ will be a series of short digital books that explore t
   - Accessibility testing
 - Building inclusive forms
 
-## [Building Web Apps that Work Everywhere](web-apps-for-everyone/README.md)
+## [Building Web Apps that Work Everywhere](web-apps-that-work-everywhere/README.md)
 
 - Responsive design
 - Web Performance
