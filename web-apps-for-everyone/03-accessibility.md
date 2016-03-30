@@ -64,7 +64,7 @@ One common use case of perception is providing written transcripts of audio mate
 ![Perceptible link demonstration](img/link-perception.png)
 <figcaption>Retaining the default link behavior of including an underline allows them to be perceptible to color blind users.</figcaption>
 
-[^colorblind]: Color blindess affects a significant portion of the population, specifically those born male. Roughly 8% of the male born people are said to have some form of color blindness. https://en.wikipedia.org/wiki/Color_blindness#Epidemiology
+[^colorblind]: Color blindess affects a significant portion of the population, specifically those born male. Roughly 8% of male born people are said to have some form of color blindness. https://en.wikipedia.org/wiki/Color_blindness#Epidemiology
 
 > Operable - User interface components and navigation must be operable.
 
