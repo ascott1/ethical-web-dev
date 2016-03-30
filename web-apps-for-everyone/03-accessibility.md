@@ -47,7 +47,7 @@ In addition to those with permanent or age related disabilities, many users may 
 - [MYTH: Accessibility is “blind people”](http://a11yproject.com/posts/myth-accessibility-is-blind-people/)
 
 
-## WCAG 2.0
+## Web Content Accessibility Guidelines
 
 In 2008 the W3C released an update to the Web Content Accessibility Guidelines, commonly referred to as (WCAG) 2.0. This document covers a range of success criteria for creating accessible web content. Rather than focusing on specific technologies, the document offers a suggestions for making all web sites and applications more accessible.
 
