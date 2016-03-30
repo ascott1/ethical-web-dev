@@ -129,6 +129,10 @@ To sniff out older browsers, we can use a technique demonstrated by Jake Archiba
 }());
 ```
 
+<aside>
+Note: The example above is wrapped in an Immediately-Invoked Function Expression (IIFE), which may look a bit odd if you're not a JavaScript developer. This ensures that the code executes immediately while avoiding the pollution of the global scope. If you are interested in learning more Ben Alman has written a very detailed [post about IIFEs](http://benalman.com/news/2010/11/immediately-invoked-function-expression/).
+</aside>
+
 [^3]: http://caniuse.com/#feat=pagevisibility
 
 For JavaScript dependent applications we could render the landing page as HTML on the server while prefetching the JavaScript for the rest of the application.
