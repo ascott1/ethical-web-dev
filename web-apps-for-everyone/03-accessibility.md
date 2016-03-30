@@ -59,10 +59,12 @@ The guidelines and success criteria of building WCAG 2.0 accessible web applicat
 
 Perceivable means that a user should be provided the opportunity to perceive the content of our web applications. To do this, we must ensure that the information being presented is visible to their senses. When we limit content to a single sense, we run the risk of alienating users.
 
-One common use case of perception is providing written transcripts of audio material or captioning video material. Perhaps a less obvious example is the style of links across the web. A link that is only a different color from the text would be imperceptible to a color blind users. Instead, we should be sure to alter the color as well as provide an underline to the link. This provides a multi sensory option to the user.
+One common use case of perception is providing written transcripts of audio material or captioning video material. Perhaps a less obvious example is the style of links across the web. A link that is only a different color from the text would be imperceptible to a color blind users[^colorblind]. Instead, we should be sure to alter the color as well as provide an underline to the link. This provides a perceptible option to the color blind user.
 
 ![Perceptible link demonstration](img/link-perception.png)
 <figcaption>Retaining the default link behavior of including an underline allows them to be perceptible to color blind users.</figcaption>
+
+[^colorblind]: Color blindess affects a significant portion of the population, specifically those born male. Roughly 8% of the male born people are said to have some form of color blindness. https://en.wikipedia.org/wiki/Color_blindness#Epidemiology
 
 > Operable - User interface components and navigation must be operable.
 
