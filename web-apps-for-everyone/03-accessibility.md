@@ -38,7 +38,7 @@ The need for accessibility is not limited to those with permanent disabilities. 
 
 As of the [2010 census](http://www.census.gov/prod/cen2010/briefs/c2010br-09.pdf), there are 17 million people 75 years of age and older living in the United States. World wide, over [8% of the earth’s total population](http://www.indexmundi.com/world/demographics_profile.html) falls into the 65 and above category. This age group has consistently grown as a percentage of the total population, creating an increasing market segment. With an aging population, there are several factors that can impact the use of the web, most notable motor and vision impairments. By building with accessibility in mind, we are able to accommodate users of all ages.
 
-In addition to those with permanent or age related disabilities, many users may have temporary disabilities. Often these may be related to an injury where vision or motor abilities are impaired. 
+In addition to those with permanent or age related disabilities, many users may have temporary disabilities. Often these may be related to an injury where vision or motor abilities are impaired.
 
 ### Further reading
 
@@ -64,27 +64,27 @@ One common use case of perception is providing written transcripts of audio mate
 ![Perceptible link demonstration](img/link-perception.png)
 <figcaption>Retaining the default link behavior of including an underline allows them to be perceptible to color blind users.</figcaption>
 
-> Operable - User interface components and navigation must be operable. 
+> Operable - User interface components and navigation must be operable.
 
 By being operable, all users are able to operate and navigate the interface of the web application. Perhaps a simple example of this is providing users the ability to easily “tab through” our sites. A user who is unable to operate a mouse or track pad may navigate sites using only the keyboard. Ensuring that our sites are keyboard accessible is one way to ensure that they are  operable by all users.
 
-> Understandable - Information and the operation of user interface must be understandable. 
+> Understandable - Information and the operation of user interface must be understandable.
 
-When we build understandable interfaces, we follow common development patterns of hierarchy and user interaction. Though, when working with a team, these may often fall in the domain of a designer, as developers we make choices about how we develop these patterns. 
+When we build understandable interfaces, we follow common development patterns of hierarchy and user interaction. Though, when working with a team, these may often fall in the domain of a designer, as developers we make choices about how we develop these patterns.
 
 One common anti-pattern is using form label `placeholder` text in the place of a form label.
 
 Here is a form element, properly marked up with a label and placeholder text:
 
 ```
-<label for=“password”>Password:</label>
-<input type=“text” name=“password”>
+<label for="password">Password:</label>
+<input type="text" name="password">
 ```
 
 Here is one that uses the placeholder to replace the label:
 
 ```
-<input type=“text” name=“password” placeholder=“Password”>
+<input type="text" name="password" placeholder="Password">
 ```
 
 ![Image of placeholder as label](img/placeholder-field.png)
@@ -99,8 +99,8 @@ By building robust web applications, we build [future friendly](http://futurefri
 
 WCAG 2.0 is separated into three levels of conformance, based on success criteria that is defined in the [WCAG 2.0 specification](https://www.w3.org/TR/WCAG20/):
 
-- Level A – Level A provides basic web accessibility support. This meets all Level A success criteria, or provides an alternate content version that does. 
-- Level AA – Level AA addresses the most common accessibility issues. This meets all Level A and Level AA success criteria or provides an alternate content version that does. 
+- Level A – Level A provides basic web accessibility support. This meets all Level A success criteria, or provides an alternate content version that does.
+- Level AA – Level AA addresses the most common accessibility issues. This meets all Level A and Level AA success criteria or provides an alternate content version that does.
 - Level AAA – Level AAA provides highest level of web accessibility support for users. This meets all Level A, Level AA, and Level AAA success criteria, or provides an alternate version.
 
 It is worth noting that the W3C does not recommended that Level AAA conformance be required for entire sites as it is not possible to satisfy all Level AAA Success Criteria for some content. If you choose to put an accessibility policy in place for your organization, I recommend aiming for Level AA support.
@@ -109,7 +109,7 @@ It is worth noting that the W3C does not recommended that Level AAA conformance 
 
 The WCAG 2.0 guidelines are classified according to the POUR principle. Guideline 1 encompasses areas of perception, Guideline 2 covers areas of operation, Guideline 3 is directed at ensuring understanding, and Guideline 4 is targeted at the robustness of the application. Below are the specific guidelines from WCAG 2.0:
 
-- Guideline 1.1 Text Alternatives: Provide text alternatives for any non-text content 
+- Guideline 1.1 Text Alternatives: Provide text alternatives for any non-text content
 - Guideline 1.2 Time-based Media: Provide alternatives for time-based media
 - Guideline 1.3 Adaptable: Create content that can be presented in different ways (for example simpler layout) without losing information or structure
 - Guideline 1.4 Distinguishable: Make it easier for users to see and hear content including separating foreground from background.
@@ -154,7 +154,7 @@ There are a few ways that as developers we can ensure the best possible keyboard
 When a user navigates to an element with the Tab key, it is visually indicated using a `:focus` style. By default, in most browsers this either a thin dotted line a blue highlighted border around the focused element. Unfortunately, it has become a fairly common trend to remove this focus style by applying an `outline:0` or `outline:none` in CSS. This can be avoided by either retaining that default behavior or adding a custom focus style through CSS.
 
 ```
-a:focus { 
+a:focus {
 	background-color: #01FF70;
 }
 ```
@@ -215,7 +215,7 @@ Then make it appear visually when the link receives focus with the Tab key:
 By default, links, buttons, and form items are navigable using the tab key. However, there are times that we may want to include additional items that are tabbable by our users. To do this we can set a “tab index” value to an HTML element:
 
 ```
-<h3 tabindex=“0”>This heading is tabbable</h3>
+<h3 tabindex="0">This heading is tabbable</h3>
 ```
 
 The approach should generally be to set a tab index value to zero. A number greater than 1 sets an explicit tab order, and should be avoided.
@@ -265,7 +265,7 @@ Perhaps the most important aspect of an accessible web application is providing 
 Here are a few tips for writing semantic and useful HTML:
 
 - Make use of HTML5 content tags such as `<header>`, `<nav>`, `<main>`, `<footer>`, and `<aside>`.
-- Mark up the HTML content in the order you would expect the user to read it and use CSS to change the order appearance when necessary. 
+- Mark up the HTML content in the order you would expect the user to read it and use CSS to change the order appearance when necessary.
 - Use semantic heading tags that follow a clear outline of page content and avoid using styled paragraphs or other elements as headers.
 - Use `<label>` elements to associate the label of form field with its input element.
 - Always provide alternate text for images using the alt attribute. When an image is purely decorative, give the alt attribute an empty value (`alt=“”`) so that screen readers know to ignore it.
@@ -285,11 +285,11 @@ To use an ARIA role, we add a role attribute to an HTML element and provide it w
 There are two categories of ARIA roles that may commonly be used by web application developers:
 
 - Landmark - Landmark roles define content areas that a screen reader user may want to quickly navigate to, such as navigation menus and the main content of the page.
-- Widget - Widget roles are used for common interactive UI patterns such as tooltips, tabs, and progress bars. 
+- Widget - Widget roles are used for common interactive UI patterns such as tooltips, tabs, and progress bars.
 
 The [W3C helfpully provides a list](https://www.w3.org/TR/wai-aria/roles#role_definitions) of all of the possible ARIA role definitions. Here are some common ARIA role values that are useful to web application developers:
 
-- application - Content that is declared as a web application rather then a web document. 
+- application - Content that is declared as a web application rather then a web document.
 - banner - Typically the header of the page with the site name.
 - search - Indicates a search input.
 - main - The main content of the page.
@@ -370,7 +370,7 @@ While we may aim to build our applications with accessibility in mind throughout
 
 Adopting an accessibility policy for your project or organization is a way of demonstrating both within and outside of the organization that you are dedicated to accessibility. If an organization is unclear of the value of creating such a policy, the W3C provides [Developing a Web Accessibility Business Case for Your Organization](https://www.w3.org/WAI/bcase/Overview), which clearly outlines the positive outcomes of promoting accessibility.
 
-The majority of national or federal government, state government, and public university web sites offer some form of web accessibility policy. I recommend taking a look at your local and national government sites to see what they are. Additionally a smaller number of corporations and non-profits do the same. I have begun cataloging these policies at [github.com/ascott1/accessibility-policies](https://github.com/ascott1/accessibility-policies). 
+The majority of national or federal government, state government, and public university web sites offer some form of web accessibility policy. I recommend taking a look at your local and national government sites to see what they are. Additionally a smaller number of corporations and non-profits do the same. I have begun cataloging these policies at [github.com/ascott1/accessibility-policies](https://github.com/ascott1/accessibility-policies).
 
 Here are a few accessibility policies that you may want to explore when developing one for your organization:
 

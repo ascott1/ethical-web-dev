@@ -78,9 +78,7 @@ Though you may have never used, tested an application with, or even heard of it,
 
 The site [WTF Opera Mini](http://wtfoperamini.com/) collects the full set of modern web standards that are not supported in the browser. As you can imagine, without a progressive enhancement strategy, our sites may be completely inaccessible for all 300 million+ Opera Mini users.
 
-If developing an application that is exclusively for users who are likely in an urban area with strong Internet speeds and nice hardware, it may feel as if we are exempt from concerning ourselves with connection issues. Recently, developer [Jake Archibald](https://jakearchibald.com/) coined the termed "Lie-Fi." This is a connection where our mobile device seems to be connected to wifi, but sites are slow to load as they feebly connect to our struggling signal.
-
-![Lie Fi: The weak wifi signal](img/lie-fi.png)
+If developing an application that is exclusively for users who are likely in an urban area with strong Internet speeds and nice hardware, it may feel as if we are exempt from concerning ourselves with connection issues. Recently, developer [Jake Archibald](https://jakearchibald.com/) coined the termed Lie-Fi. This is a connection where our mobile device seems to be connected to wifi, but sites are slow to load as they feebly connect to our struggling signal.
 
 In addition to the conditions described above, there may be external factors at play. In 2014 the UK's Sky broadband accidentally briefly [blocked the jQuery CDN](http://www.thinkbroadband.com/news/6261-sky-parental-controls-break-jquery-website.html), presumably leaving many users perplexed with broken websites. More recently the ability to compose and publish a Tweet [became unavailable in the Twitter web client](http://molily.de/javascript-failure/). This was caused by a regular expression which was being served by a CDN without the proper character encoding. Though the JavaScript likely worked in all local and quality assurance testing, once it was available on the web it disabled one of the site’s most critical features.
 
@@ -102,7 +100,7 @@ If possible, I'd encourage you and your teams to conduct a similar experiment. T
 
 ## How can we approach progressive enhancement today?
 
-Recently, I was talking with my friend and colleague [Scott Cranfill](http://www.scottcranfill.com) about a progressive enhancement strategy for a project he was working on. This project was mostly static content, but also included an auto loan calculator. When discussing how he might approach this from a progressive enhancement angle, he mentioned that he thought he default markup should simple include the formula that the calculator uses. Once the page's assets load, a fully functional dynamic calculator will display. This means that nearly every user will only see and interact with the calculator, but should something go wrong, a user will still be presented with something that is potentially useful. I loved this pragmatic approach. It wasn't about "making it work without JavaScript," but instead about making it work for everyone.
+Recently, I was talking with my friend and colleague [Scott Cranfill](http://www.scottcranfill.com) about a progressive enhancement strategy for a project he was working on. This project was mostly static content, but also included an auto loan calculator. When discussing how he might approach this from a progressive enhancement angle, he mentioned that he thought he default markup should simple include the formula that the calculator uses. Once the page's assets load, a fully functional dynamic calculator will display. This means that nearly every user will only see and interact with the calculator, but should something go wrong, a user will still be presented with something that is potentially useful. I loved this pragmatic approach. It wasn't about “making it work without JavaScript,” but instead about making it work for everyone.
 
 In the world of modern JavaScript driven web applications, there are still several practical approaches we can take to build progressively enhanced sites. These approaches can be simple or leverage exciting web technology buzz words such as Isomorphic JavaScript or Progressive Web Applications. Since progressive enhancement is not a one sized fits all approach, you may want to evaluate this options and choose the one that best works for your project.
 
@@ -136,7 +134,7 @@ To sniff out older browsers, we can use a technique demonstrated by Jake Archiba
 For JavaScript dependent applications we could render the landing page as HTML on the server while prefetching the JavaScript for the rest of the application.
 
 ```
-<link rel="prefetch" href=“app.js”>
+<link rel="prefetch" href="app.js">
 ```
 
 This approach gives our user's the opportunity to download and cache the application's JavaScript, without impacting the performance or requirement on a mostly static page. Soon browsers will begin implementing the [Preload specification](https://w3c.github.io/preload/), which will be similar to Prefetch, but enable additional browser features.
@@ -144,7 +142,7 @@ This approach gives our user's the opportunity to download and cache the applica
 In action preload looks similar to prefetch:
 
 ```
-<link rel="preload" href=“app.js" as="script">
+<link rel="preload" href="app.js" as="script">
 ```
 
 ### Prefetch and Preload resources
@@ -153,9 +151,9 @@ In action preload looks similar to prefetch:
 - [HTML5 Prefetch](https://medium.com/@luisvieira_gmr/html5-prefetch-1e54f6dda15d)
 - [Preload: What Is It Good For?](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/)
 
-You may be thinking, "but I want to build *modern* JavaScript web applications." Certainly these techniques feel out of sync with the approaches of some of the popular JavaScript frameworks, but recently we've seen the most popular web application approaches trend back towards a progressive enhancement model.
+You may be thinking, “but I want to build *modern* JavaScript web applications.” Certainly these techniques feel out of sync with the approaches of some of the popular JavaScript frameworks, but recently we've seen the most popular web application approaches trend back towards a progressive enhancement model.
 
-Isomorphic or Universal JavaScript is a technique that allows a developer to pair server and client side JavaScript into a "write once, run everywhere approach." This technique means that the initial application will render on the server, using Node.js and then run in the browser. When building a progressively enhanced Isomorphic app we can start by building our server rendered version of the applications and layer on the Isomorphic approach.
+Isomorphic or Universal JavaScript is a technique that allows a developer to pair server and client side JavaScript into a write once, run everywhere approach. This technique means that the initial application will render on the server, using Node.js and then run in the browser. When building a progressively enhanced Isomorphic app we can start by building our server rendered version of the applications and layer on the Isomorphic approach.
 
 A similar approach was taken by the team behind the recent [Google+ redesign](https://developers.google.com/web/showcase/case-study/googleplus):
 
@@ -169,7 +167,7 @@ Though my description may be over simplified, Isomorphic JavaScript is an exciti
 - [Universal React](https://24ways.org/2015/universal-react/)
 </ASIDE>
 
-If a fully Isomorphic JavaScript approach is overkill for an application, Henrik Joreteg has coined the term ["Lazymorphic" applications](https://blog.andyet.com/2015/05/18/lazymorphic-apps-bringing-back-static-web/). A Lazymorphic app is simply one where the developer pre-renders as much of the application as possible as static files at build-time. Using this approach we can choose what we render, making something useful for the user while withholding JavaScript dependent features.
+If a fully Isomorphic JavaScript approach is overkill for an application, Henrik Joreteg has coined the term [Lazymorphic applications](https://blog.andyet.com/2015/05/18/lazymorphic-apps-bringing-back-static-web/). A Lazymorphic app is simply one where the developer pre-renders as much of the application as possible as static files at build-time. Using this approach we can choose what we render, making something useful for the user while withholding JavaScript dependent features.
 
 Lastly, the term [Progressive Web Apps](https://developers.google.com/web/progressive-web-apps) has recently taken hold. Rather than specific technology, this term has come to encompass several interrelated techniques and approaches to web development. This is an approach that pairs nicely with all of those listed above.
 

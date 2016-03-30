@@ -39,7 +39,7 @@ Many names may be longer than the given name, family name format. In many Spanis
 
 Arabic names are traditionally much longer than given and family names, often having specific meaning. This description from [Wikipedia](https://en.wikipedia.org/wiki/Arabic_name) highlights the false assumptions that a non-Arabic speaking person may make about the traditional Arabic name Abdul Rahman bin Omar al-Ahmad:
 
-> With "Abdul": Arabic names may be written "Abdul (something),” but "Abdul" means "servant of the" and is not, by itself, a name. Thus for example, to address Abdul Rahman bin Omar al-Ahmad by his given name, one says "Abdul Rahman,” not merely "Abdul". If he introduces himself as "Abdul Rahman" (which means "the servant of the Merciful"), one does not say "Mr. Rahman" (as "Rahman" is not a family name but part of his (theophoric) personal name); instead it would be Mr. al-Ahmad, the latter being the family name.
+> With “Abdul”: Arabic names may be written “Abdul (something),” but “Abdul” means “servant of the” and is not, by itself, a name. Thus for example, to address Abdul Rahman bin Omar al-Ahmad by his given name, one says “Abdul Rahman,” not merely “Abdul”. If he introduces himself as “Abdul Rahman” (which means “the servant of the Merciful”), one does not say “Mr. Rahman” (as “Rahman” is not a family name but part of his (theophoric) personal name); instead it would be Mr. al-Ahmad, the latter being the family name.
 
 
 #### Name order
