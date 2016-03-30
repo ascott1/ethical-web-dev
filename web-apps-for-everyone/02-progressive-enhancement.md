@@ -42,7 +42,7 @@ I’d encourage you to take a few minutes and consider what the core functionali
 
 When working on your own applications, try to perform the same exercise First, determine the core functionality for your users and build the application from there. This programatic approach also pairs well with the [Agile](http://www.agilemanifesto.org/) approach to software development, where the goal is to deliver working software at the end of each development sprint. If we first deliver a core experience, we can iteratively build upon that experience while continuing to deliver value.
 
-## Is progressive enhancement still relevant?
+## Progressive Enhancement Is Still Relevant
 
 Some may question how relevant progressive enhancement is today, when a small percentage of users browse the web with JavaScript disabled[^1]. This places the focus too heavily on progressive enhancement as a JavaScript free version of a site. In fact, some types of applications, such as video chat, absolutely require some form of JavaScript to work in the browser. The goal of progressive enhancement is to provide the absolute minimum for a working product and ensure that it is delivered to user's browser.
 
