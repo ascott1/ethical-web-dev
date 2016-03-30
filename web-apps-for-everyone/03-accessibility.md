@@ -68,7 +68,7 @@ One common use case of perception is providing written transcripts of audio mate
 
 > Operable - User interface components and navigation must be operable.
 
-By being operable, all users are able to operate and navigate the interface of the web application. Perhaps a simple example of this is providing users the ability to easily “tab through” our sites. A user who is unable to operate a mouse or track pad may navigate sites using only the keyboard. Ensuring that our sites are keyboard accessible is one way to ensure that they are  operable by all users.
+By being operable, all users are able to operate and navigate the interface of the web application. Perhaps a simple example of this is providing users the ability to easily “tab through” our sites, by navigating through the page using only the `tab` keyboard key. A user who is unable to operate a mouse or track pad may navigate sites using only the keyboard. Ensuring that our sites are keyboard accessible is one way to ensure that they are  operable by all users.
 
 > Understandable - Information and the operation of user interface must be understandable.
 
