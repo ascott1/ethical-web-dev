@@ -94,6 +94,32 @@ The results of this experiment are really fascinating. Though only a fraction of
 
 If possible, I'd encourage you and your teams to conduct a similar experiment. This allows us to base the decision to support (or not support) Javascript-disabled users with data, rather than assumptions or world averages.
 
+To run this experiment on your own site, first create three empty gif files named `base-js.gif`, `with-js.gif`, `without-js.gif`. Then you can use the following snippet in your HTML, which as been adapted from gov.uk’s experiment:
+
+```
+<img src="base-js.gif" alt="" role="presentation"
+  style="position: absolute; left: -9999em; height: 0px; width: 0px;">
+<script type="text/javascript">
+  (function(){
+    var a = document.createElement("img");
+    a.src = "with-js.gif";
+    a.alt = "";
+    a.role = "presentation";
+    a.style.position = "absolute";
+    a.style.left = "-9999em";
+    a.style.height = "0px";
+    a.style.width = "0px";
+    document.getElementById("wrapper").appendChild(a);
+  })();
+</script>
+ <noscript>
+   <img src="without-js.gif" alt="" role="presentation"
+    style="position: absolute; left: -9999em; height: 0px; width: 0px;">
+ </noscript>
+```
+
+This will place the tiny gifs off screen, appending the `with-js.gif` file to a `wrapper` element when a user's JavaScript executes. Users without JavaScript will have the `without-js.gif` image, while all users will receive `base-js.gif`.
+
 [^1]: In 2010 Yahoo conducted what is considered the [definitive study of JavaScript usage](https://developer.yahoo.com/blogs/ydn/many-users-javascript-disabled-14121.html) finding that the percentage of users with JavaScript disabled ranged from 0.26% to 2.06%, depending on the country of origin. Sadly, these statistics are woefully out of date. In 2013 the UK's Digital Services team did a [similar study](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) and found that 1.1% of their users were not receiving JavaScript. The German site [darwe.de](http://darwe.de) analyzes JavaScript enablement in real time and shows a [much larger percentage](http://www.darw.de/statistik/statistik-js.php) of users with JavaScript disabled visiting their site.
 
 [^2]: [The unknown browser with 300 million users that’s breaking your site](http://thenextweb.com/dd/2015/12/24/the-unknown-browser-with-300-million-users-thats-breaking-your-site/)
