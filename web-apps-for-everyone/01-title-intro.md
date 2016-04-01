@@ -22,7 +22,7 @@ As developer we want to assume that people like Marty and Kathy are edge cases. 
 
 Though the users of these browsers may not be the target demographic for our applications and services, by not making accommodations for them we are denying them the opportunity to participate.
 
-[^2]: The site StatCounter provides these metrics http://gs.statcounter.com/#all-browser_version_partially_combined-ww-yearly-2015-2016-bar. I’ve made the full list available as a css at https://gist.github.com/ascott1/1f9b8fdc7529e4dd7823.
+[^2]: The site StatCounter provides these metrics http://gs.statcounter.com/#all-browser_version_partially_combined-ww-yearly-2015-2016-bar. I’ve made the full list available as a csv at https://gist.github.com/ascott1/1f9b8fdc7529e4dd7823.
 
 ## A Responsibility
 
