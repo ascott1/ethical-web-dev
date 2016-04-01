@@ -231,18 +231,7 @@ Though rooted in several technologies, the overarching concept of progressive we
 
 There are a variety of techniques and approaches that allows us to build progressively enhanced modern web sites and applications. I've outlined a few of them above. By beginning with the core functionality, we are able to ensure that our application works for the maximum number of people. This provides us with a baseline to provide working software for all users in a range of situations.
 
-### Benefits of progressive enhancement
-
 From an ethical standpoint, progressive enhancement provides several benefits to our users. By following a progressive enhancement process, we can be sure that we are building our applications in a way that allows them to be available for as many users as possible, regardless of device, connection, or browser.
-
-### Quick tips
-
-To make the most of the progressive enhancement approach, be sure to:
-
-- Focus on user needs.
-- Define the core functionality and build from there.
-- Remember that sites doesn’t have to look the same on every device and browser.
-- Avoid the assumption that all assets will be available.
 
 ### Additional resources
 
