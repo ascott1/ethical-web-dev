@@ -241,7 +241,7 @@ For the visually impaired, a screen reader may provide access to our sites and a
 To get started with ChromeVox:
 
 1. Install the [Google Chrome Browser](https://www.google.com/chrome/)
-2. Install the [ChromeVox Extension]((http://www.chromevox.com/)
+2. Install the [ChromeVox Extension](http://www.chromevox.com/)
 3. Follow the [ChromeVox interactive tutorial](http://www.chromevox.com/tutorial/index.html)
 
 
