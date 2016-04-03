@@ -175,11 +175,13 @@ To begin, add a skip to navigation link at the top of the document, linking dire
 
 ```
 <body>
-  <a href=“#main” class=“skip-link”>Skip to main content</a>
-	…
-  <main id=“main” role=“main”>
-		<h1>Page Content</h1>
-	…
+  <a href="#main" class="skip-link">Skip to main content</a>
+  …
+  <main id="main" role="main>
+    <h1>Page Content</h1>
+    …
+  </main>
+</body>
 ```
 
 For styles, we can first hide the skip link visually while keeping it visible to screen readers:
