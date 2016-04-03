@@ -247,7 +247,7 @@ To get started with ChromeVox:
 
 #### Other screen readers
 
-Though ChromeVox is great you may want to explore the use of more commonly used screen readers. Here are the most popular screen readers, according to the [WebAIM screen reader survey](WebAIM screen reader survey http://webaim.org/projects/screenreadersurvey6/).
+Though ChromeVox is great you may want to explore the use of more commonly used screen readers. Here are the most popular screen readers, according to the [WebAIM screen reader survey](http://webaim.org/projects/screenreadersurvey6/).
 
 - [JAWS](http://www.freedomscientific.com/JAWSHQ/JAWSHeadquarters01)
 - [ZoomText](http://www.aisquared.com/products/)
