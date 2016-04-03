@@ -131,7 +131,7 @@ The [most cited study](http://williamsinstitute.law.ucla.edu/wp-content/uploads/
 To be as inclusive as possible, we can build systems that accept and respect non-binary gender options. When including gender in a form, my recommendation is to:
 
 1. Provide male and female options
-2. Provide an “other” text input. If data collection is important, you may provide autocomplete suggestions, but still allow custom inputs.
+2. Provide a “custom” text input. If data collection is important, you may provide autocomplete suggestions, but still allow custom inputs.
 3. Offer a “prefer not to say” option
 
 Both Facebook and Google follow patterns similar to those described above.

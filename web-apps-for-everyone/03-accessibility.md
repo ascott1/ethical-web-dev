@@ -272,7 +272,7 @@ Here are a few tips for writing semantic and useful HTML:
 - Mark up the HTML content in the order you would expect the user to read it and use CSS to change the order appearance when necessary.
 - Use semantic heading tags that follow a clear outline of page content and avoid using styled paragraphs or other elements as headers.
 - Use `<label>` elements to associate the label of form field with its input element.
-- Always provide alternate text for images using the alt attribute. When an image is purely decorative, give the alt attribute an empty value (`alt=“”`) so that screen readers know to ignore it.
+- Always provide alternate text for images using the alt attribute. When an image is purely decorative, give the alt attribute an empty value (`alt=""`) so that screen readers know to ignore it.
 
 ### ARIA
 
@@ -283,7 +283,7 @@ Perhaps one of the most immediately useful aspects of ARIA is the use of ARIA ro
 To use an ARIA role, we add a role attribute to an HTML element and provide it with an ARIA value.
 
 ```
-<div class=“main-content” role=“main”>
+<div class="main-content" role="main">
 ```
 
 There are two categories of ARIA roles that may commonly be used by web application developers:

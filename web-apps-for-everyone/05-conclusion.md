@@ -8,7 +8,7 @@ If throughout your reading you have come across things that are missing or could
 - Creating an issue in the book’s GitHub repository <https://github.com/ascott1/ethical-web-dev/issues>.
 - Reaching out to me through [email](mailto:adamdscott@protonmail.com) or [Twitter](https://twitter.com/adamdscott).
 
-A portion of the proceeds (20% after taxes), from each Ethical Web Development title will be donated to an organization whose work has a positive impact on the issues described. For this title, I will be donating to the World Wide Web Consortium (W3C). The W3C works to ensure “that the Web remains open, accessible and interoperable for everyone around the world” and authored much of the content that was used to research this title.
+Twenty percent of the proceeds from each Ethical Web Development title will be donated to an organization whose work has a positive impact on the issues described. For this title, I will be donating to the World Wide Web Consortium (W3C). The W3C works to ensure “that the Web remains open, accessible and interoperable for everyone around the world” and authored much of the content that was used to research this title.
 
 If you are interested in supporting the W3C’s work please consider making a donation at [w3.org/support](https://www.w3.org/support/).
 
