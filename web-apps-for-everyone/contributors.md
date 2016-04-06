@@ -8,6 +8,10 @@ Adam D. Scott is a developer and educator based in Connecticut. He currently wor
 
 Chris Contolini is an open source software developer. He is currently a Senior Technology Fellow at the Consumer Financial Protection Bureau where he focuses on ChatOps and front-end web development. He lives and works from a ten-foot box truck retrofitted with solar panels, running water, and broadband Internet access. He works mostly from national forests and has been known to frequent the Bay Area and Portland, OR.
 
+## Editor
+
+Meg Foley
+
 ## Other Contributions
 
 The following people have graciously contributed feedback and improvements.
