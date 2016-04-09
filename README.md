@@ -42,7 +42,7 @@ _Ethical Web Development_ will be a series of short digital books that explore t
 - Secure user data
 - Data exporting
 
-## Building Web Apps with Others
+## Building Web Apps Together
 
 - Coding standards
   - Linting
@@ -62,7 +62,7 @@ For each title I will be donating 20% of the proceeds to a charity that promotes
 - Building Web Apps that Work For Everyone: [W3C](https://www.w3.org/support/)
 - Building Web Apps that Work Everywhere: [World Wide Web Foundation](http://webfoundation.org/)
 - Building Web Apps that Respect A User's Privacy and Security: [Electronic Frontier Foundation](https://www.eff.org/)
-- Building Web Apps with Others: [Mozilla](https://www.mozilla.org/en-US/) and [Girl Develop It](https://www.girldevelopit.com/)
+- Building Web Apps Together: [Mozilla](https://www.mozilla.org/en-US/) and [Girl Develop It](https://www.girldevelopit.com/)
 
 ## Contributing
 
