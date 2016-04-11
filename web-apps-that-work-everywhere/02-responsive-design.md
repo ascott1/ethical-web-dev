@@ -1,6 +1,10 @@
 # Responsive Design
 
-In the early days of the web, through the mid 2000’s, we could safely assume that each user of our site would be accessing it through a computer screen. We spent time researching and considering the typical browser width, but we were safe to assume that our users would be perched in front of a reasonably large screen, with a dedicated keyboard. With the evolution of the smartphone, those assumptions have changed. Users may access our sites quickly, on the go, from a wide range of screen sizes. With the diversity of devices and screens, we can no longer safely make assumptions about the screen size of our users.
+For more than a decade of the web’s existence, we could safely assume that each user of our site would be accessing it through a computer screen. 
+
+The first web sites were responsive - link to first website.
+
+We spent time researching and considering the typical browser width, but we were safe to assume that our users would be perched in front of a reasonably large screen, with a dedicated keyboard. With the evolution of the smartphone, those assumptions have changed. Users may access our sites quickly, on the go, from a wide range of screen sizes. With the diversity of devices and screens, we can no longer safely make assumptions about the screen size of our users.
 
 The rise of the `.m` site.
 
@@ -40,3 +44,5 @@ Build for non-ideal conditions
 Large click areas
 Navigation
 Forms
+
+## Further Reading
