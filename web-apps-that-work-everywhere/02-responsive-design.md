@@ -39,6 +39,70 @@ Let’s tease this process apart by creating a very simple responsive page.
 
 [Cutting the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard)
 
+By default, mobile browsers will render the page at a desktop screen width. This means that users will need to pinch and zoom to be able to read and access our content. To tell the browser to scale, we can add a meta viewport tag to the `<head>` of the HTML document.
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
+The most basic approach to responsive media to scale our images and other media elements to the width of their parent container. We can create a `style.css` file and apply a `max-width: 100%` to media objects to ensure that they never overflow beyond the container width. In chapter 4, we will explore how to serve various image sizes depending on browser context.
+
+```
+img,
+obj,
+video {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+
+With the baseline of a scaled browser viewport and flexible media, we can begin developing the core experience. The core experience can encompass things such as typography, color, and base styles that should appear in all browsers. By doing so, we ensure that every user is served a site that will work well in their browser regardless of capability. Originally, this approach was termed mobile first, but I’ve come to favor Trent Walton’s description of [device agnosticism](http://trentwalton.com/2014/03/10/device-agnostic/). By taking this approach, we are developing in a future friendly way that is prepared for devices of all sizes[^1].
+
+With our baseline styles in place, we can begin adding styles based on browser width. To do this, we use CSS media queries, which allow us to apply specific styles to given browser widths. These can and should be based on the ideal conditions of our application content. For the purpose of responsive design, we’ll focus on `max-width` and `min-width` media queries.
+
+A `max-width` media query allows us to define styles that will only appear up until a certain breakpoint.
+
+```
+@media (max-width: 600px) {
+  /* Smaller device/browser styles go here */
+}
+```
+
+In contrast, `min-width` media queries allow us to set styles that are only applied at larger browser sizes.
+
+```
+@media (min-width: 600px) {
+  /* Larger device/browser styles go here */
+}
+```
+
+In the end, we may wind up with a style sheet that is structured  with base styles followed by media queries defining styles for various browser sizes, often termed breakpoints.
+
+```
+/* Base Styles */
+
+@media (max-width: 600px) {
+  /* Smaller device/browser styles */
+}
+
+@media (min-width: 600px) {
+  /* Large device/browser styles */
+}
+
+@media (min-width: 850px) {
+  /* Larger device/browser styles */
+}
+
+@media (min-width: 1100px) {
+  /* Largest device/browser styles */
+}
+
+```
+
+By using breakpoints, we can define styles based on the context of the user’s browser, adapting the content of our site to better meet their needs.
+
+[^1]: Brad Frost demonstrating a project from 2013 on an Apple Watch https://youtu.be/BzckCgE5glI
 
 ### Note: CSS Frameworks
 
@@ -46,13 +110,18 @@ If you are not a fan of writing CSS (and who could blame you?), you may opt to u
 
 ## Considerations
 
-Avoid making presumptions about user context
+When developing a responsive design there are a number of conditions a developer should take into account. Primarily, we should avoid making assumptions about user context and build for non-ideal conditions.
 
-Build for non-ideal conditions
+Some of the key considerations for developing responsive designs:
 
-Large click areas
-Navigation
-Forms
+- Provide users with large click areas for links and buttons.
+- Ensure that site navigation is accessible and easy to understand.
+- Make forms as simple as possible and autofill form content when possible.
+- Focus on the content of the application and set breakpoints accordingly, rather than by common device sizes.
 
 
 ## Further Reading
+
+- [Responsive Design](http://alistapart.com/article/responsive-web-design)
+- [This is Responsive](https://bradfrost.github.io/this-is-responsive/index.html)
+- [Responsive Web Design, 2nd Edition](http://shop.oreilly.com/product/9781937557188.do)
