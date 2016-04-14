@@ -12,6 +12,7 @@ introduction
 minimize resources
 optimize images
 gzip/compression
+responsive images
 
 ## Number of Resources
 
