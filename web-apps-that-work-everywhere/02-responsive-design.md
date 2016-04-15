@@ -1,8 +1,8 @@
 # Responsive Design
 
-For more than a decade of the web’s existence, we could safely assume that each user of our site would be accessing it through a computer screen. Despite this, early websites were, by default, adaptive to a variety of screen sizes. The web’s first site, Tim Berners-Lee’s [World Wide Web](http://info.cern.ch/hypertext/WWW/TheProject.html), works beautifully at a range of  screen sizes.
+For more than a decade of the web’s existence, we could safely assume that each user of our site would be accessing it through a computer screen. Despite this, early websites were, by default, adaptive to a variety of screen sizes. The web’s first site, Tim Berners-Lee’s [World Wide Web](http://info.cern.ch/hypertext/WWW/TheProject.html), works beautifully at a range of  screen sizes.[^1]
 
-[SCREENSHOT OF WWW AT SMALLER SIZE]
+![Screenshot of the first website with a narrow viewport](img/first-website.png)
 
 Despite this, we spent time researching and considering the typical browser width and assumed that our users would be perched in front of a reasonably large screen, with a dedicated keyboard. With the evolution of the smartphone, those assumptions have changed. Users may access our sites quickly, on the go, from a wide range of screen sizes. With the diversity of devices and screens, we can no longer safely make assumptions about the screen size of our users.
 
@@ -21,6 +21,8 @@ Responsive design consists of three core elements:
 - **Media queries** are a CSS technique that allow developers to apply different CSS rules in varying contexts.
 
 By combining these three browser capabilities, we are able to develop sites for a wide range of browser sizes. When we build responsively, we are ensuring that our sites are delivered to our users in a way that works well in the context that they are accessing our site.
+
+[^1]: Though Berners-Lee’s first website adapts to any browser width, it still scales on most mobile browsers due to browser behavior. As we will discuss later in the chapter, adding a viewport meta tag to our HTML prevents this from happening.
 
 ## Process
 
@@ -57,7 +59,7 @@ video {
 ```
 
 
-With the baseline of a scaled browser viewport and flexible media, we can begin developing the core experience. The core experience can encompass things such as typography, color, and base styles that should appear in all browsers. By doing so, we ensure that every user is served a site that will work well in their browser regardless of capability. Originally, this approach was termed mobile first, but I’ve come to favor Trent Walton’s description of [device agnosticism](http://trentwalton.com/2014/03/10/device-agnostic/). By taking this approach, we are developing in a future friendly way that is prepared for devices of all sizes[^1].
+With the baseline of a scaled browser viewport and flexible media, we can begin developing the core experience. The core experience can encompass things such as typography, color, and base styles that should appear in all browsers. By doing so, we ensure that every user is served a site that will work well in their browser regardless of capability. Originally, this approach was termed mobile first, but I’ve come to favor Trent Walton’s description of [device agnosticism](http://trentwalton.com/2014/03/10/device-agnostic/). By taking this approach, we are developing in a future friendly way that is prepared for devices of all sizes[^2].
 
 With our baseline styles in place, we can begin adding styles based on browser width. To do this, we use CSS media queries, which allow us to apply specific styles to given browser widths. These can and should be based on the ideal conditions of our application content. For the purpose of responsive design, we’ll focus on `max-width` and `min-width` media queries.
 
@@ -102,7 +104,7 @@ In the end, we may wind up with a style sheet that is structured  with base styl
 
 By using breakpoints, we can define styles based on the context of the user’s browser, adapting the content of our site to better meet their needs.
 
-[^1]: Brad Frost demonstrating a project from 2013 on an Apple Watch https://youtu.be/BzckCgE5glI
+[^2]: Brad Frost demonstrating a project from 2013 on an Apple Watch https://youtu.be/BzckCgE5glI
 
 ### Note: CSS Frameworks
 
