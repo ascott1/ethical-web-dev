@@ -1,4 +1,4 @@
-# URLs
+# URI Design
 
 > What makes a cool URI?
 > A cool URI is one which does not change.
