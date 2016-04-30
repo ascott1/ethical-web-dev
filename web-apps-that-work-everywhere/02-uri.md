@@ -11,6 +11,14 @@ The humble link is the most fundamental building block of the web. The ability t
 
 In 1996 the creator of the web, Tim Berners-Lee, drafted [Universal Resource Identifiers -- Axioms of Web Architecture](https://www.w3.org/DesignIssues/Axioms.html). This document consists of several axioms of URI design, many technical in nature, but the first (and arguably most important) is “universality.” By Berners-Lee’s definition, “any resource anywhere can be given a URI” and “any resource of significance *should* be given a URI” (emphasis mine). By conforming to these expectations of the web we make it easier for our users to share and interact with the web. 
 
+## Permanence
+
+> more than 70% of the URLs within the Harvard Law Review and other journals, and 50% of the URLs found within United States Supreme Court opinions, do not link to the originally cited information.
+
+http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2329161
+
+- [Long Bets Bet – How Durable Are URLs?](http://blog.longnow.org/02012/03/23/long-bets-bet-how-durable-are-urls/)
+
 ## URI Design
 
 Simply Providing URL’s is the first step, but as Jakob Nielsen has described them [URLs are a form of user interface](https://css-tricks.com/guidelines-for-uri-design/). Even in the era of search results, a [study from Microsoft Research](http://research.microsoft.com/apps/pubs/default.aspx?id=70395) to determine if URLs were observed by average users revealed that users spent 24% of their gaze time looking at the URLs in search results. With this in mind, how can we design URIs that are effective and usable?
@@ -107,8 +115,6 @@ Commenting on an early draft of the Principles for Ethical Web Development, [Dea
 > One thing that for me is very important when building apps is the ability to share a URL - either with myself or with others - easily. By leveraging this built in feature of the web, it makes it much easier to share, bookmark, and be a good web citizen.
 
 This ability to link and share is a key advantage that web development has over other forms of application development. A few ways that we can aid this practice in our applications, is to give our users the ability to link out to content that is within our applications, without requiring a login when possible, ensuring that URLs are updated when doing client-side routing, and by avoiding non-standard URL formats such as hash-bang URLs (`http://example.com/#!/foo/`).
-
-
 
 ## Further Reading
 

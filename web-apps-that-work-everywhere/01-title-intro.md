@@ -1,5 +1,7 @@
 The ethics of a web that works everywhere
 
+> Building massive, resource-heavy sites means excluding millions of users that have only ever known the web by way of feature phones or slightly better—users paying for every kilobyte they consume; users that already have to keep tabs on which sites they need to avoid day-to-day because of the cost of visiting them. I don’t mean some nebulous hand-wavy “bandwidth cost,” either—I mean actual economic cost.
+
 ### In the United States
 
 > 10% of Americans own a smartphone but do not have any other form of high-speed internet access at home beyond their phone’s data plan.
@@ -20,7 +22,7 @@ The ethics of a web that works everywhere
 
 source: http://www.pewinternet.org/2015/04/01/us-smartphone-use-in-2015/
 
-Emerging nations
+### Emerging nations
 
 > Smartphone ownership rates in emerging and developing nations are rising at an extraordinary rate, climbing from a median of 21% in 2013 to 37% in 2015. 
 
@@ -35,3 +37,10 @@ http://www.pewglobal.org/2016/02/22/smartphone-ownership-and-internet-usage-cont
 > 526 million of its monthly active users access Facebook solely from their mobile devices.
 
 http://techcrunch.com/2015/01/28/facebook-mobile-only-2/
+
+
+Stats:
+Device type: http://gs.statcounter.com/#all-comparison-ww-monthly-201504-201603-bar
+
+Internet connection speeds: https://www.akamai.com/us/en/multimedia/documents/state-of-the-internet/akamai-state-of-the-internet-report-q3-2015.pdf
+
