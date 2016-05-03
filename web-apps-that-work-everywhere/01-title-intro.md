@@ -2,6 +2,11 @@ The ethics of a web that works everywhere
 
 > Building massive, resource-heavy sites means excluding millions of users that have only ever known the web by way of feature phones or slightly better—users paying for every kilobyte they consume; users that already have to keep tabs on which sites they need to avoid day-to-day because of the cost of visiting them. I don’t mean some nebulous hand-wavy “bandwidth cost,” either—I mean actual economic cost.
 
+
+> According to Akamai’s Q4 2015 rankings, the average Internet speed worldwide is at whooping 5.6mb/s. The global connectedness is rapidly growing, but there’s still a vast space of unmapped territories (for more insight into Internet penetration see [Global Internet Maps](http://www.internetsociety.org/map/global-internet-report/)).
+
+-  https://medium.com/@fox/the-web-isn-t-uniform-fd67eb631501#.m2pjsvlrr
+
 ### In the United States
 
 > 10% of Americans own a smartphone but do not have any other form of high-speed internet access at home beyond their phone’s data plan.
