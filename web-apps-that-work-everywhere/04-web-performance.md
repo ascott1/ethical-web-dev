@@ -62,6 +62,8 @@ By putting these four best practices in action, we ensure that our site’s user
 
 ### Number of Resources
 
+Perhaps the biggest impact we can have on file size and data transfer is to limit the number of resources sent to the user.
+
 - HTTP requests and DNS lookups
 - the pre’s
     - prefetch 
@@ -73,11 +75,79 @@ By putting these four best practices in action, we ensure that our site’s user
 
 ### http2
 
-### Optimizing Images and Fonts
+### Optimizing Files, Images, and Fonts
 
-### Responsive Images
+Once we have reduced the number of http requests being made in our site, the next step is to optimize the files we server. We can do this by minimizing CSS and JS resources, optimizing and and serving proper images, and making good use of web fonts when used.
+
+#### Minimizing Files
+
+Though white space and line breaks make CSS and JavaScript files readable to humans, they are necessary for the browser to properly parse them. To reduce the file size of these resources we should minimize them for our production sites.
+
+
+#### Images
+
+Images comprise the largest file sizes on a typical web page. [ADD COOL STAT]. By using images well and reducing their file sizes, we can significantly reduce the bandwidth they consume.
+To do this we should use the proper image formats, optimize images to reduce file size, and serve the image size needed by the browser.
+
+When creating images, we need to consider their content and choose the most appropriate format. 
+
+- **JPG**: Use for photographs.
+- **PNG**: Use as the default for most other static images and images that require transparency.
+- **GIF**: Use for simple images. Supports transparency and animation.
+- **SVG**: Small file size that scales well and is supported all modern browsers and Internet Explorer 9+.
+
+Once we have chosen the proper file format for an image, we should optimize the image file. Optimizing reduces the file size of an image by applying compression and removing unnecessary information such as metadata, embedded thumbnails, and color profiles. There are a number of desktop and online tools that you may use to manually optimize images:
+
+- [ImageOptim](https://imageoptim.com)
+- [imagemin-app](https://github.com/imagemin/imagemin-app)
+- [PNG Gauntlet](http://pnggauntlet.com/)
+- [Tiny PNG](https://tinypng.com/)
+- [ImageAlpha](https://pngmini.com/)
+- [JPEG-Optimizer](http://www.jpeg-optimizer.com/)
+
+For sites using a front-end build process, such as Gulp, Grunt, or npm scripts we can bake image optimization into our build process. The node package [imagemin](https://www.npmjs.com/package/imagemin) provides a utility for minimizing images in a number of build environments:
+
+- **Command line interface:** [imagemin-cli](https://github.com/imagemin/imagemin-cli)
+- **Gulp**: [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
+- **Grunt:** [grunt-contrib-imagemin](https://www.npmjs.com/package/grunt-contrib-imagemin)
+
+#### Responsive Images
+
+Serve different image sizes at different viewport widths (responsive images)
+
+
+Fonts:
+
+> Some browsers will wait a predetermined amount of time (usually three seconds) for the font to load before they give up and show the text using the fallback font-family. But just like a loyal puppy, WebKit browsers (Safari, default Android Browser, Blackberry) will wait forever (okay, often 30 seconds or more) for the font to return. This means your custom fonts represent a potential single point of failure for a usable site.
+
+https://www.keycdn.com/blog/web-font-performance/
+
+[57% of websites now use custom fonts](http://httparchive.org/trends.php#perFonts)
+
+Read: 
+
+- https://www.zachleat.com/web/
+- https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization
+- https://www.filamentgroup.com/lab/font-loading.html
+- https://www.bramstein.com/writing/web-font-loading-patterns.html
+
+```
+@font-face {
+  font-family: 'My Web Font';
+  font-style: normal;
+  font-weight: 400;
+  src: local('My Web Font'),
+       url('/fonts/myfont.woff2') format('woff2'), 
+       url('/fonts/myfont.woff') format('woff'),
+       url('/fonts/myfont.ttf') format('ttf'),
+       url('/fonts/myfont.eot') format('eot');
+}
+```
+
 
 ### Gzip and Caching
+
+https://jakearchibald.com/2016/caching-best-practices/
 
 ## Page rendering
 
