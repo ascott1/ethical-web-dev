@@ -160,11 +160,40 @@ Read:
 ```
 
 
-### Gzip and Caching
+### Gzipping and Caching
 
-Gzip: http://jvns.ca/blog/2013/10/24/day-16-gzip-plus-poetry-equals-awesome/
+Introduce gzipping and caching
 
-Caching: https://jakearchibald.com/2016/caching-best-practices/
+
+#### Gzip
+
+Gzipping is a server configuration that replaces repetitive strings with pointers to a previous instance of the string. Using Gzip dramatically decreases file sizes, far more so than minification alone. In the article [The Difference Between Minification and Gzipping](https://css-tricks.com/the-difference-between-minification-and-gzipping/), Chris Coyier points out the difference in file sizes in the Bootstrap CSS file:
+
+- Original CSS file: 147kb
+- Minified CSS file: 123kb (83% of the original file)
+- Gzipped CSS file: 22kb (15% of the original file)
+- Gzipped and minified CSS file: 20kb (14% of the original file)
+
+Enabling Gzipping is done as part of our server configuration. HTML5 Boilerplate offers [configurations](https://github.com/h5bp/server-configs) for popular servers including Apache, IIS, and Nginx, which include gzipping.
+
+Here is what the Apache 2 configuration, set to gzip HTML, CSS, and JavaScript would look like:
+
+```
+<IfModule mod_filter.c>
+  AddOutputFilterByType DEFLATE “text/html” \
+                                “text/css” \
+                                “application/javascript”
+</IfModule>
+```
+
+For a look at a more complete `.htaccess` with additional file types, see the [HTML5 Boilerplate Apache configuration](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L740-L774).
+
+
+#### Caching
+
+[Caching Best Practices & Max-Age Gotchas](https://jakearchibald.com/2016/caching-best-practices/)
+
+
 
 ## Page rendering
 
