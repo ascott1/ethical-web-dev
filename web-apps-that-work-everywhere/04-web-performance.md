@@ -85,8 +85,10 @@ Though white space and line breaks make CSS and JavaScript files readable to hum
 
 There are several desktop and web applications for minimizing CSS and JavaScript.
 
-[LIST SOME DESKTOP APPS]
-- [UglifyJS](http://marijnhaverbeke.nl//uglifyjs)
+- [Closure Compiler](https://closure-compiler.appspot.com/home) - An online tool from Google for minifying JavaScript
+- [Online JavaScript/HTML/CSS Compressor](http://refresh-sf.com/) - A single web interface for compressing three file types.
+- [Smaller](http://25.io/smaller/) - A Mac OS X tool for HTML, CSS, and JavaScript compression.
+- [UglifyJS](http://marijnhaverbeke.nl//uglifyjs) - An online tool for JavaScript minification based on the popular Uglify.js utility.
 
 Desktop and web tools may be great for simple sites or those that aren’t updated frequently, but to minimize effort we can integrate minification into a build process for our site. How this is done may depend on your site’s stack, Ruby on Rails, for example, has an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html) for the minification of assets. A common cross-framework approach is to use a build tool such as [Gulp](http://gulpjs.com/), [Grunt](http://gruntjs.com/), or [npm scripts](https://docs.npmjs.com/misc/scripts). For these build tools there are a number of minification plugins. Here are a few that I’ve used with success in the past:
 
@@ -160,7 +162,9 @@ Read:
 
 ### Gzip and Caching
 
-https://jakearchibald.com/2016/caching-best-practices/
+Gzip: http://jvns.ca/blog/2013/10/24/day-16-gzip-plus-poetry-equals-awesome/
+
+Caching: https://jakearchibald.com/2016/caching-best-practices/
 
 ## Page rendering
 
