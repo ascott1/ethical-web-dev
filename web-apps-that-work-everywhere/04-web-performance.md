@@ -186,12 +186,59 @@ Here is what the Apache 2 configuration, set to gzip HTML, CSS, and JavaScript w
 </IfModule>
 ```
 
-For a look at a more complete `.htaccess` with additional file types, see the [HTML5 Boilerplate Apache configuration](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L740-L774).
+For a look at a complete `.htaccess` with additional file types, see the [HTML5 Boilerplate Apache configuration](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L740-L774).
 
 
 #### Caching
 
-[Caching Best Practices & Max-Age Gotchas](https://jakearchibald.com/2016/caching-best-practices/)
+Caching allows us to temporarily store previously accessed resources such as HTML, JS, CSS, and images locally for our users. This means that instead of relying on bandwidth, a users browser is able to immediately access the needed resource. In his [Caching Tutorial](https://www.mnot.net/cache_docs/) Mark Nottingham notes the two reasons that Web caches are used:
+
+> - **To reduce latency** — Because the request is satisfied from the cache (which is closer to the client) instead of the origin server, it takes less time for it to get the representation and display it. This makes the Web seem more responsive.
+> - **To reduce network traffic** — Because representations are reused, it reduces the amount of bandwidth used by a client. This saves money if the client is paying for traffic, and keeps their bandwidth requirements lower and more manageable.
+
+In his article [Caching Best Practices & Max-Age Gotchas](https://jakearchibald.com/2016/caching-best-practices/), Jake Archibald described the two best practice patterns for caching:
+
+1. Immutable content with a long max-age
+2. Mutable content that is always server revalidated
+
+For our purposes, we’ll focus on immutable content with a long max-age, though I encourage you to read Jake’s excellent article. There are two key components when following the immutable content with a long max-age caching practice. The first is the server setup. Again, using HTML5 Boilerplate’s [server configurations](https://github.com/h5bp/server-configs) as an exemplar we can look at setting [mod_expires](https://httpd.apache.org/docs/current/mod/mod_expires.html) in Apache.
+
+```
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresDefault                              "access plus 1 month"
+    ExpiresByType text/css                      "access plus 1 year"
+    ExpiresByType text/html                     "access plus 0 seconds"
+    ExpiresByType text/javascript               "access plus 1 year"
+    ExpiresByType image/png                     "access plus 1 month"
+    ExpiresByType application/font-woff2        "access plus 1 month"
+</IfModule>
+```
+
+**Note**: This an abbreviated example for demonstrative purposes. For the full list see HTML5 Boilerplate’s [.htaccess file](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L836).
+
+As you can see, we’ve given many of our resources long cache life cycles. For CSS and JavaScript the caching extends to a year. However, when we update our site is unlikely that we would want users to experience a cached version of one of these resources. To avoid this, we need to bust the cache by changing the URL. The clearest way to do this is to append a hash to our resources. Rather than:
+
+```
+<script src="script.js"></script>
+<link rel="stylesheet" href="styles.css">
+<img src="logo.png" alt="…">
+````
+
+We will want to serve:
+
+```
+<script src="script-273c2cin3f.js"></script>
+<link rel="stylesheet" href="styles-d41d8cd98f.css".css">
+<img src="logo-115r1hss9h.png" alt="">
+````
+
+There are several tools to automate this process, depending on your framework and build processes:
+
+- [gulp-rev](https://github.com/sindresorhus/gulp-rev) - a Gulp task for static asset revisiting.
+- [Django ManifestStaticFilesStorage](https://docs.djangoproject.com/en/1.9/ref/contrib/staticfiles/#manifeststaticfilesstorage) - A Django setting for appending a MD5 hash to the name of static files.
+- [Rails config.assets.digest](what-is-fingerprinting-and-why-should-i-care-questionmark) - A Rails setting for appending a hash to static file assets. This is enabled in production environments by default.
+- [static-asset](https://www.npmjs.com/package/static-asset) - A static asset manager for Node.JS, designed for Express.
 
 
 
@@ -226,6 +273,12 @@ https://timkadlec.com/2013/01/setting-a-performance-budget/
 
 http://danielmall.com/articles/how-to-make-a-performance-budget/
 https://timkadlec.com/2014/11/performance-budget-metrics/
+
+## Conclusion
+
+Things not covered in this chapter…
+
+CDN’s (Akamai, Cloudflare)
 
 ## Further Reading
 
