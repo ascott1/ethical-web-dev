@@ -66,27 +66,26 @@ To reduce the number of requests a browser makes, it is common to bundle files t
 
 #### The Four Pre’s (Prefetch, Preconnect, Prerender, Preload)
 
-In addition to reducing the number of resources, we can make use of several techniques to prefetch the content we need. I call these “The Four Pre’s” (prefetch, preconnect, pretender, and preload) and each can be useful in a different context where we may want to instruct the browser to download a resource before it is needed. This allows us, as developers, to give further instruction to the browser about the resources our users will need.
+In addition to reducing the number of resources, we can make use of several techniques to pre-load future content that we predict our user’s will need. I call these “The Four Pre’s” (prefetch, preconnect, pretender, and preload) and each can be useful in a different context where we may want to instruct the browser to download a resource before it is needed. 
 
 ##### Prefetch
 
-Prefetch allows us to request that the browser resolves a DNS lookup for another host that the browser will access. This is really useful when loading things such as third party scripts.
+We can request that the browser prefetch specific resources that we anticipate a user needing as they navigate to a future page using `prefetch`. This allows us as developers to load assets, such as a bundled JavaScript file that a user will need once they log
 
-To use prefetch we add a `link` tag to the `<head>` of our HTML page.
+```
+<link rel="prefetch" href="script.js">
+```
+
+DNS-Prefetch allows us to request that the browser resolves a DNS lookup for another host that the browser will access. This is really useful when loading things such as third party scripts.
 
 ```
 <link rel="dns-prefetch" href="//example.com">
 ```
 
-We can also prefetch specific resources
-
-```
-<link rel="dns-prefetch" href="example.com/style.css">
-```
 
 ##### Preconnect
 
-Preconnect works much like prefetch, but also performs the TCP handshake and negotiates the TLS tunnel if needed. 
+Preconnect works much like dns-prefetch, but also performs the TCP handshake and negotiates the TLS tunnel if needed, but has limited browser support [^2]. 
 
 ```
 <link rel="preconnect" href="https://example.com">
@@ -94,9 +93,7 @@ Preconnect works much like prefetch, but also performs the TCP handshake and neg
 
 ##### Prerender
 
-Prerender allows us to preload all of the assets at a given URL.  
-
-> This is like opening the URL in a hidden tab – all the resources are downloaded, the DOM is created, the page is laid out, the CSS is applied, the JavaScript is executed, etc. If the user navigates to the specified href, then the hidden page is swapped into view making it appear to load instantly.
+Prerender allows us to preload all of the assets at a given URL. Using prerender loads all of the prerendered page’s assets, executes JavaScript, and applies styles, as if the page was already opened by the user. This can be useful for multi-page content where it is likely that a user will load the second screen of page content.
 
 ```
 <link rel="prerender" href="http://example.com“>
@@ -104,24 +101,25 @@ Prerender allows us to preload all of the assets at a given URL.
 
 ##### Preload
 
-Preload is a new [browser specification](https://w3c.github.io/preload/) that, as of writing, is only available in Chrome 50+, Opera 37+, and modern Android browsers[^2]. As the specification describes preload, there are currently
-
-> cases where some resources need to be fetched as early as possible, but their processing and execution logic is subject to application-specific requirements - e.g. dependency management, conditional loading, ordering guarantees, and so on. Currently, it is not possible to deliver this behavior without a performance penalty.
-
+Preload is a new [browser specification](https://w3c.github.io/preload/) that, as of writing, is only available in Chrome 50+, Opera 37+, and modern Android browsers[^3]. Unlike prefetch, preload is intended for resources that are needed for the current page but are not immediately executed on page load. Preload is also notable for having the `as` attribute, allowing us to give further instruction to the browser for resource priority.
 
 ```
 <link rel="preload" href="/styles/other.css" as="style">
+<link rel="preload" href="/scripts/other.js" as="script">
 ```
 
-###### Further Reading on the Four Pre’s
+Yoav Weiss’s excellent article [Preload: What Is It Good For?](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/) delves into the potential usefulness of preload.
+
+###### Further Reading
 
 - [Prebrowsing](http://www.stevesouders.com/blog/2013/11/07/prebrowsing/)
 - [Prefetching, preloading, prebrowsing](https://css-tricks.com/prefetching-preloading-prebrowsing/)
 - [Eliminating Roundtrips with Preconnect](https://www.igvita.com/2015/08/17/eliminating-roundtrips-with-preconnect/)
-- [Preload: What Is It Good For?](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/)
+- [Link prefetching FAQ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ)
 
 [^1]: http://www.httparchive.org/trends.php
-[^2]: http://caniuse.com/#feat=link-rel-preload
+[^2]: http://caniuse.com/#feat=link-rel-preconnect
+[^3]: http://caniuse.com/#feat=link-rel-preload
 
 ### Optimizing Files, Images, and Fonts
 
