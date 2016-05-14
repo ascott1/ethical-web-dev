@@ -12,12 +12,6 @@ Facebook’s empathy lab:
 - https://www.washingtonpost.com/news/the-switch/wp/2015/03/31/facebooks-empathy-lab-how-facebook-designs-for-disabled-users/
 - http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10?r=UK&IR=T
 
-- avoid render blocking
-- file size
-- number of resources
-- server response time
-- perceived performance
-
 ## File size
 
 As of writing, the average web page requires a user to download roughly 2.3MB worth of data[^1]. Using this metric, the first 5.25 inch hard drive, the 1980 Seagate ST-506, would be able to hold just two modern web pages. 
@@ -28,7 +22,7 @@ With varying connection speeds around the world, the cost of accessing our site�
 
 Here is the cost of a few different sites when accessed in various parts of the world:
 
-[TODO: FORMAT AS TABLE]
+[TODO: FORMAT AS TABLE?]
 
 [Wikipedia Article](https://whatdoesmysitecost.com/test/160430_G5_b0f0622361ae1d0fffe2eeaf5d43fbbb)
 Size: 0.23MB
@@ -54,7 +48,7 @@ France: $0.04
 To decrease the footprint of our websites, we can aim to:
 
 1. Minimize the number of resources
-2. Optimize images and fonts
+2. Optimize files, images, and fonts
 3. Serve responsive images
 4. Leverage gzip and caching
 
@@ -62,18 +56,72 @@ By putting these four best practices in action, we ensure that our site’s user
 
 ### Number of Resources
 
-Perhaps the biggest impact we can have on file size and data transfer is to limit the number of resources sent to the user.
+Perhaps the biggest impact we can have on reducing data transfer for first time users is to limit the number of resources sent to the user. Each individual resource on a page requires an individual HTTP request. A waterfall chart, such as the ones found in Chrome’s developer tools, shows how long it takes to download each resource.
 
-- HTTP requests and DNS lookups
-- the pre’s
-    - prefetch 
-    - preconnect
-    - prerender
-    - preload
+![Image of Google Chrome’s Network waterfall chart](img/waterfall.png)
+
+To reduce the number of requests a browser makes, it is common to bundle files together. We can achieve this through techniques such as bundling CSS and JavaScript into single files and the use of image sprites.
+
+### http2 
+
+#### The Four Pre’s (Prefetch, Preconnect, Prerender, Preload)
+
+In addition to reducing the number of resources, we can make use of several techniques to prefetch the content we need. I call these “The Four Pre’s” (prefetch, preconnect, pretender, and preload) and each can be useful in a different context where we may want to instruct the browser to download a resource before it is needed. This allows us, as developers, to give further instruction to the browser about the resources our users will need.
+
+##### Prefetch
+
+Prefetch allows us to request that the browser resolves a DNS lookup for another host that the browser will access. This is really useful when loading things such as third party scripts.
+
+To use prefetch we add a `link` tag to the `<head>` of our HTML page.
+
+```
+<link rel="dns-prefetch" href="//example.com">
+```
+
+We can also prefetch specific resources
+
+```
+<link rel="dns-prefetch" href="example.com/style.css">
+```
+
+##### Preconnect
+
+Preconnect works much like prefetch, but also performs the TCP handshake and negotiates the TLS tunnel if needed. 
+
+```
+<link rel="preconnect" href="https://example.com">
+```
+
+##### Prerender
+
+Prerender allows us to preload all of the assets at a given URL.  
+
+> This is like opening the URL in a hidden tab – all the resources are downloaded, the DOM is created, the page is laid out, the CSS is applied, the JavaScript is executed, etc. If the user navigates to the specified href, then the hidden page is swapped into view making it appear to load instantly.
+
+```
+<link rel="prerender" href="http://example.com“>
+```
+
+##### Preload
+
+Preload is a new [browser specification](https://w3c.github.io/preload/) that, as of writing, is only available in Chrome 50+, Opera 37+, and modern Android browsers[^2]. As the specification describes preload, there are currently
+
+> cases where some resources need to be fetched as early as possible, but their processing and execution logic is subject to application-specific requirements - e.g. dependency management, conditional loading, ordering guarantees, and so on. Currently, it is not possible to deliver this behavior without a performance penalty.
+
+
+```
+<link rel="preload" href="/styles/other.css" as="style">
+```
+
+###### Further Reading on the Four Pre’s
+
+- [Prebrowsing](http://www.stevesouders.com/blog/2013/11/07/prebrowsing/)
+- [Prefetching, preloading, prebrowsing](https://css-tricks.com/prefetching-preloading-prebrowsing/)
+- [Eliminating Roundtrips with Preconnect](https://www.igvita.com/2015/08/17/eliminating-roundtrips-with-preconnect/)
+- [Preload: What Is It Good For?](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/)
 
 [^1]: http://www.httparchive.org/trends.php
-
-### http2
+[^2]: http://caniuse.com/#feat=link-rel-preload
 
 ### Optimizing Files, Images, and Fonts
 
@@ -131,7 +179,7 @@ For sites using a front-end build process, such as Gulp, Grunt, or npm scripts w
 Serve different image sizes at different viewport widths (responsive images)
 
 
-Fonts:
+#### Web Fonts
 
 > Some browsers will wait a predetermined amount of time (usually three seconds) for the font to load before they give up and show the text using the fallback font-family. But just like a loyal puppy, WebKit browsers (Safari, default Android Browser, Blackberry) will wait forever (okay, often 30 seconds or more) for the font to return. This means your custom fonts represent a potential single point of failure for a usable site.
 
@@ -162,7 +210,7 @@ Read:
 
 ### Gzipping and Caching
 
-Introduce gzipping and caching
+Though we may optimize our files locally, we can also configure our server to ensure that files are served efficiently to our users. Two common and effective approaches are the use of gzip and caching.
 
 
 #### Gzip
@@ -240,7 +288,7 @@ There are several tools to automate this process, depending on your framework an
 - [Rails config.assets.digest](what-is-fingerprinting-and-why-should-i-care-questionmark) - A Rails setting for appending a hash to static file assets. This is enabled in production environments by default.
 - [static-asset](https://www.npmjs.com/package/static-asset) - A static asset manager for Node.JS, designed for Express.
 
-
+## CDN’s
 
 ## Page rendering
 
@@ -253,14 +301,44 @@ Critical rendering path
 
 ## Testing Performance
 
-### Initial test
+Though we may follow a number of best practices for web performance within our application, it is useful to test and evaluate our site’s performance. We can measure performance while simulating devices and network conditions to provide us with a better understanding of how our site performs. 
 
-- Open the site in Chrome. Open DevTools, and do a hard refresh while the Network tab is open.
-- Run a test on webpagetest.org.
+### Dev Tools
+
+When developing locally, we can begin testing performance using our browser’s developer tools. Using Google Chrome, we can load our site, open DevTools, click the Network tab, and perform a hard refresh (Ctrl + F5, Windows and Linux; Cmd + Shift + R, Mac). As the page loads, we can see a waterfall chart of the assets loaded on our page.
+
+![Image of Network tab](img/network-tab.png)
+
+The Network tab also provides us with the option to simulate throttled data networks. This gives us the opportunity to use our applications under varying network conditions, getting a sense of how functional they are when assets load at a slower rate and allowing us to build empathy for users who access our tools under less ideal conditions.
+
+![Throttle options](img/throttle.png)
+
+#### Further Reading
+
+- [Page Load Performance](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance)
+- [Using the Chrome Debugger Tools, part 2: The Network Tab](http://commandlinefanatic.com/cgi-bin/showarticle.cgi?article=art034)
 
 ### WebPagetest
 
-http://www.webpagetest.org/
+[WebPagetest](http://www.webpagetest.org) is web-based tool that allows us to examine the performance of a site with various browsers and network conditions. To begin using WebPagetest, we need only to visit the site and add a URL. The results of the test will provide data about our site’s load time.
+
+One of the useful features WebPagetest provides is an overview chart containing information around load time for initial visits and repeat views to the site.
+
+![WebPagetest chart of load times](img/load-time.png)
+
+Another useful feature is a filmstrip view of the site’s progress when loading. This allows us to see more clearly the initial render of the page and how resources are loaded in the DOM.
+
+![WebPagtest filmstrip view](img/filmstrip.png)
+
+Using these features we are able to create metrics to measure the performance of our site and compare performance improvements throughout development.
+
+WebPagetest is an [open source tool](https://github.com/WPO-Foundation), making it possible to contribute to its development as well as host your own instance, which can be valuable for testing sites before they are publicly available.
+
+
+#### Further Reading
+
+- [WebPagetest Documentation](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/quick-start-quide)
+- [Using WebPageTest](http://shop.oreilly.com/product/0636920033592.do) by Rick Viscomi, Andy Davies, and	 Marcel Duran
 
 
 ### Other Tools
@@ -276,14 +354,14 @@ https://timkadlec.com/2014/11/performance-budget-metrics/
 
 ## Conclusion
 
-Things not covered in this chapter…
-
-CDN’s (Akamai, Cloudflare)
 
 ## Further Reading
 
+- [Designing for Performance](http://designingforperformance.com/)
 - [The Web Site Obesity Crisis](http://idlewords.com/talks/website_obesity.htm)
 - [Smaller, Faster Websites](https://bocoup.com/weblog/smaller-faster-websites)
 - [Designing for Performance: The Basics of Page Speed](http://designingforperformance.com/basics-of-page-speed/)
 - [Google Web Fundamentals: Performance](https://developers.google.com/web/fundamentals/performance/)
+- [Building a Faster Web](http://patrickhamann.com/workshops/performance/tasks/start.html)
+- [Front-end performance for web designers and front-end developers](http://csswizardry.com/2013/01/front-end-performance-for-web-designers-and-front-end-developers/)
 - [W3C Web Performance Working Group](https://www.w3.org/2010/webperf/)
