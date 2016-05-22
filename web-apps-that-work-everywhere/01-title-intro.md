@@ -49,3 +49,5 @@ Device type: http://gs.statcounter.com/#all-comparison-ww-monthly-201504-201603-
 
 Internet connection speeds: https://www.akamai.com/us/en/multimedia/documents/state-of-the-internet/akamai-state-of-the-internet-report-q3-2015.pdf
 
+
+http://www.pewglobal.org/2016/02/22/smartphone-ownership-and-internet-usage-continues-to-climb-in-emerging-economies/technology-report-01-03/
