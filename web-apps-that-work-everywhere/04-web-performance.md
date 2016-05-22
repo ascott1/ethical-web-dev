@@ -12,6 +12,9 @@ Facebook’s empathy lab:
 - https://www.washingtonpost.com/news/the-switch/wp/2015/03/31/facebooks-empathy-lab-how-facebook-designs-for-disabled-users/
 - http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10?r=UK&IR=T
 
+> 80% of the end-user response time is spent on the front-end
+– [Steve Sounders](https://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html)
+
 ## File size
 
 As of writing, the average web page requires a user to download roughly 2.3MB worth of data[^1]. Using this metric, the first 5.25 inch hard drive, the 1980 Seagate ST-506, would be able to hold just two modern web pages. 
@@ -147,7 +150,7 @@ Desktop and web tools may be great for simple sites or those that aren’t updat
 
 #### Images
 
-Images comprise the largest file sizes on a typical web page. [ADD COOL STAT]. By using images well and reducing their file sizes, we can significantly reduce the bandwidth they consume.
+Images comprise the largest file sizes on a typical web page. [ADD COOL STAT - more than 60%]. By using images well and reducing their file sizes, we can significantly reduce the bandwidth they consume.
 To do this we should use the proper image formats, optimize images to reduce file size, and serve the image size needed by the browser.
 
 When creating images, we need to consider their content and choose the most appropriate format. 
@@ -174,7 +177,27 @@ For sites using a front-end build process, such as Gulp, Grunt, or npm scripts w
 
 #### Responsive Images
 
+Images make up the [majority of a site’s page weight](http://httparchive.org/interesting.php). With this in 
+
+[Chart of average page weight - http://httparchive.org/interesting.php ]
+
+
+
 Serve different image sizes at different viewport widths (responsive images)
+
+https://developer.mozilla.org/en-US/Learn/HTML/Multimedia_and_embedding/Responsive_images
+
+How srcset works: 
+- http://ericportis.com/posts/2014/srcset-sizes/
+- https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/
+
+Polyfill: https://scottjehl.github.io/picturefill/
+
+Tools
+http://www.responsivebreakpoints.com/
+https://ausi.github.io/respimagelint/
+http://sizersoze.org/
+
 
 
 #### Web Fonts
@@ -187,10 +210,13 @@ https://www.keycdn.com/blog/web-font-performance/
 
 Read: 
 
+https://fontfaceobserver.com/
+
 - https://www.zachleat.com/web/
 - https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization
 - https://www.filamentgroup.com/lab/font-loading.html
 - https://www.bramstein.com/writing/web-font-loading-patterns.html
+- https://drafts.csswg.org/css-font-loading/
 
 ```
 @font-face {
@@ -232,7 +258,11 @@ Here is what the Apache 2 configuration, set to gzip HTML, CSS, and JavaScript w
 </IfModule>
 ```
 
-For a look at a complete `.htaccess` with additional file types, see the [HTML5 Boilerplate Apache configuration](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L740-L774).
+For a look at a complete `.htaccess` with additional file types, see the [HTML5 Boilerplate Apache configuration](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L740-L774). 
+
+A quick and simple way to see GZIP in action is to open Chrome DevTools and inspect the “Size / Content” column in the Network panel: “Size” indicates the transfer size of the asset, and “Content” the uncompressed size of the asset. 
+
+The tool [GzipWTF](http://gzipwtf.com/) provides an easy way to check which assets on your site are being gzipped.
 
 
 #### Caching
@@ -339,16 +369,24 @@ WebPagetest is an [open source tool](https://github.com/WPO-Foundation), making 
 - [Using WebPageTest](http://shop.oreilly.com/product/0636920033592.do) by Rick Viscomi, Andy Davies, and	 Marcel Duran
 
 
-### Other Tools
-
 ## Performance Budgets
 
-https://timkadlec.com/2013/01/setting-a-performance-budget/
+When managing web performance, many choose to enact a performance budget. A performance budget is a self-determined limits of the size or number and number of assets, page load speed, or overall page weight.
 
-> people perceive tasks as faster or slower when there’s a least a 20% time difference. So, let’s take our fastest times and try to beat them by 20%.
+Tim Kadlec [helpfully documented](https://timkadlec.com/2014/11/performance-budget-metrics/) the types of metrics that may be useful when setting a performance budget:
 
-http://danielmall.com/articles/how-to-make-a-performance-budget/
-https://timkadlec.com/2014/11/performance-budget-metrics/
+- **Milestone timings** such as load time, domContentLoaded, and time to render.
+- **SpeedIndex** as provided by [WebPagetest](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index).
+- **Quantity based metrics** such as the total number of requests;, the overall weight of the page, and the total image weight.
+- **Rule based metrics** such as the PageSpeed or YSlow score.
+
+For existing projects, Daniel Mall [helpfully points out](http://danielmall.com/articles/how-to-make-a-performance-budget/) that “people perceive tasks as faster or slower when there’s a least a 20% time difference.” Based on this, he suggests attempting to beat the current render times by 20%. 
+
+### Performance Budgets and Build Processes
+
+Setting a performance budget is a great first step, but running our site through WebPagetest on every build is impractical. In her post [Automate Performance Testing with Grunt.js](https://www.sitepoint.com/automate-performance-testing-grunt-js/) Catherine Farman details how she has enabled performance budgeting in her build process. Though specific to Grunt the format is easily applied to other build tools. If using Gulp, npm packages, or another Node based build system, the [WebPagetest](https://www.npmjs.com/package/webpagetest) module will provide similar output.
+
+Through the use of a performance budget we are able to set and maintain performance standards and expectations. This can provide a helpful guide to ensuring a project stays quick and performant. 
 
 ## Conclusion
 
