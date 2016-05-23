@@ -65,7 +65,19 @@ Perhaps the biggest impact we can have on reducing data transfer for first time 
 
 To reduce the number of requests a browser makes, it is common to bundle files together. We can achieve this through techniques such as bundling CSS and JavaScript into single files and the use of image sprites.
 
-### http2 
+
+<aside>
+### HTTP/2 
+
+The HTTP/2 protocol may challenge some of our assumptions about combining resources. While HTTP/1.1 only services a single server request at a time, HTTP/2 enables multiple simultaneous connections. This means that bundling, inlining, and combining resources may be less effective as we move to the new protocol. In fact, these techniques may slow down our site when served over HTTP/2. 
+
+**To learn more about HTTP/2**: 
+
+- [Rebecca Murphy’s HTTP/2 resources](https://pinboard.in/u:rmurphey/t:http2/)
+- [HTTP/2 by Ilya Grigorik](https://www.oreilly.com/learning/http2-a-new-excerpt)
+- [HTTP/2 for Web Developers](https://blog.cloudflare.com/http-2-for-web-developers/)
+- [http2 explained](https://daniel.haxx.se/http2/)
+- [Getting Ready For HTTP/2: A Guide For Web Designers And Developers](https://www.smashingmagazine.com/2016/02/getting-ready-for-http2/)
 
 #### The Four Pre’s (Prefetch, Preconnect, Prerender, Preload)
 
@@ -202,40 +214,34 @@ http://sizersoze.org/
 
 #### Web Fonts
 
+Web Fonts have provided the ability to add rich typography to our sites. This has been a fantastic development for design, as [95% of Web Design is typography](https://ia.net/know-how/the-web-is-all-about-typography-period). 57% of websites now use custom fonts[^1], with the average web font size of font resources measuring over 138kb[^2]. This means that font resources can account for a fairly large amount of our front-end resources, but through optimization and font-loading techniques we can ensure that custom web fonts do not create a significant performance hit for our site.
+
+The first step to serving improved web fonts is through optimization. Web font services such as Typekit, Google Web Fonts, Webtype, and others allow users to be specific about the weights and character glyphs required when serving a typeface. If you are self-hosting or using an open source font the loos [Subsetter](http://www.subsetter.com/) or Font Squirrel’s [Web Font Generator](https://www.fontsquirrel.com/tools/webfont-generator) provide the ability to remove glyphs or additional language support, reducing the file size of the font files.
+
+Once we have optimized file size of our typefaces, we can consider how they are served to our users. In Zach Leatherman’s post [How we use web fonts responsibly, or, avoiding a @font-face-palm](https://www.filamentgroup.com/lab/font-loading.html) he points out:
+
 > Some browsers will wait a predetermined amount of time (usually three seconds) for the font to load before they give up and show the text using the fallback font-family. But just like a loyal puppy, WebKit browsers (Safari, default Android Browser, Blackberry) will wait forever (okay, often 30 seconds or more) for the font to return. This means your custom fonts represent a potential single point of failure for a usable site.
 
-https://www.keycdn.com/blog/web-font-performance/
+This single point of failure means that it is in our user’s best interest to provide effective and performant fallbacks when loading web fonts. To do so, I recommend using the [Font Face Observer](https://fontfaceobserver.com/) library. Font Face Observer is a web font loader, which will load a font file and return a JavaScript promise that is resolved or rejected when the font loads or fails. This allows us fine grain control over how our site performs in this two scenarios.
 
-[57% of websites now use custom fonts](http://httparchive.org/trends.php#perFonts)
+FOUT vs FOIT
 
-Read: 
 
-https://fontfaceobserver.com/
+[^1]: http://httparchive.org/trends.php#perFonts
+[^2]: http://httparchive.org/trends.php#bytesFont&reqFont
+
+#### Further Reading
 
 - https://www.zachleat.com/web/
 - https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization
 - https://www.filamentgroup.com/lab/font-loading.html
 - https://www.bramstein.com/writing/web-font-loading-patterns.html
 - https://drafts.csswg.org/css-font-loading/
-
-```
-@font-face {
-  font-family: 'My Web Font';
-  font-style: normal;
-  font-weight: 400;
-  src: local('My Web Font'),
-       url('/fonts/myfont.woff2') format('woff2'), 
-       url('/fonts/myfont.woff') format('woff'),
-       url('/fonts/myfont.ttf') format('ttf'),
-       url('/fonts/myfont.eot') format('eot');
-}
-```
-
+- https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en
 
 ### Gzipping and Caching
 
 Though we may optimize our files locally, we can also configure our server to ensure that files are served efficiently to our users. Two common and effective approaches are the use of gzip and caching.
-
 
 #### Gzip
 
