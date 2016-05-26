@@ -226,13 +226,13 @@ This single point of failure means that it is in our user’s best interest to p
 
 Font Face Observer is a web font loader, which will load a font file and return a JavaScript promise that is resolved or rejected when the font loads or fails. This provides us with fine grain control over how our site performs in these scenarios.
 
-The two default font rendering behaviors are either to display a   flash of invisible text (FOIT) or a flash of unstyled text (FOUT). Originally all browsers defaulted to the FOUT rendering, displaying a local font before displaying the webfoot, occasionally causing a jarring effect and content reflows when the web font noticeably loaded. Using Font Face Observer we can implement a technique called Flash of Faux Text (FOFT), which will load only the default weight of the font initially, which causes the browser to implement faux bolding and italics, until all weights have loaded. This significantly reduces the time needed to first render and removes the awkward reflow caused by FOUT. Taking this a step further, you may also implement only a subset of the default weight and load it instantly as a data URL as described bb Zach Leatherman in his post [Critical Web Fonts](https://www.zachleat.com/web/critical-webfonts/). This causes near instant loading of web fonts.
+The two default font rendering behaviors are either to display a   flash of invisible text (FOIT) or a flash of unstyled text (FOUT). Originally all browsers defaulted to the FOUT rendering, displaying a local font before displaying the webfoot, occasionally causing a jarring effect and content reflows when the web font noticeably loaded. Using Font Face Observer we can implement a technique called Flash of Faux Text (FOFT), which will load only the default weight of the font initially, which causes the browser to implement faux bolding and italics, until all weights have loaded. This significantly reduces the time needed to first render and removes the awkward reflow caused by FOUT. Taking this a step further, you may also implement only a subset of the default weight and load it instantly as a data URL as described bb Zach Leatherman in his post [Critical Web Fonts](https://www.zachleat.com/web/critical-webfonts/). This causes near instant loading of web fonts while reducing the chance of font loading failures.
 
- For simplicity’s sake let’s look at implementing the FOFT technique with Font Face Observer.
+For simplicity’s sake let’s look at implementing the FOFT technique with Font Face Observer.
  
- To begin we would load our font family in our CSS using `@font-face`.
+To begin we would load our font family in our CSS using `@font-face`:
  
- ```
+```css
   @font-face {	
    font-family: MyWebFont;
    src: local('My Web Font'),
@@ -246,7 +246,7 @@ The two default font rendering behaviors are either to display a   flash of invi
  
   @font-face {	
    font-family: MyWebFontBold;
-   src: local('My Web Font'),
+   src: local('My Web Font Bold'),
         url('/fonts/myfont-bold.woff2') format('woff2'),
         url('/fonts/myfont-bold.woff') format('woff'),
         url('/fonts/myfont-bold.ttf') format('ttf’),
@@ -254,79 +254,102 @@ The two default font rendering behaviors are either to display a   flash of invi
    font-weight: 700;	
    font-style: normal;        
  }
- ```
-
-Now, we would want to implement a series of classes for our type styles.
-
+ 
+@font-face {	
+   font-family: MyWebFontItalic;
+   src: local('My Web Font Italic'),
+        url('/fonts/myfont-italic.woff2') format('woff2'),
+        url('/fonts/myfont-italic.woff') format('woff'),
+        url('/fonts/myfont-italic.ttf') format('ttf’),
+        url('/fonts/myfont-italic.eot') format('eot');	
+   font-weight: 700;	
+   font-style: normal;        
+ }
 ```
-// if we want text to render immediately, set a font style on the body
+
+Now, we would want to implement a series of classes for our type styles:
+
+```css
+
+/* users on a slow connection may see FOUT,
+it may be worth setting a body font for
+font load failures and as a backup */
 body {
   font-family: sans-serif;
 }
 
-// if we did not set a font style on the body, we should set one here in case our fonts fail to load
+/* we can set a specific style if need be,
+for font loading failures */
 .font-failed body {
   font-family: sans-serif;
 }
 
-// class for the initial font weight
+/* if we did not set a font style on the body, 
+we should set one here in case our fonts fail to load */
 .font-loaded body {
   font-family: MyWebFont;
 }
 
-// classes for the full font weights
+/* styles for bold, italic, and other font styles */
 .font-b-loaded h1 {
     font-family: MyWebFontBold;
 }
 
+.font-b-loaded em {
+    font-family: MyWebFontItalic;
+}
+
 ```
 
-Now in our JavaScript we can use Font Face Observer to detect the font loading and manipulate the class on our HTML tag.
+Now in our JavaScript we can use Font Face Observer to detect the font loading and manipulate the class on our HTML tag:
 
-```
+```js
 var FontFaceObserver = require('fontfaceobserver');
 
-var html = doc.documentElement;
-
 // we can set a class on the html el when fonts are loading
-html.classList.add('fonts-loading');
+html.classList.add('font-loading');
 
 // create an observer for the default font weight
-var font = new FontFaceObserver( 'MyWebFont', {
+var regular = new FontFaceObserver( 'MyWebFont', {
   weight: 400
 });
 
-// adapted from https://www.zachleat.com/web/foft/
-font.check().then(function () {
-  // add the font-loaded class 
+var bold = new FontFaceObserver( 'MyWebFontBold', {
+  weight: 700
+});
+
+var italic = new FontFaceObserver( 'MyWebFontItalic', {
+  style: 'italic'
+});
+
+regular.check().then(function () {
+  // add the font-loaded class
   // when our default weight has dowloaded
   html.classList.remove('font-loading');
   html.classList.add('font-loaded');
-  
+
   // use a JS promise to add a class when additional weights
   // and styles have downloaded
-  // Font Face Observes ships with a promise polyfill
-  Promise.all([
-	  (new FontFaceObserver( 'MyWebFontBold', {
-		  weight: 700
-	  })).check(),
-		(new FontFaceObserver( 'MyWebFontItalic', {
-			style: 'italic'
-		})).check(),
-		]).then(function () {
-			html.classList.add('font-b-loaded');
-		});
-	}).catch(function () {
-     html.classList.remove('font-loading');
-     html.classList.add('font-failed');
-  });
+  // Font Face Observer ships with a promise polyfill
+  Promise
+    .all([
+      bold.check(),
+      italic.check(),
+    ])
+    .then(function () {
+      html.classList.add('font-b-loaded');
+    });
+  }).catch(function () {
+    html.classList.remove('font-loading');
+    html.classList.add('font-failed');
+});
 ```
 
 NOTE:
 The example code assumes that Font Face Observer is being loaded as a CommonJS module. The library is also available for direct download at https://github.com/bramstein/fontfaceobserver/.
 
 To speed our font loading up for repeat visitors we could also [store a session storage token](https://speakerdeck.com/bramstein/web-fonts-performance?slide=115).
-Using the technique demonstrated above we can ensure that our fonts load as quickly as possible, while minimizing the jarring effects of FOUT and FOIT.
+Using the technique demonstrated above we can ensure that our fonts load as quickly as possible, while minimizing the jarring effects of FOUT and FOIT. To see a full working example of this code take a look at 	https://github.com/ascott1/foft-demo.
  
 [^1]: http://httparchive.org/trends.php#perFonts
 [^2]: http://httparchive.org/trends.php#bytesFont&reqFont
