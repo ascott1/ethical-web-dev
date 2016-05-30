@@ -10,35 +10,289 @@ Zero connectivity
 
 Low connectivity (aka Lie-Fi)
 
+https://blog.jana.com/2015/05/21/the-data-trap-affordable-smartphones-expensive-data/
+
 http://offlinestat.es/
 
 ## Service Workers
 
-Intro
+[Service Workers](https://www.w3.org/TR/service-workers/) are a script that runs separately from the page, which provide us with a way to make our sites to work offline, run faster, and add capabilities for background features. With the limits of connectivity, Service Workers provide us with a means to build offline-first capable applications, which will load content for our users, after an initial site visit, regardless of network conditions. Best of all, Service Workers are truly a progressive enhancement, layering on an additional feature to supporting browsers without changing the functionality of our site for users of non-supporting browsers.
 
-A type of web worker (runs separately from the page)
+<aside>
+NOTE: 
+There are a potential gotchas when implementing Service Workers:
 
-Our first service worker
+1. Sites using a Service Worker must be served over https.
+2. Service Workers do not work when a user is in private browsing mode.
+3. Browser support is limited, but growing: At the time of writing, supported in Chrome, Firefox, and Opera, with planned implementation in Microsoft Edge and is under consideration for Safari [^1].
+4. Since Service Workers run as in a separate thread in the browser, they do not have access to the DOM.
+5. Service workers are scoped, meaning that they should be placed in the root of your application.
 
-Browser support
-
-### Tools
-
-https://github.com/GoogleChrome/sw-precache
-
-https://github.com/GoogleChrome/sw-toolbox
+</aside>
 
 
+Service Workers present us with many possibilities for how we handle user connectivity. For our purposes, let’s build a simple static site example that will cache all of our site’s static assets. If you are interested in following along, you can download a Service Worker free version of this example at [https://github.com/ascott1/sw-demo/archive/no-sw.zip](https://github.com/ascott1/sw-demo/archive/no-sw.zip).
 
-## In Browser Databases
+The first step of working with a Service Worker is registering the script that will contain our Service Worker code. Let’s begin by adding that code to our HTML pages. At the bottom of the page, just before the closing `</body>` tag let’s add the script registration:
 
-Intro
+```
+<!-- initiate the service worker -->
+<script>
+  if( 'serviceWorker' in navigator ) {
+      navigator.serviceWorker
+        .register( '/service-worker.js' )
+        .catch(function( err ) {
+          console.log( 
+          'ServiceWorker registration failed: ', err 
+          );
+         });
+   }
+</script>
+```
 
-IndexedDB
+This script checks for service worker support and if the support is available points the browser to a service worker script (in our case `service-worker.js`). For debugging purposes we’re also catching errors and logging the error to the console.
+
+Now that we have our script registration, let’s write our service worker. To begin create a `service-worker.js` file and place it in the root of the directory. Let’s start by specifying a version of our cache and listing the files we would like the service worker to cache. In our case we’ll cache our two HTML pages, a CSS file, a JS file, and an image.
+
+```
+var cacheVersion = 'v1';
+
+filesToCache = [
+  '/',
+  '/index.html',
+  '/about.html',
+  '/css/main.css',
+  '/js/main.js',
+  '/img/gear.png'
+]
+```
+
+If we make changes to our site, we would need to increment the cacheVersion value or risk users being served content from our cache.
+
+Now we can set up two event listeners in our service worker, `install` and `fetch`. The `install` service worker provides the browser with instructions for installing our cached files, while `fetch` provides the browser with guidelines for handling fetch events by providing the browser with either our cached files or those received over the network.
+
+```js
+self.addEventListener('install', function (e) {
+  e.waitUntil(caches.open(cacheVersion)
+    .then(function (cache) {
+      return cache.addAll(filesToCache)
+        .then(function () {
+          return self.skipWaiting();
+        });
+    }));
+});
+
+self.addEventListener('fetch', function (event) {
+  event.respondWith(caches.match(event.request)
+    .then(function (res) {
+      return res || fetch(event.request);
+  }));
+});
+```
+
+You can the full version of our service-worker.js file at [https://github.com/ascott1/sw-demo/blob/gh-pages/service-worker.js](https://github.com/ascott1/sw-demo/blob/gh-pages/service-worker.js).
+
+With these additions our simple static site is ready to work offline. To see it in action, let’s visit the demo page at [https://ascott1.github.io/sw-demo/](https://ascott1.github.io/sw-demo/).
+
+In Chrome Developer Tools we can see that the Service Worker has been downloaded in the Sources panel.
+
+![img/sw-sources.png](img/sw-sources.png)
+
+In the Network panel the files that have been cached through the Service Worker are listed with a gear icon next to their filenames.
+
+![img/sw-network.png](img/sw-network.png)
+
+Now to test the offline capability of our site by changing the “Throttling” setting in the Network panel to “Offline” and reloading our page.
+
+![img/sw-throttle.png](img/sw-throttle.png)
+
+Despite being offline, our site and site assets continue to load and is navigable. This example is simple, loading a two page static site and with minimal error handling. To dive into how these concepts can be applied to more fully featured sites and applications, see the further reading section at the end of this chapter.
+
+[^1]: https://jakearchibald.github.io/isserviceworkerready/
+
+### Service Worker Tools
+
+Managing our site’s Service Worker by hand can become unwieldy, thankfully the Google Chrome team has developed two incredibly useful tools for incorporating Service Workers into our development process. 
+
+[sw-precache](https://github.com/GoogleChrome/sw-precache) is a Node.js module that generates service workers for precaching static resources, similar to our demo. sw-precache even handles the versioning and cache busting, making it much simpler than managing a service worker by hand. Helpfully, they also provide sample [Gulp](https://github.com/GoogleChrome/sw-precache/blob/master/demo/gulpfile.js) and [Grunt](https://github.com/GoogleChrome/sw-precache/blob/master/demo/Gruntfile.js) configurations. The module can also be used standalone from the command line or as part of a [package.json script](https://github.com/ascott1/ethicalweb.org/blob/master/package.json#L28). 
+
+Here is a sample Gulp configuration for sw-precache that would cache all of our HTML, CSS, JS, and image files.
+
+```
+var swPrecache = require('sw-precache');
+
+gulp.task('generate-service-worker', function(callback) {
+  swPrecache.write('service-worker.js'), {
+    staticFileGlobs: [
+      rootDir + '/**/*.{
+        html,
+        css
+        js,
+        png,
+        jpg,
+        gif,
+        svg
+      }'
+     ]
+  }, callback);
+});
+```
+
+[sw-toolbox](https://github.com/GoogleChrome/sw-toolbox) is a script that can be imported into a Service Working, providing an API for helpers such as a variety of caching strategies, Express-style and Regex routing, and cache age. The full API is available at [https://googlechrome.github.io/sw-toolbox/docs/master/tutorial-api](https://googlechrome.github.io/sw-toolbox/docs/master/tutorial-api). 
+
+## In-Browser Databases
+
+In-browser databases provide us a way to store persistent data directly in a user’s browser. This allows us to store user data locally or to sync data from a database for offline use. This is similar to how a native mobile application might handle user data, storing user files locally and periodically syncing with a server when a device is connected to the network. 
+
+The standard for in browser storage is [IndexedDB](https://www.w3.org/TR/IndexedDB/), a hierarchical key/value database for in browser use. Let’s look at how we might add an IndexedDB database to a site.
+
+The first step when working with IndexedDB is to create and open a database.
+
+```
+var indexedDB = window.indexedDB;
+var open = indexedDB.open('ShuttleDatabase', 1);
+```
+
+Next we will create the schema for our database, by adding the object stores we will need for our database as part of the `on upgradeneeded`method:
+
+```
+open.onupgradeneeded = function() {
+  var db = open.result;
+  var store = db.createObjectStore('Missions', {keyPath: "id"});
+};
+```
+
+Then we can create event handlers for both successful creation or to handle errors.
+
+```
+open.onerror = function(event) {
+  // error handler
+  console.log(
+    'Houston, we have problem: ' + event.target.errorCode
+  );
+};
+
+open.onsuccess = function(event) {
+  // success
+  console.log('We have liftoff!');
+};
+```
+
+Now let’s start a new database transaction and add some data to our database.
+
+```
+open.onsuccess = function() {
+  var db = open.result;
+  var transaction = db.transaction('Missions', 'readwrite');
+  var objectStore = transaction.objectStore('Missions');
+
+  // our data
+  objectStore.put({
+    id: "STS-1",
+    shuttle: "Columbia",
+    crew: 2,
+    launchDate: new Date(1981, 03, 12, 12, 00, 04)
+  });
+  objectStore.put({
+    id: "STS-6",
+    shuttle: "Challenger",
+    crew: 4,
+    launchDate: new Date(1983, 03, 4, 18, 30, 00)
+  });
+}
+```
+
+We can then query that data inside of our `onsuccess` handler.
+
+```
+var getColumbia = store.get('STS-1');
+var getChallenger = store.get('STS-6');
+
+getColumbia.onsuccess = function() {
+  console.log(getColumbia.result.shuttle);
+};
+
+getChallenger.onsuccess = function() {
+  console.log(getChallenger.result.launchDate);
+};
+```
+
+Lastly we need to close the database transaction once we are done.
+
+```
+transaction.oncomplete = function() {
+  db.close();
+};
+```
+
+Putting it all together, it would look like this:
+
+```javascript
+var indexedDB = window.indexedDB;
+
+// open or create the database
+var open = indexedDB.open('ShuttlesDatabase', 1);
+
+// open or create the schema
+open.onupgradeneeded = function() {
+  var db = open.result;
+  var store = db.createObjectStore('Missions', {keyPath: "id"});
+};
+
+// handle errors
+open.onerror = function(event) {
+  console.log(
+    'Houston, we have problem: ' + event.target.errorCode
+  );
+};
+
+open.onsuccess = function() {
+  // begin the transaction
+  var db = open.result;
+  var transaction = db.transaction('Missions', 'readwrite');
+  var objectStore = transaction.objectStore('Missions');
+
+  // add our data
+  objectStore.put({
+    id: "STS-1",
+    shuttle: "Columbia",
+    crew: 2,
+    launchDate: new Date(1981, 03, 12, 12, 00, 04)
+  });
+  objectStore.put({
+    id: "STS-6",
+    shuttle: "Challenger",
+    crew: 4,
+    launchDate: new Date(1983, 03, 4, 18, 30, 00)
+  });
+
+  // query our data
+  var getColumbia = objectStore.get('STS-1');
+  var getChallenger = objectStore.get('STS-6');
+
+  getColumbia.onsuccess = function() {
+    console.log(getColumbia.result.shuttle);
+  };
+
+  getChallenger.onsuccess = function() {
+    console.log(getChallenger.result.launchDate);
+  };
+
+  // close the db when the transaction is done
+  transaction.oncomplete = function() {
+    db.close();
+  };
+}
+```
+
+For another example, I recommend looking at James Messinger’s IndexedDB Example](https://gist.github.com/BigstickCarpet/a0d6389a5d0e3a24814b), which is the basis for this example.
 
 localForage library
 
 Sync with server/PouchDB
+
+
+Using an in-browser database may not be ideal for all applications, but it expands the suite of solutions for building applications that are responsive in a wide variety of network conditions. By considering these solutions, we give our users the opportunity to connect with our application’s data offline.
 
 ## Additional libraries and tools
 
@@ -61,6 +315,7 @@ Sync with server/PouchDB
 - [Designing Offline-First Web Apps](http://alistapart.com/article/offline-first)
 - [Offline-First Awesome List](https://github.com/pazguille/offline-first)
 - [Service Worker Cookbook](https://serviceworke.rs/)
+- [Service Workers Explained](https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md)
 - [Your first offline web app](https://developers.google.com/web/fundamentals/getting-started/your-first-offline-web-app)
 - [Using IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB)
 - [MDN: Working Offline](https://developer.mozilla.org/en-US/Apps/Fundamentals/Offline)
