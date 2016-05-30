@@ -1,27 +1,20 @@
 # Web performance
 
-introduction
+Each Tuesday morning, when a Facebook employee logs in to the application, they are presented with an option to try out the app on a slower connection for an hour. This is part of an initiative they call [2G Tuesdays](http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10), as an attempt to recognize the importance and challenges of designing and developing applications that are served over a variety of network conditions. 
 
-Mobile bandwidth
-
-https://paul.kinlan.me/the-web-in-india-anecdote-1/
+As developers, we often have access to good hardware and quick web connections, but this may not always be the case for our users. Even those of us who live in major cities may experience variable network conditions, clogged or throttled by overuse. When we build our sites and applications with a performance mindset, we benefit all of our users.  
 
 
-Facebook’s empathy lab: 
-
-- https://www.washingtonpost.com/news/the-switch/wp/2015/03/31/facebooks-empathy-lab-how-facebook-designs-for-disabled-users/
-- http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10?r=UK&IR=T
+## File size
 
 > 80% of the end-user response time is spent on the front-end
 – [Steve Sounders](https://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html)
-
-## File size
 
 As of writing, the average web page requires a user to download roughly 2.3MB worth of data[^1]. Using this metric, the first 5.25 inch hard drive, the 1980 Seagate ST-506, would be able to hold just two modern web pages. 
 
 ![Seagate ST-506 Hard Drive](img/st-506.jpg)
 
-With varying connection speeds around the world, the cost of accessing our site’s can differ. The tool [What does my site cost?](https://whatdoesmysitecost.com) seeks to provide insight into the real-world data costs of sites accessed over a mobile connection.
+With varying connection speeds around the world, the cost of accessing our site’s can differ. The tool [What does my site cost?](https://whatdoesmysitecost.com) seeks to provide insight into the real-world data costs of sites accessed over a mobile connection. In many parts of the world, the cost of 500MB of data far exceeds the hourly minimum wage[^1].
 
 Here is the cost of a few different sites when accessed in various parts of the world:
 
@@ -56,6 +49,8 @@ To decrease the footprint of our websites, we can aim to:
 4. Leverage gzip and caching
 
 By putting these four best practices in action, we ensure that our site’s users are transferring the lowest amount of data from our servers to their devices.
+
+[^1]: https://blog.jana.com/2015/01/26/the-data-trap/
 
 ### Number of Resources
 
@@ -162,7 +157,10 @@ Desktop and web tools may be great for simple sites or those that aren’t updat
 
 #### Images
 
-Images comprise the largest file sizes on a typical web page. [ADD COOL STAT - more than 60%]. By using images well and reducing their file sizes, we can significantly reduce the bandwidth they consume.
+Images comprise the largest file sizes on a typical web page, taking up more than 60% of the bytes on an average page. By using images well and reducing their file sizes, we can significantly reduce the bandwidth they consume.
+
+[Chart of average page weight - http://httparchive.org/interesting.php ]
+
 To do this we should use the proper image formats, optimize images to reduce file size, and serve the image size needed by the browser.
 
 When creating images, we need to consider their content and choose the most appropriate format. 
@@ -189,27 +187,77 @@ For sites using a front-end build process, such as Gulp, Grunt, or npm scripts w
 
 #### Responsive Images
 
-Images make up the [majority of a site’s page weight](http://httparchive.org/interesting.php). With this in 
+If our site’s and applications are being accessed on a wide range of devices, serving a large scaled image for each viewport width becomes less than ideal. By doing this, we are often sending images meant for a desktop browser to our most resource constrained devices. Thankfully, the [srcset](https://w3c.github.io/html/semantics-embedded-content.html#element-attrdef-img-srcset) and [picture element](https://w3c.github.io/html/semantics-embedded-content.html#the-picture-element) standards provide us with techniques to serve optimized images at different screen resolutions.
 
-[Chart of average page weight - http://httparchive.org/interesting.php ]
+`srcset` is an additional attribute added to the `img` element, providing the browser with guidelines for a variety of image sizes. By default `srcset` is progressively enhanced. We can start with a standard image tag.
 
 
+```html
+<img src="img/midfi.jpg" alt="…">
+```
 
-Serve different image sizes at different viewport widths (responsive images)
+Now, using `srcset` we can specify different images for viewport widths. For each image we specify the image file along with the width of the image. The browser will then do the math to serve the appropriate image file based on the viewport width and device resolution. 
 
-https://developer.mozilla.org/en-US/Learn/HTML/Multimedia_and_embedding/Responsive_images
+```html
+<img srcset="
+            img/lofi.jpg 320w,
+            img/midfi.jpg 840w,
+            img/hifi.jpg 1200w,
+            img/super-hifi.jpg 2400w,
+    src="img/midfi.jpg"
+    alt="…">
+```
 
-How srcset works: 
-- http://ericportis.com/posts/2014/srcset-sizes/
-- https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/
 
-Polyfill: https://scottjehl.github.io/picturefill/
+The above example assumes that the images are being served at 100% of the viewport width. For images that are smaller, there is an additional `sizes` attribute. We can provide suggestions to the browser about how wide the image will be displayed compared to the viewport. If the image was going to be displayed at half of the viewport width, we would add the following `sizes` attribute:
 
-Tools
-http://www.responsivebreakpoints.com/
-https://ausi.github.io/respimagelint/
-http://sizersoze.org/
+```
+sizes="50vw"
+```
 
+We can also include media queries in the sizes attribute, suggesting that the image may be displayed at a percentage below or above a certain breakpoint. The following example would suggest to the browser that an image is displayed at a third of the viewport size at sizes above 600px and at the full browser width below that.
+
+```
+sizes="(min-width: 800px) 33vw, 100vw"
+```
+
+Putting it all together, our markup would appear as:
+
+```html
+<img 
+    sizes="(min-width: 800px) 33vw, 100vw"
+    srcset="
+            img/lofi.jpg 320w,
+            img/midfi.jpg 840w,
+            img/hifi.jpg 1200w,
+            img/super-hifi.jpg 2400w,
+    src="img/midfi.jpg"
+    alt="…">
+```
+
+For [most responsive image use cases](http://blog.cloudfour.com/dont-use-picture-most-of-the-time/) the `img` element with `srcset` will provide the the flexibility that we need. In some instances however, we may want more fine grained control over the images served to our users. This is typically referred to as art direction in responsive images, where we may want cropped or different images served to users dependent on browser context. In these instances we can use the `picture` element. While `srcset` works as a suggestion to the browser, `picture` provides exact specifications. The syntax for the `picture` element nests `source` elmements, specifying the media width and src of the image file. Again, we can fall back to a progressively enhanced standard `img` tag for non-supporting browsers.
+
+```
+<picture>
+    <source media="(min-width: 800px)" srcset="large.jpg">
+    <source media="(min-width: 600px)" srcset="medium.jpg">
+    <img src="small.jpg" alt="…">
+</picture>
+```
+
+Through the use of responsive image techniques, we can provide users with smaller files optimized for their viewport sizes. This reduces file sizes, speeds up transfer times, and reduces bandwidth costs when dealing with the largest resources found on a typical web page.s
+
+##### Responsive Images Tools
+- [Responsive Images Breakpoints Generator](http://www.responsivebreakpoints.com/)
+- [Responsive Images Linter](https://ausi.github.io/respimagelint/)
+
+
+##### Further Reading
+
+- [srcset and sizes](http://ericportis.com/posts/2014/srcset-sizes/)
+- [MDN: Responsive Images](https://developer.mozilla.org/en-US/Learn/HTML/Multimedia_and_embedding/Responsive_images)
+- [Native Responsive Images](https://dev.opera.com/articles/native-responsive-images/)
+- [Responsive Images: If you’re just changing resolutions, use srcset](https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/)
 
 
 #### Web Fonts
@@ -448,16 +496,70 @@ There are several tools to automate this process, depending on your framework an
 - [Rails config.assets.digest](what-is-fingerprinting-and-why-should-i-care-questionmark) - A Rails setting for appending a hash to static file assets. This is enabled in production environments by default.
 - [static-asset](https://www.npmjs.com/package/static-asset) - A static asset manager for Node.JS, designed for Express.
 
-## CDN’s
+## Optimize the Rendering Path
 
-## Page rendering
+The rendering path is the steps taken from the browser downloading our HTML, CSS, and JavaScript and displaying something on the screen. CSS is render blocking, meaning that it must be downloaded and the styles parsed before the browser moves on to the next rendering step. Similarly, JavaScript is parser blocking, meaning that whenever a script is encountered it must be downloaded *and* executed before the browser can continue parsing the document.
 
-- CSS in the `<head>`
-- JS at the bottom of the page
+To improve the rendering of our page, we can pay more attention to how our site’s CSS and JavaScript are included in the page. First, we should have as little blocking JavaScript as possible,  instead placing our `<script>` tags above the closing `</body>` tag in our page. Critical JavaScript that must be included on the initial render can be inlined for increased performance.
 
-## Perceived Performance
+```
+<html>
+  <head>
+    <!— inline critical JS —>
+    <script type="text/javascript">
+      /* inlined critical javascript */
+    </script>
+  </head>
+  <body>
+    <h1>Page Content</h1>
+    
+    <!— place additional JS file just above /body tag —>
+    <script type="text/javascript" src="external.js"></script>
+  </body>
+</html>
+```
 
-Critical rendering path
+Similarly, for an additional performance boost critical CSS can be loaded inline while load secondary styles asynchronously. Critical CSS can be considered anything that is absolutely visually necessary for the initial page load such as baseline typographic styles, color, header styles, and basic layout. Filament Group’s [loadCSS](https://github.com/filamentgroup/loadCSS/) provides a means for asynchronously loading styles based on the `preload` pattern discussed earlier in this chapter. Building upon our JavaScript loading example, we could handle styles in this way:
+
+```
+<html>
+  <head>
+    <!— inline critical CSS —>
+    <style>
+      /* inlined critical styles */
+    </style>
+    
+    <!— preload pattern for loading external CSS —>
+    <link rel="preload" href="path/to/mystylesheet.css" as="style" onload="this.rel='stylesheet'">
+    <!— no js fallback —>
+    <noscript><link rel="stylesheet" href="path/to/mystylesheet.css"></noscript>
+  
+    <!— inline critical JS —>
+    <script type="text/javascript">
+      /* inlined critical javascript */
+      /* includes filament group's loadCSS */
+      /* https://github.com/filamentgroup/loadCSS */
+    </script>
+  </head>
+  <body>
+    <h1>Page Content</h1>
+    
+    <!— place additional JS file just above /body tag —>
+    <script type="text/javascript" src="external.js"></script>
+  </body>
+</html>
+```
+
+By considering how our styles and scrips effect the rendering our page, we can increase the time to first render for our user’s.
+
+### Further Reading
+
+- [Web Fundamentals: Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/)
+- [Optimizing the Critical Rendering Path](https://www.sitepoint.com/optimizing-critical-rendering-path/)
+- [Critical Path CSS Demo](https://github.com/addyosmani/critical-path-css-demo)
+- [Remove Render Blocking JS](https://developers.google.com/speed/docs/insights/BlockingJS)
+- [Optimize CSS Delivery](https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery)
+
 
 ## Testing Performance
 
@@ -522,14 +624,16 @@ Through the use of a performance budget we are able to set and maintain performa
 
 ## Conclusion
 
+By emphasizing the performance of our sites, we are able to build a faster web that is more readily available to a wider audience of people. 
+
 
 ## Further Reading
 
 - [Designing for Performance](http://designingforperformance.com/)
 - [The Web Site Obesity Crisis](http://idlewords.com/talks/website_obesity.htm)
 - [Smaller, Faster Websites](https://bocoup.com/weblog/smaller-faster-websites)
-- [Designing for Performance: The Basics of Page Speed](http://designingforperformance.com/basics-of-page-speed/)
 - [Google Web Fundamentals: Performance](https://developers.google.com/web/fundamentals/performance/)
 - [Building a Faster Web](http://patrickhamann.com/workshops/performance/tasks/start.html)
 - [Front-end performance for web designers and front-end developers](http://csswizardry.com/2013/01/front-end-performance-for-web-designers-and-front-end-developers/)
+- Why Performance Matters: [Part 1](https://www.smashingmagazine.com/2015/09/why-performance-matters-the-perception-of-time/), [Part 2](https://www.smashingmagazine.com/2015/11/why-performance-matters-part-2-perception-management/), and [Part 3](https://www.smashingmagazine.com/2015/12/performance-matters-part-3-tolerance-management/)
 - [W3C Web Performance Working Group](https://www.w3.org/2010/webperf/)
