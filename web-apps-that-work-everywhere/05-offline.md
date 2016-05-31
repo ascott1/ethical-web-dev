@@ -144,7 +144,7 @@ gulp.task('generate-service-worker', function(callback) {
 
 In-browser databases provide us a way to store persistent data directly in a user’s browser. This allows us to store user data locally or to sync data from a database for offline use. This is similar to how a native mobile application might handle user data, storing user files locally and periodically syncing with a server when a device is connected to the network. 
 
-The standard for in browser storage is [IndexedDB](https://www.w3.org/TR/IndexedDB/), a hierarchical key/value database for in browser use. Let’s look at how we might add an IndexedDB database to a site.
+The standard for in browser storage is [IndexedDB](https://www.w3.org/TR/IndexedDB/), a hierarchical key/value database for in browser use with good browser support[^1]. Let’s look at how we might add an IndexedDB database to a site.
 
 The first step when working with IndexedDB is to create and open a database.
 
@@ -188,16 +188,16 @@ open.onsuccess = function() {
 
   // our data
   objectStore.put({
-    id: "STS-1",
-    shuttle: "Columbia",
-    crew: 2,
-    launchDate: new Date(1981, 03, 12, 12, 00, 04)
+    id: "STS-41-D",
+    shuttle: "Discovery",
+    crew: 6,
+    launchDate: new Date(1984, 07, 30, 12, 41, 50) // 30 August 1984 12:41:50
   });
   objectStore.put({
-    id: "STS-6",
-    shuttle: "Challenger",
-    crew: 4,
-    launchDate: new Date(1983, 03, 4, 18, 30, 00)
+    id: "STS-51-J",
+    shuttle: "Atlantis",
+    crew: 5,
+    launchDate: new Date(1985, 09, 03, 15, 15, 30) // 3 October 1985 15:15:30
   });
 }
 ```
@@ -205,15 +205,15 @@ open.onsuccess = function() {
 We can then query that data inside of our `onsuccess` handler.
 
 ```
-var getColumbia = store.get('STS-1');
-var getChallenger = store.get('STS-6');
+var getDiscovery = objectStore.get('STS-41-D');
+var getAtlantis = objectStore.get('STS-51-J');
 
 getColumbia.onsuccess = function() {
-  console.log(getColumbia.result.shuttle);
+  console.log(getDiscovery.result.shuttle);
 };
 
 getChallenger.onsuccess = function() {
-  console.log(getChallenger.result.launchDate);
+  console.log(getAtlantis.result.launchDate);
 };
 ```
 
@@ -252,30 +252,30 @@ open.onsuccess = function() {
   var transaction = db.transaction('Missions', 'readwrite');
   var objectStore = transaction.objectStore('Missions');
 
-  // add our data
+  // add data
   objectStore.put({
-    id: "STS-1",
-    shuttle: "Columbia",
-    crew: 2,
-    launchDate: new Date(1981, 03, 12, 12, 00, 04)
+    id: "STS-41-D",
+    shuttle: "Discovery",
+    crew: 6,
+    launchDate: new Date(1984, 07, 30, 12, 41, 50) // 30 August 1984 12:41:50
   });
   objectStore.put({
-    id: "STS-6",
-    shuttle: "Challenger",
-    crew: 4,
-    launchDate: new Date(1983, 03, 4, 18, 30, 00)
+    id: "STS-51-J",
+    shuttle: "Atlantis",
+    crew: 5,
+    launchDate: new Date(1985, 09, 03, 15, 15, 30) // 3 October 1985 15:15:30
   });
 
   // query our data
-  var getColumbia = objectStore.get('STS-1');
-  var getChallenger = objectStore.get('STS-6');
+  var getDiscovery = objectStore.get('STS-41-D');
+  var getAtlantis = objectStore.get('STS-51-J');
 
   getColumbia.onsuccess = function() {
-    console.log(getColumbia.result.shuttle);
+    console.log(getDiscovery.result.shuttle);
   };
 
   getChallenger.onsuccess = function() {
-    console.log(getChallenger.result.launchDate);
+    console.log(getAtlantis.result.launchDate);
   };
 
   // close the db when the transaction is done
@@ -285,16 +285,47 @@ open.onsuccess = function() {
 }
 ```
 
-For another example, I recommend looking at James Messinger’s IndexedDB Example](https://gist.github.com/BigstickCarpet/a0d6389a5d0e3a24814b), which is the basis for this example.
+IndexedDB is an exciting technology, but the API leaves a little to be desired. [localForage](https://github.com/mozilla/localForage) is a library from Mozilla that creates an asynchronous API (using either Promises or Node-style callbacks) for in-browser databases. It also expands the browser capability of offline storage by supporting IndexedDB and WebSQL with a localStorage fallback. It also greatly simplifies the code needed to create, add data to, and retrieve data from our database. Here’s a version of the above code that would add our data to localForage and log the results.
 
-localForage library
+```
+// our data
+var shuttles = [
+  {
+    id: "STS-41-D",
+    shuttle: "Discovery",
+    crew: 6,
+    launchDate: new Date(1984, 07, 30, 12, 41, 50) // 30 August 1984 12:41:50
+  },
+  {
+    id: "STS-51-J",
+    shuttle: "Atlantis",
+    crew: 5,
+    launchDate: new Date(1985, 09, 03, 15, 15, 30) // 3 October 1985 15:15:30
+  }
+];
 
-Sync with server/PouchDB
+// store the data
+localforage.setItem('shuttles', shuttles);
 
+// retrieve the data
+localforage.getItem('shuttles').then(function(value) {
+    console.log(value);
+}).catch(function(err) {
+    console.log('Houston, we have a problem');
+});
+
+```
+
+
+Though our in-browser database may make it simpler for users to access our applications in a disconnected state, it is likely that we will not want the data to live only in the browser. To handle this, we may want to sync user data when the user is online. We can do this with IndexedDB and our database. Another attractive option is [PouchDB](https://pouchdb.com/), which is a JavaScript implementation of [Apache CouchDB](https://couchdb.apache.org/). PouchDB provides a local database API and makes it easy to sync the local database with any remote instance of CouchDB.
 
 Using an in-browser database may not be ideal for all applications, but it expands the suite of solutions for building applications that are responsive in a wide variety of network conditions. By considering these solutions, we give our users the opportunity to connect with our application’s data offline.
 
+[^1]: http://caniuse.com/#feat=indexeddb
+
 ## Additional libraries and tools
+
+The libraries and tools covered in this chapter are just a small fraction of those available to us for developing offline capable applications. Below is a list of a few other useful tools that are worth your investigation.
 
 - [Hoodie](http://hood.ie/)
 - [remoteStorage](https://remotestorage.io/)
