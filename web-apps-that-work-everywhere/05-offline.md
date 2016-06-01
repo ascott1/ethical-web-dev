@@ -4,15 +4,21 @@
 
 — [offlinefirst.org](http://offlinefirst.org/)
 
-Introduction
+As discussed in the previous chapter, good web performance benefits all of our users, especially those on slow connections. But often users are accessing our sites in variable network conditions. A person may pick up their phone and begin browsing through our site at home over wifi, but open the browser again offline on the subway, only to be presented with dreaded offline error messages.
 
-Zero connectivity
+Even more infuriating are the times where we appear to be connected to the network, but assets are failing to load. This experience is something that developer [Jake Archibald](https://jakearchibald.com/) has termed Lie-Fi. Everything seems like it should be working, but are slow to load as they feebly connect to our struggling signal. 
 
-Low connectivity (aka Lie-Fi)
+[IMG OF OFFFLINE ERROR MESSAGE IN EACH BROWSER or LIE-FI]
 
-https://blog.jana.com/2015/05/21/the-data-trap-affordable-smartphones-expensive-data/
+There are a number of potential reasons, besides a poor signal that a user may experience poor network conditions, such as:
 
-http://offlinestat.es/
+- An overloaded cellular network
+- Problems with the website’s server
+- A misconfigured proxy
+- Being nearby a previously accessed wifi network
+
+Creating offline experiences for our users can simply provide us the ability to brand and give better error messaging to our users on a poor connection, provide limited functionality of our sites to offline users, or even create seamless offline experiences. As a bonus, offline web applications work blazingly fast, providing a benefit to users on quick connections. In this chapter, we’ll look at two technologies that make offline experiences possible, Service Workers and in-browser databases.
+
 
 ## Service Workers
 
@@ -338,6 +344,8 @@ The libraries and tools covered in this chapter are just a small fraction of tho
 
 
 ## Conclusion
+
+The site [Offline States](http://offlinestat.es/) collects screenshots of mobile applications in a disconnected state, providing good inspiration for how to handle (or not handle) disconnected user states.
 
 ## Further Reading
 
