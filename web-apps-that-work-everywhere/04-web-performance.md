@@ -80,7 +80,7 @@ In addition to reducing the number of resources, we can make use of several tech
 
 ##### Prefetch
 
-We can request that the browser prefetch specific resources that we anticipate a user needing as they navigate to a future page using `prefetch`. This allows us as developers to load assets, such as a bundled JavaScript file that a user will need once they log
+We can request that the browser prefetch specific resources that we anticipate a user needing as they navigate to a future page using `prefetch`. This allows us as developers to load assets, such as a bundled JavaScript file that a user will need once they log in to our site.
 
 ```
 <link rel="prefetch" href="script.js">
@@ -155,7 +155,7 @@ Desktop and web tools may be great for simple sites or those that aren’t updat
 - **Grunt**: [grunt-contrib-cssmin](https://www.npmjs.com/package/grunt-contrib-cssmin) - A CSS minification plugin for Grunt.
 - **Grunt**: [grunt-contrib-uglify](https://www.npmjs.com/package/grunt-contrib-uglify) - A JavaScript minification plugin for Grunt.
 
-#### Images
+#### Optimizing Images
 
 Images comprise the largest file sizes on a typical web page, taking up more than 60% of the bytes on an average page. By using images well and reducing their file sizes, we can significantly reduce the bandwidth they consume.
 
@@ -185,82 +185,7 @@ For sites using a front-end build process, such as Gulp, Grunt, or npm scripts w
 - **Gulp**: [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
 - **Grunt:** [grunt-contrib-imagemin](https://www.npmjs.com/package/grunt-contrib-imagemin)
 
-#### Responsive Images
-
-If our site’s and applications are being accessed on a wide range of devices, serving a large scaled image for each viewport width becomes less than ideal. By doing this, we are often sending images meant for a desktop browser to our most resource constrained devices. Thankfully, the [srcset](https://w3c.github.io/html/semantics-embedded-content.html#element-attrdef-img-srcset) and [picture element](https://w3c.github.io/html/semantics-embedded-content.html#the-picture-element) standards provide us with techniques to serve optimized images at different screen resolutions.
-
-`srcset` is an additional attribute added to the `img` element, providing the browser with guidelines for a variety of image sizes. By default `srcset` is progressively enhanced. We can start with a standard image tag.
-
-
-```html
-<img src="img/midfi.jpg" alt="…">
-```
-
-Now, using `srcset` we can specify different images for viewport widths. For each image we specify the image file along with the width of the image. The browser will then do the math to serve the appropriate image file based on the viewport width and device resolution. 
-
-```html
-<img srcset="
-            img/lofi.jpg 320w,
-            img/midfi.jpg 840w,
-            img/hifi.jpg 1200w,
-            img/super-hifi.jpg 2400w,
-    src="img/midfi.jpg"
-    alt="…">
-```
-
-
-The above example assumes that the images are being served at 100% of the viewport width. For images that are smaller, there is an additional `sizes` attribute. We can provide suggestions to the browser about how wide the image will be displayed compared to the viewport. If the image was going to be displayed at half of the viewport width, we would add the following `sizes` attribute:
-
-```
-sizes="50vw"
-```
-
-We can also include media queries in the sizes attribute, suggesting that the image may be displayed at a percentage below or above a certain breakpoint. The following example would suggest to the browser that an image is displayed at a third of the viewport size at sizes above 600px and at the full browser width below that.
-
-```
-sizes="(min-width: 800px) 33vw, 100vw"
-```
-
-Putting it all together, our markup would appear as:
-
-```html
-<img 
-    sizes="(min-width: 800px) 33vw, 100vw"
-    srcset="
-            img/lofi.jpg 320w,
-            img/midfi.jpg 840w,
-            img/hifi.jpg 1200w,
-            img/super-hifi.jpg 2400w,
-    src="img/midfi.jpg"
-    alt="…">
-```
-
-For [most responsive image use cases](http://blog.cloudfour.com/dont-use-picture-most-of-the-time/) the `img` element with `srcset` will provide the the flexibility that we need. In some instances however, we may want more fine grained control over the images served to our users. This is typically referred to as art direction in responsive images, where we may want cropped or different images served to users dependent on browser context. In these instances we can use the `picture` element. While `srcset` works as a suggestion to the browser, `picture` provides exact specifications. The syntax for the `picture` element nests `source` elmements, specifying the media width and src of the image file. Again, we can fall back to a progressively enhanced standard `img` tag for non-supporting browsers.
-
-```
-<picture>
-    <source media="(min-width: 800px)" srcset="large.jpg">
-    <source media="(min-width: 600px)" srcset="medium.jpg">
-    <img src="small.jpg" alt="…">
-</picture>
-```
-
-Through the use of responsive image techniques, we can provide users with smaller files optimized for their viewport sizes. This reduces file sizes, speeds up transfer times, and reduces bandwidth costs when dealing with the largest resources found on a typical web page.s
-
-##### Responsive Images Tools
-- [Responsive Images Breakpoints Generator](http://www.responsivebreakpoints.com/)
-- [Responsive Images Linter](https://ausi.github.io/respimagelint/)
-
-
-##### Further Reading
-
-- [srcset and sizes](http://ericportis.com/posts/2014/srcset-sizes/)
-- [MDN: Responsive Images](https://developer.mozilla.org/en-US/Learn/HTML/Multimedia_and_embedding/Responsive_images)
-- [Native Responsive Images](https://dev.opera.com/articles/native-responsive-images/)
-- [Responsive Images: If you’re just changing resolutions, use srcset](https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/)
-
-
-#### Web Fonts
+#### Optimizing Web Fonts
 
 Web Fonts have provided the ability to add rich typography to our sites. This has been a fantastic development for design, as [95% of Web Design is typography](https://ia.net/know-how/the-web-is-all-about-typography-period). 57% of websites now use custom fonts[^1], with the average web font size of font resources measuring over 138kb[^2]. This means that font resources can account for a fairly large amount of our front-end resources, but through optimization and font-loading techniques we can ensure that custom web fonts do not create a significant performance hit for our site.
 
@@ -413,7 +338,82 @@ Using the technique demonstrated above we can ensure that our fonts load as quic
 - [Web Font Loading Patterns](https://www.bramstein.com/writing/web-font-loading-patterns.html)
 - [W3C CSS Font Loading Module Level 3](https://drafts.csswg.org/css-font-loading/)
 
-### Gzipping and Caching
+### Responsive Images
+
+If our site’s and applications are being accessed on a wide range of devices, serving a large scaled image for each viewport width becomes less than ideal. By doing this, we are often sending images meant for a desktop browser to our most resource constrained devices. Thankfully, the [srcset](https://w3c.github.io/html/semantics-embedded-content.html#element-attrdef-img-srcset) and [picture element](https://w3c.github.io/html/semantics-embedded-content.html#the-picture-element) standards provide us with techniques to serve optimized images at different screen resolutions.
+
+`srcset` is an additional attribute added to the `img` element, providing the browser with guidelines for a variety of image sizes. By default `srcset` is progressively enhanced. We can start with a standard image tag.
+
+
+```html
+<img src="img/midfi.jpg" alt="…">
+```
+
+Now, using `srcset` we can specify different images for viewport widths. For each image we specify the image file along with the width of the image. The browser will then do the math to serve the appropriate image file based on the viewport width and device resolution. 
+
+```html
+<img srcset="
+            img/lofi.jpg 320w,
+            img/midfi.jpg 840w,
+            img/hifi.jpg 1200w,
+            img/super-hifi.jpg 2400w,
+    src="img/midfi.jpg"
+    alt="…">
+```
+
+
+The above example assumes that the images are being served at 100% of the viewport width. For images that are smaller, there is an additional `sizes` attribute. We can provide suggestions to the browser about how wide the image will be displayed compared to the viewport. If the image was going to be displayed at half of the viewport width, we would add the following `sizes` attribute:
+
+```
+sizes="50vw"
+```
+
+We can also include media queries in the sizes attribute, suggesting that the image may be displayed at a percentage below or above a certain breakpoint. The following example would suggest to the browser that an image is displayed at a third of the viewport size at sizes above 600px and at the full browser width below that.
+
+```
+sizes="(min-width: 800px) 33vw, 100vw"
+```
+
+Putting it all together, our markup would appear as:
+
+```html
+<img 
+    sizes="(min-width: 800px) 33vw, 100vw"
+    srcset="
+            img/lofi.jpg 320w,
+            img/midfi.jpg 840w,
+            img/hifi.jpg 1200w,
+            img/super-hifi.jpg 2400w,
+    src="img/midfi.jpg"
+    alt="…">
+```
+
+For [most responsive image use cases](http://blog.cloudfour.com/dont-use-picture-most-of-the-time/) the `img` element with `srcset` will provide the the flexibility that we need. In some instances however, we may want more fine grained control over the images served to our users. This is typically referred to as art direction in responsive images, where we may want cropped or different images served to users dependent on browser context. In these instances we can use the `picture` element. While `srcset` works as a suggestion to the browser, `picture` provides exact specifications. The syntax for the `picture` element nests `source` elements, specifying the media width and src of the image file. Again, we can fall back to a progressively enhanced standard `img` tag for non-supporting browsers.
+
+```
+<picture>
+    <source media="(min-width: 800px)" srcset="large.jpg">
+    <source media="(min-width: 600px)" srcset="medium.jpg">
+    <img src="small.jpg" alt="…">
+</picture>
+```
+
+Through the use of responsive image techniques, we can provide users with smaller files optimized for their viewport sizes. This reduces file sizes, speeds up transfer times, and reduces bandwidth costs when dealing with the largest resources found on a typical web pages.
+
+#### Responsive Images Tools
+- [Responsive Images Breakpoints Generator](http://www.responsivebreakpoints.com/)
+- [Responsive Images Linter](https://ausi.github.io/respimagelint/)
+
+
+#### Further Reading
+
+- [srcset and sizes](http://ericportis.com/posts/2014/srcset-sizes/)
+- [MDN: Responsive Images](https://developer.mozilla.org/en-US/Learn/HTML/Multimedia_and_embedding/Responsive_images)
+- [Native Responsive Images](https://dev.opera.com/articles/native-responsive-images/)
+- [Responsive Images: If you’re just changing resolutions, use srcset](https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/)
+
+
+### Gzip and Caching
 
 Though we may optimize our files locally, we can also configure our server to ensure that files are served efficiently to our users. Two common and effective approaches are the use of gzip and caching.
 
@@ -565,7 +565,7 @@ By considering how our styles and scrips effect the rendering our page, we can i
 
 Though we may follow a number of best practices for web performance within our application, it is useful to test and evaluate our site’s performance. We can measure performance while simulating devices and network conditions to provide us with a better understanding of how our site performs. 
 
-### Dev Tools
+### Browser Developer Tools
 
 When developing locally, we can begin testing performance using our browser’s developer tools. Using Google Chrome, we can load our site, open DevTools, click the Network tab, and perform a hard refresh (Ctrl + F5, Windows and Linux; Cmd + Shift + R, Mac). As the page loads, we can see a waterfall chart of the assets loaded on our page.
 

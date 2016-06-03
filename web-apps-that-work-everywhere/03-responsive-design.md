@@ -39,8 +39,6 @@ The process of responsive design can be broken down into four steps.
 
 Let’s tease this process apart by creating a very simple responsive page.
 
-[Cutting the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard)
-
 By default, mobile browsers will render the page at a desktop screen width. This means that users will need to pinch and zoom to be able to read and access our content. To tell the browser to scale, we can add a meta viewport tag to the `<head>` of the HTML document.
 
 ```
