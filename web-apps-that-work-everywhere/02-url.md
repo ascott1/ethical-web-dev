@@ -1,6 +1,6 @@
 # URL Design
 
-The humble link is the most fundamental building block of the web. The ability to connect to any page on the web with the click of a button is the driving force behind much of the web’s history. As developers we should aim to expose permanent, human readable, deep links to our users.
+The ability to connect to any resource on the web with a URL is what makes the everywhere web possible. This makes the humble link one of the most powerful aspects of the web.  As developers we should aim to expose permanent, human readable, deep links to our users.
 
 In 1996 the creator of the web, Tim Berners-Lee, drafted [Universal Resource Identifiers -- Axioms of Web Architecture](https://www.w3.org/DesignIssues/Axioms.html). This document consists of several axioms of URL design, many technical in nature, but the first (and arguably most important) is “universality.” By Berners-Lee’s definition, “any resource anywhere can be given a URI” and “any resource of significance *should* be given a URI” (emphasis mine). By conforming to these expectations of the web we make it easier for our users to share and interact with the web. 
 
@@ -19,7 +19,7 @@ http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2329161
 
 - [Long Bets Bet – How Durable Are URLs?](http://blog.longnow.org/02012/03/23/long-bets-bet-how-durable-are-urls/)
 
-One of the beautiful things about developing for the web is the ability to evolve our applications over time, immediately deploying updates to every user. With this ability, however, we often introduce states of fluctuation as we change server configurations, undergo content redesigns, and adapt to new technologies and frameworks. We should avoid arbitrarily changing URLs for our applications as much as possible. When significant changes to content require a URL change, we should always forward the previous URL to the new page.
+One of the beautiful things about developing for the web is the ability to evolve our applications over time, immediately deploying updates to every user. With this ability, however, we often introduce states of fluctuation as we change server configurations, undergo content redesigns, and adapt to new technologies and frameworks. Despite this, we should avoid arbitrarily changing URLs for our applications as much as possible. If significant changes to content require a URL change, we should always forward the previous URL to the new page.
 
 When creating permanent URL’s the first step is to ensure that technology does not dictate the URL. Often sites display language filetypes at the end of a URL such as `.php` or `.asp`.  This doesn’t accommodate for future iterations of an application that may be built upon a different technology stack. By remaining technology independent in URL design we take the first step towards more permanent URLs.
 
@@ -35,7 +35,7 @@ This ability to link and share is a key advantage that web development has over 
 
 ## URL Design
 
-Simply Providing URL’s is the first step, but as Jakob Nielsen has described them [URLs are a form of user interface](https://css-tricks.com/guidelines-for-uri-design/). Even in the era of search results, a [study from Microsoft Research](http://research.microsoft.com/apps/pubs/default.aspx?id=70395) to determine if URLs were observed by average users revealed that users spent 24% of their gaze time looking at the URLs in search results. With this in mind, how can we design URLs that are effective and usable?
+Simply Providing URL’s is the first step, but as Jakob Nielsen has described them [URLs are a form of user interface](https://css-tricks.com/guidelines-for-uri-design/). Even in the era of search engines, a [study from Microsoft Research](http://research.microsoft.com/apps/pubs/default.aspx?id=70395) to determine if URLs were observed by average users revealed that users spent 24% of their gaze time looking at the URLs in search results. With this in mind, how can we design URLs that are effective and usable?
 
 ### Keep URLs simple
 
@@ -60,7 +60,7 @@ URLs should be both meaningful and consistent throughout a site. Meaningful URLs
 
 ### Make URLs “Hackable”
 
-URLs should be “hackable” up the tree of the URL in a way that allows users to visualize the site structure. For example, if a URL is `https://example.com/artist/albums/album-name/` changing the URL to `https://example.com/artist/albums/` would return a page displaying the artist’s albums and `https://example.com/artist/` an artist page. Doing this makes our URLs more meaningful and predictable for our users, while allowing the, to navigate down the tree and share URLs in a
+URLs should be “hackable” up the tree of the URL in a way that allows users to visualize the site structure. For example, if a URL is `https://example.com/artist/albums/album-name/` changing the URL to `https://example.com/artist/albums/` would return a page displaying the artist’s albums and `https://example.com/artist/` an artist page. Doing this makes our URLs more meaningful and predictable for our users, while allowing them to navigate down the tree and share URLs through only the logical URL structure.
 
 As [Peter Bryant](http://blog.2partsmagic.com/restful-uri-design/) describes this:
 
@@ -75,7 +75,7 @@ By following these guidelines, we can design URLs for our applications that are 
 
 ### API URL Design
 
-Often, when designing URLs we are not limited to designing them for end-users. APIs provide a URL interface for both internal and external developers when interacting with our services.
+Often, when designing URLs we are not limited to designing them for end-users. APIs provide a URL interface for both internal and external developers when interacting with our services. To make our API URLs more user friendly we can aim to focus on URL permanence and comprehension.
 
 Much like HTML URLs, when design API URLs we should focus on permanence. As technology and services change, it is likely that our API will evolve. When exposing a public API, it is common practice to host our API on a subdomain named, API. This allows us to run our API in its own environment while tying it to our top level domain.
 

@@ -8,9 +8,7 @@ Despite this, we spent time researching and considering the typical browser widt
 
 The initial reaction to the rise of smartphones was to create dedicated mobile versions of our sites. This often sat on a `.m` subdomain and provided a mobile optimized experience. At first, this seemed like a great solution as it allowed users to access our services in a format that was streamlined for their device. For developers, this also meant maintaining multiple codebases. For users, this often meant dealing with a limited subset of functionality when using a mobile device.  
 
-Today, the number of devices that connect to the web is again expanding. Users may access our applications from a desktop computer, a mobile phone, a tablet, a reading device, a watch, a video game system, or in their car. 
-
-Range of screen sizes http://gs.statcounter.com/#all-resolution-ww-monthly-201503-201604
+Today, the number of devices that connect to the web is again expanding. Users may access our applications from a desktop computer, a mobile phone, a tablet, a reading device, a watch, a video game system, or in their car. The site [Global Stat Counter](http://gs.statcounter.com/#resolution-ww-monthly-201505-201605) reports that 119 different screen resolutions have accessed the web over the past year.
 
 In 2010, Ethan Marcotte coined the term [Responsive Design](http://alistapart.com/article/responsive-web-design), to describe the practice of building web sites that adapt to a range of screen sizes. By building responsively, we can develop a single codebase that acclimates to the screen size of the device being used by the user. This allows us to make fewer assumptions while delivering a site that works in any context.
 
@@ -45,7 +43,7 @@ By default, mobile browsers will render the page at a desktop screen width. This
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-The most basic approach to responsive media to scale our images and other media elements to the width of their parent container. We can create a `style.css` file and apply a `max-width: 100%` to media objects to ensure that they never overflow beyond the container width. In chapter 4, we will explore how to serve various image sizes depending on browser context.
+The most basic approach to responsive media to scale our images and other media elements to the width of their parent container. In our CSS file we apply a `max-width: 100%` to media objects to ensure that they never overflow beyond the container width. In chapter 4, we will explore how to serve various image sizes depending on browser context.
 
 ```
 img,

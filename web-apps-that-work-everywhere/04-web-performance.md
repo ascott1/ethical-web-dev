@@ -76,7 +76,7 @@ The HTTP/2 protocol may challenge some of our assumptions about combining resour
 
 #### The Four Pre’s (Prefetch, Preconnect, Prerender, Preload)
 
-In addition to reducing the number of resources, we can make use of several techniques to pre-load future content that we predict our user’s will need. I call these “The Four Pre’s” (prefetch, preconnect, pretender, and preload) and each can be useful in a different context where we may want to instruct the browser to download a resource before it is needed. 
+In addition to reducing the number of resources, we can make use of several techniques to pre-load future content that we predict our user’s will need. I call these “The Four Pre’s” (prefetch, preconnect, prerender, and preload) and each can be useful in a different context where we may want to instruct the browser to download a resource before it is needed. 
 
 ##### Prefetch
 
@@ -133,7 +133,7 @@ Yoav Weiss’s excellent article [Preload: What Is It Good For?](https://www.sma
 
 ### Optimizing Files, Images, and Fonts
 
-Once we have reduced the number of http requests being made in our site, the next step is to optimize the files we server. We can do this by minimizing CSS and JS resources, optimizing and and serving proper images, and making good use of web fonts when used.
+Once we have reduced the number of http requests being made in our site, the next step is to optimize the files we serve. We can do this by minimizing CSS and JS resources, optimizing and and serving proper images, and making good use of web fonts when used.
 
 #### Minimizing Files
 
@@ -159,7 +159,7 @@ Desktop and web tools may be great for simple sites or those that aren’t updat
 
 Images comprise the largest file sizes on a typical web page, taking up more than 60% of the bytes on an average page. By using images well and reducing their file sizes, we can significantly reduce the bandwidth they consume.
 
-[Chart of average page weight - http://httparchive.org/interesting.php ]
+![Chart of average page weight according to http://httparchive.org](img/average-page-weight.png)
 
 To do this we should use the proper image formats, optimize images to reduce file size, and serve the image size needed by the browser.
 
