@@ -8,8 +8,6 @@ As discussed in the previous chapter, good web performance benefits all of our u
 
 Even more infuriating are the times where we appear to be connected to the network, but assets are failing to load. This experience is something that developer [Jake Archibald](https://jakearchibald.com/) has termed Lie-Fi. Everything seems like it should be working, but are slow to load as they feebly connect to our struggling signal. 
 
-[IMG OF OFFFLINE ERROR MESSAGE IN EACH BROWSER or LIE-FI]
-
 There are a number of potential reasons, besides a poor signal that a user may experience poor network conditions, such as:
 
 - An overloaded cellular network
@@ -17,12 +15,14 @@ There are a number of potential reasons, besides a poor signal that a user may e
 - A misconfigured proxy
 - Being nearby a previously accessed wifi network
 
-Creating offline experiences for our users can simply provide us the ability to brand and give better error messaging to our users on a poor connection, provide limited functionality of our sites to offline users, or even create seamless offline experiences. As a bonus, offline web applications work blazingly fast, providing a benefit to users on quick connections. In this chapter, we’ll look at two technologies that make offline experiences possible, Service Workers and in-browser databases.
+Creating offline experiences for our users can simply provide us the ability to brand and give better error messaging to our users on a poor connection, provide limited functionality of our sites to offline users, or even create seamless offline experiences. As a bonus, offline web applications work blazingly fast, providing a benefit to users on all types of connections. In this chapter, we’ll look at two technologies that make offline experiences possible, Service Workers and in-browser databases.
 
 
 ## Service Workers
 
 [Service Workers](https://www.w3.org/TR/service-workers/) are a script that runs separately from the page, which provide us with a way to make our sites to work offline, run faster, and add capabilities for background features. With the limits of connectivity, Service Workers provide us with a means to build offline-first capable applications, which will load content for our users, after an initial site visit, regardless of network conditions. Best of all, Service Workers are truly a progressive enhancement, layering on an additional feature to supporting browsers without changing the functionality of our site for users of non-supporting browsers.
+
+Service Workers present us with many possibilities for how we handle user connectivity. For our purposes, let’s build a simple static site example that will cache all of our site’s static assets. If you are interested in following along, you can download a Service Worker free version of this example at [https://github.com/ascott1/sw-demo/archive/no-sw.zip](https://github.com/ascott1/sw-demo/archive/no-sw.zip).
 
 <aside>
 NOTE: 
@@ -36,8 +36,6 @@ There are a potential gotchas when implementing Service Workers:
 
 </aside>
 
-
-Service Workers present us with many possibilities for how we handle user connectivity. For our purposes, let’s build a simple static site example that will cache all of our site’s static assets. If you are interested in following along, you can download a Service Worker free version of this example at [https://github.com/ascott1/sw-demo/archive/no-sw.zip](https://github.com/ascott1/sw-demo/archive/no-sw.zip).
 
 The first step of working with a Service Worker is registering the script that will contain our Service Worker code. Let’s begin by adding that code to our HTML pages. At the bottom of the page, just before the closing `</body>` tag let’s add the script registration:
 
@@ -112,7 +110,7 @@ Now to test the offline capability of our site by changing the “Throttling” 
 
 ![img/sw-throttle.png](img/sw-throttle.png)
 
-Despite being offline, our site and site assets continue to load and is navigable. This example is simple, loading a two page static site and with minimal error handling. To dive into how these concepts can be applied to more fully featured sites and applications, see the further reading section at the end of this chapter.
+Despite being offline, our site and site assets continue to load and are navigable. This example is simple, loading a two page static site and with minimal error handling. To dive into how these concepts can be applied to production ready sites and applications, see the further reading section at the end of this chapter.
 
 [^1]: https://jakearchibald.github.io/isserviceworkerready/
 
@@ -291,7 +289,7 @@ open.onsuccess = function() {
 }
 ```
 
-IndexedDB is an exciting technology, but the API leaves a little to be desired. [localForage](https://github.com/mozilla/localForage) is a library from Mozilla that creates an asynchronous API (using either Promises or Node-style callbacks) for in-browser databases. It also expands the browser capability of offline storage by supporting IndexedDB and WebSQL with a localStorage fallback. It also greatly simplifies the code needed to create, add data to, and retrieve data from our database. Here’s a version of the above code that would add our data to localForage and log the results.
+IndexedDB is an exciting technology, but the API leaves a little to be desired. [localForage](https://github.com/mozilla/localForage) is a library from Mozilla that creates an asynchronous API (using either Promises or Node-style callbacks) for in-browser databases. It also expands the browser capability of offline storage by supporting IndexedDB and WebSQL with a localStorage fallback. Through these additions, localForage simplifies the code needed to create, add data to, and retrieve data from our database. Here’s a version of the above code that would add our data to localForage and log the results.
 
 ```
 // our data
@@ -323,7 +321,7 @@ localforage.getItem('shuttles').then(function(value) {
 ```
 
 
-Though our in-browser database may make it simpler for users to access our applications in a disconnected state, it is likely that we will not want the data to live only in the browser. To handle this, we may want to sync user data when the user is online. We can do this with IndexedDB and our database. Another attractive option is [PouchDB](https://pouchdb.com/), which is a JavaScript implementation of [Apache CouchDB](https://couchdb.apache.org/). PouchDB provides a local database API and makes it easy to sync the local database with any remote instance of CouchDB.
+Though our in-browser database may make it simpler for users to access our applications in a disconnected state, it is likely that we will not want the data to live only in the browser. To handle this, we will most likely want to sync user data when the user is online. We can do this with IndexedDB and our database. Another attractive option is [PouchDB](https://pouchdb.com/), which is a JavaScript implementation of [Apache CouchDB](https://couchdb.apache.org/). PouchDB provides a local database API and makes it easy to sync the local database with any remote instance of CouchDB.
 
 Using an in-browser database may not be ideal for all applications, but it expands the suite of solutions for building applications that are responsive in a wide variety of network conditions. By considering these solutions, we give our users the opportunity to connect with our application’s data offline.
 

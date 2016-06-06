@@ -1,6 +1,6 @@
 # URL Design
 
-The ability to connect to any resource on the web with a URL is what makes the everywhere web possible. This makes the humble link one of the most powerful aspects of the web.  As developers we should aim to expose permanent, human readable, deep links to our users.
+The ability to connect to any resource on the web with a URL is what makes the everywhere web possible. This makes the humble hyperlink one of the most powerful aspects of the web.  As developers we should aim to expose permanent, human readable, deep links to our users.
 
 In 1996 the creator of the web, Tim Berners-Lee, drafted [Universal Resource Identifiers -- Axioms of Web Architecture](https://www.w3.org/DesignIssues/Axioms.html). This document consists of several axioms of URL design, many technical in nature, but the first (and arguably most important) is “universality.” By Berners-Lee’s definition, “any resource anywhere can be given a URI” and “any resource of significance *should* be given a URI” (emphasis mine). By conforming to these expectations of the web we make it easier for our users to share and interact with the web. 
 
@@ -25,9 +25,9 @@ When creating permanent URL’s the first step is to ensure that technology does
 
 The importance or persistent URLs is that they help to preserve the web. When URLs persist, outside links remain active, user bookmarks remain relevant, and information remains consistent. By focusing on good URL design we can help to ensure the permanence of URLs across the web.
 
-## Sharable URLs
+## Shareable URLs
 
-Commenting on an early draft of the Principles for Ethical Web Development, [Dean Marano](https://github.com/deanmarano) raised the important issue of creating sharable URL’s.
+Commenting on an early draft of the Principles for Ethical Web Development, [Dean Marano](https://github.com/deanmarano) raised the important issue of creating shareable URL’s.
 
 > One thing that for me is very important when building apps is the ability to share a URL - either with myself or with others - easily. By leveraging this built in feature of the web, it makes it much easier to share, bookmark, and be a good web citizen.
 
@@ -41,19 +41,26 @@ Simply Providing URL’s is the first step, but as Jakob Nielsen has described t
 
 Effective URLs are simple, short, and human-friendly. This makes them easier to type and remember for users.
 
-WordPress is the most popular content manager for the web and powers over 25%[^1] percent of websites. Unfortunately, the default WordPress [permalink structure](https://codex.wordpress.org/Introduction_to_Blogging#Pretty_Permalinks) produces URLs such as:
+WordPress is the most popular content manager for the web and powers over 25%[^1] percent of websites. Unfortunately, until relatively recently[^2], the default WordPress [permalink structure](https://codex.wordpress.org/Introduction_to_Blogging#Pretty_Permalinks) produced URLs such as:
 
 ```
 /index.php?p=423
 ```
 
-To a user this URL format is seemingly random and arbitrary. Thankfully, WordPress allows users to create “pretty” permalink structure, such as:
+
+To a user this URL format is seemingly random and arbitrary. Fortunately, WordPress allowed users to create “pretty” permalink structure, and as of 2015, now does this by default. The pretty permalink structure can be descriptive and clean, such as:
 
 ```
 /posts/effective-altruism/
 ```
 
+WordPress core contributor Eric Lewis [reportedly commented on the change](https://wptavern.com/wordpress-4-2-will-automatically-enable-pretty-permalinks-for-new-sites-on-installation) saying that “Delivering pretty permalinks by default seems in line with a bunch of core philosophies – great out-of-the-box, design for the majority, simplicity, clean, lean and mean.” I agree with Eric, this is a great change, beneficial to users across the web, and a great example of how much more legible a well designed link can be.
+
+By creating link structures that are simple and human readable, we are able to provide our users with a clear description of a URL’s content.
+
 [^1]: https://w3techs.com/technologies/history_overview/content_management/all/y
+[^2]:https://core.trac.wordpress.org/changeset/31089
+
 ### Make URLs Meaningful and Consistent
 
 URLs should be both meaningful and consistent throughout a site. Meaningful URLs clearly represent a resource and accurately describe its contents with the title and, when useful, keywords. A website that holds a blog may put blog posts within a `/blog/` URL structure such as `/blog/url-design` and `/blog/ethical-web`. These URLs make the intent of the resource clear and are understandable to the user. URLs should also be consistent, using recognizable patterns. If when logged into an application my profile’s URL is `https://example.com/user/adamscott`, I would expect to find another user’s profile with the same URL structure of `/user/username`.

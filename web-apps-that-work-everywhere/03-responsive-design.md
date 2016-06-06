@@ -6,9 +6,9 @@ For more than a decade of the web’s existence, we could safely assume that eac
 
 Despite this, we spent time researching and considering the typical browser width and assumed that our users would be perched in front of a reasonably large screen, with a dedicated keyboard. With the evolution of the smartphone, those assumptions have changed. Users may access our sites quickly, on the go, from a wide range of screen sizes. With the diversity of devices and screens, we can no longer safely make assumptions about the screen size of our users.
 
-The initial reaction to the rise of smartphones was to create dedicated mobile versions of our sites. This often sat on a `.m` subdomain and provided a mobile optimized experience. At first, this seemed like a great solution as it allowed users to access our services in a format that was streamlined for their device. For developers, this also meant maintaining multiple codebases. For users, this often meant dealing with a limited subset of functionality when using a mobile device.  
+The initial reaction to the rise of smartphones was to create dedicated mobile versions of our sites. This often sat at a `m.`[footnote: such as http://m.example.com] subdomain and provided a mobile optimized experience. At first, this seemed like a great solution as it allowed users to access our services in a format that was streamlined for their device. For developers, this also meant maintaining multiple codebases. For users, this often meant dealing with a limited subset of functionality when using a mobile device.  
 
-Today, the number of devices that connect to the web is again expanding. Users may access our applications from a desktop computer, a mobile phone, a tablet, a reading device, a watch, a video game system, or in their car. The site [Global Stat Counter](http://gs.statcounter.com/#resolution-ww-monthly-201505-201605) reports that 119 different screen resolutions have accessed the web over the past year.
+Today, the number of devices that connect to the web is rapidly expanding. Users may access our applications from a desktop computer, a mobile phone, a tablet, a reading device, a watch, a video game system, or in their car. The site [Global Stat Counter](http://gs.statcounter.com/#resolution-ww-monthly-201505-201605) reports that 119 different screen resolutions have accessed the web over the past year.
 
 In 2010, Ethan Marcotte coined the term [Responsive Design](http://alistapart.com/article/responsive-web-design), to describe the practice of building web sites that adapt to a range of screen sizes. By building responsively, we can develop a single codebase that acclimates to the screen size of the device being used by the user. This allows us to make fewer assumptions while delivering a site that works in any context.
 
@@ -70,7 +70,7 @@ A `max-width` media query allows us to define styles that will only appear up un
 In contrast, `min-width` media queries allow us to set styles that are only applied at larger browser sizes.
 
 ```
-@media (min-width: 600px) {
+@media (min-width: 601px) {
   /* Larger device/browser styles go here */
 }
 ```

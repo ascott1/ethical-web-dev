@@ -189,17 +189,17 @@ For sites using a front-end build process, such as Gulp, Grunt, or npm scripts w
 
 Web Fonts have provided the ability to add rich typography to our sites. This has been a fantastic development for design, as [95% of Web Design is typography](https://ia.net/know-how/the-web-is-all-about-typography-period). 57% of websites now use custom fonts[^1], with the average web font size of font resources measuring over 138kb[^2]. This means that font resources can account for a fairly large amount of our front-end resources, but through optimization and font-loading techniques we can ensure that custom web fonts do not create a significant performance hit for our site.
 
-The first step to serving improved web fonts is through optimization. Web font services such as Typekit, Google Web Fonts, Webtype, and others allow users to be specific about the weights and character glyphs required when serving a typeface. If you are self-hosting or using an open source font the loos [Subsetter](http://www.subsetter.com/) or Font Squirrel’s [Web Font Generator](https://www.fontsquirrel.com/tools/webfont-generator) provide the ability to remove glyphs or additional language support, reducing the file size of the font files.
+The first step to serving improved web fonts is through optimization. The simplest for of font optimization is to limit the number of styles and weights of a typeface that will be used on the page. Web font services such as Typekit, Google Web Fonts, Webtype, and others allow users to be specific about the styles, weights, and character glyphs required when serving a typeface. If you are self-hosting or using an open source font the tools [Subsetter](http://www.subsetter.com/) or Font Squirrel’s [Web Font Generator](https://www.fontsquirrel.com/tools/webfont-generator) provide the ability to remove glyphs or additional language support, reducing the file size of the font files.
 
 Once we have optimized file size of our typefaces, we can consider how they are served to our users. In Zach Leatherman’s post [How we use web fonts responsibly, or, avoiding a @font-face-palm](https://www.filamentgroup.com/lab/font-loading.html) he points out:
 
 > Some browsers will wait a predetermined amount of time (usually three seconds) for the font to load before they give up and show the text using the fallback font-family. But just like a loyal puppy, WebKit browsers (Safari, default Android Browser, Blackberry) will wait forever (okay, often 30 seconds or more) for the font to return. This means your custom fonts represent a potential single point of failure for a usable site.
 
-This single point of failure means that it is in our user’s best interest to provide effective and performant fallbacks when loading web fonts. The [CSS Font Rendering Controls](https://tabatkins.github.io/specs/css-font-display/)[^3] standard will provide developers with greater support over when and how a font is downloaded and used with the `font-display` property. Unfortunately, this specification currently has very limited browser support. However, using the [Font Face Observer](https://fontfaceobserver.com/) library can provide us with the level of control intended for `font-display`. 
+This single point of failure means that it is in our user’s best interest to provide effective and performant fallbacks when loading web fonts. The [CSS Font Rendering Controls](https://tabatkins.github.io/specs/css-font-display/)[^3] standard would provide developers with greater support over when and how a font is downloaded and used with the `font-display` property. Unfortunately, at the time of writing, this standard has yet to be approved or implemented in browsers. However, using the [Font Face Observer](https://fontfaceobserver.com/) library can provide us with the level of control intended for `font-display`. 
 
 Font Face Observer is a web font loader, which will load a font file and return a JavaScript promise that is resolved or rejected when the font loads or fails. This provides us with fine grain control over how our site performs in these scenarios.
 
-The two default font rendering behaviors are either to display a   flash of invisible text (FOIT) or a flash of unstyled text (FOUT). Originally all browsers defaulted to the FOUT rendering, displaying a local font before displaying the webfoot, occasionally causing a jarring effect and content reflows when the web font noticeably loaded. Using Font Face Observer we can implement a technique called Flash of Faux Text (FOFT), which will load only the default weight of the font initially, which causes the browser to implement faux bolding and italics, until all weights have loaded. This significantly reduces the time needed to first render and removes the awkward reflow caused by FOUT. Taking this a step further, you may also implement only a subset of the default weight and load it instantly as a data URL as described bb Zach Leatherman in his post [Critical Web Fonts](https://www.zachleat.com/web/critical-webfonts/). This causes near instant loading of web fonts while reducing the chance of font loading failures.
+The two default font rendering behaviors are either to display a   flash of invisible text (FOIT) or a flash of unstyled text (FOUT). Originally all browsers defaulted to the FOUT rendering, displaying a local font before displaying the webfont, occasionally causing a jarring effect and content reflows when the web font noticeably loaded. Using Font Face Observer we can implement a technique called Flash of Faux Text (FOFT), which will load only the default weight of the font initially, which causes the browser to implement faux bolding and italics, until all weights have loaded. This significantly reduces the time needed to first render and removes the awkward reflow caused by FOUT. Taking this a step further, you may also implement only a subset of the default weight and load it instantly as a data URL as described bb Zach Leatherman in his post [Critical Web Fonts](https://www.zachleat.com/web/critical-webfonts/). This causes near instant loading of web fonts while reducing the chance of font loading failures.
 
 For simplicity’s sake let’s look at implementing the FOFT technique with Font Face Observer.
  
@@ -235,7 +235,7 @@ To begin we would load our font family in our CSS using `@font-face`:
         url('/fonts/myfont-italic.woff') format('woff'),
         url('/fonts/myfont-italic.ttf') format('ttf’),
         url('/fonts/myfont-italic.eot') format('eot');	
-   font-weight: 700;	
+   font-weight: 400;	
    font-style: normal;        
  }
 ```
@@ -280,6 +280,7 @@ Now in our JavaScript we can use Font Face Observer to detect the font loading a
 var FontFaceObserver = require('fontfaceobserver');
 
 // we can set a class on the html el when fonts are loading
+var html = document.documentElement;
 html.classList.add('font-loading');
 
 // create an observer for the default font weight
@@ -295,7 +296,7 @@ var italic = new FontFaceObserver( 'MyWebFontItalic', {
   style: 'italic'
 });
 
-regular.check().then(function () {
+regular.check().then(function() {
   // add the font-loaded class
   // when our default weight has dowloaded
   html.classList.remove('font-loading');
@@ -309,20 +310,21 @@ regular.check().then(function () {
       bold.check(),
       italic.check(),
     ])
-    .then(function () {
+    .then(function() {
       html.classList.add('font-b-loaded');
     });
-  }).catch(function () {
-    html.classList.remove('font-loading');
-    html.classList.add('font-failed');
+}).catch(function() {
+  html.classList.remove('font-loading');
+  html.classList.add('font-failed');
 });
 ```
 
 NOTE:
 The example code assumes that Font Face Observer is being loaded as a CommonJS module. The library is also available for direct download at https://github.com/bramstein/fontfaceobserver/.
 
-To speed our font loading up for repeat visitors we could also [store a session storage token](https://speakerdeck.com/bramstein/web-fonts-performance?slide=115).
-Using the technique demonstrated above we can ensure that our fonts load as quickly as possible, while minimizing the jarring effects of FOUT and FOIT. To see a full working example of this code take a look at 	https://github.com/ascott1/foft-demo.
+To further speed our font loading up for repeat visitors we could also [store a session storage token](https://speakerdeck.com/bramstein/web-fonts-performance?slide=115), tracking when a user’s browser has already accessed our font files.
+
+Using the technique demonstrated above we can ensure that our fonts load as quickly as possible, while minimizing the jarring effects of FOUT and FOIT. To see a full working example of this code take a look at https://github.com/ascott1/foft-demo.
  
 [^1]: http://httparchive.org/trends.php#perFonts
 [^2]: http://httparchive.org/trends.php#bytesFont&reqFont
@@ -438,7 +440,7 @@ Here is what the Apache 2 configuration, set to gzip HTML, CSS, and JavaScript w
 </IfModule>
 ```
 
-For a look at a complete `.htaccess` with additional file types, see the [HTML5 Boilerplate Apache configuration](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L740-L774). 
+For a look at a complete `.htaccess` with additional file types, see the [HTML5 Boilerplate Apache configuration](https://github.com/h5bp/server-configs-apache/blob/58d58408821f3ade93cae09cd33fdfa4b376d533/dist/.htaccess#L740-L774). 
 
 A quick and simple way to see GZIP in action is to open Chrome DevTools and inspect the “Size / Content” column in the Network panel: “Size” indicates the transfer size of the asset, and “Content” the uncompressed size of the asset. 
 
@@ -447,7 +449,7 @@ The tool [GzipWTF](http://gzipwtf.com/) provides an easy way to check which asse
 
 #### Caching
 
-Caching allows us to temporarily store previously accessed resources such as HTML, JS, CSS, and images locally for our users. This means that instead of relying on bandwidth, a users browser is able to immediately access the needed resource. In his [Caching Tutorial](https://www.mnot.net/cache_docs/) Mark Nottingham notes the two reasons that Web caches are used:
+Caching allows us to temporarily store previously accessed resources such as HTML, JS, CSS, and images locally for our users. This means that instead of relying on bandwidth, a user’s browser is able to immediately access the needed resource. In his [Caching Tutorial](https://www.mnot.net/cache_docs/) Mark Nottingham notes the two reasons that Web caches are used:
 
 > - **To reduce latency** — Because the request is satisfied from the cache (which is closer to the client) instead of the origin server, it takes less time for it to get the representation and display it. This makes the Web seem more responsive.
 > - **To reduce network traffic** — Because representations are reused, it reduces the amount of bandwidth used by a client. This saves money if the client is paying for traffic, and keeps their bandwidth requirements lower and more manageable.
@@ -471,7 +473,7 @@ For our purposes, we’ll focus on immutable content with a long max-age, though
 </IfModule>
 ```
 
-**Note**: This an abbreviated example for demonstrative purposes. For the full list see HTML5 Boilerplate’s [.htaccess file](https://github.com/h5bp/server-configs-apache/blob/master/dist/.htaccess#L836).
+**Note**: This an abbreviated example for demonstrative purposes. For the full list see HTML5 Boilerplate’s [.htaccess file](https://github.com/h5bp/server-configs-apache/blob/58d58408821f3ade93cae09cd33fdfa4b376d533/dist/.htaccess#L836).
 
 As you can see, we’ve given many of our resources long cache life cycles. For CSS and JavaScript the caching extends to a year. However, when we update our site is unlikely that we would want users to experience a cached version of one of these resources. To avoid this, we need to bust the cache by changing the URL. The clearest way to do this is to append a hash to our resources. Rather than:
 
@@ -493,12 +495,12 @@ There are several tools to automate this process, depending on your framework an
 
 - [gulp-rev](https://github.com/sindresorhus/gulp-rev) - a Gulp task for static asset revisiting.
 - [Django ManifestStaticFilesStorage](https://docs.djangoproject.com/en/1.9/ref/contrib/staticfiles/#manifeststaticfilesstorage) - A Django setting for appending a MD5 hash to the name of static files.
-- [Rails config.assets.digest](what-is-fingerprinting-and-why-should-i-care-questionmark) - A Rails setting for appending a hash to static file assets. This is enabled in production environments by default.
+- [Rails config.assets.digest](http://guides.rubyonrails.org/asset_pipeline.html#what-is-fingerprinting-and-why-should-i-care-questionmark) - A Rails setting for appending a hash to static file assets. This is enabled in production environments by default.
 - [static-asset](https://www.npmjs.com/package/static-asset) - A static asset manager for Node.JS, designed for Express.
 
 ## Optimize the Rendering Path
 
-The rendering path is the steps taken from the browser downloading our HTML, CSS, and JavaScript and displaying something on the screen. CSS is render blocking, meaning that it must be downloaded and the styles parsed before the browser moves on to the next rendering step. Similarly, JavaScript is parser blocking, meaning that whenever a script is encountered it must be downloaded *and* executed before the browser can continue parsing the document.
+The rendering path is the steps taken by the browser downloading our HTML, CSS, and JavaScript and displaying something on the screen. CSS is render blocking, meaning that it must be downloaded and the styles parsed before the browser moves on to the next rendering step. Similarly, JavaScript is parser blocking, meaning that whenever a script is encountered it must be downloaded *and* executed before the browser can continue parsing the document.
 
 To improve the rendering of our page, we can pay more attention to how our site’s CSS and JavaScript are included in the page. First, we should have as little blocking JavaScript as possible,  instead placing our `<script>` tags above the closing `</body>` tag in our page. Critical JavaScript that must be included on the initial render can be inlined for increased performance.
 
@@ -519,7 +521,7 @@ To improve the rendering of our page, we can pay more attention to how our site�
 </html>
 ```
 
-Similarly, for an additional performance boost critical CSS can be loaded inline while load secondary styles asynchronously. Critical CSS can be considered anything that is absolutely visually necessary for the initial page load such as baseline typographic styles, color, header styles, and basic layout. Filament Group’s [loadCSS](https://github.com/filamentgroup/loadCSS/) provides a means for asynchronously loading styles based on the `preload` pattern discussed earlier in this chapter. Building upon our JavaScript loading example, we could handle styles in this way:
+Similarly, for an additional performance boost critical CSS can be loaded inline while load secondary styles asynchronously. Critical CSS can be considered anything that is absolutely visually necessary for the initial page load such as baseline typographic styles, color, header styles, and basic layout. I often think of these things as the “shell” of the site or application. If you are working on an existing site, the tool [critical](https://github.com/addyosmani/critical) automatically extracts critical css from our styles. Once we have separated our critical and non-critical CSS, Filament Group’s [loadCSS](https://github.com/filamentgroup/loadCSS/) provides a means for asynchronously loading styles based on the `preload` pattern discussed earlier in this chapter. Building upon our JavaScript loading example, we could handle styles in this way:
 
 ```
 <html>
