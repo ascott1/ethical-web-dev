@@ -126,6 +126,7 @@ As API developers, the URL is our interface. By considering their permanence the
 ## Further Reading
 
 - [Tim Berners-Lee’s Axioms](https://www.w3.org/DesignIssues/Axioms.html)
+- [Persistent Domains - Strawman ideas on Web Architecture](https://www.w3.org/DesignIssues/PersistentDomains.html)
 - [Guidelines for URI Design](https://css-tricks.com/guidelines-for-uri-design/)
 - [Lessons from a 40 Year Old](http://a.wholelottanothing.org/2012/03/my-webstock-talk.html)
 - [URL as UI](https://www.nngroup.com/articles/url-as-ui/)
