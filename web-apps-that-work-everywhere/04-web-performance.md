@@ -488,9 +488,9 @@ In the Responsive Design chapter we looked at using media queries to selectively
   /* applies only when a site is being printed */
   <link href="print.css" rel="stylesheet" media="print">
   /* styles applied when viewport is 600px or less */
-  <link href="other.css" rel="stylesheet" media="(max-width: 600px)">
+  <link href="small.css" rel="stylesheet" media="(max-width: 600px)">
   /* styles applied when viewport is 601px or more */
-  <link href="other.css" rel="stylesheet" media="(min-width: 601px)">
+  <link href="large.css" rel="stylesheet" media="(min-width: 601px)">
 </head>
 ```
 
@@ -530,7 +530,7 @@ As an alternative to loadCSS, [Google’s app-shell demo](https://developers.goo
 <aside>
 **Note:**
 
-Both loadCSS and Google’s app-shell CSS loader require JavaScript to load the secondary CSS file. If our inline styles include our core styles, this will provide a usable, progressively enhanced experience for our users. If you chose to use one of these techniques, I recommend testing your site with only the inlined CSS styles to ensure it remains usable.
+Both loadCSS and Google’s app-shell CSS loader require JavaScript to load the secondary CSS file. As long as our inline styles include our site's core styles, this will provide a usable, progressively enhanced experience for our users should JavaScript fail on a page. If you choose to use one of these techniques, I recommend testing your site with only the inlined CSS styles to ensure it remains usable.
 </aside>
 
 By considering how our styles and scrips effect the rendering our page, we can increase the time to first render for our user’s.
