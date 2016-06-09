@@ -4,9 +4,9 @@ In 2007, at the 3GSM conference in Barcelona, Tim Berners-Lee, the creator of th
 
 > The Web is designed, in turn, to be **universal**: to include anything and anyone. This universality includes an independence of hardware device and operating system… and clearly this includes the mobile platform. It also has to allow links between data from any form of life, academic, commercial, private or government. It can't censor: it must allow scribbled ideas and learned journals, and leave it to others to distinguish these. It has to be independent of language and of culture. It has to provide as good an access as it can for people with disabilities.
 
-This idea of universality was an early indicator of our increasingly diverse world of web access. By design, the Web works across platforms and devices, easily connecting rich documents with one another and providing access to users around the world. Despite this default, as web developers, there is a considerate amount of work we can do to ensure we continue to create a web that is accessible to all. But before we look at how, let’s consider why.
+This idea of universality has become even more critical in our increasingly diverse world of web access. By design, the Web works across platforms and devices, easily connecting rich documents with one another and providing access to users around the world. Despite this universal default, as web developers, it is our responsibility to build a web that is accessible to all. But before we look at how of building an everywhere Web, let’s consider why.
 
-In the United States, where I live, nearly 1 in 5 adults own a smartphone, but do not have access to high-speed internet at home or have limited access other than their cell phone[^1]. Additionally, mobile devices are heavily depended upon for access to a wide range of social and cultural services. According to the [Pew Internet Study](http://www.pewinternet.org/2015/04/01/us-smartphone-use-in-2015/), smartphone users report that in the past year:
+In the United States, where I live, nearly 1 in 5 adults own a smartphone, but either do not have access to high-speed internet at home or have limited access other than their cell phone[^1]. Additionally, mobile devices are heavily depended upon for access to a wide range of social and cultural services. According to the [Pew Internet Study](http://www.pewinternet.org/2015/04/01/us-smartphone-use-in-2015/), smartphone users report that in the past year:
 
 - 62% have used their phone to look up information about a health condition.
 - 57% have used their phone to do online banking.
@@ -18,7 +18,7 @@ In the United States, where I live, nearly 1 in 5 adults own a smartphone, but d
 
 [^1]: http://www.pewinternet.org/2015/04/01/us-smartphone-use-in-2015/
 
-Meanwhile, smartphone ownership in emerging and developing nations has dramatically increased over recent years, rising to a median of 37% in 2015[^2] with worldwide 3G coverage reaching 69%[^3].This rise in access can come at a cost, as fixed-broadband is 3 times more expensive and mobile data is twice as expensive in developing countries than in developed countries[^3]. Speeds can vary wildly as well ranging from an average of nearly 40 Mbit/s in Korea to 0.09 Mbit/s in Zambia[^3].
+Meanwhile, smartphone ownership in emerging and developing nations has dramatically increased over recent years, rising to a median of 37% in 2015[^2] with worldwide 3G coverage reaching 69%[^3].This rise in access can come at a cost, as fixed-broadband is 3 times more expensive and mobile data is twice as expensive in developing countries than in developed countries[^3].Worldwide Internet speeds can vary wildly as well ranging from an average of nearly 40 Mbit/s in Korea to 0.09 Mbit/s in Zambia[^3].
 
 **It’s predicted that by 2020 there will be 7.8 billion mobile-connected devices, exceeding the world’s population**[^4].
 

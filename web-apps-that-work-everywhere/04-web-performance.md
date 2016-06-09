@@ -1,8 +1,11 @@
 # Web performance
 
-Each Tuesday morning, when a Facebook employee logs in to the application, they are presented with an option to try out the app on a slower connection for an hour. This is part of an initiative they call [2G Tuesdays](http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10), as an attempt to recognize the importance and challenges of designing and developing applications that are served over a variety of network conditions. 
+Each Tuesday morning, when a Facebook employee logs in to Facebook, they are presented with an option to try out the app on a slower connection for an hour. This is part of an initiative they call [2G Tuesdays](http://www.businessinsider.com/facebook-2g-tuesdays-to-slow-employee-internet-speeds-down-2015-10), as an attempt to recognize the importance and challenges of designing and developing applications that are served over a variety of network conditions. 
 
 As developers, we often have access to good hardware and quick web connections, but this may not always be the case for our users. Even those of us who live in major cities may experience variable network conditions, clogged or throttled by overuse. When we build our sites and applications with a performance mindset, we benefit all of our users.  
+
+
+Internet connection speeds: https://www.akamai.com/us/en/multimedia/documents/state-of-the-internet/akamai-state-of-the-internet-report-q3-2015.pdf
 
 
 ## File size
@@ -74,59 +77,6 @@ The HTTP/2 protocol may challenge some of our assumptions about combining resour
 - [http2 explained](https://daniel.haxx.se/http2/)
 - [Getting Ready For HTTP/2: A Guide For Web Designers And Developers](https://www.smashingmagazine.com/2016/02/getting-ready-for-http2/)
 
-#### The Four Pre’s (Prefetch, Preconnect, Prerender, Preload)
-
-In addition to reducing the number of resources, we can make use of several techniques to pre-load future content that we predict our user’s will need. I call these “The Four Pre’s” (prefetch, preconnect, prerender, and preload) and each can be useful in a different context where we may want to instruct the browser to download a resource before it is needed. 
-
-##### Prefetch
-
-We can request that the browser prefetch specific resources that we anticipate a user needing as they navigate to a future page using `prefetch`. This allows us as developers to load assets, such as a bundled JavaScript file that a user will need once they log in to our site.
-
-```
-<link rel="prefetch" href="script.js">
-```
-
-DNS-Prefetch allows us to request that the browser resolves a DNS lookup for another host that the browser will access. This is really useful when loading things such as third party scripts.
-
-```
-<link rel="dns-prefetch" href="//example.com">
-```
-
-
-##### Preconnect
-
-Preconnect works much like dns-prefetch, but also performs the TCP handshake and negotiates the TLS tunnel if needed, but has limited browser support [^2]. 
-
-```
-<link rel="preconnect" href="https://example.com">
-```
-
-##### Prerender
-
-Prerender allows us to preload all of the assets at a given URL. Using prerender loads all of the prerendered page’s assets, executes JavaScript, and applies styles, as if the page was already opened by the user. This can be useful for multi-page content where it is likely that a user will load the second screen of page content.
-
-```
-<link rel="prerender" href="http://example.com“>
-```
-
-##### Preload
-
-Preload is a new [browser specification](https://w3c.github.io/preload/) that, as of writing, is only available in Chrome 50+, Opera 37+, and modern Android browsers[^3]. Unlike prefetch, preload is intended for resources that are needed for the current page but are not immediately executed on page load. Preload is also notable for having the `as` attribute, allowing us to give further instruction to the browser for resource priority.
-
-```
-<link rel="preload" href="/styles/other.css" as="style">
-<link rel="preload" href="/scripts/other.js" as="script">
-```
-
-Yoav Weiss’s excellent article [Preload: What Is It Good For?](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/) delves into the potential usefulness of preload.
-
-###### Further Reading
-
-- [Prebrowsing](http://www.stevesouders.com/blog/2013/11/07/prebrowsing/)
-- [Prefetching, preloading, prebrowsing](https://css-tricks.com/prefetching-preloading-prebrowsing/)
-- [Eliminating Roundtrips with Preconnect](https://www.igvita.com/2015/08/17/eliminating-roundtrips-with-preconnect/)
-- [Link prefetching FAQ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ)
-
 [^1]: http://www.httparchive.org/trends.php
 [^2]: http://caniuse.com/#feat=link-rel-preconnect
 [^3]: http://caniuse.com/#feat=link-rel-preload
@@ -168,7 +118,7 @@ When creating images, we need to consider their content and choose the most appr
 - **JPG**: Use for photographs.
 - **PNG**: Use as the default for most other static images and images that require transparency.
 - **GIF**: Use for simple images. Supports transparency and animation.
-- **SVG**: Small file size that scales well and is supported all modern browsers and Internet Explorer 9+.
+- **SVG**: Small file size that scales well and is supported all modern browsers[http://caniuse.com/#feat=svg]. Use for icons, illustrations, and logos.
 
 Once we have chosen the proper file format for an image, we should optimize the image file. Optimizing reduces the file size of an image by applying compression and removing unnecessary information such as metadata, embedded thumbnails, and color profiles. There are a number of desktop and online tools that you may use to manually optimize images:
 
@@ -179,7 +129,7 @@ Once we have chosen the proper file format for an image, we should optimize the 
 - [ImageAlpha](https://pngmini.com/)
 - [JPEG-Optimizer](http://www.jpeg-optimizer.com/)
 
-For sites using a front-end build process, such as Gulp, Grunt, or npm scripts we can bake image optimization into our build process. The node package [imagemin](https://www.npmjs.com/package/imagemin) provides a utility for minimizing images in a number of build environments:
+For sites using a front-end build process, such as Gulp, Grunt, or npm scripts we can bake image optimization into our build process. The Node.js package [imagemin](https://www.npmjs.com/package/imagemin) provides a utility for minimizing images in a number of build environments:
 
 - **Command line interface:** [imagemin-cli](https://github.com/imagemin/imagemin-cli)
 - **Gulp**: [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
@@ -189,7 +139,7 @@ For sites using a front-end build process, such as Gulp, Grunt, or npm scripts w
 
 Web Fonts have provided the ability to add rich typography to our sites. This has been a fantastic development for design, as [95% of Web Design is typography](https://ia.net/know-how/the-web-is-all-about-typography-period). 57% of websites now use custom fonts[^1], with the average web font size of font resources measuring over 138kb[^2]. This means that font resources can account for a fairly large amount of our front-end resources, but through optimization and font-loading techniques we can ensure that custom web fonts do not create a significant performance hit for our site.
 
-The first step to serving improved web fonts is through optimization. The simplest for of font optimization is to limit the number of styles and weights of a typeface that will be used on the page. Web font services such as Typekit, Google Web Fonts, Webtype, and others allow users to be specific about the styles, weights, and character glyphs required when serving a typeface. If you are self-hosting or using an open source font the tools [Subsetter](http://www.subsetter.com/) or Font Squirrel’s [Web Font Generator](https://www.fontsquirrel.com/tools/webfont-generator) provide the ability to remove glyphs or additional language support, reducing the file size of the font files.
+The first step to serving improved web fonts is through optimization. The simplest font optimization is to limit the number of styles and weights of a typeface that will be used on the page. Web font services such as Typekit, Google Web Fonts, Webtype, and others allow users to be specific about the styles, weights, and character glyphs required when serving a typeface. If you are self-hosting or using an open source font the tools [Subsetter](http://www.subsetter.com/) or Font Squirrel’s [Web Font Generator](https://www.fontsquirrel.com/tools/webfont-generator) provide the ability to remove glyphs or additional language support, reducing the file size of the font files.
 
 Once we have optimized file size of our typefaces, we can consider how they are served to our users. In Zach Leatherman’s post [How we use web fonts responsibly, or, avoiding a @font-face-palm](https://www.filamentgroup.com/lab/font-loading.html) he points out:
 
@@ -257,8 +207,8 @@ for font loading failures */
   font-family: sans-serif;
 }
 
-/* if we did not set a font style on the body, 
-we should set one here in case our fonts fail to load */
+/* set the body to our base font
+​once the file has loaded */
 .font-loaded body {
   font-family: MyWebFont;
 }
@@ -400,7 +350,7 @@ For [most responsive image use cases](http://blog.cloudfour.com/dont-use-picture
 </picture>
 ```
 
-Through the use of responsive image techniques, we can provide users with smaller files optimized for their viewport sizes. This reduces file sizes, speeds up transfer times, and reduces bandwidth costs when dealing with the largest resources found on a typical web pages.
+Through the use of responsive image techniques, we can provide users with smaller files optimized for their viewport sizes. This reduces file sizes, speeds up transfer times, and reduces bandwidth costs when dealing with the largest resources found on a typical web page.
 
 #### Responsive Images Tools
 - [Responsive Images Breakpoints Generator](http://www.responsivebreakpoints.com/)
@@ -521,7 +471,30 @@ To improve the rendering of our page, we can pay more attention to how our site�
 </html>
 ```
 
-Similarly, for an additional performance boost critical CSS can be loaded inline while load secondary styles asynchronously. Critical CSS can be considered anything that is absolutely visually necessary for the initial page load such as baseline typographic styles, color, header styles, and basic layout. I often think of these things as the “shell” of the site or application. If you are working on an existing site, the tool [critical](https://github.com/addyosmani/critical) automatically extracts critical css from our styles. Once we have separated our critical and non-critical CSS, Filament Group’s [loadCSS](https://github.com/filamentgroup/loadCSS/) provides a means for asynchronously loading styles based on the `preload` pattern discussed earlier in this chapter. Building upon our JavaScript loading example, we could handle styles in this way:
+Similarly, for an additional performance boost critical CSS can be loaded inline while load secondary styles asynchronously. Critical CSS can be considered anything that is absolutely visually necessary for the initial page load such as baseline typographic styles, color, header styles, and basic layout. I often think of these things as the “shell” of the site or application. If you are working on an existing site, the tool [critical](https://github.com/addyosmani/critical) automatically extracts critical css from our styles. 
+
+Once we have separated our critical and non-critical CSS we can either use media queries and media types to load a small file of necessary CSS or asynchronously load our other styles. Let’s look at both techniques.
+
+In the Responsive Design chapter we looked at using media queries to selectively style our site at different breakpoints. We are also able to use media queries and media types within the   `<link>` tags that point to our CSS files. When we do this, only the CSS files that apply to browser conditions will be render blocking. Other CSS files will download, but will do so asynchronously. This means that we can significantly decrease the file size of the CSS that the browser needs to download on the first render. To do this we would break our CSS into smaller files and add a `media` attribute to the `<link>` tags:
+
+```
+<head>
+  <!— inline critical CSS —>
+  <style>
+    /* inlined critical styles */
+  </style>
+  
+  /* referenced CSS files */
+  /* applies only when a site is being printed */
+  <link href="print.css" rel="stylesheet" media="print">
+  /* styles applied when viewport is 600px or less */
+  <link href="other.css" rel="stylesheet" media="(max-width: 600px)">
+  /* styles applied when viewport is 601px or more */
+  <link href="other.css" rel="stylesheet" media="(min-width: 601px)">
+</head>
+```
+
+Filament Group’s [loadCSS](https://github.com/filamentgroup/loadCSS/) provides a means for asynchronously loading styles based on the `preload` pattern discussed earlier in this chapter. Building upon our JavaScript loading example, we could handle styles in this way:
 
 ```
 <html>
@@ -551,6 +524,14 @@ Similarly, for an additional performance boost critical CSS can be loaded inline
   </body>
 </html>
 ```
+
+As an alternative to loadCSS, [Google’s app-shell demo](https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery#example) includes a custom asynchronous style loader with a very small footprint.
+
+<aside>
+**Note:**
+
+Both loadCSS and Google’s app-shell CSS loader require JavaScript to load the secondary CSS file. If our inline styles include our core styles, this will provide a usable, progressively enhanced experience for our users. If you chose to use one of these techniques, I recommend testing your site with only the inlined CSS styles to ensure it remains usable.
+</aside>
 
 By considering how our styles and scrips effect the rendering our page, we can increase the time to first render for our user’s.
 
@@ -607,7 +588,7 @@ WebPagetest is an [open source tool](https://github.com/WPO-Foundation), making 
 
 ## Performance Budgets
 
-When managing web performance, many choose to enact a performance budget. A performance budget is a self-determined limits of the size or number and number of assets, page load speed, or overall page weight.
+When managing web performance, many choose to enact a performance budget. A performance budget is a self-determined limit on the size or number of assets, page load speed, and overall page weight.
 
 Tim Kadlec [helpfully documented](https://timkadlec.com/2014/11/performance-budget-metrics/) the types of metrics that may be useful when setting a performance budget:
 

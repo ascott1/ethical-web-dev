@@ -1,6 +1,6 @@
 # URL Design
 
-The ability to connect to any resource on the web with a URL is what makes the everywhere web possible. This makes the humble hyperlink one of the most powerful aspects of the web.  As developers we should aim to expose permanent, human readable, deep links to our users.
+The humble hyperlink one of the most powerful aspects of the web. This ability to connect to any resource on the web with through a URL is what makes the everywhere web possible. As developers we should aim to expose permanent, human readable, deep links to our users.
 
 In 1996 the creator of the web, Tim Berners-Lee, drafted [Universal Resource Identifiers -- Axioms of Web Architecture](https://www.w3.org/DesignIssues/Axioms.html). This document consists of several axioms of URL design, many technical in nature, but the first (and arguably most important) is “universality.” By Berners-Lee’s definition, “any resource anywhere can be given a URI” and “any resource of significance *should* be given a URI” (emphasis mine). By conforming to these expectations of the web we make it easier for our users to share and interact with the web. 
 
@@ -13,21 +13,15 @@ In 1996 the creator of the web, Tim Berners-Lee, drafted [Universal Resource Ide
 
 — [THE W3C](https://www.w3.org/Provider/Style/URI.html)
 
-> more than 70% of the URLs within the Harvard Law Review and other journals, and 50% of the URLs found within United States Supreme Court opinions, do not link to the originally cited information.
+One of the beautiful things about developing for the web is the ability to evolve our applications over time, immediately deploying updates to every user. With this ability, however, we often introduce states of fluctuation as we change server configurations, undergo content redesigns, and adapt to new technologies and frameworks. In the paper [Perma: Scoping and Addressing the Problem of Link and Reference Rot in Legal Citations](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2329161) the authors point out that “more than 70% of the URLs within the Harvard Law Review and other journals, and 50% of the URLs found within United States Supreme Court opinions, do not link to the originally cited information.” This is often referred to as “link rot,” where once valid URLs no longer return the originally linked resource. The prevalence of link rot is something that online archiving tools such as the Internet Archive’s [Wayback Machine](https://archive.org/web/) and [permalink.cc](https://perma.cc/) attempt to combat. For his part, Tim Berners-Lee has wrote about the idea of [persistent domains](https://www.w3.org/DesignIssues/PersistentDomains) 16 years ago, but this idea has, thus far, failed to become a reality.
 
-http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2329161
-
-- [Long Bets Bet – How Durable Are URLs?](http://blog.longnow.org/02012/03/23/long-bets-bet-how-durable-are-urls/)
-
-One of the beautiful things about developing for the web is the ability to evolve our applications over time, immediately deploying updates to every user. With this ability, however, we often introduce states of fluctuation as we change server configurations, undergo content redesigns, and adapt to new technologies and frameworks. Despite this, we should avoid arbitrarily changing URLs for our applications as much as possible. If significant changes to content require a URL change, we should always forward the previous URL to the new page.
-
-When creating permanent URL’s the first step is to ensure that technology does not dictate the URL. Often sites display language filetypes at the end of a URL such as `.php` or `.asp`.  This doesn’t accommodate for future iterations of an application that may be built upon a different technology stack. By remaining technology independent in URL design we take the first step towards more permanent URLs.
+As developers, we should avoid arbitrarily changing URLs for our applications as much as possible. If significant changes to content require a URL change, we should always forward the previous URL to the new page. When creating permanent URL’s the first step is to ensure that technology does not dictate the URL. Often sites display language filetypes at the end of a URL such as `.php` or `.asp`.  This doesn’t accommodate for future iterations of an application that may be built upon a different technology stack. By remaining technology independent in URL design we take the first step towards more permanent URLs.
 
 The importance or persistent URLs is that they help to preserve the web. When URLs persist, outside links remain active, user bookmarks remain relevant, and information remains consistent. By focusing on good URL design we can help to ensure the permanence of URLs across the web.
 
 ## Shareable URLs
 
-Commenting on an early draft of the Principles for Ethical Web Development, [Dean Marano](https://github.com/deanmarano) raised the important issue of creating shareable URL’s.
+Commenting on an early draft of the [Principles for Ethical Web Development](https://ethicalweb.org/), [Dean Marano](https://github.com/deanmarano) raised the important issue of creating shareable URL’s.
 
 > One thing that for me is very important when building apps is the ability to share a URL - either with myself or with others - easily. By leveraging this built in feature of the web, it makes it much easier to share, bookmark, and be a good web citizen.
 
@@ -75,11 +69,6 @@ As [Peter Bryant](http://blog.2partsmagic.com/restful-uri-design/) describes thi
 
 By providing users with a hackable URL tree, we enable them to have an immediate understanding of how our site structure works.
 
-—
-
-By following these guidelines, we can design URLs for our applications that are both easy to navigate and share by our users.
-
-
 ### API URL Design
 
 Often, when designing URLs we are not limited to designing them for end-users. APIs provide a URL interface for both internal and external developers when interacting with our services. To make our API URLs more user friendly we can aim to focus on URL permanence and comprehension.
@@ -96,7 +85,7 @@ Perhaps one of the most important things we can do for permanence is to always i
 https://api.example.com/v1/
 ```
 
-Use nouns to identify resources. This describes what the resource returns rather than what they do. This means that we should favor identifiers such as `users` instead of identifiers like `getUsers` or `list-users`.
+Use nouns to identify resources. This describes what the resource returns rather than what they do. This means that we should favor identifiers such as `users` over verb-driven identifiers like `getUsers` or `list-users`.
 
 ```
 https://api.example.com/v1/users/
@@ -117,11 +106,9 @@ Lastly, our API should filter advanced results by query parameters. This allows 
 
 As API developers, the URL is our interface. By considering their permanence the design URLs we are building more useful and sustainable APIs.
 
-#### Further Reading
+—
 
-- [REST-ful URI Design](http://blog.2partsmagic.com/restful-uri-design/)
-- [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
-
+Through purposeful design of  our URLs, we can create URLs for our applications that are both easy to navigate and share by our users. Focusing on URL permanence, simplicity, and predictability aids in building an everywhere web that simplifies access for everyone.
 
 ## Further Reading
 
@@ -130,3 +117,5 @@ As API developers, the URL is our interface. By considering their permanence the
 - [Guidelines for URI Design](https://css-tricks.com/guidelines-for-uri-design/)
 - [Lessons from a 40 Year Old](http://a.wholelottanothing.org/2012/03/my-webstock-talk.html)
 - [URL as UI](https://www.nngroup.com/articles/url-as-ui/)
+- [REST-ful URI Design](http://blog.2partsmagic.com/restful-uri-design/)
+- [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)

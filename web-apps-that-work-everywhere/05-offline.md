@@ -15,7 +15,7 @@ There are a number of potential reasons, besides a poor signal that a user may e
 - A misconfigured proxy
 - Being nearby a previously accessed wifi network
 
-Creating offline experiences for our users can simply provide us the ability to brand and give better error messaging to our users on a poor connection, provide limited functionality of our sites to offline users, or even create seamless offline experiences. As a bonus, offline web applications work blazingly fast, providing a benefit to users on all types of connections. In this chapter, we’ll look at two technologies that make offline experiences possible, Service Workers and in-browser databases.
+Creating offline experiences for our users can provide us the ability to brand and give better error messaging to our users on a poor connection, provide limited functionality of our sites to offline users, or even create seamless offline experiences. As a bonus, offline web applications work blazingly fast, providing a benefit to users on all types of connections. In this chapter, we’ll look at two technologies that make offline experiences possible, Service Workers and in-browser databases.
 
 
 ## Service Workers
@@ -31,7 +31,7 @@ There are a potential gotchas when implementing Service Workers:
 1. Sites using a Service Worker must be served over https.
 2. Service Workers do not work when a user is in private browsing mode.
 3. Browser support is limited, but growing: At the time of writing, supported in Chrome, Firefox, and Opera, with planned implementation in Microsoft Edge and is under consideration for Safari [^1].
-4. Since Service Workers run as in a separate thread in the browser, they do not have access to the DOM.
+4. Since Service Workers run as a separate thread in the browser, they do not have access to the DOM.
 5. Service workers are scoped, meaning that they should be placed in the root of your application.
 
 </aside>
@@ -96,17 +96,9 @@ self.addEventListener('fetch', function (event) {
 
 You can the full version of our service-worker.js file at [https://github.com/ascott1/sw-demo/blob/gh-pages/service-worker.js](https://github.com/ascott1/sw-demo/blob/gh-pages/service-worker.js).
 
-With these additions our simple static site is ready to work offline. To see it in action, let’s visit the demo page at [https://ascott1.github.io/sw-demo/](https://ascott1.github.io/sw-demo/).
+With these additions our simple static site is ready to work offline. To see it in action, visit the demo page at [https://ascott1.github.io/sw-demo/](https://ascott1.github.io/sw-demo/).
 
-In Chrome Developer Tools we can see that the Service Worker has been downloaded in the Sources panel.
-
-![img/sw-sources.png](img/sw-sources.png)
-
-In the Network panel the files that have been cached through the Service Worker are listed with a gear icon next to their filenames.
-
-![img/sw-network.png](img/sw-network.png)
-
-Now to test the offline capability of our site by changing the “Throttling” setting in the Network panel to “Offline” and reloading our page.
+To test the offline capability of our site, we can visit the Network panel, change the Throttling setting to Offline, and reload our page. 
 
 ![img/sw-throttle.png](img/sw-throttle.png)
 
@@ -146,7 +138,7 @@ gulp.task('generate-service-worker', function(callback) {
 
 ## In-Browser Databases
 
-In-browser databases provide us a way to store persistent data directly in a user’s browser. This allows us to store user data locally or to sync data from a database for offline use. This is similar to how a native mobile application might handle user data, storing user files locally and periodically syncing with a server when a device is connected to the network. 
+In-browser databases provide us with a way to store persistent data directly in a user’s browser. This allows us to store user data locally or to sync data from a database for offline use. This is similar to how a native mobile application might handle user data, storing user files locally and periodically syncing with a server when a device is connected to the network. 
 
 The standard for in browser storage is [IndexedDB](https://www.w3.org/TR/IndexedDB/), a hierarchical key/value database for in browser use with good browser support[^1]. Let’s look at how we might add an IndexedDB database to a site.
 
@@ -321,7 +313,7 @@ localforage.getItem('shuttles').then(function(value) {
 ```
 
 
-Though our in-browser database may make it simpler for users to access our applications in a disconnected state, it is likely that we will not want the data to live only in the browser. To handle this, we will most likely want to sync user data when the user is online. We can do this with IndexedDB and our database. Another attractive option is [PouchDB](https://pouchdb.com/), which is a JavaScript implementation of [Apache CouchDB](https://couchdb.apache.org/). PouchDB provides a local database API and makes it easy to sync the local database with any remote instance of CouchDB.
+Though our in-browser database may make it simpler for users to access our applications in a disconnected state, it is likely that we will not want the data to live only in the browser. To handle this, we will most likely want to sync user data when the user is online. We can do this with IndexedDB and our database of choice. Another attractive option is [PouchDB](https://pouchdb.com/), which is a JavaScript implementation of [Apache CouchDB](https://couchdb.apache.org/). PouchDB provides a local database API and makes it easy to sync the local database with any remote instance of CouchDB.
 
 Using an in-browser database may not be ideal for all applications, but it expands the suite of solutions for building applications that are responsive in a wide variety of network conditions. By considering these solutions, we give our users the opportunity to connect with our application’s data offline.
 

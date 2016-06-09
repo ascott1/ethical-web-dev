@@ -4,7 +4,7 @@ For more than a decade of the web’s existence, we could safely assume that eac
 
 ![Screenshot of the first website with a narrow viewport](img/first-website.png)
 
-Despite this, we spent time researching and considering the typical browser width and assumed that our users would be perched in front of a reasonably large screen, with a dedicated keyboard. With the evolution of the smartphone, those assumptions have changed. Users may access our sites quickly, on the go, from a wide range of screen sizes. With the diversity of devices and screens, we can no longer safely make assumptions about the screen size of our users.
+Despite this, we spent time researching and considering the typical browser width and assumed that our users would be perched in front of a reasonably large screen, with a dedicated keyboard. With the evolution of mobile devices, those assumptions have changed. Users may access our sites quickly, on the go, from a wide range of screen sizes. With the diversity of devices and screens, we can no longer safely make assumptions about the screen size of our users.
 
 The initial reaction to the rise of smartphones was to create dedicated mobile versions of our sites. This often sat at a `m.`[footnote: such as http://m.example.com] subdomain and provided a mobile optimized experience. At first, this seemed like a great solution as it allowed users to access our services in a format that was streamlined for their device. For developers, this also meant maintaining multiple codebases. For users, this often meant dealing with a limited subset of functionality when using a mobile device.  
 
@@ -30,10 +30,10 @@ By combining these three browser capabilities, we are able to develop sites for 
 
 The process of responsive design can be broken down into four steps.
 
-1. Set the browser viewport to adapt to the screen size.
+1. Instruct the browser viewport to adapt to the screen size.
 2. Set flexible media elements that can adapt to the width of the container.
 3. Develop a [device agnostic](http://trentwalton.com/2014/03/10/device-agnostic/) baseline experience.
-4. Using CSS3 media queries, enhance the experience at a variety of screen sizes (often termed “break points”).
+4. Use CSS3 media queries to enhance the experience at a variety of screen sizes (often termed “break points”).
 
 Let’s tease this process apart by creating a very simple responsive page.
 
@@ -84,7 +84,7 @@ In the end, we may wind up with a style sheet that is structured  with base styl
   /* Smaller device/browser styles */
 }
 
-@media (min-width: 600px) {
+@media (min-width: 601px) {
   /* Large device/browser styles */
 }
 
