@@ -53,7 +53,7 @@ _Ethical Web Development_ will be a series of short digital books that explore t
   - Using an open source license
   - Consuming open source code
 - Treating other developers with respect
-- Offering and following a code of conduct for open source projects
+- Offering, following, and enforcing a code of conduct for open source projects
 
 ## Charities
 
