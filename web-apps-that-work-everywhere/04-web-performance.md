@@ -471,11 +471,11 @@ To improve the rendering of our page, we can pay more attention to how our site�
 </html>
 ```
 
-Similarly, for an additional performance boost critical CSS can be loaded inline while load secondary styles asynchronously. Critical CSS can be considered anything that is absolutely visually necessary for the initial page load such as baseline typographic styles, color, header styles, and basic layout. I often think of these things as the “shell” of the site or application. If you are working on an existing site, the tool [critical](https://github.com/addyosmani/critical) automatically extracts critical css from our styles. 
+Similarly, for an additional performance boost critical CSS can be loaded inline while load secondary styles are loaded in a non-blocking manner. Critical CSS can be considered anything that is absolutely visually necessary for the initial page load such as baseline typographic styles, color, header styles, and basic layout. I often think of these things as the “shell” of the site or application. If you are working on an existing site, the tool [critical](https://github.com/addyosmani/critical) automatically extracts critical css from our styles. 
 
 Once we have separated our critical and non-critical CSS we can either use media queries and media types to load a small file of necessary CSS or asynchronously load our other styles. Let’s look at both techniques.
 
-In the Responsive Design chapter we looked at using media queries to selectively style our site at different breakpoints. We are also able to use media queries and media types within the   `<link>` tags that point to our CSS files. When we do this, only the CSS files that apply to browser conditions will be render blocking. Other CSS files will download, but will do so asynchronously. This means that we can significantly decrease the file size of the CSS that the browser needs to download on the first render. To do this we would break our CSS into smaller files and add a `media` attribute to the `<link>` tags:
+In the Responsive Design chapter we explored the use of media queries to selectively style our site at different breakpoints. We are also able to use media queries and media types within the   `<link>` tags that point to our CSS files. When we do this, only the CSS files that apply to browser conditions will be render blocking. Other CSS files will download, but will do so asynchronously. This means that we can significantly decrease the file size of the CSS that the browser needs to download on the first render. To do this we would break our CSS into smaller files and add a `media` attribute to the `<link>` tags:
 
 ```
 <head>
@@ -494,7 +494,7 @@ In the Responsive Design chapter we looked at using media queries to selectively
 </head>
 ```
 
-Filament Group’s [loadCSS](https://github.com/filamentgroup/loadCSS/) provides a means for asynchronously loading styles based on the `preload` pattern discussed earlier in this chapter. Building upon our JavaScript loading example, we could handle styles in this way:
+If we want to explore the asynchronous loading of CSS, Filament Group’s loadCSS provides a means for loading styles based on the preload pattern[^x]. Building upon our JavaScript loading example, we could handle styles in this way:
 
 ```
 <html>
@@ -534,6 +534,8 @@ Both loadCSS and Google’s app-shell CSS loader require JavaScript to load the 
 </aside>
 
 By considering how our styles and scrips effect the rendering our page, we can increase the time to first render for our user’s.
+
+[^x]: To learn more about preload, I recommend reading the post Preload: What Is It Good For? by Yoav Weiss https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/
 
 ### Further Reading
 
