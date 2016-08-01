@@ -1,16 +1,40 @@
 Introduction
 
+This has happened to all of us... shopping for sheets and the next time we open one of our favorite websites there's an add for bed linens.
+
 ## How Users are Tracked
 
+As users browse the web, they are being watched and, as web developers we are often enabling and supporting the surveillance. This isn't a case of tin-foil hat paranoia. As developers we often introduce the code of ad networks to support our work, add social media share buttons that allow users to easily share our site's content, or use analytics software to help us better understand user experience. These sites track user behavior with the intention of providing them with more targeted experience. While this may seem harmless or well intended, this is typically done without the understanding of the end user.
+
+The simplest way that web tracking works is that a user visits a site and that site installs a cookie from a third-party. When we visit another site with the same third-party tracker, the tracker is notified. This allows the third-party to build a unique user profile.
+
+[bubble IMG of tracker shared across sites]
+
+The intention of this tracking is typically to provide more targeted services, advertising, or products. The things we buy, the news we read, the politics we support, our religious beliefs, are often embedded into our browsing history. Without explicit permission, to many, this knowledge feels intrusive.
+
+
 ## What does your browser know about you?
+
+Those aware of user use tracking may take a few steps to attempt to beet the trackers at their own game. Ad blockers such as [uBlock Origin](https://github.com/gorhill/uBlock/) block advertisements as well as third-party advertising trackers. Other browser extensions such as [Privacy Badger](https://www.eff.org/privacybadger) and [Ghostery](https://www.ghostery.com/) attempt to block all third-party beacons from any source. However, even with tools like these, sites may be able to track users based on the unique footprint their browser leaves behind. In fact, the irony of using these tools according to the W3C slide deck [Is preventing browser fingerprinting a lost cause?](https://www.w3.org/wiki/images/7/7d/Is_preventing_browser_fingerprinting_a_lost_cause.pdf), is that "fine grained settings or incomplete tools used by a limited population can make users of these settings and tools easier to track."
+
+
 
 - User agent
 - IP Address
 - http://webkay.robinlinus.com/
 - https://amiunique.org/
+- https://panopticlick.eff.org
+
+<aside>
+
+If you're interested in learning more about privacy and user tracking, I highly recommend the online documentary, [Do Not Track](https://episode1.donottrack-doc.com/).
+
+</aside>
 
 
 ## Do Not Track
+
+As web developers how can we advocate for our user's privacy? My belief is that the first step is to advocate for the respect of the Do Not Track browser setting.
 
 - http://donottrack.us/
 - https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e#.bbdjh5a3h
@@ -26,6 +50,8 @@ If you are interested in enabling Do Not Track in your browser, or would like to
 </aside>
 
 ## Respecting Do Not Track
+
+### Sites that Respect Do Not Track
 
 ## Web Analytics
 
