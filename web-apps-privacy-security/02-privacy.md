@@ -2,6 +2,9 @@ Introduction
 
 This has happened to all of us... shopping for sheets and the next time we open one of our favorite websites there's an add for bed linens.
 
+http://www.pewresearch.org/topics/privacy-and-safety/
+http://www.pewinternet.org/2014/11/12/public-privacy-perceptions/
+
 ## How Users are Tracked
 
 As users browse the web, they are being watched and, as web developers we are often enabling and supporting the surveillance. This isn't a case of tin-foil hat paranoia. As developers we often introduce the code of ad networks to support our work, add social media share buttons that allow users to easily share our site's content, or use analytics software to help us better understand user experience. These sites track user behavior with the intention of providing them with more targeted experience. While this may seem harmless or well intended, this is typically done without the understanding of the end user.
@@ -17,13 +20,7 @@ The intention of this tracking is typically to provide more targeted services, a
 
 Those aware of user use tracking may take a few steps to attempt to beet the trackers at their own game. Ad blockers such as [uBlock Origin](https://github.com/gorhill/uBlock/) block advertisements as well as third-party advertising trackers. Other browser extensions such as [Privacy Badger](https://www.eff.org/privacybadger) and [Ghostery](https://www.ghostery.com/) attempt to block all third-party beacons from any source. However, even with tools like these, sites may be able to track users based on the unique footprint their browser leaves behind. In fact, the irony of using these tools according to the W3C slide deck [Is preventing browser fingerprinting a lost cause?](https://www.w3.org/wiki/images/7/7d/Is_preventing_browser_fingerprinting_a_lost_cause.pdf), is that "fine grained settings or incomplete tools used by a limited population can make users of these settings and tools easier to track."
 
-
-
-- User agent
-- IP Address
-- http://webkay.robinlinus.com/
-- https://amiunique.org/
-- https://panopticlick.eff.org
+Browser's can easily detect the user's IP address, user agent, location, browser plugins, hardware, and even battery level. Web developer Robin Linus developed the site [What every browser knows about you](http://webkay.robinlinus.com/) to show off the level of detail available to developers and site owners. Additionally, the tools [Am I Unique?](https://amiunique.org/) and [Panopticlick](https://panopticlick.eff.org) offer quick overviews of how unique your browser fingerprint is.
 
 <aside>
 
@@ -34,13 +31,24 @@ If you're interested in learning more about privacy and user tracking, I highly 
 
 ## Do Not Track
 
-As web developers how can we advocate for our user's privacy? My belief is that the first step is to advocate for the respect of the Do Not Track browser setting.
+With this information about the ways in which users can be tracked, how can we, as web developers, advocate for our user's privacy? My belief is that the first step is to advocate for the respect of the [Do Not Track](https://www.w3.org/TR/tracking-compliance/)(DNT) browser setting. Do Not Track is a browser setting that allows users to specify a preference to not be tracked by the sites they visit. When a user has enabled the Do Not Track setting in their browser, that responds with the HTTP header field `DNT`.
 
-- http://donottrack.us/
-- https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e#.bbdjh5a3h
+With Do Not Track enabled, browsers send an HTTP header response with a `DNT` value of `1`:
+
+```
+Host: "www.example.com"
+Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+Accept-Language: "en-US,en;q=0.5"
+Accept-Encoding: "gzip, deflate, br"
+DNT: "1"
+```
+
+Do Not Track does not disable tracking by default. Instead, as developers, in our applications, we are then responsible for appropriately handling this user request. 
+
+
 - https://www.eff.org/issues/do-not-track
 - https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/
-- https://support.twitter.com/articles/20169453?lang=en
+
 
 <aside>
 ### Enabling Do Not Track
@@ -51,7 +59,13 @@ If you are interested in enabling Do Not Track in your browser, or would like to
 
 ## Respecting Do Not Track
 
+The Mozilla Developer Network helpfully offers [Do Not Track case studies](https://developer.mozilla.org/en-US/docs/Web/Security/Do_not_track_field_guide/Case_studies) for a number of company Do Not Track usage scenarios. The examples include practical applications of Do Not Track for advertising companies, technology providers, media companies, and software companies.
+
 ### Sites that Respect Do Not Track
+
+- [Twitter](https://support.twitter.com/articles/20169453?lang=en)
+- [Medium](https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e)
+- [Pinterest](https://help.pinterest.com/en/articles/we-support-do-not-track)
 
 ## Web Analytics
 
@@ -73,3 +87,6 @@ https://www.eff.org/dnt-policy
 https://disconnect.me/icons
 
 ## Further Reading
+
+- [](http://donottrack.us/)
+- [The emerging ethical standards for studying corporate data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics)
