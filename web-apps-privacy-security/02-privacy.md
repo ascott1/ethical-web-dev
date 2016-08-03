@@ -43,23 +43,37 @@ Accept-Encoding: "gzip, deflate, br"
 DNT: "1"
 ```
 
-Do Not Track does not disable tracking by default. Instead, as developers, in our applications, we are then responsible for appropriately handling this user request. 
-
-
-- https://www.eff.org/issues/do-not-track
-- https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/
+Do Not Track does not automatically disable tracking in a user's browser. Instead, as developers, in our applications, we are then responsible for appropriately handling this user request.
 
 
 <aside>
-### Enabling Do Not Track
+**Enabling Do Not Track**
 
 If you are interested in enabling Do Not Track in your browser, or would like to direct others to do so. The site [All About Do Not Track](https://allaboutdnt.com/) has helpful guides for enabling the setting for a range of desktop and mobile browsers.
 
 </aside>
 
-## Respecting Do Not Track
+### Detecting Do Not Track
 
-The Mozilla Developer Network helpfully offers [Do Not Track case studies](https://developer.mozilla.org/en-US/docs/Web/Security/Do_not_track_field_guide/Case_studies) for a number of company Do Not Track usage scenarios. The examples include practical applications of Do Not Track for advertising companies, technology providers, media companies, and software companies.
+We can easily detect and respond to Do Not Track on the client side of our applications using JavaScript using `navigator.doNotTrack`. This will return a value of `1` for any user who has enabled Do Not Track while returning `0` for a user who has opted in to tracking and `unspecified` for users who have not enabled the setting.
+
+For example we could detect for the Do Not Track setting and avoid setting a cookie in a user's browser:
+
+```
+// store user do not track setting s a variables
+var dnt = navigator.doNotTrack;
+
+if (dnt !==1) {
+  // set cookie only if DNT not enabled
+  document.cookie = "example";
+}
+```
+
+### Respecting Do Not Track
+
+The Mozilla Developer Network helpfully offers [Do Not Track case studies](https://developer.mozilla.org/en-US/docs/Web/Security/Do_not_track_field_guide/Case_studies) and the site DoNotTrack.us provides a [Do Not Track Cookbook](http://donottrack.us/cookbook/), offering a number of company Do Not Track usage scenarios. The examples include practical applications of Do Not Track for advertising companies, technology providers, media companies, and software companies.
+
+http://donottrack.us/cookbook/
 
 ### Sites that Respect Do Not Track
 
@@ -88,5 +102,7 @@ https://disconnect.me/icons
 
 ## Further Reading
 
-- [](http://donottrack.us/)
+- [DoNotTrack.us](http://donottrack.us/)
 - [The emerging ethical standards for studying corporate data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics)
+- https://www.eff.org/issues/do-not-track
+- https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/
