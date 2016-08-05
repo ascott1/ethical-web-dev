@@ -65,9 +65,49 @@ var dnt = navigator.doNotTrack;
 
 if (dnt !==1) {
   // set cookie only if DNT not enabled
-  document.cookie = "example";
+  document.cookie = 'example';
 }
 ```
+
+The site [DoNotTrack.us](http://donottrack.us/), created and maintained by Stanford and Princeton researchers Jonathan Mayer and Arvind Narayanan, helpfully offers web server configurations and templates for web application frameworks in ASP, Java, Perl, PHP, and Django.
+
+Here is the recommended code when working with the Django framework, offers a good example for any framework or language:
+
+```
+DoNotTrackHeader = "DNT"
+DoNotTrackValue = "1"
+
+pyHeader = "HTTP_" + DoNotTrackHeader.replace("-", "_").upper()
+
+# request is an HttpRequest
+if (pyHeader in request.META) and (request.META[pyHeader] == DoNotTrackValue):
+	# Do Not Track is enabled
+else:
+	# Do Not Track is not enabled
+```
+
+Since [DoNotTrack.us]() does not offer a Node.JS example of detecting Do Not Track, here is a simple HTTP Server that will check for the DNT header response from a user's browser:
+
+```
+var http = require('http');
+
+http.createServer(function (req, res) {
+
+  var dnt = req.headers.dnt === '1' || false;
+
+  if (dnt) {
+    // Do Not Track is enabled
+  } else {;
+    // Do Not Track is not enabled
+  }
+
+	res.end();
+}).listen(3000);
+```
+
+Additionally the npm package [tinfoilhat](https://www.npmjs.com/package/tinfoilhat) offers an interface for detecting the Do Not Track setting in Node and executing a callback based on the user's setting.
+
+Based on these examples, we can see that detecting a user's Do Not Track setting is relatively straightforward. Once we have taken this important first step, how do we handle Do Not Track requests?
 
 ### Respecting Do Not Track
 
