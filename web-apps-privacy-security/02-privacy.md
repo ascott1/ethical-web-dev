@@ -113,21 +113,24 @@ Based on these examples, we can see that detecting a user's Do Not Track setting
 
 The Mozilla Developer Network helpfully offers [Do Not Track case studies](https://developer.mozilla.org/en-US/docs/Web/Security/Do_not_track_field_guide/Case_studies) and the site DoNotTrack.us provides a [Do Not Track Cookbook](http://donottrack.us/cookbook/), offering a number of company Do Not Track usage scenarios. The examples include practical applications of Do Not Track for advertising companies, technology providers, media companies, and software companies.
 
-http://donottrack.us/cookbook/
 
 ### Sites that Respect Do Not Track
 
 - [Twitter](https://support.twitter.com/articles/20169453?lang=en)
 - [Medium](https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e)
 - [Pinterest](https://help.pinterest.com/en/articles/we-support-do-not-track)
+- [Duck Duck Go](https://duckduckgo.com/privacy)
 
 ## Web Analytics
 
 http://piwik.org/blog/2014/01/data-privacy-day-january-28th/
 
+>
+A few simple steps would significantly mitigate the privacy concerns raised by outsourced analytics. First, an analytics service should technologically limit user identifiers to each customer website. Tracking cookies, for example, should be restricted to a unique domain name for each customer. This limitation increases the difficulty of tracking a user across sites, while leaving unaffected the ability to observe a user on a particular site. Second, an analytics service should separately store and handle the data from each customer website using technical and business protections. Last, an analytics service should be contractually prohibited from using the data it collects.
+
 ## De-identification
 
-Though avoiding the tracking of users completely is preferred, there may be instances where this choice is outside of our control as web developers. In these cases, we should ensure that any collected user data is de-identified, ensuring that the privacy of our users remains intact. The goal of any de-identification is to ensure that any collected data cannot be used to identify the person who created the data in any way.
+Though avoiding the tracking of users completely is preferred, there may be instances where this choice is outside of our control as web developers. In these cases, we may be able to guide the decision to de-identify collected user data, ensuring that the privacy of our users remains intact. The goal of any de-identification is to ensure that any collected data cannot be used to identify the person who created the data in any way.
 
 However, de-identification is not without its limitations, as de-identified data sets can be paired with other data sets to identify an individual. In the paper [No silver bullet: De-identification still doesn't work](http://randomwalker.info/publications/no-silver-bullet-de-identification.pdf) Arvind Narayanan and Edward W. Felten explore the limits of de-identification. Cryptographic techniques such as [differential privacy](https://en.wikipedia.org/wiki/Differential_privacy) can be used as another layer to help to ensure that individual users cannot be identified within collected datasets.
 
@@ -146,3 +149,4 @@ https://disconnect.me/icons
 - [The emerging ethical standards for studying corporate data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics)
 - https://www.eff.org/issues/do-not-track
 - https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/
+-https://cyberlaw.stanford.edu/blog/2011/01/do-not-track-no-threat-ad-supported-businesses
