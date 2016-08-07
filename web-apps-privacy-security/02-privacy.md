@@ -116,8 +116,16 @@ The Mozilla Developer Network helpfully offers [Do Not Track case studies](https
 
 ### Sites that Respect Do Not Track
 
-- [Twitter](https://support.twitter.com/articles/20169453?lang=en)
-- [Medium](https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e)
+Some well known social sites have taken the lead on implementing Do Not Track. Twitter [supports Do Not Track](https://support.twitter.com/articles/20169453?lang=en) by disabling tailored suggestions and tailored ads when a user has the setting enabled, though they still. However, it's worth noting that Twitter does not disable analytic tracking or third-party advertising tracking that uses Twitter data across the web. Pinterest [supports Do Not Track](https://help.pinterest.com/en/articles/we-support-do-not-track) and according to the site's [Privacy Policy](https://help.pinterest.com/en/articles/personalization-and-data), a user with Do Not Track enabled is opted out of Pinterest's personalization feature, which tracks users around the web in order to provide further customization of Pinterest content.
+
+Medium.com has a [clear and effective Do Not Track Policy](https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e). When a user with Do Not Track enabled is logged in, they are presented with this message:
+
+> You have Do Not Track enabled, or are browsing privately. Medium respects your request for privacy: to read in stealth mode, stay logged out. While you are signed in, we collect some information about your interactions with the site in order to personalize your experience, offer suggested reading, and connect you with your network. More details can be found here.
+
+Medium also makes it very clear that they do not track users across other websites around the web. This policy is clear and consistent, providing an strong example of how a successful site can respect a user's Do Not Track setting.
+
+The site DoNotTrack.us offers a [list of additional companies who have committed to honoring Do Not Track](http://donottrack.us/implementations), including advertising companies, analytics services, data providers, and more. Unfortunately this list appears to be incomplete and outdated, but offers a good jumping off point for exploring exemplars across a range of industries.
+
 - [Pinterest](https://help.pinterest.com/en/articles/we-support-do-not-track)
 - [Duck Duck Go](https://duckduckgo.com/privacy)
 
@@ -134,14 +142,15 @@ Though avoiding the tracking of users completely is preferred, there may be inst
 
 However, de-identification is not without its limitations, as de-identified data sets can be paired with other data sets to identify an individual. In the paper [No silver bullet: De-identification still doesn't work](http://randomwalker.info/publications/no-silver-bullet-de-identification.pdf) Arvind Narayanan and Edward W. Felten explore the limits of de-identification. Cryptographic techniques such as [differential privacy](https://en.wikipedia.org/wiki/Differential_privacy) can be used as another layer to help to ensure that individual users cannot be identified within collected datasets.
 
-## User Consent
+## User Consent and Awareness
 
-## Creating a Privacy Policy
+### Creating a Privacy Policy
 
 Though often left to lawyers...
 
 https://www.eff.org/dnt-policy
 https://disconnect.me/icons
+https://duckduckgo.com/privacy
 
 ## Further Reading
 
