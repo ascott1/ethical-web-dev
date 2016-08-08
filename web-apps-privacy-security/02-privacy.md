@@ -126,15 +126,21 @@ Medium also makes it very clear that they do not track users across other websit
 
 The site DoNotTrack.us offers a [list of additional companies who have committed to honoring Do Not Track](http://donottrack.us/implementations), including advertising companies, analytics services, data providers, and more. Unfortunately this list appears to be incomplete and outdated, but offers a good jumping off point for exploring exemplars across a range of industries.
 
-- [Pinterest](https://help.pinterest.com/en/articles/we-support-do-not-track)
-- [Duck Duck Go](https://duckduckgo.com/privacy)
-
 ## Web Analytics
 
-http://piwik.org/blog/2014/01/data-privacy-day-january-28th/
+One of the biggest challenges of handling user privacy is determining best practices for web analytics. By definition, the goal of web analytics is to track users, though the aim is typically to better understand how our sites are used so that we can continually adapt and improve them to user needs.
 
->
-A few simple steps would significantly mitigate the privacy concerns raised by outsourced analytics. First, an analytics service should technologically limit user identifiers to each customer website. Tracking cookies, for example, should be restricted to a unique domain name for each customer. This limitation increases the difficulty of tracking a user across sites, while leaving unaffected the ability to observe a user on a particular site. Second, an analytics service should separately store and handle the data from each customer website using technical and business protections. Last, an analytics service should be contractually prohibited from using the data it collects.
+To ensure user privacy when using analytics we want to ensure that our analytics provider anonymizes our users, limits tracking cookies to our site to ensure that they do not follow a user beyond our site, and that it does not share user information with third parties. The [US Government's digital analytics program](https://analytics.usa.gov/#explanation) has taken this approach, through ensuring that Google Analytics does not track individuals, share information with third parties, and anonymizes all user I.P. addresses.
+
+The analytics provider [Piwik](https://piwik.org) actively seeks to [maintain user privacy](http://piwik.org/blog/2014/01/data-privacy-day-january-28th/) while working with user analytics through:
+
+- Providing an analytics opt-out mechanism
+- Deleting logs older than a few months
+- Anonymizing IP addresses
+- Respecting Do Not Track
+- Setting a short expiration date for cookies
+
+These provide a good baseline for how we should aim to handle analytics on our site with any provider. By taking this extra care with user information, we may continue to use analytics to provide greater insights into use of our sites while maintaining user privacy.
 
 ## De-identification
 
