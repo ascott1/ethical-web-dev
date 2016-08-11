@@ -152,13 +152,25 @@ However, de-identification is not without its limitations, as de-identified data
 
 ## User Consent and Awareness
 
-### Creating a Privacy Policy
+In 2011 the European Union passed legislation requiring user consent before using tracking technology. Specifically the [privacy directive states](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32002L0058:EN:HTML):
 
-Though often left to lawyers...
+> Member States shall ensure that the use of electronic communications networks to store information or to gain access to information stored in the terminal equipment of a subscriber or user is only allowed on condition that the subscriber or user concerned is provided with clear and comprehensive information in accordance with Directive 95/46/EC, inter alia about the purposes of the processing, and is offered the right to refuse such processing by the data controller.
 
-https://www.eff.org/dnt-policy
-https://disconnect.me/icons
-https://duckduckgo.com/privacy
+This means that any site using cookies, web beacons, or similar technology must inform the user and receive explicit permission before tracking the user. If you live in Europe or have visited a European website, you are likely familiar with the common request to track banner. This law is not without [controversy](http://celso.io/2016/01/31/cookies.html) as many feel that these banners are ignored, viewed as a nuisance, or otherwise not taken seriously.
+
+In the UK, the guidance has been to simply inform users that they are being tracked, providing no option to opt-out. For example, the site [ico.org.uk](https://ico.org.uk), the "UK’s independent authority set up to uphold information rights in the public interest, promoting openness by public bodies and data privacy for individuals," opts users in, but clicking the "Information and Settings" link provides information about browser settings and disabling cookies on the site.
+
+![Image of ico.org.uk's cookie alert](img/ico-cookie.png)
+
+Though based in the United States, the site Medium.com alerts users, with DNT enabled, how their information will be used and expresses consent when a user is logging in. For a private experience, Medium recommends remaining logged out and commits to not tracking those users.
+
+![Medium.com's login screen with DNT enabled](img/medium-dnt.png)
+
+### Creating a Do Not Track Policy
+
+While there is value in informing users, I believe that the best way to provide privacy controls to users is by respecting the "Do Not Track" browser setting. This allows users to set a privacy preference once and forget it, rather than maintaining individual settings across the web. Since there is no absolute definition of what Do Not Track encompasses, to effectively implement it you will likely need to develop a DNT policy for your site or application.
+
+The Electronic Frontier Foundation(EFF) provides a [sample Do Not Track policy](https://www.eff.org/dnt-policy). This policy serves as a solid foundation for any site's Do Not Track policy and can be used verbatim or adapted for an organization's needs. EFF also provides a set of [frequently asked questions](https://www.eff.org/dnt-policy#faq) and a [human readable summary](https://www.eff.org/pages/understanding-effs-do-not-track-policy-universal-opt-out-tracking) of the policy.
 
 ## Conclusion
 
