@@ -6,6 +6,8 @@
 
 ## How HTTPS Works
 
+## Why Use HTTPS
+
 ## Implementing HTTPS
 
 ## Further Reading
