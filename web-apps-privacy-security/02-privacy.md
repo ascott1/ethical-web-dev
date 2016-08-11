@@ -1,4 +1,4 @@
-Introduction
+# Respecting user privacy
 
 This has happened to all of us... shopping for sheets and the next time we open one of our favorite websites there's an add for bed linens.
 
@@ -11,7 +11,7 @@ As users browse the web, they are being watched and, as web developers we are of
 
 The simplest way that web tracking works is that a user visits a site and that site installs a cookie from a third-party. When we visit another site with the same third-party tracker, the tracker is notified. This allows the third-party to build a unique user profile.
 
-[bubble IMG of tracker shared across sites]
+![Diagram of how cookie tracking works](img/cookie-tracking.png)
 
 The intention of this tracking is typically to provide more targeted services, advertising, or products. The things we buy, the news we read, the politics we support, our religious beliefs, are often embedded into our browsing history. Without explicit permission, to many, this knowledge feels intrusive.
 
@@ -31,7 +31,9 @@ If you're interested in learning more about privacy and user tracking, I highly 
 
 ## Do Not Track
 
-With this information about the ways in which users can be tracked, how can we, as web developers, advocate for our user's privacy? My belief is that the first step is to advocate for the respect of the [Do Not Track](https://www.w3.org/TR/tracking-compliance/)(DNT) browser setting. Do Not Track is a browser setting that allows users to specify a preference to not be tracked by the sites they visit. When a user has enabled the Do Not Track setting in their browser, that responds with the HTTP header field `DNT`.
+With this information about the ways in which users can be tracked, how can we, as web developers, advocate for our user's privacy? My belief is that the first step is to advocate for the respect of the [Do Not Track](https://www.w3.org/TR/tracking-compliance/)(DNT) browser setting. Do Not Track is a browser setting that allows users to specify a preference to not be tracked by the sites they visit. When a user has enabled the Do Not Track setting in their browser, the browser responds with the HTTP header field `DNT`.
+
+According to the [Electronic Frontier Foundation](https://www.eff.org/pages/understanding-effs-do-not-track-policy-universal-opt-out-tracking), Do Not Track boils down to sites agreeing not to collect personally identifiable information through methods such as cookies and fingerprinting as well as agreeing not to retain individual user browser data beyond 10 days. The noted exceptions to this policy are when a site is legally responsible for maintaining this information, the information is needed to complete a transaction, or if a user has given explicit consent.
 
 With Do Not Track enabled, browsers send an HTTP header response with a `DNT` value of `1`:
 
@@ -157,6 +159,8 @@ Though often left to lawyers...
 https://www.eff.org/dnt-policy
 https://disconnect.me/icons
 https://duckduckgo.com/privacy
+
+## Conclusion
 
 ## Further Reading
 
