@@ -10,10 +10,20 @@
 
 ## How HTTPS Works
 
+In the standard HTTP request and response cycle, a web connected computer requests a specific resource through a URL and a server responds with the resource, such as an HTML page.
+
+![HTTP request/response cycle](img/http.png)
+(Icons by [unlimicon](https://thenounproject.com/unlimicon/))
+
+How HTTPS works...
+
 http://robertheaton.com/2014/03/27/how-does-https-actually-work/
 http://computer.howstuffworks.com/encryption4.htm
 https://security.stackexchange.com/questions/13688/my-understanding-of-how-https-works-gmail-for-example
 https://www.quora.com/How-does-SSL-work
+
+![HTTPS request/response cycle](img/https.png)
+(Icons by [unlimicon](https://thenounproject.com/unlimicon/))
 
 ## Why Use HTTPS
 
