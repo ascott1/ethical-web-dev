@@ -15,19 +15,37 @@ At the most basic level, the HTTP request and response cycle is when a web conne
 ![HTTP request/response cycle](img/http.png)
 (Icons by [unlimicon](https://thenounproject.com/unlimicon/))
 
-When this information is requested, not only are the files sent over the wire, but also a bunch of user information, such as the the user's IP address, location, browser information, system information, and more. More importantly, all of this information is sent as unencrypted plain text over the public internet, meaning that any network sitting between the user's browser and the server has access to that information.  This means that when I request a website, like the graphic above, what I'm really saying is "Hello, I'm user 192.0.0.1 the United States using Mozilla Firefox 48.0.1 on an Intel Macintosh 10.11.6." The server, in turn responds by sending the full resource content unencrypted to the browser.
+When this information is requested, not only are the files sent over the wire, but also a bunch of user information, such as the the user's IP address, location, browser information, system information, and more. More importantly, all of this information is sent as unencrypted plain text over the public internet, meaning that any network sitting between the user's browser and the server has access to that information.  This means that when I request a website, like the graphic above, what I'm really saying is "Hello, I'm user 192.00.000.001 in the United States using Mozilla Firefox 48.0.1 on an Intel Macintosh 10.11.6 and would like the /page.html resource from http://ethicalweb.org." The server, in turn responds by returning the unencrypted resource to the user's browser.
+
+HTTPS works similarly to HTTP, but adds a later of SSL/TLS encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
+
+The United States Government's [https-only standard](https://https.cio.gov/faq/#what-does-https-do?) helpfully demonstrates the difference between these two requests. The standard unencrypted HTTP request includes a number of headers about the client and request:
+
+![Standard HTTP headers](https://https.cio.gov/assets/images/with-http-headers.png)
+
+In contrast the encrypted HTTPS request limits this information:
+
+![HTTPS headers](https://https.cio.gov/assets/images/with-https-headers.png)
+
+### How the SSL/TLS Connection Works
+
+Let's take a closer look at how the SSL/TLS connection works. [briefly explain certificates and keys]
 
 
-How HTTPS works...
+The steps of the process are much like trading in and purchasing a car (only a lot faster!):
 
-http://robertheaton.com/2014/03/27/how-does-https-actually-work/
-http://computer.howstuffworks.com/encryption4.htm
-https://security.stackexchange.com/questions/13688/my-understanding-of-how-https-works-gmail-for-example
-https://www.quora.com/How-does-SSL-work
-
+1. Handshake and say hello
+3. Get the Certificate
+4. Exchange the keys
 
 
 ## Why Use HTTPS
+
+- confidentiality
+- authenticity & integrity
+- browsers are deprecating http
+- search rankings
+- new browser features (like service workers) are only available over https
 
 ## Implementing HTTPS
 
@@ -40,6 +58,8 @@ https://certbot.eff.org/
 #### Renewal
 
 ### Other Certificate Options
+
+## Conclusion
 
 ## Further Reading
 
