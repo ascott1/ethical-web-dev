@@ -32,11 +32,23 @@ In contrast the encrypted HTTPS request limits this information:
 Let's take a closer look at how the SSL/TLS connection works. [briefly explain certificates and keys]
 
 
-The steps of the process are much like trading in and purchasing a car (only a lot faster!):
+The steps of the process are much like purchasing a car (only a lot faster!):
 
-1. Handshake and say hello
-3. Get the Certificate
+1. Say hello
+3. Exchange the certificate
 4. Exchange the keys
+
+First, the user's client says hello by reaching out to the server and requesting the https resource. This request contains all of the information about the user's connection that server will need such as the supported SSL version. In our car metaphor, in this step we've walked in to the dealership and asked to buy a car. We state the type of car we'd like to buy and offered up our trade-in vehicle.
+
+The next step is to exchange the certificate. After the initial client request, the server will respond with a SSL certificate. This certificate has been either self-signed or issued trusted certificate authority and contains information such as name of the domain it is attached to, the name of the certificate owner, dates that the certificate is valid, and a public key. In our car purchase metaphor, this is the deed to the car. With this information, we're able to verify that the seller actually owns the car we're purchasing.
+
+Lastly, the browser and server exchange keys for data encryption and decryption. Along with the certificate, the server sends along a public key. In response, the browser sends the server an encrypted request for the specific URL/assets it is trying to access. The web server then decrypts this information and returns and encrypted version to the client, which then decrypts it locally. In our car purchasing metaphor, we are now handing over the keys to our trade-in, obtaining the key for our new vehicle, and driving away!
+
+All of this happens seamlessly and instantly to a user, but this process adds a the important layer of encrypted protection that HTTPS provides.
+
+<ASIDE>
+briefly explain symmetric keys
+</ASIDE>
 
 
 ## Why Use HTTPS
