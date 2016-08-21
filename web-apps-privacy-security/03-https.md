@@ -31,7 +31,6 @@ In contrast the encrypted HTTPS request limits this information:
 
 Let's take a closer look at how the SSL/TLS connection works. [briefly explain certificates and keys]
 
-
 The steps of the process are much like purchasing a car (only a lot faster!):
 
 1. Say hello
@@ -47,7 +46,7 @@ Lastly, the browser and server exchange keys for data encryption and decryption.
 All of this happens seamlessly and instantly to a user, but this process adds a the important layer of encrypted protection that HTTPS provides.
 
 <ASIDE>
-briefly explain symmetric keys
+The keys used in this exchanged are use a symmetric key algorithm, agreed upon between the client and server during the initial connection. Symmetric keys work by using the same key to encrypt and decrypt. To make this process secure, this key is transmitted from the client to server using an asymmetric algorithm (a public/private key exchange), using the server's public key which is contained in the SSL certificate. It's like a double-decker encryption sandwich, ensuring that the information remains secure while traveling between the user and server.
 </ASIDE>
 
 
