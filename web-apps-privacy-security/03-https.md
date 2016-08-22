@@ -60,15 +60,67 @@ The keys used in this exchanged are use a symmetric key algorithm, agreed upon b
 
 ## Implementing HTTPS
 
+Now that we have looked at how HTTPS works and explored why we should use it, let's take a look at implementing HTTPS for our own sites.
+
 ### Let's Encrypt
 
-https://letsencrypt.org/
+Perhaps one of the most exciting changes in HTTPS over the past few years is the creation of [Let's Encrypt](https://letsencrypt.org/). Let’s Encrypt is a free, automated, and open certificate authority (CA) created by the [Internet Security Research Group (ISRG)](https://letsencrypt.org/isrg/). The the stated objective of Let's Encrypt is "to make it possible to set up an HTTPS server and have it automatically obtain a browser-trusted certificate, without any human intervention."
 
-https://certbot.eff.org/
+[Add more details about how it works? https://letsencrypt.org/how-it-works/]
+
+Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated SSL/TLS certificates to our webserver.
+
+The excellent certbot documentation allows us to select a specific webserver and operating system and provides instructions based on these conditions. Let's look at how we would implement certbot on an Apache server running onUbuntu 16.04.
+
+A version of certbot is packaged for 16.04, meaning from our server we can run `apt-get` to install it:
+
+```
+$ sudo apt-get install python-letsencrypt-apache
+```
+
+Let's Encrypt ships with a beta Apache plugin that will automate obtaining and installing the certificate. To do so, simply run:
+
+```
+$ letsencrypt --apache
+```
+
+To find guidelines for installation for your server, visit [certbot.eff.org](https://certbot.eff.org).
 
 #### Renewal
 
+Let's Encrypt certificates are valid for 90 days, meaning they will need to be renewed on a regular basis. To do that we could log in to our server every 90 days and run:
+
+```
+letsencrypt renew
+```
+
+However, this manual process seems like it has a high likelihood of failure (what if we're on vacation, ill, or simply just forget?!). Instead certbot recommends running a cron job that will test for renewal on a daily basis. First let's test the renewal process:
+
+```
+$ letsencrypt renew --dry-run
+```
+
+Once we've verified that this works, we can create the cron job. We'll create a job that runs the renew script twice daily at 5:17am and 5:17pm (certbot requests that the jobs run at a random minute within the hour).
+
+First open the `crontab`:
+
+```
+crontab -e
+```
+
+Then add the following to the file:
+
+```
+17 05,17 * * * letsencrypt renew
+```
+
+With this our certificate will automatically renew when needed. 
+
+
 ### Other Certificate Options
+
+- Amazon EC2
+- Verisign, Thawte, RapidSSL, etc.
 
 ## Conclusion
 
