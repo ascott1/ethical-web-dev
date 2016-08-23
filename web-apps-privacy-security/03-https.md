@@ -68,9 +68,9 @@ Perhaps one of the most exciting changes in HTTPS over the past few years is the
 
 [Add more details about how it works? https://letsencrypt.org/how-it-works/]
 
-Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated SSL/TLS certificates to our webserver.
+Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated SSL/TLS certificates to our server.
 
-The excellent certbot documentation allows us to select a specific webserver and operating system and provides instructions based on these conditions. Let's look at how we would implement certbot on an Apache server running onUbuntu 16.04.
+The excellent certbot documentation allows us to select a specific server and operating system and provides instructions based on these conditions. Let's look at how we would implement certbot on an Apache server running onUbuntu 16.04.
 
 A version of certbot is packaged for 16.04, meaning from our server we can run `apt-get` to install it:
 
@@ -114,15 +114,18 @@ Then add the following to the file:
 17 05,17 * * * letsencrypt renew
 ```
 
-With this our certificate will automatically renew when needed. 
+With this our Let's Encrypt issued certificate will automatically renew when needed.
 
 
 ### Other Certificate Options
 
-- Amazon EC2
-- Verisign, Thawte, RapidSSL, etc.
+Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free SSL/TLS certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option.
+
+For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common SSL/TLS CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
 
 ## Conclusion
+
+Whatever the method you choose to implement HTTPS for your sites, you are taking important steps to improve the security and privacy of your users.
 
 ## Further Reading
 
