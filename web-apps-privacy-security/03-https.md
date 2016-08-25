@@ -17,7 +17,11 @@ At the most basic level, the HTTP request and response cycle is when a web conne
 
 When this information is requested, not only are the files sent over the wire, but also a bunch of user information, such as the the user's IP address, location, browser information, system information, and more. More importantly, all of this information is sent as unencrypted plain text over the public internet, meaning that any network sitting between the user's browser and the server has access to that information.  This means that when I request a website, like the graphic above, what I'm really saying is "Hello, I'm user 192.00.000.001 in the United States using Mozilla Firefox 48.0.1 on an Intel Macintosh 10.11.6 and would like the /page.html resource from http://ethicalweb.org." The server, in turn responds by returning the unencrypted resource to the user's browser.
 
-HTTPS works similarly to HTTP, but adds a later of SSL/TLS encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
+HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TLS(Transport Layer Security) encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
+
+<ASIDE>
+TLS is an updated and more secure version of SSL, but SSL is the more commonly used term. Throughout the remainder of the chapter, I will refer to SSL simply as SSL.
+</ASIDE>
 
 The United States Government's [https-only standard](https://https.cio.gov/faq/#what-does-https-do?) helpfully demonstrates the difference between these two requests. The standard unencrypted HTTP request includes a number of headers about the client and request:
 
@@ -27,13 +31,13 @@ In contrast the encrypted HTTPS request limits this information:
 
 ![HTTPS headers](https://https.cio.gov/assets/images/with-https-headers.png)
 
-### How the SSL/TLS Connection Works
+### How the SSL Connection Works
 
-Let's take a closer look at how the SSL/TLS connection works. [briefly explain certificates and keys]
+Let's take a closer look at how the SSL connection works. To provide an encrypted connection, a site must obtain an SSL certificate. SSL certificates are used to verify the authenticity of the domain, relay information about the certificate itself, and contain a public key that will be exchanged with the user's browser.
 
 The steps of the process are much like purchasing a car (only a lot faster!):
 
-1. Say hello
+1. Greet one another
 3. Exchange the certificate
 4. Exchange the keys
 
@@ -68,7 +72,7 @@ Perhaps one of the most exciting changes in HTTPS over the past few years is the
 
 [Add more details about how it works? https://letsencrypt.org/how-it-works/]
 
-Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated SSL/TLS certificates to our server.
+Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated SSL certificates to our server.
 
 The excellent certbot documentation allows us to select a specific server and operating system and provides instructions based on these conditions. Let's look at how we would implement certbot on an Apache server running onUbuntu 16.04.
 
@@ -119,9 +123,9 @@ With this our Let's Encrypt issued certificate will automatically renew when nee
 
 ### Other Certificate Options
 
-Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free SSL/TLS certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option.
+Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free SSL certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option.
 
-For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common SSL/TLS CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
+For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common SSL CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
 
 ## Conclusion
 
