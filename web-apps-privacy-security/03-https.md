@@ -56,11 +56,37 @@ The keys used in this exchanged are use a symmetric key algorithm, agreed upon b
 
 ## Why Use HTTPS
 
-- confidentiality
-- authenticity & integrity
-- browsers are deprecating http
-- search rankings
-- new browser features (like service workers) are only available over https
+As we looked at what HTTPS is and how it works, we can begin to see some of the value it provides to our users as well as ourselves as site owners and maintainers. Specifically HTTPS is important for:
+
+- User privacy and security
+- Site authenticity & integrity
+- Improved search rankings
+- Browsers are beginning to deprecate HTTP
+- Many new browser features (like service workers) will only available over HTTPS
+
+Let's take a closer look at each of these.
+
+### User Privacy and Security
+
+In the previous chapter we looked at the value we can provide by respecting a user's privacy with Do Not Track. However, many users are simply unaware of these types of features. One way that we can aid the privacy of all users is by using HTTPS on our sites. This provides our users with private, encrypted connections to our sites. HTTPS prevents monitoring of sites on public networks as well as preventing passive attackers from eavesdropping on a user's web traffic. [PROVIDE EXAMPLE]
+
+### Site Authenticity
+
+CA's
+Man in the Middle Attacks
+
+### Improved search rankings
+
+https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure
+
+### Browsers are beginning to deprecate HTTP
+
+https://www.w3.org/2001/tag/doc/web-https
+https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure
+https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/
+
+### New Browser Features
+
 
 ## Implementing HTTPS
 
@@ -69,8 +95,6 @@ Now that we have looked at how HTTPS works and explored why we should use it, le
 ### Let's Encrypt
 
 Perhaps one of the most exciting changes in HTTPS over the past few years is the creation of [Let's Encrypt](https://letsencrypt.org/). Let’s Encrypt is a free, automated, and open certificate authority (CA) created by the [Internet Security Research Group (ISRG)](https://letsencrypt.org/isrg/). The the stated objective of Let's Encrypt is "to make it possible to set up an HTTPS server and have it automatically obtain a browser-trusted certificate, without any human intervention."
-
-[Add more details about how it works? https://letsencrypt.org/how-it-works/]
 
 Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated SSL certificates to our server.
 
@@ -127,6 +151,17 @@ Though Let's Encrypt is a fantastic and recommended option, it may not be the ri
 
 For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common SSL CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
 
+When implementing SSL on your server, Mozilla provides an [SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/). This easily outputs the configuration needed for popular servers such as Apache, Nginx, and Lighttpd with a variety of SSL certificate types.
+
+## Other Considerations
+
+Once you have implemented HTTPS...
+
+- Prevent mixed content
+- Relative URLs
+- Redirect HTTP to HTTPS
+- Turn on Strict Transport Security and secure cookies
+
 ## Conclusion
 
 Whatever the method you choose to implement HTTPS for your sites, you are taking important steps to improve the security and privacy of your users.
@@ -136,4 +171,8 @@ Whatever the method you choose to implement HTTPS for your sites, you are taking
 - [The United States Government's HTTPS-Only Standard](https://https.cio.gov/)
 - [Gov.uk's Using HTTPS](https://www.gov.uk/service-manual/technology/using-https)
 - [How Does HTTPS Actually Work?](http://robertheaton.com/2014/03/27/how-does-https-actually-work/) by Rob Heaton
+- [Encrypting data in transit
+](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/) Google Developers resource
 - [We're Deprecating HTTP And It's Going To Be Okay](https://konklone.com/post/were-deprecating-http-and-its-going-to-be-okay) by Eric Mill
+- [Washington Post starts to automatically encrypt part of Web site for visitors](https://www.washingtonpost.com/news/the-switch/wp/2015/06/30/washington-post-starts-to-automatically-encrypt-part-of-web-site-for-visitors/) by Andrea Peterson
+- [BuzzFeed And HTTPS](https://www.buzzfeed.com/jasonreich/buzzfeed-and-https?utm_term=.iwBZKrWWL#.mk9VLOYYK) by Jason Reich, Nabiha Syed, and Clement Huyghebaert
