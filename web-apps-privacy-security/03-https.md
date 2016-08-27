@@ -68,7 +68,7 @@ Let's take a closer look at each of these.
 
 ### User Privacy and Security
 
-In the previous chapter we looked at the value we can provide by respecting a user's privacy with Do Not Track. However, many users are simply unaware of these types of features. One way that we can aid the privacy of all users is by using HTTPS on our sites. This provides our users with private, encrypted connections to our sites. HTTPS prevents monitoring of sites on public networks as well as preventing passive attackers from eavesdropping on a user's web traffic. [PROVIDE EXAMPLE]
+In the previous chapter we looked at the value we can provide by respecting a user's privacy with Do Not Track. However, many users are simply unaware of these types of features. One way that we can aid the privacy of all users is by using HTTPS on our sites. This provides our users with private, encrypted connections to our sites. HTTPS prevents monitoring of sites on public networks as well as preventing passive attackers from eavesdropping on a user's web traffic.
 
 ### Site Authenticity
 
@@ -77,7 +77,11 @@ Man in the Middle Attacks
 
 ### Improved search rankings
 
-https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure
+In 2014 Google announced that the search engine would begin to prioritize sites using HTTPS in search results. According to the [blog post announcement](https://security.googleblog.com/2014/08/https-as-ranking-signal_6.html):
+
+> [O]ver the past few months we’ve been running tests taking into account whether sites use secure, encrypted connections as a signal in our search ranking algorithms. We’ve seen positive results, so we’re starting to use HTTPS as a ranking signal. For now it's only a very lightweight signal—affecting fewer than 1% of global queries, and carrying less weight than other signals such as high-quality content—while we give webmasters time to switch to HTTPS. But over time, we may decide to strengthen it, because we’d like to encourage all website owners to switch from HTTP to HTTPS to keep everyone safe on the web.
+
+If non-technical colleagues or clients are not yet convinced on the need for HTTPS everywhere, the potential for improved search rankings may serve as an additional selling point.
 
 ### Browsers are beginning to deprecate HTTP
 
@@ -87,6 +91,7 @@ https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/
 
 ### New Browser Features
 
+Lastly, many new browser APIs are only available to sites server over HTTPS. These include offline capabilities with service workers (covered in [Building Web Apps that Work Everywhere](http://www.oreilly.com/web-platform/free/building-web-apps-that-work-everywhere.csp), the ability to access user camera and audio with getUserMedia, and user location information with the geolocation API. Looking at the types of information these APIs will have access to, I'm thankful that browser vendors have decided that they should only be accessed over a secure connection. As and added benefit, as we develop forward-thinking applications, HTTPS will quickly become a requirement.
 
 ## Implementing HTTPS
 
@@ -147,7 +152,7 @@ With this our Let's Encrypt issued certificate will automatically renew when nee
 
 ### Other Certificate Options
 
-Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free SSL certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option.
+Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free SSL certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option. Another option, [SSLMate](https://sslmate.com/), works similarly to Let's Encrypt by automating certificates, but is not free.
 
 For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common SSL CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
 
@@ -155,12 +160,60 @@ When implementing SSL on your server, Mozilla provides an [SSL Configuration Gen
 
 ## Other Considerations
 
-Once you have implemented HTTPS...
+Once we have implemented HTTPS, there are a few site-wide changes to take into consideration:
 
-- Prevent mixed content
-- Relative URLs
-- Redirect HTTP to HTTPS
-- Turn on Strict Transport Security and secure cookies
+- Redirecting HTTP to HTTPS
+- Preventing mixed content and using relative URLs
+- Enabling HTTP Strict Transport Security
+- Using secure cookies
+
+## Redirect HTTP to HTTPS
+
+If we add HTTPS to an existing site, it may be worth redirecting all HTTP requests to HTTPS. This will ensure that all existing external links are served over a secure connection.
+
+Following our previous Let's Encrypt example, we could redirect all links with Apache by doing the following:
+
+```
+<VirtualHost *:80>
+    ServerName www.example.com
+    Redirect "/" "https://www.example.com/"
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.example.com
+    # ... SSL configuration goes here
+</VirtualHost>
+```
+
+<ASIDE>
+When forwarding http to https, the user is initially opening a request with the unencrypted version of our site before being redirected. This does open users up to a man in the middle attack. To prevent this from happening on future visits, we can pair the forward with HTTP Strict Transport Security (also covered in this section), to ensure that users only access the site over HTTPS.
+</ASID>
+
+## Mixed Content and Relative URLs
+
+Mixed occurs when a site is served over a secure HTTPS connection, but contains links to resources such as images, CSS, or JavaScript that is served over HTTP. When this occurs, browsers display an error message to users, warning them that the site contains insecure content.  
+
+This often happens in error or may occur when a site is converted to HTTPS and has lingering absolute links. To avoid this situation, convert links beginning with `http://` to `https://` or use relative URLs when linking to local files.
+
+## HTTP Strict Transport Security
+
+HTTP Strict Transport Security (HSTS) is a browser feature that allows a site to request that it only be served over HTTPS on future visits. This works by a server providing a `Strict-Transport-Security` along with a max-age. Once receiving this header, the browser will only request pages from that domain over HTTPS.
+
+Here is the HSTS header, along with an expiration of on year, and instructions to include sub domains:
+
+```
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+```
+
+### Secure cookies
+
+When sending cookies form our server application over an HTTPS connection, we should enable the `secure` flag. Using the `secure` flag will ensure that the cookie request only be sent over an encrypted connection (HTTPS).
+
+For example, when setting a cookie using the popular Express.js web framework, `secure` is a simple added parameter:
+
+```
+res.cookie('user', 'adam', { secure: true });
+```
 
 ## Conclusion
 
