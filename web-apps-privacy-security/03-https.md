@@ -19,9 +19,10 @@ When this information is requested, not only are the files sent over the wire, b
 
 HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TLS(Transport Layer Security) encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
 
-<ASIDE>
-TLS is an updated and more secure version of SSL, but SSL is the more commonly used term. Throughout the remainder of the chapter, I will refer to SSL simply as SSL.
-</ASIDE>
+---
+**ASIDE**
+TLS is an updated and more secure version of SSL, though SSL is the more commonly used term. Throughout the remainder of the chapter, I will refer to SSL/TLS simply as SSL, though the technology I am referring may actually be TLS. Confusing? Yup! This represents one of the many reasons that HTTPS can seem intimidating.
+---
 
 The United States Government's [https-only standard](https://https.cio.gov/faq/#what-does-https-do?) helpfully demonstrates the difference between these two requests. The standard unencrypted HTTP request includes a number of headers about the client and request:
 
@@ -49,10 +50,10 @@ Lastly, the browser and server exchange keys for data encryption and decryption.
 
 All of this happens seamlessly and instantly to a user, but this process adds a the important layer of encrypted protection that HTTPS provides.
 
-<ASIDE>
+---
+**ASIDE**
 The keys used in this exchanged are use a symmetric key algorithm, agreed upon between the client and server during the initial connection. Symmetric keys work by using the same key to encrypt and decrypt. To make this process secure, this key is transmitted from the client to server using an asymmetric algorithm (a public/private key exchange), using the server's public key which is contained in the SSL certificate. It's like a double-decker encryption sandwich, ensuring that the information remains secure while traveling between the user and server.
-</ASIDE>
-
+---
 
 ## Why Use HTTPS
 
@@ -62,7 +63,6 @@ As we looked at what HTTPS is and how it works, we can begin to see some of the 
 - Site authenticity & integrity
 - Improved search rankings
 - Browsers are beginning to deprecate HTTP
-- Many new browser features (like service workers) will only available over HTTPS
 
 Let's take a closer look at each of these.
 
@@ -72,8 +72,12 @@ In the previous chapter we looked at the value we can provide by respecting a us
 
 ### Site Authenticity
 
-CA's
-Man in the Middle Attacks
+HTTPS aids in verifying the authenticity of a site and its content. When a site is served over HTTPS a user can feel confident that they are visiting the site they intended and that its content is what the site owner had intended for the user.
+
+When describing the decision to move to HTTPS, popular news website BuzzFeed described the authenticity benefits of HTTPS:
+
+> Verification is a lesser known, but equally important benefit of HTTPS. It helps prevent what is called a Man-in-the-Middle attack, or MITM attack. An MITM attack via your browser can change the content of any non-HTTPS website you’re visiting without you knowing. This means an attacker can [modify news stories](http://newstweek.com/2011-01-07-device-distorts-news-on-wireless-neworks) to change or remove info, or they can change the contact details on a BuzzFeed contributor’s author page so you see a fake account the attacker controls.
+
 
 ### Improved search rankings
 
@@ -85,13 +89,19 @@ If non-technical colleagues or clients are not yet convinced on the need for HTT
 
 ### Browsers are beginning to deprecate HTTP
 
-https://www.w3.org/2001/tag/doc/web-https
-https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure
-https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/
+Currently, browsers display an indication whenever a site is being served securely using HTTPS. This appears as a green padlock next to the site's URL:
 
-### New Browser Features
+![](img/https-url-example.png)
 
-Lastly, many new browser APIs are only available to sites server over HTTPS. These include offline capabilities with service workers (covered in [Building Web Apps that Work Everywhere](http://www.oreilly.com/web-platform/free/building-web-apps-that-work-everywhere.csp), the ability to access user camera and audio with getUserMedia, and user location information with the geolocation API. Looking at the types of information these APIs will have access to, I'm thankful that browser vendors have decided that they should only be accessed over a secure connection. As and added benefit, as we develop forward-thinking applications, HTTPS will quickly become a requirement.
+However, there is a lack of indicator for browsers that are not using HTTPS:
+
+![](img/no-https-url-example.png)
+
+Recently the Chromium team pointed out that "people do not generally perceive the absence of a warning sign" and consequently suggested that browsers instead [mark HTTP as insecure](https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure), alerting users that sites served over HTTP.
+
+#### New Browser Features
+
+The second way that browsers are deprecating HTTP is by making new browser APIs available only to sites server over HTTPS. These include offline capabilities with service workers (covered in [Building Web Apps that Work Everywhere](http://www.oreilly.com/web-platform/free/building-web-apps-that-work-everywhere.csp), the ability to access user camera and audio with getUserMedia, and user location information with the geolocation API. Looking at the types of information these APIs will have access to, I'm thankful that browser vendors have decided that they should only be accessed over a secure connection. As and added benefit, as we develop forward-thinking applications, HTTPS will quickly become a requirement.
 
 ## Implementing HTTPS
 
@@ -185,9 +195,10 @@ Following our previous Let's Encrypt example, we could redirect all links with A
 </VirtualHost>
 ```
 
-<ASIDE>
+---
+**ASIDE**
 When forwarding http to https, the user is initially opening a request with the unencrypted version of our site before being redirected. This does open users up to a man in the middle attack. To prevent this from happening on future visits, we can pair the forward with HTTP Strict Transport Security (also covered in this section), to ensure that users only access the site over HTTPS.
-</ASID>
+---
 
 ## Mixed Content and Relative URLs
 
@@ -224,8 +235,7 @@ Whatever the method you choose to implement HTTPS for your sites, you are taking
 - [The United States Government's HTTPS-Only Standard](https://https.cio.gov/)
 - [Gov.uk's Using HTTPS](https://www.gov.uk/service-manual/technology/using-https)
 - [How Does HTTPS Actually Work?](http://robertheaton.com/2014/03/27/how-does-https-actually-work/) by Rob Heaton
-- [Encrypting data in transit
-](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/) Google Developers resource
+- [Is TLS Fast Yet?](https://istlsfastyet.com/)
+- [Securing the Web](https://www.w3.org/2001/tag/doc/web-https), W3C report
+- [Encrypting data in transit](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/), Google Developers resource
 - [We're Deprecating HTTP And It's Going To Be Okay](https://konklone.com/post/were-deprecating-http-and-its-going-to-be-okay) by Eric Mill
-- [Washington Post starts to automatically encrypt part of Web site for visitors](https://www.washingtonpost.com/news/the-switch/wp/2015/06/30/washington-post-starts-to-automatically-encrypt-part-of-web-site-for-visitors/) by Andrea Peterson
-- [BuzzFeed And HTTPS](https://www.buzzfeed.com/jasonreich/buzzfeed-and-https?utm_term=.iwBZKrWWL#.mk9VLOYYK) by Jason Reich, Nabiha Syed, and Clement Huyghebaert
