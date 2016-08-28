@@ -1,9 +1,11 @@
 # Respecting user privacy
 
-This has happened to all of us... shopping for sheets and the next time we open one of our favorite websites there's an add for bed linens.
+This has happened to all of us, one evening we're shopping for new sheets, reading reviews, and browsing a few online retailers and the next time we open one of our favorite websites up pops an add for bed linens. What's going on here? Even for those of us that spend our days (and nights) developing web sites and applications this can be confounding. How does the site have access to our shopping habits? And just how much do various sites know about us?
 
-http://www.pewresearch.org/topics/privacy-and-safety/
-http://www.pewinternet.org/2014/11/12/public-privacy-perceptions/
+This feeling of helplessness is not uncommon. According to the [Pew Research Center](http://www.pewresearch.org/fact-tank/2016/01/20/the-state-of-privacy-in-america/), 91% of American adults "agree or strongly agree that consumers have lost control of how personal information is collected and used by companies." Many users may be comfortable giving away information in exchange for products and services, but more often than not the depth and breadth of that information is unclear to the user. Meanwhile, advertising networks and social media sites have bits of code that are spread across the web, tracking users between sites.
+
+How then as web developers can we work to maintain the privacy or our users? In this chapter we'll look at how web tracking works and ways in which we can hand greater privacy controls back to our users.
+
 
 ## How Users are Tracked
 
