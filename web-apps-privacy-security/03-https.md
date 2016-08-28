@@ -25,8 +25,10 @@ When this information is requested, not only are the files sent over the wire, b
 HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TLS(Transport Layer Security) encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
 
 ---
+
 **ASIDE**
 TLS is an updated and more secure version of SSL, though SSL is the more commonly used term. Throughout the remainder of the chapter, I will refer to SSL/TLS simply as SSL, though the technology I am referring may actually be TLS. Confusing? Yup! This represents one of the many reasons that HTTPS can seem intimidating.
+
 ---
 
 The United States Government's [https-only standard](https://https.cio.gov/faq/#what-does-https-do?) helpfully demonstrates the difference between these two requests. The standard unencrypted HTTP request includes a number of headers about the client and request:
@@ -56,8 +58,10 @@ Lastly, the browser and server exchange keys for data encryption and decryption.
 All of this happens seamlessly and instantly to a user, but this process adds a the important layer of encrypted protection that HTTPS provides.
 
 ---
+
 **ASIDE**
 The keys used in this exchanged are use a symmetric key algorithm, agreed upon between the client and server during the initial connection. Symmetric keys work by using the same key to encrypt and decrypt. To make this process secure, this key is transmitted from the client to server using an asymmetric algorithm (a public/private key exchange), using the server's public key which is contained in the SSL certificate. It's like a double-decker encryption sandwich, ensuring that the information remains secure while traveling between the user and server.
+
 ---
 
 ## Why Use HTTPS
@@ -201,8 +205,10 @@ Following our previous Let's Encrypt example, we could redirect all links with A
 ```
 
 ---
+
 **ASIDE**
 When forwarding http to https, the user is initially opening a request with the unencrypted version of our site before being redirected. This does open users up to a man in the middle attack. To prevent this from happening on future visits, we can pair the forward with HTTP Strict Transport Security (also covered in this section), to ensure that users only access the site over HTTPS.
+
 ---
 
 ## Mixed Content and Relative URLs
