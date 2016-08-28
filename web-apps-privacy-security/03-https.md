@@ -233,7 +233,7 @@ res.cookie('user', 'adam', { secure: true });
 
 ## Conclusion
 
-Whatever the method you choose to implement HTTPS for your sites, you are taking important steps to improve the security and privacy of your users.
+HTTPS provides numerous benefits to both site owners and users and helps to make the web more secure. Whatever the method you choose to implement HTTPS for your sites, you are taking important steps to improve the security and privacy of your users.
 
 ## Further Reading
 
