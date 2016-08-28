@@ -4,9 +4,14 @@
 
 — [Tim Bray](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS)
 
-> HTTPS, HTTP over TLS, has been around since 1994, and has been well adopted by the security sensitive web — online banking, shopping, taxes and more. However, the vast majority of websites (est. 81% to 97%) continue to communicate using clear (unencrypted) HTTP — no matter how insecure that is.
+The letter S is the 19th letter of the alphabet, but when appended to HTTP signifies an added state of security. HTTPS was first developed for use in Netscape Navigator in 1994[^1] and became an important indicator of security for e-commerce and banking sites on the developing web. As we move an ever increasing amount of personal data and information across the web, ensuring user privacy and the authenticity of information become increasingly important.
 
-  - https://snyk.io/blog/10-reasons-to-use-https/
+Over a standard HTTP connection, users are open to advertising injection, content changes, and additional tracking that isn't possible over HTTPS. This is both bad for users and takes away control from site owners. Because of this, there has been a movement towards building HTTPS-only sites. Despite this, less than 11% of the top million websites currently use HTTPS be default[^2].
+
+In this chapter, we'll explore how HTTPS works, investigate the benefits of HTTPS-only sites, and look at how we can enable HTTPS for our sites today.
+
+[^1]: https://books.google.com/books?id=FLvsis4_QhEC&pg=PA344&hl=en#v=onepage&q&f=false
+[^2]: https://trends.builtwith.com/ssl/SSL-by-Default
 
 ## How HTTPS Works
 
@@ -74,7 +79,7 @@ In the previous chapter we looked at the value we can provide by respecting a us
 
 HTTPS aids in verifying the authenticity of a site and its content. When a site is served over HTTPS a user can feel confident that they are visiting the site they intended and that its content is what the site owner had intended for the user.
 
-When describing the decision to move to HTTPS, popular news website BuzzFeed described the authenticity benefits of HTTPS:
+When describing the decision to move to HTTPS, popular news website BuzzFeed detailed the [authenticity benefits of HTTPS](https://www.buzzfeed.com/jasonreich/buzzfeed-and-https):
 
 > Verification is a lesser known, but equally important benefit of HTTPS. It helps prevent what is called a Man-in-the-Middle attack, or MITM attack. An MITM attack via your browser can change the content of any non-HTTPS website you’re visiting without you knowing. This means an attacker can [modify news stories](http://newstweek.com/2011-01-07-device-distorts-news-on-wireless-neworks) to change or remove info, or they can change the contact details on a BuzzFeed contributor’s author page so you see a fake account the attacker controls.
 
