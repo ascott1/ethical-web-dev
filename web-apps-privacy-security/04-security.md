@@ -65,10 +65,60 @@ Now that we've started our application off on a strong foundation, it's worth ex
 
 ## Secure User Authentication
 
-### Creating Secure Login Systems
-  - salt & bycrypt
-  - OAuth 2.0
-  - Two-factor authentication (2FA)
+When a user creates an account with our site they are placing their trust in us. Often in this process the user may agree to a terms of service about how they may interact with our site and services and the site owners will use the data and information they create within the application. One crucial step in upholding out end of this agreement is to ensure that a user's login information is secure and private. Let's explore how we can do so.
+
+### Creating Your Own Login System
+
+When creating our own authorization system it is critical that we send this information over an HTTPS connection, as discussed in the previous chapter, and that we effectively obscure our user's passwords when stored in our database. To effectively store user passwords we should use a combination of hashing and salting.
+
+Hashing is the act of obscuring a string of text by turning it into a seemingly random string. Hashing functions are "one way," meaning that once the text is hashed it cannot be reversed back to the original string. When hashing a password, the plain text of the password is never stored in our database.
+
+Salting is the act of generating a random string of data that will be used in addition to the hashed password. This ensures that even if two user passwords are the same, the hashed and salted version will be unique.
+
+`bcrypt` is a popular hashing function, based on the [blowfish cipher](https://en.wikipedia.org/wiki/Blowfish_(cipher), and is commonly used with in a range of web frameworks. In Node.js we can use the [bycrypt module](https://www.npmjs.com/package/bcrypt) to both salt and hash our passwords.
+
+First we install bycrypt with `npm`:
+
+```
+npm install bcrypt --save
+```
+
+Then in our application code we would require the module and write a function to handle the salting and hashing using `bcrypt`.
+
+```
+// require the module
+var bcrypt = require('bcrypt');
+
+// the cost of processing the salting data, 10 is the default
+const saltRounds = 10;
+
+// function for hashing and salting
+function passwordEncrypt(username, password) {
+  // generate the salt
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    // generate the hash
+    bcrypt.hash(password, salt, function(err, hash) {
+      // store username, hash, and salt in your password DB.
+    });
+  });
+}
+```
+
+In the above example, I could passed a password of `PizzaP@rty99`, which generated a salt of `$2a$10$HF2rs.iYSvX1l5FPrX697O` and the hashed & salted password of `$2a$10$HF2rs.iYSvX1l5FPrX697O9dYF/O2kwHuKdQTdy.7oaMwVga54bWG` (which is the salt plus an encrpyted password string). Now when checking a user's password against the hashed and salted password, I can use bcrpyt's `compare` method.
+
+```
+// password is a value provided by the user
+// hash is retrieved from our DB
+bcrypt.compare(password, hash, function(err, res) {
+  // res is either true or false
+});
+```
+
+All other major web frameworks also support the use of `bcrypt`. For example, [Django's documentation](https://docs.djangoproject.com/en/1.10/topics/auth/passwords/#using-bcrypt-with-django) provides an excellent overview of integrating `bcrypt` into an application. Though `bcrpyt` is a popular and easy to implement hashing function, there are several other effective options available such as  [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) and [scrypt](https://en.wikipedia.org/wiki/Scrypt). I won't debate the benefits and merits of these individually, but when implementing a login system I encourage you to research each and choose the implementation most appropriate for your application.
+
+### OAuth 2.0
+
+### Two-factor authentication (2FA)
 
 ### Password Strength
 
@@ -78,7 +128,7 @@ https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estima
 
 **ASIDE**
 
-The least secure part of any login system is the human using it. Weak and shared passwords, phishing, etc.
+The least secure part of any login system is the human using it. Weak and shared passwords, phishing, brute force, etc.
 
 ---
 
