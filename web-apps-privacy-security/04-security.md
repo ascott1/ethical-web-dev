@@ -118,6 +118,23 @@ All other major web frameworks also support the use of `bcrypt`. For example, [D
 
 ### OAuth 2.0
 
+An alternate option to providing your own login system is to make use OAuth 2.0. OAuth 2.0 is a user authorization system that allows us to provide a user login option through popular third-party sites such as Google, Facebook, Twitter, LinkedIn and more. This allows us to both rely on large and trusted third-parties for providing authentication as well as pull in useful user information, as authorized by the user, from the chosen service.
+
+Even if you have never used OAuth as a developer, you are likely familiar with the flow from the perspective of a user.
+
+First, s user clicks a "Log In" link from our application.
+
+![img/OAuth-signin.png](img/OAuth-signin.png)
+Image from the Hackathon Starter Kit, https://github.com/sahat/hackathon-starter
+
+Next, the user is then directed to an access request for the specified service provider. This request details the level of access to user information that the accessing application will have.
+
+![img/OAuth-access-request.png](img/OAuth-access-request.png)
+
+If the user grants the authorization, the service redirects the user back to our site with an authorization code. Our server will then exchange the authorization code for an access token. Once granted the access token, that will be used to access the user information from the third-party service.
+
+Links to libraries for popular programming languages and web frameworks, tutorials, and documentation can be found at the OAuth website, [https://oauth.net/](https://oauth.net/)/. Additionally, Aaron Parecki the maintainer of OAuth, has written the fantastic guide, [OAuth 2 Simplified](https://aaronparecki.com/2012/07/29/2/oauth2-simplified).
+
 ### Two-factor authentication (2FA)
 
 ### Password Strength
