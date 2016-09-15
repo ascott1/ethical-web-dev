@@ -141,16 +141,12 @@ Strong user passwords are good for security, but giving users requirements such 
 
 If you would like to guide users to using more secure passwords a better alternative is to use a password strength estimator. The Carnegie Mellon University study ["How Does Your Password Measure Up? The Effect of Strength Meters on Password Creation"](https://www.usenix.org/system/files/conference/usenixsecurity12/sec12-final209.pdf) measured the impact of password strength meters and password requirements:
 
-> Password meters also affected the act of password creation.
-Participants who saw stringent meters spent longer
-creating their password and were more likely to change
-their password while entering it, yet they were also more
-likely to find the password meter annoying. However,
-the most stringent meter and those without visual bars
-caused participants to place less importance on satisfying
-the meter. Participants who saw more lenient meters
-tried to fill the meter and were averse to choosing passwords
-a meter deemed “bad” or “poor.”
+> We found that meters with a variety of visual appearances led users to
+create longer passwords. However, significant increases
+in resistance to a password-cracking algorithm were only
+achieved using meters that scored passwords stringently.
+These stringent meters also led participants to include
+more digits, symbols, and uppercase letters.
 
 I'm a big fan of the Dropbox library [zxcvbn](https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/). The usage of this plugin is reasonably simple, but more importantly it is based on a really sound methodology for determining password strength, which the Dropbox team has helpfully detailed.
 
@@ -170,7 +166,7 @@ In web applications, the most common pattern is to make available two factor aut
 
 **ASIDE**
 
-The least secure part of any login system is the human using it. Weak and shared passwords, phishing, and insider threats, are the weakest points of any authenticated system. 
+The least secure part of any login system is the human using it. Weak and shared passwords, phishing, and insider threats, are the weakest points of any authenticated system.
 
 ---
 
