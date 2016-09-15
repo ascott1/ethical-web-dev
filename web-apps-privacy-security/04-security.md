@@ -135,17 +135,42 @@ If the user grants the authorization, the service redirects the user back to our
 
 Links to libraries for popular programming languages and web frameworks, tutorials, and documentation can be found at the OAuth website, [https://oauth.net/](https://oauth.net/)/. Additionally, Aaron Parecki the maintainer of OAuth, has written the fantastic guide, [OAuth 2 Simplified](https://aaronparecki.com/2012/07/29/2/oauth2-simplified).
 
-### Two-factor authentication (2FA)
-
 ### Password Strength
 
-https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/
+Strong user passwords are good for security, but giving users requirements such as characters the password must contain and a required length will often frustrate users. Some are even just [plain silly](https://xato.net/worst-password-policy-ever-8b01b7eaa6db#.w4tntygj5). Worst of all, these passwords may be event less secure as it provides potential hackers with guidelines for password formats when attempting brute force penetration. Additionally, users who don't use password management software are likely to look for workarounds or write them down or store the password somewhere less secure.
+
+If you would like to guide users to using more secure passwords a better alternative is to use a password strength estimator. The Carnegie Mellon University study ["How Does Your Password Measure Up? The Effect of Strength Meters on Password Creation"](https://www.usenix.org/system/files/conference/usenixsecurity12/sec12-final209.pdf) measured the impact of password strength meters and password requirements:
+
+> Password meters also affected the act of password creation.
+Participants who saw stringent meters spent longer
+creating their password and were more likely to change
+their password while entering it, yet they were also more
+likely to find the password meter annoying. However,
+the most stringent meter and those without visual bars
+caused participants to place less importance on satisfying
+the meter. Participants who saw more lenient meters
+tried to fill the meter and were averse to choosing passwords
+a meter deemed “bad” or “poor.”
+
+I'm a big fan of the Dropbox library [zxcvbn](https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/). The usage of this plugin is reasonably simple, but more importantly it is based on a really sound methodology for determining password strength, which the Dropbox team has helpfully detailed.
+
+If your organization is interested in password requirements, steering instead towards to require password strength indicators may provide a better experience for users as well as lead to better password security.
+
+### Multi-Factor Authentication
+
+One way we can provide a more secure authentication system to our users is by making multi-factor authentication available. Multi-factor authentication is done by combining two more or more of the following:
+
+1. A secret known to the user, such as a password or PIN.
+2. A physical object in the user's possession, such as a mobile phone or a physical USB FIDO U2F [Security Key](https://support.google.com/accounts/answer/6103523).
+3. A physical characteristic of the user, such as a fingerprint, eye iris, or typing speed.
+
+In web applications, the most common pattern is to make available two factor authentication by providing a physical authentication in addition to the standard username/password flow. Often, users will receive a text message to their mobile phone or install a multi-factor authentication application that will provide the appropriate code for this additional verification step. Adding a physical dimension reduces the possibility of password theft providing access to a user's account. Though many users may opt not to enable two-factor authentication, providing this option is a good step towards better security of standard username and password authentication.
 
 ---
 
 **ASIDE**
 
-The least secure part of any login system is the human using it. Weak and shared passwords, phishing, brute force, etc.
+The least secure part of any login system is the human using it. Weak and shared passwords, phishing, and insider threats, are the weakest points of any authenticated system. 
 
 ---
 
@@ -184,3 +209,5 @@ https://bounty.github.com/
 - [Mozilla Cybersecurity Delphi 1.0: Towards a user-centric policy framework](https://blog.mozilla.org/netpolicy/files/2015/07/Mozilla-Cybersecurity-Delphi-1.0.pdf)
 - [Identity and Data Security for Web Development](http://shop.oreilly.com/product/0636920044376.do) by Jonathan LeBlanc, Tim Messerschmidt
 - [Security for Web Developers](http://shop.oreilly.com/product/0636920041429.do) by John Paul Mueller
+- [XATO: Security](https://xato.net/)
+- [xkcd: Password Strength](https://xkcd.com/936/)
