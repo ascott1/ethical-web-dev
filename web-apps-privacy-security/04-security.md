@@ -50,7 +50,7 @@ Though these examples are limited to Python and Node.js, I hope that you can see
 
 ## OWASP Top 10
 
-Now that we've started our application off on a strong foundation, it's worth exploring the common security vulnerabilities that we should be aware of. Every few years the Open Web Application Security Project (OWASP) publishes a [list of the most critical web application security flaws](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project). Being aware of this list of common vulnerabilities can provide us with an awareness of potential weaknesses in our own applications.
+Now that we've started our application off on a strong foundation, it's worth exploring the common security vulnerabilities that we should be aware of. Every few years the Open Web Application Security Project (OWASP) publishes a [list of the most critical web application security flaws](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project). As of the most recent publication, the OWASP Top 10 is comprised of:
 
 1. Injection
 2. Broken authentication and session management
@@ -62,6 +62,8 @@ Now that we've started our application off on a strong foundation, it's worth ex
 8. Cross-site request forgery
 9. Using components with known vulnerabilities
 10. Unvalidated redirects and forwards
+
+Being aware of this list of common vulnerabilities can provide us with an awareness of potential weaknesses in our own applications.
 
 ## Secure User Authentication
 
@@ -171,7 +173,6 @@ The least secure part of any login system is the human using it. Weak and shared
 ---
 
 ### Other types of authentication:
-    - n-factor
     - one-time passwords
     - biometrics
     - blockchain
@@ -181,15 +182,57 @@ The least secure part of any login system is the human using it. Weak and shared
 
 ## Encrypting User Data
 
+Depending on the type of application we work on, it may contain sensitive user information beyond user credentials. Our applications may store user location information, journal entries, social security numbers, health records, or any number of private bits of information that users have entrusted us with. When this is the case it becomes important to encrypt sensitive user information in addition to passwords. Doing this acknowledges that we are willing to take extra steps and security precautions with our user's information.
+
+We've recently seen a rise in the popularity of services that encrypt and secure user data. The email provider [ProtonMail](https://protonmail.com/) offers secure and encrypted email accounts. The mobile messaging application [Signal](https://whispersystems.org/) is an encrypted messaging app. We've also seen encryption become a selling point for mainstream applications. The popular messaging app, WhatsApp, now provides [end-to-end encryption](https://www.whatsapp.com/faq/en/general/28030015) for user conversations. Even if a user is unaware of this feature it is being provided as an additional layer of security and privacy.
+
+Encrypting user data can be useful for much more than messaging and email applications, however. As is evidence with the OPM hack mentioned at the beginning of the chapter, government employees would have greatly benefited from having their records encrypted rather than stored as plain text on the server.
+
+In Node.js we could use the built in [crypto](https://nodejs.org/api/crypto.html) library to encrypt and decrypt user data. Here's a very basic example of what that might look like with a pair of functions that encrypt and decrypt some plain text using a provided password:
+
+```
+var crypto = require('crypto');
+
+function dataEncrypt(password, text) {
+  var cipher = crypto.createCipher('aes192', password);
+  var encrypted = cipher.update(text, 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+  return encrypted;
+}
+
+function dataDecrypt(password, encrypted) {
+  var decipher = crypto.createDecipher('aes192', password);
+  var decrypted = decipher.update(encrypted, 'hex', 'utf8');
+  decrypted += decipher.final('utf8');
+  return decrypted;
+}
+
+// encrypt some data
+var encrypt = dataEncrypt('Password', 'This is encrypted!');
+// returns f53a6a423a11be8f27ff86effa5ace548995866009190a902ecb6d351ec2ec4d
+var decrypt = dataDecrypt('Password', encrypt);
+// returns This is encrypted!
+```
+
+By storing user data in an encrypted format we are taking an extra step towards securing that data for our users.
+
 ## Sanitizing Data
 
 ## Security Headers
 
-## Bug Bounty Programs and Security Disclosures
+## Security Disclosures and Bug Bounty Programs
 
-https://titanous.com/posts/security-disclosure-policy-best-practices
+No matter how diligent we are about security, there may be flaws in our application. A step towards better security and user experience is to acknowledge this potential by having a strong security disclosure plan as well as the creation of bug bounty programs.
+
+Developer Jonathan Rudenberg's post [Security Disclosure Policy Best Practices](https://titanous.com/posts/security-disclosure-policy-best-practices)provides a succinct strategy for handling security disclosures.
+
+
+The site BugCrowd has compiled a list of [bug bounty programs](https://bugcrowd.com/list-of-bug-bounty-programs/).
 
 https://bounty.github.com/
+https://www.facebook.com/whitehat/bounty/
+https://www.google.com/about/appsecurity/reward-program/
+https://www.mozilla.org/en-US/security/bug-bounty/
 
 ## Additional Tools
   - Chrome Security Panel
