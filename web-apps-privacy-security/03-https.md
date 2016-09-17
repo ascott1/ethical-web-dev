@@ -211,12 +211,6 @@ When forwarding http to https, the user is initially opening a request with the 
 
 ---
 
-## Mixed Content and Relative URLs
-
-Mixed occurs when a site is served over a secure HTTPS connection, but contains links to resources such as images, CSS, or JavaScript that is served over HTTP. When this occurs, browsers display an error message to users, warning them that the site contains insecure content.  
-
-This often happens in error or may occur when a site is converted to HTTPS and has lingering absolute links. To avoid this situation, convert links beginning with `http://` to `https://` or use relative URLs when linking to local files.
-
 ## HTTP Strict Transport Security
 
 HTTP Strict Transport Security (HSTS) is a browser feature that allows a site to request that it only be served over HTTPS on future visits. This works by a server providing a `Strict-Transport-Security` along with a max-age. Once receiving this header, the browser will only request pages from that domain over HTTPS.
@@ -226,6 +220,20 @@ Here is the HSTS header, along with an expiration of on year, and instructions t
 ```
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 ```
+
+To set the HSTS header in Apache, we would add the following to our Virtual Host:
+
+```
+Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
+```
+
+
+## Mixed Content and Relative URLs
+
+Mixed occurs when a site is served over a secure HTTPS connection, but contains links to resources such as images, CSS, or JavaScript that is served over HTTP. When this occurs, browsers display an error message to users, warning them that the site contains insecure content.  
+
+This often happens in error or may occur when a site is converted to HTTPS and has lingering absolute links. To avoid this situation, convert links beginning with `http://` to `https://` or use relative URLs when linking to local files.
+
 
 ### Secure cookies
 
