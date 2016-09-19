@@ -177,8 +177,7 @@ The least secure part of any login system is the human using it. Weak and shared
     - biometrics
     - blockchain
 
-
-### User Sessions
+### Session Management
 
 ## Encrypting User Data
 
@@ -216,9 +215,49 @@ var decrypt = dataDecrypt('Password', encrypt);
 
 By storing user data in an encrypted format we are taking an extra step towards securing that data for our users.
 
-## Sanitizing Data
+## Sanitize and Validate User Input
+
+Interactive form fields and text input are often the differentiator between a web site and application. Introducing this type of interactivity opens our site up to both database injections and cross-site scripting (XSS) attacks, two of the top 3 security vulnerabilities on the OWASP top 10 list. [EXPLAIN EACH] Steps towards preventing both of these potential attacks can be taken by sanitizing and validating user input.
+
+
+Sanitize HTML markup
+
+It's better to whitelist than to blacklist user input...
+
+## Cross-site request forgery (CSRF)
 
 ## Security Headers
+
+To further harden our application's security we can set a number of HTTP headers, which give our users' browsers information about the types of requests possible on our site. Enabling each of these headers will provide further protection for our users against potential threats such as cross-site scripting and clickjacking.
+
+---
+**ASIDE**: I've included examples for enabling each header with an Apache server. The article on KeyCDN's blog [Hardening Your HTTP Security Headers](https://www.keycdn.com/blog/http-security-headers) by Brian Jackson, offers both Apache and Nginx configurations for each of these headers.
+
+---
+
+### Content Security Policy (CSP)
+
+The Content Security Policy header is useful for mitigating cross-site scripting attacks by limiting the use of external resources from a given domain. When enabling CSP we are able to specify that all resources must come from the the current domain:
+
+```
+Content-Security-Policy: "default-src 'none';
+```
+
+If you would like to permit access to an external domain, such as a CDN or analytics host you can whitelist that domain by adding it to the end of the policy:
+
+```
+Content-Security-Policy: "default-src 'none'; script-src https://example.com;
+```
+
+KeyCDN has written a very helpful guide to the [content security policy header](https://www.keycdn.com/support/content-security-policy/).
+
+X-XSS-Protection
+
+X-Frame-Options
+
+X-Content-Type-Options
+
+https://securityheaders.io/ for analyzing your security headers
 
 ## Security Disclosures and Bug Bounty Programs
 
@@ -242,11 +281,12 @@ https://www.mozilla.org/en-US/security/bug-bounty/
 
 ## Further Reading
 
+- [Identity and Data Security for Web Development](http://shop.oreilly.com/product/0636920044376.do) by Jonathan LeBlanc, Tim Messerschmidt
+- [Security for Web Developers](http://shop.oreilly.com/product/0636920041429.do) by John Paul Mueller
 - [Awesome AppSec](https://github.com/paragonie/awesome-appsec)
 - [A practical security guide for web developers ](https://github.com/FallibleInc/security-guide-for-developers/blob/master/README.md)
 - [Python & Django Security on a Shoestring: Resources](http://nerd.kelseyinnis.com/blog/2016/05/30/python-django-security-on-a-shoestring-resources/) by Kelsey Gilmore-Innis
+- [Security Tips for Web Developers](https://www.squarefree.com/securitytips/web-developers.html)
 - [Mozilla Cybersecurity Delphi 1.0: Towards a user-centric policy framework](https://blog.mozilla.org/netpolicy/files/2015/07/Mozilla-Cybersecurity-Delphi-1.0.pdf)
-- [Identity and Data Security for Web Development](http://shop.oreilly.com/product/0636920044376.do) by Jonathan LeBlanc, Tim Messerschmidt
-- [Security for Web Developers](http://shop.oreilly.com/product/0636920041429.do) by John Paul Mueller
 - [XATO: Security](https://xato.net/)
 - [xkcd: Password Strength](https://xkcd.com/936/)
