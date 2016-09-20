@@ -240,16 +240,30 @@ To further harden our application's security we can set a number of HTTP headers
 The Content Security Policy header is useful for mitigating cross-site scripting attacks by limiting the use of external resources from a given domain. When enabling CSP we are able to specify that all resources must come from the the current domain:
 
 ```
-Content-Security-Policy: "default-src 'none';
+Content-Security-Policy "default-src 'self'"
 ```
 
-If you would like to permit access to an external domain, such as a CDN or analytics host you can whitelist that domain by adding it to the end of the policy:
+The setting of `default-src` is a catch all that includes all resources such as JavaScript, images, CSS, and media. Our policy can be more specific and use directives that specify individual resource policies. The following policy would only permit requests from the origin domain for scripts, AJAX/web socket requests, images, and styles:
 
 ```
-Content-Security-Policy: "default-src 'none'; script-src https://example.com;
+default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';
 ```
 
-KeyCDN has written a very helpful guide to the [content security policy header](https://www.keycdn.com/support/content-security-policy/).
+The [Content Security Policy Quick Reference Guide](https://content-security-policy.com/) provides a full list of directives.
+
+It's also possible to create a whitelist that will permit access to an external domain, such as a CDN or analytics host. The following example would permit scripts from `cdn.example.com`
+
+```
+script-src 'self' cdn.example.com;
+```
+
+In our Apache configuration:
+
+```
+Header set Content-Security-Policy "default-src 'self';"
+```
+
+To make creating a Content Security Policy easier, the site [cspisawesome.com](http://cspisawesome.com/) provides a generator for creating a unique CSP configuration KeyCDN has written a very helpful guide to the [content security policy header](https://www.keycdn.com/support/content-security-policy/).
 
 X-XSS-Protection
 
