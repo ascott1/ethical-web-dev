@@ -260,18 +260,54 @@ script-src 'self' cdn.example.com;
 In our Apache configuration:
 
 ```
-Header set Content-Security-Policy "default-src 'self';"
+header always set Content-Security-Policy "default-src 'self';"
 ```
 
 To make creating a Content Security Policy easier, the site [cspisawesome.com](http://cspisawesome.com/) provides a generator for creating a unique CSP configuration KeyCDN has written a very helpful guide to the [content security policy header](https://www.keycdn.com/support/content-security-policy/).
 
-X-XSS-Protection
+### X-Frame-Options
 
-X-Frame-Options
+The `x-frame-options` header provides clickjacking protection for our sites. It works by disabling or limiting content rendered in a `<frame>`, `<iframe>` or `<object>`.
 
-X-Content-Type-Options
+The possible directives for `x-frame-options` are:
 
-https://securityheaders.io/ for analyzing your security headers
+```
+X-Frame-Options: DENY
+X-Frame-Options: SAMEORIGIN
+X-Frame-Options: ALLOW-FROM https://example.com/
+```
+
+In Apache we can configure our site to only permit `<frame>`, `<iframe>` or `<object>` to appear from our own domain:
+
+```
+header always set x-frame-options "SAMEORIGIN"
+```
+
+### X-XSS-Protection
+
+The `x-xss-protection` header enables the cross-site scripting filter in a user's browser. Though this setting is typically enabled by default in modern browsers, the use of this header will enforce the policy if it has been disabled.
+
+To configure X-XSS-Protection in Apache:
+
+```
+header always set x-xss-protection "1; mode=block"
+```
+
+### X-Content-Type-Options
+
+The `x-content-type-options` header is used to enforce file content types. When a browser is unsure of a file type, the browser may conduct content (or MIME) sniffing to guess the correct resource type. This opens up a security risk as it can allow a user's browser to be manipulated in a way that allows an attacker to fake a file type that could instead be executable code.
+
+We can configure Apache to disallow content sniffing:
+
+```
+header always set X-Content-Type-Options "nosniff"
+```
+
+### Checking Headers
+
+Once our secure headers have been set, we can use [securityheaders.io](https://securityheaders.io/) to scan our site. Based on the header response, this tool will grade the site. Here is the result of an A+ score when scanning the tool's own site:
+
+![img/securityheaders.png](img/securityheaders.png)
 
 ## Security Disclosures and Bug Bounty Programs
 
