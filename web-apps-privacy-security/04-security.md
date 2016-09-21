@@ -217,12 +217,36 @@ By storing user data in an encrypted format we are taking an extra step towards 
 
 ## Sanitize and Validate User Input
 
-Interactive form fields and text input are often the differentiator between a web site and application. Introducing this type of interactivity opens our site up to both database injections and cross-site scripting (XSS) attacks, two of the top 3 security vulnerabilities on the OWASP top 10 list. [EXPLAIN EACH] Steps towards preventing both of these potential attacks can be taken by sanitizing and validating user input.
+Interactive form fields and text input are often the differentiator between a web site and application. Introducing this type of interactivity opens our site up to both database injections and cross-site scripting (XSS) attacks, two of the top 3 security vulnerabilities on the OWASP top 10 list. Database injections occur when an attacker injects code or database commands (such as SQL statements) into the database. Cross-site scripting can occur when an attacker is able to inject malicious scripts into our site.  Steps towards preventing both of these potential attacks can be taken by sanitizing and validating user input.
 
+The most important thing we can do to prevent these types of attacks is sanitize user-submitted content.
 
-Sanitize HTML markup
+To do this, we should whitelist the HTML input that our application will accept. Whitelisting is preferred to blacklisting user input as this gives you fine grained control over the type of content being entered and stored. If users are able to add HTML to a field, choose the tags that should be available to the user and whitelist those. Avoid giving users the ability to execute JavaScript or `<script>` tags within your application.
 
-It's better to whitelist than to blacklist user input...
+In Node.js we can use the [sanitize-html](https://www.npmjs.com/package/sanitize-html) module to do this.
+
+First install the module as a project dependency:
+
+```
+npm install sanitize-html --save
+```
+
+Now in our project code we could include the module and sanitize using a whitelist of Tags our HTML:
+
+```
+var sanitizeHtml = require('sanitize-html');
+
+var dirty = 'HTML entered from the client';
+clean = sanitizeHtml(dirty, {
+  allowedTags: [ 'b', 'i', 'em', 'strong', 'a' ],
+  allowedAttributes: {
+    'a': [ 'href' ]
+  }
+});
+
+```
+
+To avoid database injection we should further sanitize our user input. When using an SQL database it is important to escape characters being entered into the database so that SQL statements cannot be entered into the database. By contrast NoSQL injections may be executed differently by opening up the possibility to be executed at either the database layer or application layer. To prevent attacks using a NoSQL database, we should again ensure that executable code or special characters used by the database are not entered into the database.
 
 ## Cross-site request forgery (CSRF)
 
@@ -335,6 +359,7 @@ https://www.mozilla.org/en-US/security/bug-bounty/
 - [Security for Web Developers](http://shop.oreilly.com/product/0636920041429.do) by John Paul Mueller
 - [Awesome AppSec](https://github.com/paragonie/awesome-appsec)
 - [A practical security guide for web developers ](https://github.com/FallibleInc/security-guide-for-developers/blob/master/README.md)
+- [OWASP Testing Guide](https://www.owasp.org/index.php/OWASP_Testing_Guide_v4_Table_of_Contents)
 - [Python & Django Security on a Shoestring: Resources](http://nerd.kelseyinnis.com/blog/2016/05/30/python-django-security-on-a-shoestring-resources/) by Kelsey Gilmore-Innis
 - [Security Tips for Web Developers](https://www.squarefree.com/securitytips/web-developers.html)
 - [Mozilla Cybersecurity Delphi 1.0: Towards a user-centric policy framework](https://blog.mozilla.org/netpolicy/files/2015/07/Mozilla-Cybersecurity-Delphi-1.0.pdf)
