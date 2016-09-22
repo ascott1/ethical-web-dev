@@ -150,7 +150,7 @@ achieved using meters that scored passwords stringently.
 These stringent meters also led participants to include
 more digits, symbols, and uppercase letters.
 
-I'm a big fan of the Dropbox library [zxcvbn](https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/). The usage of this plugin is reasonably simple, but more importantly it is based on a really sound methodology for determining password strength, which the Dropbox team has helpfully detailed.
+I'm a big fan of the library [zxcvbn](https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/), created by the team at Dropbox. The usage of this plugin is reasonably simple, but more importantly it is based on a really sound methodology for determining password strength, which the Dropbox team has helpfully detailed.
 
 If your organization is interested in password requirements, steering instead towards to require password strength indicators may provide a better experience for users as well as lead to better password security.
 
@@ -248,7 +248,24 @@ clean = sanitizeHtml(dirty, {
 
 To avoid database injection we should further sanitize our user input. When using an SQL database it is important to escape characters being entered into the database so that SQL statements cannot be entered into the database. By contrast NoSQL injections may be executed differently by opening up the possibility to be executed at either the database layer or application layer. To prevent attacks using a NoSQL database, we should again ensure that executable code or special characters used by the database are not entered into the database.
 
-## Cross-site request forgery (CSRF)
+## Cross-site Request Forgery (CSRF)
+
+Cross-site Request Forgery (CSRF) is a type of attack where a site uses a user's browser to manipulate our web application. Through CSRF an attacker can forge login requests or complete actions that are typically done by a logged in user such as post comments, transfer money, or change user account details. These attacks can occur by utilizing both browser cookies or user IP address information. Where cross-site scripting (XSS) is done by exploiting a user's trust in our site, CSRF is an exploiting the trust a site has in the user's browser.
+
+[Wikipedia](https://en.wikipedia.org/wiki/Cross-site_request_forgery) defines the following common CSRF characteristics:
+
+- Involve sites that rely on a user's identity
+- Exploit the site's trust in that identity
+- Trick the user's browser into sending HTTP requests to a target site
+- Involve HTTP requests that have side effects
+
+Two possible steps to preventing CSRF are to include a secret token in our forms and to validate the referrer header on requests.
+
+When dealing with form submission, most web frameworks provide CSRF protection or have available plugins for generating and validating the tokens. The Django web framework includes default middleware for [creating posts with CSRF tokens](https://docs.djangoproject.com/en/1.10/ref/csrf/). Similarly the Node module [csurf](https://www.npmjs.com/package/csurf) provides the same functionality for applications built using the Express framework.
+
+Secondly, we can verify the referring header and if it is not present or comes from an incorrect URL we can deny the request. It should be noted that this can be spoofed, so this is not a failsafe protection, but can add a layer of protection for users. Additionally, users who have disabled referrer headers in their browsers due to privacy issues will be unable to make use of this functionality.
+
+By being aware of CSRF and making use of these two mitigation strategies, we can add an additional layer of protection for our users.
 
 ## Security Headers
 
@@ -346,10 +363,6 @@ https://bounty.github.com/
 https://www.facebook.com/whitehat/bounty/
 https://www.google.com/about/appsecurity/reward-program/
 https://www.mozilla.org/en-US/security/bug-bounty/
-
-## Additional Tools
-  - Chrome Security Panel
-  - Code sniffing
 
 ## Conclusion
 
