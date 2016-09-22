@@ -90,7 +90,7 @@ else:
 	# Do Not Track is not enabled
 ```
 
-Since [DoNotTrack.us]() does not offer a Node.JS example of detecting Do Not Track, here is a simple HTTP Server that will check for the DNT header response from a user's browser:
+Since [DoNotTrack.us](http://donottrack.us/) does not offer a Node.JS example of detecting Do Not Track, here is a simple HTTP Server that will check for the DNT header response from a user's browser:
 
 ```
 var http = require('http');
