@@ -172,12 +172,13 @@ The least secure part of any login system is the human using it. Weak and shared
 
 ---
 
-### Other types of authentication:
-    - one-time passwords
-    - biometrics
-    - blockchain
+### Other Types of Authentication
 
-### Session Management
+In addition to the standard username/password and two-factor authentication models, there are less common authentication techniques such as one-time passwords and biometrics. Though uncommon, these may be worth exploring further.
+
+One-time work be generating a unique token and sending it directly to a user, typically through email or a mobile device. The popular chat application Slack makes use of one-time passwords, generating a unique link and sending it a user when they sign in to a Slack channel. This also be paired with two-factor authentication to add an extra layer or user protection.
+
+Another interesting approach is the use of biometrics. We've likely all seen science fiction movies that use a retina scanner or open a door with a fingerprint, but this technology is not something unattainable. In fact, most new smartphones ship with a biometric fingerprint login. Though not currently used on the web, it's not hard to imagine a future where there are biometric login options. If that time comes, however, there will need to thoughtful discussions around user security and privacy.
 
 ## Encrypting User Data
 
@@ -354,17 +355,27 @@ Once our secure headers have been set, we can use [securityheaders.io](https://s
 
 No matter how diligent we are about security, there may be flaws in our application. A step towards better security and user experience is to acknowledge this potential by having a strong security disclosure plan as well as the creation of bug bounty programs.
 
-Developer Jonathan Rudenberg's post [Security Disclosure Policy Best Practices](https://titanous.com/posts/security-disclosure-policy-best-practices)provides a succinct strategy for handling security disclosures.
+Developer Jonathan Rudenberg's post [Security Disclosure Policy Best Practices](https://titanous.com/posts/security-disclosure-policy-best-practices)provides a succinct strategy for handling security disclosures. In the post he outlines the following key points for having an effective security program:
 
+1. Have a security page with an email address and PGP key for submitting security disclosures.
+2. Have a clear, concise, and friendly security policy.
+3. Disclose the vulnerability.
+4. Respond to the vulnerability quickly.
+5. Don't place blame on teammates or employees.
+6. Alert customers and inform them of the remediation steps.
 
-The site BugCrowd has compiled a list of [bug bounty programs](https://bugcrowd.com/list-of-bug-bounty-programs/).
+As part of this process, you may want to offer a bug bounty for security researchers that discover vulnerabilities. The site BugCrowd has compiled a list of [bug bounty programs](https://bugcrowd.com/list-of-bug-bounty-programs/) that can serve as exemplars. Some well known sites that offer bug bounties are:
 
-https://bounty.github.com/
-https://www.facebook.com/whitehat/bounty/
-https://www.google.com/about/appsecurity/reward-program/
-https://www.mozilla.org/en-US/security/bug-bounty/
+- [Facebook](https://www.facebook.com/whitehat/bounty/)
+- [Google](https://www.google.com/about/appsecurity/reward-program/)
+- [GitHub](https://bounty.github.com/)
+- [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/)
+
+By providing clear steps for reporting security vulnerabilities and transparent communication about remediation steps, we can work to build additional trust in our users.
 
 ## Conclusion
+
+Web application security may have a dizzying number of possibilities, but by building on a solid foundations, following best-practices, and providing clear security information to our users we can work to build a more secure web. I hope that this chapter serves as a strong jumping off point as you build and maintain secure web applications.
 
 ## Further Reading
 
@@ -375,6 +386,7 @@ https://www.mozilla.org/en-US/security/bug-bounty/
 - [OWASP Testing Guide](https://www.owasp.org/index.php/OWASP_Testing_Guide_v4_Table_of_Contents)
 - [Python & Django Security on a Shoestring: Resources](http://nerd.kelseyinnis.com/blog/2016/05/30/python-django-security-on-a-shoestring-resources/) by Kelsey Gilmore-Innis
 - [Security Tips for Web Developers](https://www.squarefree.com/securitytips/web-developers.html)
+- [The Password Manifesto](http://lijli.nfshost.com/passwordmanifesto.html) by Andrew A. Gill
 - [Mozilla Cybersecurity Delphi 1.0: Towards a user-centric policy framework](https://blog.mozilla.org/netpolicy/files/2015/07/Mozilla-Cybersecurity-Delphi-1.0.pdf)
 - [XATO: Security](https://xato.net/)
 - [xkcd: Password Strength](https://xkcd.com/936/)
