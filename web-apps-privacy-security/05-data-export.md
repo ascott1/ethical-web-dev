@@ -2,15 +2,12 @@
 
 Now that we've put a lot of effort into securing and ensuring our user's data is private, we will also want to consider our user's ownership and access to their data. As users pour their personal and work lives into the applications we build, the data this creates can become a reflection of their lives. Our applications may store photos, documents, journals, nots, private reflections, user locations, food preferences, family relationships, meeting information, and connections between all of these things. While this information can be incredibly powerful in continuing to build and improve our applications, our users have a personal investment in the data they have created and shared with us.
 
+In 2009 the site GeoCities was shuttered. GeoCities was as an early free web hosting platform and was considered an important piece of early web history. Though Yahoo, who had acquired GeoCities in 1999, provided guidance for how to preserver their sites elsewhere, many of the sites were no longer actively maintained, ensuring that they would be lost forever. In light of this, several projects such as the [Internet Archive](https://archive.org/web/geocities.php), [Archive Team](http://www.archiveteam.org/index.php?title=GeoCities_Project), [ReoCities](http://reocities.com/), and [OoCities](http://www.oocities.org/) undertook Herculean efforts to archive or mirror the original GeoCities content.
 
-Geocities, Gowalla, Delicious examples
+In 2011 the social check-in service Gowalla [announced](http://blog.gowalla.com/post/13782997303/gowalla-going-to-facebook) that the service would be shutting down. Gowalla was an early competitor with Facebook and had a passionate and enthusiastic user base. In a blog post, Gowalla founder, Josh Williams stated that "[w]e plan to provide an easy way to export your Passport data, your Stamp and Pin data (along with your legacy Item data), and your photos as well." Unfortunately, despite the best of intentions of the Gowalla team, the ability to export data was not added before the service was fully shut down, causing all Gowalla user data to be lost.
 
-https://medium.com/@jazzpazz/with-great-data-comes-great-responsibility-72d3e1c94e27#.q3xjqpurc
+These are just two of many interesting examples of site closures or significant feature changes that can cause user data to be lost. As developers, we are entrusted with user data. By providing users a means to export their data, we are able to give them more control over how and where it is used.
 
-https://medium.com/@milesgrimshaw/rights-to-our-data-and-your-own-uber-god-view-dc8416a3751#.raj7nigqw
-
-
-http://mashable.com/2011/01/12/data-ownership/#UjLRKfXHXgq7
 
 ## Data Ownership
 
@@ -46,24 +43,20 @@ By giving our users ownership and access to their data, we can be better steward
 
 ## Deleting User Data
 
-An inevitable reality is that some users will want to stop using the services we build. In many cases, these users may simply allow their accounts to decay, but other users will explicitly seek to delete their accounts and associated information. When a user does delete their account, we should also delete it from our databases, rather than simply hide the user's content within our site or application. Doing so will be more in line with user expectations and ensures that user data is removed in the case of a data breach. 
-
-## Considering Deceased users
-
-https://www.facebook.com/help/408583372511972/
-https://www.facebook.com/help/408583372511972/
-https://support.google.com/accounts/troubleshooter/6357590?visit_id=1-636103983508542319-3617250029&hl=en&rd=2
+An inevitable reality is that some users will want to stop using the services we build. In many cases, these users may simply allow their accounts to decay, but other users will explicitly seek to delete their accounts and associated information. When a user does delete their account, we should also delete it from our databases, rather than simply hide the user's content within our site or application. Doing so will be more in line with user expectations and ensures that user data is removed in the case of a data breach.
 
 ## Archiving and Graceful Shutdown
 
-http://archiveteam.org/
+At the beginning of the chapter, we looked at a few web application shut downs and how the loss of their data impacted users. According to the United States Small Business Administration, [40% of small business fail after three years](http://www.bls.gov/bdm/us_age_naics_00_table7.txt). In the world of tech start-ups, that number is significantly higher, as reportedly [9 out of 10 start-ups fail](http://www.forbes.com/sites/neilpatel/2015/01/16/90-of-startups-will-fail-heres-what-you-need-to-know-about-the-10/#7751c49955e1). This also fails to take into account, web applications that are acquired or owned and closed by large companies.
 
-https://web.archive.org/web/20160109002117/http://www.rdio.com/farewell/
+The group Archive Team works to catalog and preserve digital history, but also keeps a [Deathwatch](http://archiveteam.org/index.php?title=Deathwatch) of sites risking shutdown and advice for individuals on [backing up our data](http://archiveteam.org/index.php?title=Introduction). Though this is a wonderful project, we cannot assume that users will back-up their data. When our services are closing down we can do so gracefully. The music streaming service Rdio closed its doors in 2015, but in doing so offered a [farewell](https://web.archive.org/web/20160109002117/http://www.rdio.com/farewell/), which included the ability for users to download CSV files of things such as their playlists and saved music to be imported into another service. As the site [Hi.co](http://hi.co/) shuttered, it's founder Craig Mod committed to keeping the archive on the web for the next ten years, making individual contributions exportable, and producing five nick-plated books of the site to be preserved. In [an article about the shutdown](https://medium.com/@craigmod/archiving-our-online-communities-e5868eab4d9a#.c2tg22g46), Mod wrote:
 
-http://www.theatlantic.com/technology/archive/2016/05/archiving-a-website-for-ten-thousand-years/482385/
+> At the same time we understand the moral duty we took on in creating Hi.co — in opening it up to submissions and user generated content. There was an implicit pact: You give us your stories about place, and we’ll give you a place to put your stories. This was not an ephemeral pact.
 
-https://medium.com/@craigmod/archiving-our-online-communities-e5868eab4d9a#.otfwpegrr
-
-## Conclusion
+Though we may not choose to nickel-plate our own service's contents, providing exports will ensure that users are able to preserve their data if they choose to do so.
 
 ## Further Reading
+
+- [With Great Data Comes Great Responsibility](https://medium.com/@jazzpazz/with-great-data-comes-great-responsibility-72d3e1c94e27#.ls4gmwey7) by Pascal Raabe
+- [Archiving a Website for Ten Thousand Years](http://www.theatlantic.com/technology/archive/2016/05/archiving-a-website-for-ten-thousand-years/482385/) by Glenn Fleishman
+- [Preserving Digital History](http://chnm.gmu.edu/digitalhistory/preserving/index.php) by Daniel J. Cohen and Roy Rosenzweig
