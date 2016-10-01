@@ -174,12 +174,11 @@ While there is value in informing users, I believe that the best way to provide 
 
 The Electronic Frontier Foundation(EFF) provides a [sample Do Not Track policy](https://www.eff.org/dnt-policy). This policy serves as a solid foundation for any site's Do Not Track policy and can be used verbatim or adapted for an organization's needs. EFF also provides a set of [frequently asked questions](https://www.eff.org/dnt-policy#faq) and a [human readable summary](https://www.eff.org/pages/understanding-effs-do-not-track-policy-universal-opt-out-tracking) of the policy.
 
-## Conclusion
+By committing to a Do Not Track policy we are able to ensure that we comply with the tracking preferences of our users. 
 
 ## Further Reading
 
-- [DoNotTrack.us](http://donottrack.us/)
-- [The emerging ethical standards for studying corporate data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics)
-- https://www.eff.org/issues/do-not-track
-- https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/
--https://cyberlaw.stanford.edu/blog/2011/01/do-not-track-no-threat-ad-supported-businesses
+- [The Emerging Ethical Standards for Studying Corporate Data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics) by BY Jules Polonetsky and Dennis Hirsch
+- [Do Not Track Is No Threat to Ad Supported Business](https://cyberlaw.stanford.edu/blog/2011/01/do-not-track-no-threat-ad-supported-businesses) by Jonathan Mayer
+- [Electronic Frontier Foundation's Guide to Do Not Track](https://www.eff.org/issues/do-not-track)
+- [W3C: Tracking Compliance and Scope](https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/)
