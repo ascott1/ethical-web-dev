@@ -1,3 +1,4 @@
+# Building Web Apps that Respect A User's Privacy and Security
 
 - [Preface](https://github.com/ascott1/ethical-web-dev/blob/master/preface.md)
 - [Introduction](01-title-intro.md)
