@@ -1,9 +1,5 @@
 # Encrypting User Connections with HTTPS
 
-> If only the “controversial” stuff is private, then privacy is itself suspicious. Thus, privacy should be on by default.
-
-— [Tim Bray](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS)
-
 The letter S is the 19th letter of the alphabet, but when appended to HTTP signifies an added state of security. HTTPS was first developed for use in Netscape Navigator in 1994[^1] and became an important indicator of security for e-commerce and banking sites on the developing web. As we move an ever increasing amount of personal data and information across the web, ensuring user privacy and the authenticity of information become increasingly important.
 
 Over a standard HTTP connection, users are open to advertising injection, content changes, and additional tracking that isn't possible over HTTPS. This is both bad for users and takes away control from site owners. Because of this, there has been a movement towards building HTTPS-only sites. Despite this, less than 11% of the top million websites currently use HTTPS be default[^2].
@@ -27,7 +23,7 @@ HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TL
 ---
 
 **ASIDE**
-TLS is an updated and more secure version of SSL, though SSL is the more commonly used term. Throughout the remainder of the chapter, I will refer to SSL/TLS simply as SSL, though the technology I am referring may actually be TLS. Confusing? Yup! This represents one of the many reasons that HTTPS can seem intimidating.
+TLS is the updated and more secure version of SSL. Throughout the remainder of the chapter, I will refer to SSL/TLS simply as TLS, though some external references may use SSL as the catch-all term. Confusing? Yup! This represents one of the many reasons that HTTPS can seem intimidating.
 
 ---
 
@@ -39,9 +35,9 @@ In contrast the encrypted HTTPS request limits this information:
 
 ![HTTPS headers](https://https.cio.gov/assets/images/with-https-headers.png)
 
-### How the SSL Connection Works
+### How the TLS Connection Works
 
-Let's take a closer look at how the SSL connection works. To provide an encrypted connection, a site must obtain an SSL certificate. SSL certificates are used to verify the authenticity of the domain, relay information about the certificate itself, and contain a public key that will be exchanged with the user's browser.
+Let's take a closer look at how the TLS connection works. To provide an encrypted connection, a site must obtain a TLS certificate. TLS certificates are used to verify the authenticity of the domain, relay information about the certificate itself, and contain a public key that will be exchanged with the user's browser.
 
 The steps of the process are much like purchasing a car (only a lot faster!):
 
@@ -49,9 +45,9 @@ The steps of the process are much like purchasing a car (only a lot faster!):
 3. Exchange the certificate
 4. Exchange the keys
 
-First, the user's client says hello by reaching out to the server and requesting the https resource. This request contains all of the information about the user's connection that server will need such as the supported SSL version. In our car metaphor, in this step we've walked in to the dealership and asked to buy a car. We state the type of car we'd like to buy and offered up our trade-in vehicle.
+First, the user's client says hello by reaching out to the server and requesting the https resource. This request contains all of the information about the user's connection that server will need such as the supported TLS version. In our car metaphor, in this step we've walked in to the dealership and asked to buy a car. We state the type of car we'd like to buy and offered up our trade-in vehicle.
 
-The next step is to exchange the certificate. After the initial client request, the server will respond with a SSL certificate. This certificate has been either self-signed or issued trusted certificate authority and contains information such as name of the domain it is attached to, the name of the certificate owner, dates that the certificate is valid, and a public key. In our car purchase metaphor, this is the deed to the car. With this information, we're able to verify that the seller actually owns the car we're purchasing.
+The next step is to exchange the certificate. After the initial client request, the server will respond with a TLS certificate. This certificate has been either self-signed or issued trusted certificate authority and contains information such as name of the domain it is attached to, the name of the certificate owner, dates that the certificate is valid, and a public key. In our car purchase metaphor, this is the deed to the car. With this information, we're able to verify that the seller actually owns the car we're purchasing.
 
 Lastly, the browser and server exchange keys for data encryption and decryption. Along with the certificate, the server sends along a public key. In response, the browser sends the server an encrypted request for the specific URL/assets it is trying to access. The web server then decrypts this information and returns and encrypted version to the client, which then decrypts it locally. In our car purchasing metaphor, we are now handing over the keys to our trade-in, obtaining the key for our new vehicle, and driving away!
 
@@ -60,7 +56,7 @@ All of this happens seamlessly and instantly to a user, but this process adds a 
 ---
 
 **ASIDE**
-The keys used in this exchanged are use a symmetric key algorithm, agreed upon between the client and server during the initial connection. Symmetric keys work by using the same key to encrypt and decrypt. To make this process secure, this key is transmitted from the client to server using an asymmetric algorithm (a public/private key exchange), using the server's public key which is contained in the SSL certificate. It's like a double-decker encryption sandwich, ensuring that the information remains secure while traveling between the user and server.
+The keys used in this exchanged are use a symmetric key algorithm, agreed upon between the client and server during the initial connection. Symmetric keys work by using the same key to encrypt and decrypt. To make this process secure, this key is transmitted from the client to server using an asymmetric algorithm (a public/private key exchange), using the server's public key which is contained in the TLS certificate. It's like a double-decker encryption sandwich, ensuring that the information remains secure while traveling between the user and server.
 
 ---
 
@@ -120,7 +116,7 @@ Now that we have looked at how HTTPS works and explored why we should use it, le
 
 Perhaps one of the most exciting changes in HTTPS over the past few years is the creation of [Let's Encrypt](https://letsencrypt.org/). Let’s Encrypt is a free, automated, and open certificate authority (CA) created by the [Internet Security Research Group (ISRG)](https://letsencrypt.org/isrg/). The the stated objective of Let's Encrypt is "to make it possible to set up an HTTPS server and have it automatically obtain a browser-trusted certificate, without any human intervention."
 
-Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated SSL certificates to our server.
+Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated TLS certificates to our server.
 
 The excellent certbot documentation allows us to select a specific server and operating system and provides instructions based on these conditions. Let's look at how we would implement certbot on an Apache server running onUbuntu 16.04.
 
@@ -171,11 +167,11 @@ With this our Let's Encrypt issued certificate will automatically renew when nee
 
 ### Other Certificate Options
 
-Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free SSL certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option. Another option, [SSLMate](https://sslmate.com/), works similarly to Let's Encrypt by automating certificates, but is not free.
+Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free TLS certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option. Another option, [SSLMate](https://sslmate.com/), works similarly to Let's Encrypt by automating certificates, but is not free.
 
-For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common SSL CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
+For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common TLS CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
 
-When implementing SSL on your server, Mozilla provides an [SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/). This easily outputs the configuration needed for popular servers such as Apache, Nginx, and Lighttpd with a variety of SSL certificate types.
+When implementing TLS on your server, Mozilla provides an [Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/). This easily outputs the configuration needed for popular servers such as Apache, Nginx, and Lighttpd with a variety of TLS certificate types.
 
 ## Other Considerations
 
@@ -200,7 +196,7 @@ Following our previous Let's Encrypt example, we could redirect all links with A
 
 <VirtualHost *:443>
     ServerName www.example.com
-    # ... SSL configuration goes here
+    # ... TLS configuration goes here
 </VirtualHost>
 ```
 

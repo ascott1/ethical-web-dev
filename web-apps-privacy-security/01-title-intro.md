@@ -4,6 +4,10 @@
 
 ― Gabriel Garcí­a Márquez, Gabriel García Márquez: a Life
 
+> If only the “controversial” stuff is private, then privacy is itself suspicious. Thus, privacy should be on by default.
+
+— [Tim Bray](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS)
+
 We live more and more of our lives digitally. We consistently create and entrust significant portions of our social, health, financial, and work data with web services. We then link that data together by connecting accounts and permitting the services that we use to track the other sites we visit. Our use of search engines can predict patterns and insights into our health and personalities. In 2016 Microsoft released [a study](http://jop.ascopubs.org/content/early/2016/06/02/JOP.2015.010504.abstract) where they anonymized used Bing search queries to predict Pancreatic cancer.
 
 In the article [With Great Data Comes Great Responsibility](https://medium.com/@jazzpazz/with-great-data-comes-great-responsibility-72d3e1c94e27#.twfg85eus) Pascal Raabe eloquently describes the way our digital data represents our lives:
@@ -14,7 +18,7 @@ In the light of how much data we produce, The security of our data has become a 
 
 > Americans express a consistent lack of confidence about the security of everyday communication channels and the organizations that control them – particularly when it comes to the use of online tools. And they exhibited a deep lack of faith in organizations of all kinds, public or private, in protecting the personal information they collect. Only tiny minorities say they are “very confident” that the records maintained by these organizations will remain private and secure.
 
-In 2016 the writer Walter Kirn wrote about the state of modern surveilance for the Atlantic magazine in an article titled [If You’re Not Paranoid, You’re Crazy](http://www.theatlantic.com/magazine/archive/2015/11/if-youre-not-paranoid-youre-crazy/407833/). The online version of the article, hosted on the Atlantic's website, contains at least 17 detected user trackers[^1]. Even when we are discussing tracking, we are creating data that is being tracked.
+In 2016 the writer Walter Kirn wrote about the state of modern surveillance for the Atlantic magazine in an article titled [If You’re Not Paranoid, You’re Crazy](http://www.theatlantic.com/magazine/archive/2015/11/if-youre-not-paranoid-youre-crazy/407833/). The online version of the article, hosted on the Atlantic's website, contains at least 17 detected user trackers[^1]. Even when we are discussing tracking, we are creating data that is being tracked.
 
 ![img/atlantic.png](img/atlantic.png)
 
