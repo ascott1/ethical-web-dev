@@ -15,5 +15,6 @@ Meg Foley
 
 The following people have graciously contributed feedback and improvements.
 
+- [Eric Mill](https://konklone.com/) for a thoughtful review and feedback of the HTTPS chapter
 
 Contributions and suggestions have also been made to the ethicalweb.org site and the core principles of ethical web development. Those contributions are stored at <https://ethicalweb.org/humans.txt>
