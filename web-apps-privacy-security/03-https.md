@@ -66,8 +66,8 @@ As we looked at what HTTPS is and how it works, we can begin to see some of the 
 
 - User privacy and security
 - Site authenticity & integrity
-- Improved search rankings
 - Browsers are beginning to deprecate HTTP
+- Potentially search ranking improvements
 
 Let's take a closer look at each of these.
 
@@ -167,11 +167,11 @@ With this our Let's Encrypt issued certificate will automatically renew when nee
 
 ### Other Certificate Options
 
-Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free TLS certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option. Another option, [SSLMate](https://sslmate.com/), works similarly to Let's Encrypt by automating certificates, but is not free.
+Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services' CloudFront or , they now offer [free TLS certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option. Another option, [SSLMate](https://sslmate.com/), works similarly to Let's Encrypt by automating certificates, but is not free.
 
 For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common TLS CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
 
-When implementing TLS on your server, Mozilla provides an [Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/). This easily outputs the configuration needed for popular servers such as Apache, Nginx, and Lighttpd with a variety of TLS certificate types.
+When implementing TLS on your server, Mozilla provides an [Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/). This easily outputs the configuration needed for popular servers such as Apache, Nginx, and Lighttpd with a variety of TLS certificate types. Once configured, SSL Labs provides a [SSL Server Test](https://www.ssllabs.com/ssltest/), which allows us analyze the TLS configuration of our server.
 
 ## Other Considerations
 
