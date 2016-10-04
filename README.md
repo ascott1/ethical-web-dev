@@ -14,33 +14,22 @@ _Ethical Web Development_ will be a series of short digital books that explore t
 
 - Progressive enhancement
 - Web accessibility
-  - Using a screen readers and the keyboard to navigate the web
-  - WCAG 2.0
-  - Accessibility testing
 - Building inclusive forms
 
 ## [Building Web Apps that Work Everywhere](web-apps-that-work-everywhere/README.md)
 
 - Responsive design
 - Web Performance
-  - Performance Budgets
-  - Measuring Web Performance
-  - Improving performance
 - Deep links
 - Offline
 - Building offline-first apps
 
-## Building Web Apps that Respect A User's Privacy and Security
+## [Building Web Apps that Respect A User's Privacy and Security](web-apps-privacy-security/README.md)
 
-- https
-  - Why https everywhere?
-  - How to implement https
-- Web tracking
-  - Introduction
-  - Detecting "do no track"
-  - Establishing a "do not track" policy
-- Secure user data
-- Data exporting
+- User privacy and `Do Not Track`
+- HTTPS
+- Web application security
+- User data
 
 ## Building Web Apps Together
 
