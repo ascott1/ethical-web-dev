@@ -1,6 +1,6 @@
 # Respecting user privacy
 
-This has happened to all of us, one evening we're shopping for something mundane like new bed sheets by reading reviews and browsing a few online retailers and the next time we open one of our favorite websites up pops an add for bed linens. What's going on here? Even for those of us that spend our days (and nights) developing for the web this can be confounding. How does the site have access to our shopping habits? And just how much do these sites know about us?
+This has happened to all of us, one evening we're shopping for something mundane like new bed sheets by reading reviews and browsing a few online retailers and the next time we open one of our favorite websites up pops an ad for bed linens. What's going on here? Even for those of us that spend our days (and nights) developing for the web this can be confounding. How does the site have access to our shopping habits? And just how much do these sites know about us?
 
 This feeling of helplessness is not uncommon. According to the [Pew Research Center](http://www.pewresearch.org/fact-tank/2016/01/20/the-state-of-privacy-in-america/), 91% of American adults "agree or strongly agree that consumers have lost control of how personal information is collected and used by companies." Many users may be comfortable giving away information in exchange for products and services, but more often than not the depth and breadth of that information is unclear to the user. Meanwhile, advertising networks and social media sites have bits of code that are spread across the web, tracking users between sites.
 
@@ -22,7 +22,7 @@ The intention of this tracking is typically to provide more targeted services, a
 
 Those aware of user use tracking may take a few steps to beat trackers at their own game. Ad blockers such as [uBlock Origin](https://github.com/gorhill/uBlock/) block advertisements as well as third-party advertising trackers. Other browser extensions such as [Privacy Badger](https://www.eff.org/privacybadger) and [Ghostery](https://www.ghostery.com/) attempt to block all third-party beacons from any source. However, even with tools like these, sites may be able to track users based on the unique footprint their browser leaves behind. In fact, the irony of using these tools according to the W3C slide deck [Is preventing browser fingerprinting a lost cause?](https://www.w3.org/wiki/images/7/7d/Is_preventing_browser_fingerprinting_a_lost_cause.pdf), is that "fine grained settings or incomplete tools used by a limited population can make users of these settings and tools easier to track."
 
-Browser's can easily detect the user's I.P. address, user agent, location, browser plugins, hardware, and even battery level. Web developer Robin Linus developed the site [What every browser knows about you](http://webkay.robinlinus.com/) to show off the level of detail available to developers and site owners. Additionally, the tools [Am I Unique?](https://amiunique.org/) and [Panopticlick](https://panopticlick.eff.org) offer quick overviews of how unique your browser fingerprint is.
+Browser's can easily detect the user's IP address, user agent, location, browser plugins, hardware, and even battery level. Web developer Robin Linus developed the site [What every browser knows about you](http://webkay.robinlinus.com/) to show off the level of detail available to developers and site owners. Additionally, the tools [Am I Unique?](https://amiunique.org/) and [Panopticlick](https://panopticlick.eff.org) offer quick overviews of how unique your browser fingerprint is.
 
 <aside>
 
@@ -140,7 +140,7 @@ As an additional example, the analytics provider [Piwik](https://piwik.org) acti
 
 - Providing an analytics opt-out mechanism
 - Deleting logs older than a few months
-- Anonymizing I.P. addresses
+- Anonymizing IP addresses
 - Respecting Do Not Track
 - Setting a short expiration date for cookies
 
