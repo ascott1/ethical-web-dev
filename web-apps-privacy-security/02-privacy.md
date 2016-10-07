@@ -178,7 +178,7 @@ By committing to a Do Not Track policy we are able to ensure that we comply with
 
 ## Further Reading
 
-- [The Emerging Ethical Standards for Studying Corporate Data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics) by BY Jules Polonetsky and Dennis Hirsch
+- [The Emerging Ethical Standards for Studying Corporate Data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics) by Jules Polonetsky and Dennis Hirsch
 - [Do Not Track Is No Threat to Ad Supported Business](https://cyberlaw.stanford.edu/blog/2011/01/do-not-track-no-threat-ad-supported-businesses) by Jonathan Mayer
 - [Electronic Frontier Foundation's Guide to Do Not Track](https://www.eff.org/issues/do-not-track)
 - [W3C: Tracking Compliance and Scope](https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/)
