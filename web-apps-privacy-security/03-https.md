@@ -2,7 +2,7 @@
 
 The letter S is the 19th letter of the alphabet, but when appended to HTTP signifies an added state of security. HTTPS was first developed for use in Netscape Navigator in 1994[^1] and became an important indicator of security for e-commerce and banking sites on the developing web. As we move an ever increasing amount of personal data and information across the web, ensuring user privacy and the authenticity of information become increasingly important.
 
-Over a standard HTTP connection, users are open to advertising injection, content changes, and additional tracking that isn't possible over HTTPS. This is both bad for users and takes away control from site owners. Because of this, there has been a movement towards building HTTPS-only sites. Despite this, less than 11% of the top million websites currently use HTTPS be default[^2].
+Over a standard HTTP connection, users are open to advertising injection, content changes, and additional tracking that isn't possible over HTTPS. This is both bad for users and takes away control from site owners. Because of this, there has been a movement towards building HTTPS-only sites. Despite this, less than 11% of the top million websites currently use HTTPS by default[^2].
 
 In this chapter, we'll explore how HTTPS works, investigate the benefits of HTTPS-only sites, and look at how we can enable HTTPS for our sites today.
 
@@ -16,9 +16,9 @@ At the most basic level, the HTTP request and response cycle is when a web conne
 ![HTTP request/response cycle](img/http.png)
 (Icons by [unlimicon](https://thenounproject.com/unlimicon/))
 
-When this information is requested, not only are the files sent over the wire, but also a bunch of user information, such as the the user's IP address, location, browser information, system information, and more. More importantly, all of this information is sent as unencrypted plain text over the public internet, meaning that any network sitting between the user's browser and the server has access to that information.  This means that when I request a website, like the graphic above, what I'm really saying is "Hello, I'm user 192.00.000.001 in the United States using Mozilla Firefox 48.0.1 on an Intel Macintosh 10.11.6 and would like the /page.html resource from http://ethicalweb.org." The server, in turn responds by returning the unencrypted resource to the user's browser.
+When this information is requested, not only are the files sent over the wire, but so user information, such as the the user's IP address, location, browser information, system information, and more. More importantly, all of this information is sent as unencrypted plain text over the public internet, meaning that any network sitting between the user's browser and the server has access to that information. This means that when I request a website, like the graphic above, what I'm really saying is "Hello, I'm user 192.00.000.001 in the United States using Mozilla Firefox 48.0.1 on an Intel Macintosh 10.11.6 and would like the `/page.html` resource from http://ethicalweb.org." The server, in turn responds by returning the unencrypted resource to the user's browser.
 
-HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TLS(Transport Layer Security) encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
+HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TLS(Transport Layer Security) encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 and would like a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
 
 ---
 
@@ -42,14 +42,14 @@ Let's take a closer look at how the TLS connection works. To provide an encrypte
 The steps of the process are much like purchasing a car (only a lot faster!):
 
 1. Greet one another
-3. Exchange the certificate
-4. Exchange the keys
+2. Exchange the certificate
+3. Exchange the keys
 
-First, the user's client says hello by reaching out to the server and requesting the https resource. This request contains all of the information about the user's connection that server will need such as the supported TLS version. In our car metaphor, in this step we've walked in to the dealership and asked to buy a car. We state the type of car we'd like to buy and offered up our trade-in vehicle.
+First, the user's client says hello by reaching out to the server and requesting the https resource. This request contains all of the information about the user's connection that the server will need, such as the supported TLS version. In our car metaphor, in this step we've walked in to the dealership and asked to buy a car, we state the type of car we'd like to buy, and offered up our trade-in vehicle.
 
-The next step is to exchange the certificate. After the initial client request, the server will respond with a TLS certificate. This certificate has been either self-signed or issued trusted certificate authority and contains information such as name of the domain it is attached to, the name of the certificate owner, dates that the certificate is valid, and a public key. In our car purchase metaphor, this is the deed to the car. With this information, we're able to verify that the seller actually owns the car we're purchasing.
+The next step is to exchange the certificate. After the initial client request, the server will respond with a TLS certificate. This certificate has been either self-signed or issued by a trusted certificate authority and contains information such as name of the domain it is attached to, the name of the certificate owner, dates that the certificate is valid, and a public key. In our car purchase metaphor, this is the deed to the car. With this information, we're able to verify that the seller actually owns the car we're purchasing.
 
-Lastly, the browser and server exchange keys for data encryption and decryption. Along with the certificate, the server sends along a public key. In response, the browser sends the server an encrypted request for the specific URL/assets it is trying to access. The web server then decrypts this information and returns and encrypted version to the client, which then decrypts it locally. In our car purchasing metaphor, we are now handing over the keys to our trade-in, obtaining the key for our new vehicle, and driving away!
+Lastly, the browser and server exchange keys for data encryption and decryption. Along with the certificate, the server sends along a public key. In response, the browser sends the server an encrypted request for the specific URL/assets it is trying to access. The web server then decrypts this information and returns an encrypted version to the client, which then decrypts it locally. In our car purchasing metaphor, we are now handing over the keys to our trade-in, obtaining the key for our new vehicle, and driving away!
 
 All of this happens seamlessly and instantly to a user, but this process adds a the important layer of encrypted protection that HTTPS provides.
 
@@ -66,8 +66,8 @@ As we looked at what HTTPS is and how it works, we can begin to see some of the 
 
 - User privacy and security
 - Site authenticity & integrity
-- Browsers are beginning to deprecate HTTP
-- Potentially search ranking improvements
+- Browser deprecated HTTP
+- Potential search ranking improvements
 
 Let's take a closer look at each of these.
 
@@ -84,15 +84,7 @@ When describing the decision to move to HTTPS, popular news website BuzzFeed det
 > Verification is a lesser known, but equally important benefit of HTTPS. It helps prevent what is called a Man-in-the-Middle attack, or MITM attack. An MITM attack via your browser can change the content of any non-HTTPS website you’re visiting without you knowing. This means an attacker can [modify news stories](http://newstweek.com/2011-01-07-device-distorts-news-on-wireless-neworks) to change or remove info, or they can change the contact details on a BuzzFeed contributor’s author page so you see a fake account the attacker controls.
 
 
-### Improved search rankings
-
-In 2014 Google announced that the search engine would begin to prioritize sites using HTTPS in search results. According to the [blog post announcement](https://security.googleblog.com/2014/08/https-as-ranking-signal_6.html):
-
-> [O]ver the past few months we’ve been running tests taking into account whether sites use secure, encrypted connections as a signal in our search ranking algorithms. We’ve seen positive results, so we’re starting to use HTTPS as a ranking signal. For now it's only a very lightweight signal—affecting fewer than 1% of global queries, and carrying less weight than other signals such as high-quality content—while we give webmasters time to switch to HTTPS. But over time, we may decide to strengthen it, because we’d like to encourage all website owners to switch from HTTP to HTTPS to keep everyone safe on the web.
-
-If non-technical colleagues or clients are not yet convinced on the need for HTTPS everywhere, the potential for improved search rankings may serve as an additional selling point.
-
-### Browsers are beginning to deprecate HTTP
+### Browser Deprecated HTTP
 
 Currently, browsers display an indication whenever a site is being served securely using HTTPS. This appears as a green padlock next to the site's URL:
 
@@ -108,19 +100,27 @@ Recently the Chromium team pointed out that "people do not generally perceive th
 
 The second way that browsers are deprecating HTTP is by making new browser APIs available only to sites server over HTTPS. These include offline capabilities with service workers (covered in [Building Web Apps that Work Everywhere](http://www.oreilly.com/web-platform/free/building-web-apps-that-work-everywhere.csp), the ability to access user camera and audio with getUserMedia, and user location information with the geolocation API. Looking at the types of information these APIs will have access to, I'm thankful that browser vendors have decided that they should only be accessed over a secure connection. As and added benefit, as we develop forward-thinking applications, HTTPS will quickly become a requirement.
 
+### Improved search rankings
+
+In 2014 Google announced that the search engine would begin to prioritize sites using HTTPS in search results. According to the [blog post announcement](https://security.googleblog.com/2014/08/https-as-ranking-signal_6.html):
+
+> [O]ver the past few months we’ve been running tests taking into account whether sites use secure, encrypted connections as a signal in our search ranking algorithms. We’ve seen positive results, so we’re starting to use HTTPS as a ranking signal. For now it's only a very lightweight signal—affecting fewer than 1% of global queries, and carrying less weight than other signals such as high-quality content—while we give webmasters time to switch to HTTPS. But over time, we may decide to strengthen it, because we’d like to encourage all website owners to switch from HTTP to HTTPS to keep everyone safe on the web.
+
+If non-technical colleagues or clients are not yet convinced on the need for HTTPS everywhere, the potential for improved search rankings may serve as an additional selling point.
+
 ## Implementing HTTPS
 
 Now that we have looked at how HTTPS works and explored why we should use it, let's take a look at implementing HTTPS for our own sites.
 
 ### Let's Encrypt
 
-Perhaps one of the most exciting changes in HTTPS over the past few years is the creation of [Let's Encrypt](https://letsencrypt.org/). Let’s Encrypt is a free, automated, and open certificate authority (CA) created by the [Internet Security Research Group (ISRG)](https://letsencrypt.org/isrg/). The the stated objective of Let's Encrypt is "to make it possible to set up an HTTPS server and have it automatically obtain a browser-trusted certificate, without any human intervention."
+Perhaps one of the most exciting changes in HTTPS over the past few years is the creation of [Let's Encrypt](https://letsencrypt.org/). Let’s Encrypt is a free, automated, and open certificate authority (CA) created by the [Internet Security Research Group (ISRG)](https://letsencrypt.org/isrg/). The stated objective of Let's Encrypt is "to make it possible to set up an HTTPS server and have it automatically obtain a browser-trusted certificate, without any human intervention."
 
-Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), certbot works by automatically fetching and deploying Let's Encrypt generated TLS certificates to our server.
+Though Let's Encrypt provides an open certificate authority, the actual implementation can be challenging. Thankfully many community clients have been created to simplify the implementation process. The most useful, and the one recommended by the Let's Encrypt team, is [Certbot](https://certbot.eff.org/). Developed by the [Electronic Frontier Foundation](https://www.eff.org/), Certbot works by automatically fetching and deploying Let's Encrypt generated TLS certificates to our server.
 
-The excellent certbot documentation allows us to select a specific server and operating system and provides instructions based on these conditions. Let's look at how we would implement certbot on an Apache server running onUbuntu 16.04.
+The excellent Certbot documentation allows us to select a specific server and operating system and provides instructions based on these conditions. Let's look at how we would implement Certbot on an Apache server running on Ubuntu 16.04.
 
-A version of certbot is packaged for 16.04, meaning from our server we can run `apt-get` to install it:
+A version of Certbot is packaged for 16.04, meaning from our server we can run `apt-get` to install it:
 
 ```
 $ sudo apt-get install python-letsencrypt-apache
@@ -132,7 +132,7 @@ Let's Encrypt ships with a beta Apache plugin that will automate obtaining and i
 $ letsencrypt --apache
 ```
 
-To find guidelines for installation for your server, visit [certbot.eff.org](https://certbot.eff.org).
+And that's it! With those few simple commands we will have installed a TLS certificate for our server. To find guidelines for installation for your specific server configuration, visit [certbot.eff.org](https://certbot.eff.org).
 
 #### Renewal
 
@@ -142,7 +142,7 @@ Let's Encrypt certificates are valid for 90 days, meaning they will need to be r
 letsencrypt renew
 ```
 
-However, this manual process seems like it has a high likelihood of failure (what if we're on vacation, ill, or simply just forget?!). Instead certbot recommends running a cron job that will test for renewal on a daily basis. First let's test the renewal process:
+However, this manual process seems like it has a high likelihood of failure (what if we're on vacation, ill, or simply just forget?!). Instead Certbot recommends running a cron job that will test for renewal on a daily basis. First let's test the renewal process:
 
 ```
 $ letsencrypt renew --dry-run
@@ -159,7 +159,7 @@ crontab -e
 Then add the following to the file:
 
 ```
-17 05,17 * * * letsencrypt renew
+17 05, 17 17 * * * letsencrypt renew
 ```
 
 With this our Let's Encrypt issued certificate will automatically renew when needed.
@@ -167,7 +167,7 @@ With this our Let's Encrypt issued certificate will automatically renew when nee
 
 ### Other Certificate Options
 
-Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services' CloudFront or , they now offer [free TLS certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option. Another option, [SSLMate](https://sslmate.com/), works similarly to Let's Encrypt by automating certificates, but is not free.
+Though Let's Encrypt is a fantastic and recommended option, it may not be the right one for you or your organization. If you are using Amazon Web Services, they now offer [free TLS certificates](https://aws.amazon.com/certificate-manager) that are very easy to set up and deploy. I have used this service and it is a great and simple option. Another option, [SSLMate](https://sslmate.com/), works similarly to Let's Encrypt by automating certificates, but is not free.
 
 For some it may also be preferable to go the traditional route of purchasing the certificate from a Certificate Authority (CA) and uploading it to the server. Common TLS CA's are [Verisign](https://www.verisign.com/), [Thawte](https://www.thawte.com/), and [RapidSSL](https://www.rapidssl.com/).
 
@@ -178,36 +178,25 @@ When implementing TLS on your server, Mozilla provides an [Configuration Generat
 Once we have implemented HTTPS, there are a few site-wide changes to take into consideration:
 
 - Redirecting HTTP to HTTPS
-- Preventing mixed content and using relative URLs
 - Enabling HTTP Strict Transport Security
+- Preventing mixed content and using relative URLs
 - Using secure cookies
 
 ## Redirect HTTP to HTTPS
 
 If we add HTTPS to an existing site, it may be worth redirecting all HTTP requests to HTTPS. This will ensure that all existing external links are served over a secure connection.
 
-Following our previous Let's Encrypt example, we could redirect all links with Apache by doing the following:
+Following our previous Let's Encrypt example, we could redirect all links with Apache by adding the following to our Virtual Host:
 
 ```
-<VirtualHost *:80>
-    ServerName www.example.com
-    Redirect "/" "https://www.example.com/"
-</VirtualHost>
-
-<VirtualHost *:443>
-    ServerName www.example.com
-    # ... TLS configuration goes here
-</VirtualHost>
+  ServerName www.example.com
+  Redirect "/" "https://www.example.com/"
 ```
 
----
-
-**ASIDE**
-When forwarding http to https, the user is initially opening a request with the unencrypted version of our site before being redirected. This does open users up to a man in the middle attack. To prevent this from happening on future visits, we can pair the forward with HTTP Strict Transport Security (also covered in this section), to ensure that users only access the site over HTTPS.
-
----
 
 ## HTTP Strict Transport Security
+
+When forwarding HTTP to HTTPS, the user is initially opening a request with the unencrypted version of our site before being redirected. This does open users up to a man in the middle attack. To prevent this from happening on future visits, we can pair the forward with HTTP Strict Transport Security, to ensure that users only access the site over HTTPS.
 
 HTTP Strict Transport Security (HSTS) is a browser feature that allows a site to request that it only be served over HTTPS on future visits. This works by a server providing a `Strict-Transport-Security` along with a max-age. Once receiving this header, the browser will only request pages from that domain over HTTPS.
 
