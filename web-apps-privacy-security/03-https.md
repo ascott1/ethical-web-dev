@@ -224,11 +224,13 @@ This often happens in error or may occur when a site is converted to HTTPS and h
 
 When sending cookies form our server application over an HTTPS connection, we should enable the `secure` flag. Using the `secure` flag will ensure that the cookie request only be sent over an encrypted connection (HTTPS).
 
-For example, when setting a cookie using the popular Express.js web framework, `secure` is a simple added parameter:
+For example, when setting a cookie using the popular Node,js web framework Epress, `secure` is an added cookie parameter:
 
 ```
 res.cookie('user', 'adam', { secure: true });
 ```
+
+In the Django framework, it is a matter of setting the `SESSION_COOKIE_SECURE` and `CSRF_COOKIE_SECURE` settings to `True`.
 
 ## Conclusion
 
