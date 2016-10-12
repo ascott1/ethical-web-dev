@@ -1,6 +1,6 @@
 # Encrypting User Connections with HTTPS
 
-The letter S is the 19th letter of the alphabet, but when appended to HTTP signifies an added state of security. HTTPS was first developed for use in Netscape Navigator in 1994[^1] and became an important indicator of security for e-commerce and banking sites on the developing web. As we move an ever increasing amount of personal data and information across the web, ensuring user privacy and the authenticity of information become increasingly important.
+"S is for secure" may sound like a line from a children's TV show, but when appended to HTTP that's exactly what it means. HTTPS was first developed for use in Netscape Navigator in 1994[^1] and became an important indicator of security for e-commerce and banking sites on the developing web. As we move an ever increasing amount of personal data and information across the web, ensuring user privacy and the authenticity of information become increasingly important.
 
 Over a standard HTTP connection, users are open to advertising injection, content changes, and additional tracking that isn't possible over HTTPS. This is both bad for users and takes away control from site owners. Because of this, there has been a movement towards building HTTPS-only sites. Despite this, less than 11% of the top million websites currently use HTTPS by default[^2].
 
@@ -31,7 +31,7 @@ The United States Government's [https-only standard](https://https.cio.gov/faq/#
 
 ![Standard HTTP headers](https://https.cio.gov/assets/images/with-http-headers.png)
 
-In contrast the encrypted HTTPS request limits this information:
+By contrast the encrypted HTTPS request limits this information:
 
 ![HTTPS headers](https://https.cio.gov/assets/images/with-https-headers.png)
 
@@ -100,7 +100,7 @@ Recently the Chromium team pointed out that "people do not generally perceive th
 
 The second way that browsers are deprecating HTTP is by making new browser APIs available only to sites server over HTTPS. These include offline capabilities with service workers (covered in [Building Web Apps that Work Everywhere](http://www.oreilly.com/web-platform/free/building-web-apps-that-work-everywhere.csp), the ability to access user camera and audio with getUserMedia, and user location information with the geolocation API. Looking at the types of information these APIs will have access to, I'm thankful that browser vendors have decided that they should only be accessed over a secure connection. As and added benefit, as we develop forward-thinking applications, HTTPS will quickly become a requirement.
 
-### Improved search rankings
+### Improved Search Rankings
 
 In 2014 Google announced that the search engine would begin to prioritize sites using HTTPS in search results. According to the [blog post announcement](https://security.googleblog.com/2014/08/https-as-ranking-signal_6.html):
 
@@ -139,7 +139,7 @@ And that's it! With those few simple commands we will have installed a TLS certi
 Let's Encrypt certificates are valid for 90 days, meaning they will need to be renewed on a regular basis. To do that we could log in to our server every 90 days and run:
 
 ```
-letsencrypt renew
+$ letsencrypt renew
 ```
 
 However, this manual process seems like it has a high likelihood of failure (what if we're on vacation, ill, or simply just forget?!). Instead Certbot recommends running a cron job that will test for renewal on a daily basis. First let's test the renewal process:
@@ -153,7 +153,7 @@ Once we've verified that this works, we can create the cron job. We'll create a 
 First open the `crontab`:
 
 ```
-crontab -e
+$ crontab -e
 ```
 
 Then add the following to the file:
@@ -189,8 +189,8 @@ If we add HTTPS to an existing site, it may be worth redirecting all HTTP reques
 Following our previous Let's Encrypt example, we could redirect all links with Apache by adding the following to our Virtual Host:
 
 ```
-  ServerName www.example.com
-  Redirect "/" "https://www.example.com/"
+ServerName www.example.com
+Redirect "/" "https://www.example.com/"
 ```
 
 
@@ -224,7 +224,7 @@ This often happens in error or may occur when a site is converted to HTTPS and h
 
 When sending cookies form our server application over an HTTPS connection, we should enable the `secure` flag. Using the `secure` flag will ensure that the cookie request only be sent over an encrypted connection (HTTPS).
 
-For example, when setting a cookie using the popular Node,js web framework Epress, `secure` is an added cookie parameter:
+For example, when setting a cookie using the popular Node.js web framework Express, `secure` is an added cookie parameter:
 
 ```
 res.cookie('user', 'adam', { secure: true });

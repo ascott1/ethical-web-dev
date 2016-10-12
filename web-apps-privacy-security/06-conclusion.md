@@ -1,6 +1,6 @@
 # In conclusion
 
-Thank you for taking the time to read...
+Thank you for taking the time to read Building Web Apps That Respect a User's Privacy and Security. In this title we've explored the value of respecting user privacy, using HTTPS, following security best practices, and permitting users to export their data. My hope is that you now feel empowered and excited to build applications in this way.
 
 If throughout your reading you have come across things that are missing or could be improved, I would encourage you to contribute back to the book. This title is available as open source and contributions can be made by:
 

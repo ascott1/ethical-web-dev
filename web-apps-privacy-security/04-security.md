@@ -124,7 +124,7 @@ An alternate option to providing your own login system is to make use OAuth 2.0.
 
 Even if you have never used OAuth as a developer, you are likely familiar with the flow from the perspective of a user.
 
-First, s user clicks a "Log In" link from our application.
+First, a user clicks a "Log In" link from our application.
 
 ![img/OAuth-signin.png](img/OAuth-signin.png)
 Image from the Hackathon Starter Kit, https://github.com/sahat/hackathon-starter
@@ -249,7 +249,7 @@ clean = sanitizeHtml(dirty, {
 
 To avoid database injection we should further sanitize our user input. When using an SQL database it is important to escape characters being entered into the database so that SQL statements cannot be entered into the database. By contrast NoSQL injections may be executed differently by opening up the possibility to be executed at either the database layer or application layer. To prevent attacks using a NoSQL database, we should again ensure that executable code or special characters used by the database are not entered into the database.
 
-## Cross-site Request Forgery (CSRF)
+## Cross-Site Request Forgery (CSRF)
 
 Cross-site Request Forgery (CSRF) is a type of attack where a site uses a user's browser to manipulate our web application. Through CSRF an attacker can forge login requests or complete actions that are typically done by a logged in user such as post comments, transfer money, or change user account details. These attacks can occur by utilizing both browser cookies or user IP address information. Where cross-site scripting (XSS) is done by exploiting a user's trust in our site, CSRF is an exploiting the trust a site has in the user's browser.
 
@@ -345,7 +345,7 @@ We can configure Apache to disallow content sniffing:
 header always set X-Content-Type-Options "nosniff"
 ```
 
-### Checking Headers
+### Checking Security Headers
 
 Once our secure headers have been set, we can use [securityheaders.io](https://securityheaders.io/) to scan our site. Based on the header response, this tool will grade the site. Here is the result of an A+ score when scanning the tool's own site:
 
