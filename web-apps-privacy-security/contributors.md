@@ -6,15 +6,13 @@ Adam D. Scott is a developer and educator based in Connecticut. He currently wor
 
 ## Technical Reviewer
 
-
-## Editor
-
-Meg Foley
+Judith Myerson is a systems architect and engineer. Her areas of interest include enterprise-wide systems, database technologies, network & system administration, security, operating systems, programming, desktop environments, software engineering, web development, and project management.
 
 ## Other Contributions
 
 The following people have graciously contributed feedback and improvements.
 
+- Meg Foley, Editor.
 - [Eric Mill](https://konklone.com/) for a thoughtful review and feedback of the HTTPS chapter.
 - Jonathan Crane for typo fixes.
 

@@ -37,7 +37,7 @@ With this information about the ways in which users can be tracked, how can we, 
 
 According to the [Electronic Frontier Foundation](https://www.eff.org/pages/understanding-effs-do-not-track-policy-universal-opt-out-tracking), Do Not Track boils down to sites agreeing not to collect personally identifiable information through methods such as cookies and fingerprinting as well as agreeing not to retain individual user browser data beyond 10 days. The noted exceptions to this policy are when a site is legally responsible for maintaining this information, the information is needed to complete a transaction, or if a user has given explicit consent.
 
-With Do Not Track enabled, browsers send an HTTP header response with a `DNT` value of `1`:
+With Do Not Track enabled, browsers send an HTTP header response with a `DNT` value of `1`. The following is a sample header response, which includes a `DNT` value:
 
 ```
 Host: "www.example.com"
@@ -59,7 +59,7 @@ If you are interested in enabling Do Not Track in your browser, or would like to
 
 ### Detecting Do Not Track
 
-We can easily detect and respond to Do Not Track on the client side of our applications in client-side JavaScript by using `navigator.doNotTrack`. This will return a value of `1` for any user who has enabled Do Not Track while returning `0` for a user who has opted in to tracking and `unspecified` for users who have not enabled the setting.
+We can easily detect and respond to Do Not Track on the client side of our applications in client-side JavaScript by using the `navigator.doNotTrack` property. This will return a value of `1` for any user who has enabled Do Not Track while returning `0` for a user who has opted in to tracking and `unspecified` for users who have not enabled the setting.
 
 For example we could detect for the Do Not Track setting and avoid setting a cookie in a user's browser:
 
@@ -115,26 +115,26 @@ Based on these examples, we can see that detecting a user's Do Not Track setting
 
 ### Respecting Do Not Track
 
-The Mozilla Developer Network helpfully offers [Do Not Track case studies](https://developer.mozilla.org/en-US/docs/Web/Security/Do_not_track_field_guide/Case_studies) and the site DoNotTrack.us provides a [Do Not Track Cookbook](http://donottrack.us/cookbook/), which explore a number of Do Not Track usage scenarios. The examples include practical applications of Do Not Track for advertising companies, technology providers, media companies, and software companies.
+The Mozilla Developer Network helpfully offers [DNT case studies](https://developer.mozilla.org/en-US/docs/Web/Security/Do_not_track_field_guide/Case_studies) and the site DoNotTrack.us provides [The Do Not Track Cookbook](http://donottrack.us/cookbook/), which explore a number of Do Not Track usage scenarios. The examples include practical applications of Do Not Track for advertising companies, technology providers, media companies, and software companies.
 
 
 ### Sites that Respect Do Not Track
 
-Some well known social sites have taken the lead on implementing Do Not Track. Twitter [supports Do Not Track](https://support.twitter.com/articles/20169453?lang=en) by disabling tailored suggestions and tailored ads when a user has the setting enabled. However, it's worth noting that Twitter does not disable analytic tracking or third-party advertising tracking that uses Twitter data across the web. Pinterest [supports Do Not Track](https://help.pinterest.com/en/articles/we-support-do-not-track) and according to the site's [Privacy Policy](https://help.pinterest.com/en/articles/personalization-and-data), a user with Do Not Track enabled is opted out of Pinterest's personalization feature, which tracks users around the web in order to provide further customization of Pinterest content.
+Some well known social sites have taken the lead on implementing Do Not Track. [Twitter supports Do Not Track](https://support.twitter.com/articles/20169453?lang=en) by disabling tailored suggestions and tailored ads when a user has the setting enabled. However, it's worth noting that Twitter does not disable analytic tracking or third-party advertising tracking that uses Twitter data across the web. [Pinterest supports Do Not Track](https://help.pinterest.com/en/articles/we-support-do-not-track) and according to the site's [Privacy Policy](https://help.pinterest.com/en/articles/personalization-and-data), a user with Do Not Track enabled is opted out of Pinterest's personalization feature, which tracks users around the web in order to provide further customization of Pinterest content.
 
-Medium.com has a [clear and effective Do Not Track Policy](https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e). When a user with Do Not Track enabled is logged in, they are presented with this message:
+Medium.com has a clear and effective [Do Not Track Policy](https://medium.com/policy/how-we-handle-do-not-track-requests-on-medium-f2b4b4fb7c5e). When a user with Do Not Track enabled is logged in, they are presented with this message:
 
 > You have Do Not Track enabled, or are browsing privately. Medium respects your request for privacy: to read in stealth mode, stay logged out. While you are signed in, we collect some information about your interactions with the site in order to personalize your experience, offer suggested reading, and connect you with your network. More details can be found here.
 
 Medium also states that they do not track users across other websites around the web. This policy is clear and consistent, providing a strong example of how a successful site can respect a user's Do Not Track setting.
 
-The site DoNotTrack.us offers a [list of additional companies who have committed to honoring Do Not Track](http://donottrack.us/implementations), including advertising companies, analytics services, data providers, and more. Unfortunately this list appears to be incomplete and outdated, but offers a good jumping off point for exploring exemplars across a range of industries.
+The site DoNotTrack.us offers a [list of companies honoring Do Not Track](http://donottrack.us/implementations), including advertising companies, analytics services, data providers, and more. Unfortunately this list appears to be incomplete and outdated, but offers a good jumping off point for exploring exemplars across a range of industries.
 
 ## Web Analytics
 
 One of the biggest challenges of handling user privacy is determining best practices for web analytics. By definition, the goal of web analytics is to track users, though the aim is typically to better understand how our sites are used so that we can continually adapt and improve them to user needs.
 
-To improve user privacy, when using analytics, we should ensure that our analytics provider anonymizes our users, limits tracking cookies to our domain, and that it does not share user information with third parties. The [US Government's digital analytics program](https://analytics.usa.gov/#explanation) has taken this approach, through ensuring that Google Analytics does not track individuals, share information with third parties, and anonymizes all user I.P. addresses.
+To improve user privacy, when using analytics, we should ensure that our analytics provider anonymizes our users, limits tracking cookies to our domain, and that it does not share user information with third parties. The [US Government's digital analytics program](https://analytics.usa.gov/#explanation) has taken this approach, through ensuring that Google Analytics does not track individuals, share information with third parties, and anonymizes all user IP addresses.
 
 As an additional example, the analytics provider [Piwik](https://piwik.org) actively seeks to [maintain user privacy](http://piwik.org/blog/2014/01/data-privacy-day-january-28th/) while working with user analytics through:
 
@@ -150,11 +150,11 @@ These provide a good baseline for how we should aim to handle analytics on our s
 
 Though avoiding the tracking of users completely is preferred, there may be instances where this choice is outside of our control as web developers. In these cases, we may be able to guide the decision to de-identify collected user data, ensuring that the privacy of our users remains intact. The goal of any de-identification is to ensure that any collected data cannot be used to identify the person who created the data in any way.
 
-However, de-identification is not without its limitations, as de-identified data sets can be paired with other data sets to identify an individual. In the paper [No silver bullet: De-identification still doesn't work](http://randomwalker.info/publications/no-silver-bullet-de-identification.pdf) Arvind Narayanan and Edward W. Felten explore the limits of de-identification. Cryptographic techniques such as [differential privacy](https://en.wikI.P.edia.org/wiki/Differential_privacy) can be used as another layer to help to limit the identification of individual users within collected datasets.
+However, de-identification is not without its limitations, as de-identified data sets can be paired with other data sets to identify an individual. In the paper [No silver bullet: De-identification still doesn't work](http://randomwalker.info/publications/no-silver-bullet-de-identification.pdf) Arvind Narayanan and Edward W. Felten explore the limits of de-identification. Cryptographic techniques such as [differential privacy](https://en.wikipedia.org/wiki/Differential_privacy) can be used as another layer to help to limit the identification of individual users within collected datasets.
 
 ## User Consent and Awareness
 
-In 2011 the European Union passed legislation requiring user consent before using tracking technology. Specifically the [privacy directive states](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32002L0058:EN:HTML):
+In 2011 the European Union passed legislation requiring user consent before using tracking technology. Specifically the [privacy directive specifies](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32002L0058:EN:HTML):
 
 > Member States shall ensure that the use of electronic communications networks to store information or to gain access to information stored in the terminal equipment of a subscriber or user is only allowed on condition that the subscriber or user concerned is provided with clear and comprehensive information in accordance with Directive 95/46/EC, inter alia about the purposes of the processing, and is offered the right to refuse such processing by the data controller.
 
@@ -181,4 +181,6 @@ By committing to a Do Not Track policy we are able to ensure that we comply with
 - [The Emerging Ethical Standards for Studying Corporate Data](http://www.recode.net/2016/6/14/11923286/facebook-emotional-contagion-controversy-data-research-review-policy-ethics) by Jules Polonetsky and Dennis Hirsch
 - [Do Not Track Is No Threat to Ad Supported Business](https://cyberlaw.stanford.edu/blog/2011/01/do-not-track-no-threat-ad-supported-businesses) by Jonathan Mayer
 - [Electronic Frontier Foundation's Guide to Do Not Track](https://www.eff.org/issues/do-not-track)
+- [Mozilla: The Do Not Track Field Guide](https://developer.mozilla.org/en-US/docs/Web/Security/Do_not_track_field_guide)
 - [W3C: Tracking Compliance and Scope](https://www.w3.org/TR/2015/WD-tracking-compliance-20150714/)
+- [W3C: Header Field Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)

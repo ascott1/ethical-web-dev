@@ -22,7 +22,9 @@ If we’re going to be discussing the ethics of web development, let’s first c
 - **Normative ethics**, the study of ethical action and creation of standards of right and wrong.
 - **Applied ethics**, the analysis of ethical issues, such as business ethics, environmental ethics, and social morality.
 
-For our purposes we will be doing our best to determine a normative set of standards of ethics as applied to web development and then take an applied approach. Within normative ethical theory there is the idea of Consequentialism, which argues that the ethical value of an action is based on the result of the action. In short, the consequences of doing something become the standard of right or wrong.
+For our purposes we will be doing our best to determine a normative set of standards of ethics as applied to web development and then take an applied ethics approach.
+
+Within normative ethical theory there is the idea of Consequentialism, which argues that the ethical value of an action is based on the result of the action. In short, the consequences of doing something become the standard of right or wrong.
 
 One form of Consequentialism, called Utilitarianism, states that an action is right if it leads to the most happiness, or well-being, for the greatest number of people. This utilitarian approach is the framework I’ve chosen to use as we explore the ethics of web development.
 
@@ -49,4 +51,4 @@ This series is a work in progress and I invite you to contribute. To learn more,
 
 ## Intended Audience
 
-This title, and others in the Ethical Web Development series, is intended for web developers and web development team decision makers who are interested in exploring the ethical boundaries of web development. I assume a basic understanding of fundamental web development topics such as HTML, JavaScript, and HTTP. Despite this assumption, I‘ve done my best to describe these topics in a way that is approachable and understandable.
+This title, and others in the Ethical Web Development series, is intended for web developers and web development team decision makers who are interested in exploring the ethical boundaries of web development. I assume a basic understanding of fundamental web development topics such as HTML, CSS, JavaScript, and HTTP. Despite this assumption, I‘ve done my best to describe these topics in a way that is approachable and understandable.

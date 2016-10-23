@@ -1,13 +1,10 @@
 # Encrypting User Connections with HTTPS
 
-"S is for secure" may sound like a line from a children's TV show, but when appended to HTTP that's exactly what it means. HTTPS was first developed for use in Netscape Navigator in 1994[^1] and became an important indicator of security for e-commerce and banking sites on the developing web. As we move an ever increasing amount of personal data and information across the web, ensuring user privacy and the authenticity of information become increasingly important.
+"S is for secure" may sound like a line from a children's TV show, but when appended to HTTP that's exactly what it means. HTTPS was first developed for use in [Netscape Navigator](https://books.google.com/books?id=FLvsis4_QhEC&pg=PA344&hl=en#v=onepage&q&f=false) in 1994 and became an important indicator of security for e-commerce and banking sites on the developing web. As we move an ever increasing amount of personal data and information across the web, ensuring user privacy and the authenticity of information become increasingly important.
 
-Over a standard HTTP connection, users are open to advertising injection, content changes, and additional tracking that isn't possible over HTTPS. This is both bad for users and takes away control from site owners. Because of this, there has been a movement towards building HTTPS-only sites. Despite this, less than 11% of the top million websites currently use HTTPS by default[^2].
+Over a standard HTTP connection, users are open to advertising injection, content changes, and additional tracking that isn't possible over HTTPS. This is both bad for users and takes away control from site owners. Because of this, there has been a movement towards building HTTPS-only sites. Despite this, [less than 11%](https://trends.builtwith.com/ssl/SSL-by-Default) of the top million websites currently use HTTPS by default.
 
 In this chapter, we'll explore how HTTPS works, investigate the benefits of HTTPS-only sites, and look at how we can enable HTTPS for our sites today.
-
-[^1]: https://books.google.com/books?id=FLvsis4_QhEC&pg=PA344&hl=en#v=onepage&q&f=false
-[^2]: https://trends.builtwith.com/ssl/SSL-by-Default
 
 ## How HTTPS Works
 
@@ -18,7 +15,7 @@ At the most basic level, the HTTP request and response cycle is when a web conne
 
 When this information is requested, not only are the files sent over the wire, but so user information, such as the the user's IP address, location, browser information, system information, and more. More importantly, all of this information is sent as unencrypted plain text over the public internet, meaning that any network sitting between the user's browser and the server has access to that information. This means that when I request a website, like the graphic above, what I'm really saying is "Hello, I'm user 192.00.000.001 in the United States using Mozilla Firefox 48.0.1 on an Intel Macintosh 10.11.6 and would like the `/page.html` resource from http://ethicalweb.org." The server, in turn responds by returning the unencrypted resource to the user's browser.
 
-HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TLS(Transport Layer Security) encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's I.P. address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 and would like a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
+HTTPS works similarly to HTTP, but adds a layer of SSL(Secure Sockets Layer)/ TLS(Transport Layer Security) encryption. This means that requests and responses are made over a secure encrypted connection. These requests only include the user's IP address and the domain of the requested resource. In this instance my request would appear as "Hello, I'm user 192.00.000.001 and would like a resource from https://ethicalweb.org." The server would then respond with an encrypted version of the resource.
 
 ---
 
@@ -98,7 +95,7 @@ Recently the Chromium team pointed out that "people do not generally perceive th
 
 #### New Browser Features
 
-The second way that browsers are deprecating HTTP is by making new browser APIs available only to sites server over HTTPS. These include offline capabilities with service workers (covered in [Building Web Apps that Work Everywhere](http://www.oreilly.com/web-platform/free/building-web-apps-that-work-everywhere.csp), the ability to access user camera and audio with getUserMedia, and user location information with the geolocation API. Looking at the types of information these APIs will have access to, I'm thankful that browser vendors have decided that they should only be accessed over a secure connection. As and added benefit, as we develop forward-thinking applications, HTTPS will quickly become a requirement.
+The second way that browsers are deprecating HTTP is by making new browser APIs available only to sites server over HTTPS. These include offline capabilities with service workers (covered in [Building Web Apps that Work Everywhere](http://www.oreilly.com/web-platform/free/building-web-apps-that-work-everywhere.csp)), the ability to access user camera and audio with [getUserMedia](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia), and user location information with the [geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) API. Looking at the types of information these APIs will have access to, I'm thankful that browser vendors have decided that they should only be accessed over a secure connection. As and added benefit, as we develop forward-thinking applications, HTTPS will quickly become a requirement.
 
 ### Improved Search Rankings
 
@@ -215,7 +212,7 @@ Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains
 
 ## Mixed Content and Relative URLs
 
-Mixed occurs when a site is served over a secure HTTPS connection, but contains links to resources such as images, CSS, or JavaScript that is served over HTTP. When this occurs, browsers display an error message to users, warning them that the site contains insecure content.  
+Mixed content occurs when a site is served over a secure HTTPS connection, but contains links to resources such as images, CSS, or JavaScript that is served over HTTP. When this occurs, browsers display an error message to users, warning them that the site contains insecure content.  
 
 This often happens in error or may occur when a site is converted to HTTPS and has lingering absolute links. To avoid this situation, convert links beginning with `http://` to `https://` or use relative URLs when linking to local files.
 
@@ -239,7 +236,7 @@ HTTPS provides numerous benefits to both site owners and users and helps to make
 ## Further Reading
 
 - [The United States Government's HTTPS-Only Standard](https://https.cio.gov/)
-- [Gov.uk's Using HTTPS](https://www.gov.uk/service-manual/technology/using-https)
+- [GOV.UK's Using HTTPS](https://www.gov.uk/service-manual/technology/using-https)
 - [How Does HTTPS Actually Work?](http://robertheaton.com/2014/03/27/how-does-https-actually-work/) by Rob Heaton
 - [Is TLS Fast Yet?](https://istlsfastyet.com/)
 - [Securing the Web](https://www.w3.org/2001/tag/doc/web-https), W3C report

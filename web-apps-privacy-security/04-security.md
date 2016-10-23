@@ -26,7 +26,7 @@ Being a web developer means that we are constantly learning about and using new 
 
 The Python environment is relatively stable and most web applications are built using either the [Django](https://www.djangoproject.com/) or [Flask](http://flask.pocoo.org/) web frameworks. Django provides [many security features out of the box](https://docs.djangoproject.com/en/1.10/topics/security/), such as cross site scripting, SQL injection, and clickjacking protection. As Flask is an intentionally more lightweight framework, it comes with a few [built-in security features](http://flask.pocoo.org/docs/0.10/security/), such as lightweight cross site scripting protection. Additional security features can be added with the [Flask-Security](https://pythonhosted.org/Flask-Security/) extension.
 
-Node.js is notorious for it's rate of change and the number of frameworks and libraries available to developers. It can be both something to love about the platform as well as a frustation point for many developers. The site [Node Frameworks](http://nodeframework.com/) attempts to catalog them all. Despite there being dozens of Node.js web framework options, when considering security we are likely to be best-served by choosing an established framework that is used in production by other web applications, such as [Express](http://expressjs.com/).
+Node.js is notorious for it's rate of change and the number of frameworks and libraries available to developers. It can be both something to love about the platform as well as a frustration point for many developers. The site [Node Frameworks](http://nodeframework.com/) attempts to catalog them all. Despite there being dozens of Node.js web framework options, when considering security we are likely to be best-served by choosing an established framework that is used in production by other web applications, such as [Express](http://expressjs.com/).
 
 Similar to Flask, Express is a lightweight application framework, but there are several plugins that enhance its security features. The two most common plugins are [Lusca](https://github.com/krakenjs/lusca), which was developed by PayPal, and [Helmet](https://github.com/helmetjs/helmet). These both add sensible defaults for features such as cross-site scripting protection, cross-site request forgery protection, content security policy settings, and more.
 
@@ -106,7 +106,7 @@ function passwordEncrypt(username, password) {
 }
 ```
 
-In the above example, I could passed a password of `PizzaP@rty99`, which generated a salt of `$2a$10$HF2rs.iYSvX1l5FPrX697O` and the hashed & salted password of `$2a$10$HF2rs.iYSvX1l5FPrX697O9dYF/O2kwHuKdQTdy.7oaMwVga54bWG` (which is the salt plus an encrpyted password string). Now when checking a user's password against the hashed and salted password, I can use bcrpyt's `compare` method.
+In the above example, I could passed a password of `PizzaP@rty99`, which generated a salt of `$2a$10$HF2rs.iYSvX1l5FPrX697O` and the hashed & salted password of `$2a$10$HF2rs.iYSvX1l5FPrX697O9dYF/O2kwHuKdQTdy.7oaMwVga54bWG` (which is the salt plus an encrypted password string). Now when checking a user's password against the hashed and salted password, I can use bcrpyt's `compare` method.
 
 ```
 // password is a value provided by the user
@@ -222,7 +222,7 @@ Interactive form fields and text input are often the differentiator between a we
 
 The most important thing we can do to prevent these types of attacks is sanitize user-submitted content.
 
-To do this, we should whitelist the HTML input that our application will accept. Whitelisting is preferred to blacklisting user input as this gives you fine grained control over the type of content being entered and stored. If users are able to add HTML to a field, choose the tags that should be available to the user and whitelist those. Avoid giving users the ability to execute JavaScript or `<script>` tags within your application.
+To do this, we should whitelist the HTML input that our application will accept. Whitelisting is preferred to blacklisting user input as this gives you fine grained control over the type of content being entered and stored. If users are able to add HTML to a field, choose the tags that should be available to the user and whitelist those. We should be sure to avoid giving users the ability to execute JavaScript or `<script>` tags within our applications.
 
 In Node.js we can use the [sanitize-html](https://www.npmjs.com/package/sanitize-html) module to do this.
 
@@ -251,7 +251,7 @@ To avoid database injection we should further sanitize our user input. When usin
 
 ## Cross-Site Request Forgery (CSRF)
 
-Cross-site Request Forgery (CSRF) is a type of attack where a site uses a user's browser to manipulate our web application. Through CSRF an attacker can forge login requests or complete actions that are typically done by a logged in user such as post comments, transfer money, or change user account details. These attacks can occur by utilizing both browser cookies or user IP address information. Where cross-site scripting (XSS) is done by exploiting a user's trust in our site, CSRF is an exploiting the trust a site has in the user's browser.
+Cross-site Request Forgery (CSRF) is a type of attack where a site uses a user's browser to manipulate our web application. Through CSRF an attacker can forge login requests or complete actions that are typically done by a logged in user such as post comments, transfer money, or change user account details. These attacks can occur by utilizing both browser cookies or user IP address information. Where cross-site scripting (XSS) is done by exploiting a user's trust in our site, CSRF is an exploit in the trust a site places in the user's browser.
 
 [Wikipedia](https://en.wikipedia.org/wiki/Cross-site_request_forgery) defines the following common CSRF characteristics:
 
@@ -279,7 +279,7 @@ To further harden our application's security we can set a number of HTTP headers
 
 ### Content Security Policy (CSP)
 
-The Content Security Policy header is useful for mitigating cross-site scripting attacks by limiting the use of external resources from a given domain. When enabling CSP we are able to specify that all resources must come from the the current domain:
+The Content Security Policy header is useful for mitigating XSS attacks by limiting the use of external resources from a given domain. When enabling CSP we are able to specify that all resources must come from the the current domain:
 
 ```
 Content-Security-Policy "default-src 'self'"
