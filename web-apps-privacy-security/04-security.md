@@ -364,12 +364,7 @@ Developer Jonathan Rudenberg's post [Security Disclosure Policy Best Practices](
 5. Don't place blame on teammates or employees.
 6. Alert customers and inform them of the remediation steps.
 
-As part of this process, you may want to offer a bug bounty for security researchers that discover vulnerabilities. The site BugCrowd has compiled a list of [bug bounty programs](https://bugcrowd.com/list-of-bug-bounty-programs/) that can serve as exemplars. Some well known sites that offer bug bounties are:
-
-- [Facebook](https://www.facebook.com/whitehat/bounty/)
-- [Google](https://www.google.com/about/appsecurity/reward-program/)
-- [GitHub](https://bounty.github.com/)
-- [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/)
+As part of this process, you may want to offer a bug bounty for security researchers that discover vulnerabilities. The site BugCrowd has compiled a list of [bug bounty programs](https://bugcrowd.com/list-of-bug-bounty-programs/) that can serve as exemplars. Some well known sites that offer bug bounties include [Facebook](https://www.facebook.com/whitehat/bounty/), [Google](https://www.google.com/about/appsecurity/reward-program/), [GitHub](https://bounty.github.com/), and [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/). Recently the United States Department of Defense has even gotten in on the action, launching the [Hack the Pentagon](http://www.defense.gov/News/News-Releases/News-Release-View/Article/684106/statement-by-pentagon-press-secretary-peter-cook-on-dods-hack-the-pentagon-cybe) program.
 
 By providing clear steps for reporting security vulnerabilities and transparent communication about remediation steps, we can work to build additional trust in our users.
 
