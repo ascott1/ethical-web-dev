@@ -40,7 +40,7 @@ I’d encourage you to take a few minutes and consider what the core functionali
 - Web chat application
 - Video chat application
 
-When working on your own applications, try to perform the same exercise First, determine the core functionality for your users and build the application from there. This programatic approach also pairs well with the [Agile](http://www.agilemanifesto.org/) approach to software development, where the goal is to deliver working software at the end of each development sprint. If we first deliver a core experience, we can iteratively build upon that experience while continuing to deliver value.
+When working on your own applications, try to perform the same exercise. First, determine the core functionality for your users and build the application from there. This programatic approach also pairs well with the [Agile](http://www.agilemanifesto.org/) approach to software development, where the goal is to deliver working software at the end of each development sprint. If we first deliver a core experience, we can iteratively build upon that experience while continuing to deliver value.
 
 ## Progressive Enhancement Is Still Relevant
 
