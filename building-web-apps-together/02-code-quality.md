@@ -4,9 +4,9 @@
 
 ## Code Standards
 
-> Part of being a good steward to a successful project is realizing that writing code for yourself is a Bad Idea™. If thousands of people are using your code, then write your code for maximum clarity, not your personal preference of how to get clever within the spec.
+> All code in any code-base should look like a single person typed it, no matter how many people contributed.
 
-- [Idan Gazit](http://gazit.me/), designer and developer
+- Rick Waldron, author of [idiomatic.js](https://github.com/rwaldron/idiomatic.js)
 
 
 ### Automate Your Standards
@@ -14,8 +14,6 @@
 Linting!
 
 ## Testing
-
-http://docs.python-guide.org/en/latest/writing/tests/
 
 **NOTE**:
 _For the purpose of this book we'll be focusing on unit testing and functional testing. In addition to these there are other forms of software testing that are worth exploring for your application, such as performance testing (encompassing things such as stress testing, scalability testing, load testing) security testing, and regression testing._
@@ -65,10 +63,6 @@ Test-driven development (TDD) is a development methodology that emphasizes writi
 
 There are many great books and resources on TDD, so I won't retread that content here. If you are new to the TDD concept, I recommended exploring resources and materials for TDD in your chose language or framework. Though it can be a paradigm shift, TDD can add a newfound level of robustness and confidence to our development process.
 
-### Further Testing reading
-
-- [The Hitchhiker's Guide to Python: Testing Your Code](http://docs.python-guide.org/en/latest/writing/tests/)
-
 ## Automation
 
 Continuous integration, etc.
@@ -76,3 +70,8 @@ Continuous integration, etc.
 ## Pair Programming
 
 ## Code Reviews
+
+## Further Reading
+
+- Working Effectively with Legacy Code by Michael Feathers
+- [The Hitchhiker's Guide to Python: Testing Your Code](http://docs.python-guide.org/en/latest/writing/tests/)
