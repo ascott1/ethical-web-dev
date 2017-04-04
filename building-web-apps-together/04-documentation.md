@@ -4,11 +4,23 @@ Know your audience - write documentation in the simplest terms possible. Don't m
 
 ## The Importance of the README
 
-Why are READMEs important? What are the elements of a strong README? For most the README will be their introduction to your project. Be warm. Be inviting.
+For many developers, a project's README will be their introduction to a piece of software. For small projects, the README may be its only form of documentation. Successful READMEs are both informative and inviting, giving the reader a solid understanding of the project and providing the confidence needed to use the software.
+
+Successful READMEs contain a combination of several key elements. Most importantly the README should be up to date and provide a useful getting started guide, written in a warm and welcoming tone. Here are the key components of a good README:
+
+- A brief (1 paragraph or less) description of the project
+- A list of the key features of the software
+- A getting started guide that details the installation steps, guidelines for usage, and instructions for building and deploying the software, if applicable
+- Information on where to go if the user needs help, such as the issue tracker, IRC channel, or a core developer's email address
+- Guidelines for how to contribute to the project, including how to file a pull request, coding standards, and how to run the test suite
+- A code of conduct for the project that demonstrates inclusion and outlines clear enforcement actions
+- A License for the project
+
+Most importantly, a project's README needs to be kept up to date. Few things are more frustrating than discovering that a feature documented in the README has changed or been removed. Marc Esher, a software development manager at the Consumer Financial Protection Bureau, wrote about holding a [README Refresh Day](https://cfpb.github.io/articles/readme-refresh-day/) with the development team. If you work on a team, doing events such as these regularly can be a great way to both improve the contents of your READMEs and to explore software built by other teams. 
 
 ### README Template
 
-Here's a README template that can be used for your own projects:
+Here's a README template that can be used for your own projects. Feel free to adapt it to your project's needs.
 
 ```
 # Project Title
