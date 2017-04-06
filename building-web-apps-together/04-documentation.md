@@ -135,7 +135,7 @@ The messaging service Twilio is a great example of this. The [Twilio docs](https
 
 ## Wrapping Up
 
-[add conclusion]
+By focusing on writing good documentation, we are showing empathy for the developers who use our project. Doing so helps to create a project environment that is inclusive, welcoming, and collaborative. 
 
 ## Further Reading
 
