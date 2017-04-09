@@ -98,6 +98,21 @@ Even if we aim to lint our standards in real-time with our text editor, it is po
 
 ## Version Control
 
+Early in my web development career, I would be developing a project in a folder on my machine and want to test out some major changes. To do so, I would make a copy of the folder, named something like "Project-EXPERIMENT." By the end of a project I often ended up with a dozen such folders, each with slightly different versions of my code. It worked OK when I was working alone, but as soon as another developer was involved, we would wind up emailing files to each other or FTPing them to a server, hoping that our changes didn't accidentally negate the changes made by one another. As you can imagine, this was a less than ideal way to work and collaborate.
+
+Using version control irons out the wrinkles in the above process. Notably version control brings:
+
+- Increased and straightforward collaboration
+- Ability to reverse changes
+- Ability to "branch" versions of the project
+- Code conflict resolution
+
+If you are new to version control, I recommend using Git, which can be combined with open source code hosting tools such as [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). There are many great resources for learning Git, among them:
+
+- [Try Git](https://try.github.io/)
+- [Git-It](https://github.com/jlord/git-it-electron)
+- [Codeacademy's Learn Git](https://www.codecademy.com/learn/learn-git)
+
 ## Testing
 
 **NOTE**:
