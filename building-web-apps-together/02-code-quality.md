@@ -1,6 +1,19 @@
 # Code Quality
 
-<INSERT INTRO>
+In the book _Let's Talk About Love: A Journey to the End of Taste_, music journalist Carl Wilson mulls over what it means for something to be good. The book focuses on the Celine Dion album that it is named after, which has sold 31 million copies and is one of the top-selling albums of all time. Despite this immense success, music critics such as Wilson (and likely many of us reading this), are quick to dismiss Celine Dion's music for a number of reasons. The reason for this disparity is that taste in entertainment and art is subjective. Each of us brings our own unique cultural experiences along with us when we enjoy (or don't) these things.
+
+https://plato.stanford.edu/entries/hume-aesthetics/
+
+If things such the worthiness of art and entertainment are subjective, what about the quality of code? Is good code subjective or objective? This can be a challenging topic, as much like music we all bring our own experience and assumptions to the discussion of what constitutes "beautiful" code. With that in mind, I've sought to identify a few object measures of code quality. Doing so allows us to remove the risk of needless or even unhealthy debate that subjective taste introduces to the development process. Instead, when following these guidelines, discussions can focus on outcomes and a shared set of principles.
+
+Good code does the following:
+
+- Follows a set of standards
+- Uses version control
+- Is well tested
+- Utilizes automated checks
+
+Additionally, since code is often written in a collaborative or team environment, we can leverage the processes of code reviews and pair programming. Ultimately, code is intended to be executed by machines, but read by humans. When we write code that follows these guidelines, we create a codebase that is collaborative, understandable, and can safely be changed without unintended consequences
 
 ## Code Standards
 
@@ -8,10 +21,82 @@
 
 - Rick Waldron, author of [idiomatic.js](https://github.com/rwaldron/idiomatic.js)
 
+Perhaps one of the most straightforward things we can do to improve our code quality is to follow a set of standards. Standards are useful when working with a team, as they set clear expectations for all team members and minimize syntax debates in code reviews. Following standards creates code that is easier to read and understand, as there is not a mis-mash of styles across the codebase. When creating an organization style guide, I recommend treating it as code and storing the guides in version control. This enables easy contributions, history tracking, the ability to open pull requests, and issue tracking for proposed changes. For individual projects following a code standard is useful too as it can help us catch syntax errors and to avoid the types of sloppy mistakes that can result when working alone.
+
+Following a standard does not mean creating a document from scratch. Nearly every language has a number of style guides available that range from small open source projects to official documents created by large organizations. Some languages, such as Python, have predominantly settled on a single standard (PEP 8). Below is a list of style guides in various popular languages. This is far from complete, but I hope that it gives you a jumping off point. I've tried to provide a mix of community and corporate guidelines whenever possible.
+
+In short, successful standards follow these guidelines:
+
+- Automate checks
+- Are stored in version control
+- Are easy to read and follow
+- Leverage community guidelines
+
+### Multiple Languages
+
+- [Google's Style Guides](https://github.com/google/styleguide)
+- [Khan Academy's Style Guides](https://github.com/Khan/style-guides/blob/master/style/javascript.md)
+- [Thoughtbot's Style Guides](https://github.com/thoughtbot/guides)
+
+### JavaScript
+
+- [JavaScript Standard Style](https://standardjs.com/)
+- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+- [JavaScript Quality Guide](https://github.com/bevacqua/js)
+- [Idiomatic.js](https://github.com/rwaldron/idiomatic.js)
+- [Node Style Guide](https://github.com/felixge/node-style-guide)
+- [Douglas Crockford's Code Conventions](http://javascript.crockford.com/code.html)
+
+### Python
+
+- [PEP 8](https://www.python.org/dev/peps/pep-0008/)
+  - [The Elements of Python Style](https://github.com/amontalenti/elements-of-python-style)
+- [The Hitchhiker's Guide to Python: Code Style](https://python-guide.readthedocs.io/en/latest/writing/style/)
+
+### Ruby
+
+- [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
+- [GitHub's Ruby Style Guide](https://github.com/github/rubocop-github/blob/master/STYLEGUIDE.md)
+- [Shopify's Ruby Style Guide](https://shopify.github.io/ruby-style-guide/)
+
+### PHP
+
+- [WordPress PHP Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/)
+- [FIG Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
+- [PHP the Right Way](http://www.phptherightway.com/)
+- [CodeIgniter Style Guide](https://www.codeigniter.com/user_guide/general/styleguide.html?highlight=style%20guide)
+
+### Go
+
+- [Effective Go](https://golang.org/doc/effective_go.html)
+- [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments)
+
+### Java
+
+- [Java Programming Style Guidelines](http://geosoft.no/development/javastyle.html)
+- [Twitter's Java Style Guide](https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md)
+- [Android's Code Style for Contributors](https://source.android.com/source/code-style.html)
+
+### HTML & CSS Standards
+
+- [Code Guide by @mdo](http://codeguide.co/)
+- [Khan Academy's CSS Style Guide](https://github.com/Khan/style-guides/blob/master/style/css.md)
+- [Primer](http://primercss.io/guidelines/)
+- [Idiomatic CSS](https://github.com/necolas/idiomatic-css)
+- [Airbnb's CSS + SASS Style Guide](https://github.com/airbnb/css)
+- [CSS: The Good Parts](https://github.com/bevacqua/css)
+
+If you work for an organization that does not follow a set of standards, I recommend researching various standards in the language of your choice and introducing them to your colleagues. As a team you may choose to follow a single standard or may prefer to adapt bits and pieces from several standards into your organization's own standard. Though this may seem tedious and introduce debate, when done correctly it can be an excellent team building exercise and a way of creating common expectations.
 
 ### Automate Your Standards
 
-Linting!
+Standards are only as useful if they are put into practice. Introducing a set of standards is a great first step, but next we must ensure that they are followed. Manually reviewing code for standards acceptance is a tedious process that code linting can help us to avoid. There are two places in which linting should take place: our text editors and anywhere our application's test suite is run.
+
+Text editors can be configured to run linting inline against our standards. Most text editors have packages available for linting that can be configured to a set of standars (or are automatically configured to a specific standard). Doing so allows us to see errors inline and correct them quickly.
+
+Even if we aim to lint our standards in real-time with our text editor, it is possible to miss something. With this in mind, we should also run our linting anywhere that our test suite is run. This is particularly useful in build pipelines (which are discussed later in the chapter). Doing so will cause our tests to fail when standards are not followed. If this is new to you, it may feel extreme, but as mentioned in the beginning of the chapter this has the advantage of removing the need for human interaction or discussion from something that can be subjectively measured.
+
+## Version Control
 
 ## Testing
 
