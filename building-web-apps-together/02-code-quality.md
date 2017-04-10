@@ -227,6 +227,30 @@ Continuous integration, etc.
 
 ## Pair Programming
 
+Pair programming can be an extremely beneficial process, which results in improved code and increased team collaboration. Pair programming is the act of two developers programming together. In this process, one person _drives_ by physically typing code into the computer. While the second person _navigates_ by talking through the code that is being written with the driver. When done well, pair programming is extremely effective.
+
+There are a few requirements for pair programming to be effective.
+
+First, both developers must treat each other with respect and as equals. Perhaps the biggest and most failure in pair programming that I have seen is when experienced developers are dismissive of ideas made by junior developers. Successful pair programming happens when both parties enter it as an opportunity to learn and grow.
+
+Second, the pairing must be done in a welcoming environment. Do you use Vim but your partner uses an IDE? Each person needs to work in an environment in which they feel comfortable and able to fully contribute. Just as arrogance can cause pair programming to be ineffective, so can feelings of inadequacy.
+
+Lastly, both developers must be fully engaged in the programming activity. If the navigator finds themselves not paying attention, checking their phone, or doing something counter-productive the activity is detrimental. Successful pair programming requires the attention of both developer's full attention.
+
+**NOTE:**
+_Some organizations practice full-time pair programming (sometimes part of the "Extreme Programming" methodology). As a natural introvert, I've never been a big fan of this, preferring instead shorter bursts of pair programming on a semi-regular or as-needed basis. If you are interested in implementing pair programming at your work place, start small. Regularly ask colleagues to pair with you and offer to drive. This takes the stress off of the colleague. Once the benefits are clear, your colleagues are more likely to do the same._
+
+### Remote Pair Programming
+
+Pair programming isn't just for those who are co-located. In fact, as a remote developer for the past 4 years I've found pairing to be one of the best ways to connect with my remote colleagues. There are a number of tools that enable remote pair programming. I've listed a few below, but you may find that you need to experiment to find a tool that works well for you and your colleagues.
+
+Remote pair programming tools:
+
+- [Screenhero](https://screenhero.com/)
+- [Floobits](https://floobits.com/)
+- [Motepair](https://atom.io/packages/motepair)
+- [TeamViewer](https://www.teamviewer.com/en/)
+
 ## Code Reviews
 
 ## Further Reading
