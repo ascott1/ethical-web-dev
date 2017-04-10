@@ -115,10 +115,68 @@ If you are new to version control, I recommend using Git, which can be combined 
 
 ## Testing
 
+Writing about testing is like writing about flossing. We all know that we _should_ do it, but, for many of us, at the end of a busy day sometimes it's easier to skip over it. "I'll write those tests tomorrow," we say to ourselves, only to tackle the next important feature the next morning. Or perhaps, you don't yet see the value in testing, instead thinking "I can see that it works - why do I need to run tests?" If either of these descriptions sound familiar, that's ok. They certainly describe outlooks I've taken at different points of my professional career. My hope is that in this section to demonstrate the value of testing and look at two useful types of tests: unit tests and functional/browser tests.
+
 **NOTE**:
 _For the purpose of this book we'll be focusing on unit testing and functional testing. In addition to these there are other forms of software testing that are worth exploring for your application, such as performance testing (encompassing things such as stress testing, scalability testing, load testing) security testing, and regression testing._
 
+### Why Test At All?
+
+This is the big question: why test at all? When we develop web sites and applications, we are running the site locally on our machine and are able to see it working. This _is_ a form of testing, but as you may have encountered, it is incomplete, particularly as we build sites that have interactive features and user input. When we write tests we can safely ensure that our code works as intended and doesn't break pre-existing features.
+
 ### Unit Testing
+
+The most straightforward way to think of a unit test is as a way to test a very small aspect of our code. Typically this would be testing that an individual function or method returns the expected value. Consider the following example, written in JavaScript (roughly based on the [Mocha](https://mochajs.org/) testing framework with the [Chai](http://chaijs.com/) assertion library).
+
+We'd like to write a function (called `stayPositive`) that always returns a positive number when passed a value. Let's first write our test, which expects that a positive number (2) is equal to calling our function and passing it the value 2.
+
+```
+it('should return a positive number when passed a positive', function() {
+  expect(stayPositive(2)).to.equal(2);
+});
+```
+
+Currently this test would fail, so let's write the function:
+
+```
+var stayPositive = function(num) {
+  return num;
+}
+```
+
+If we ran our test again it would pass, but what if we write a test with a negative number?
+
+```
+it('should return a positive number when passed a negative', function() {
+  expect(stayPositive(-2)).to.equal(2);
+});
+```
+
+In the above example we are passing a value of -2 and expecting our function to return a positive value of 2. Based on our code, this would fail, so we can re-write our function to account of negative numbers:
+
+```
+var stayPositive = function(num) {
+  if(num > 0) {
+    return num;
+  } else {
+    return -num;
+  }
+}
+```
+
+Now, if we were to run our unit tests they would pass! Hooray! But what if the user passed a 0 or a string? How would our program handle those?
+
+```
+it('should return 0 when passed 0', function() {
+  expect(stayPositive(0)).to.equal(0);
+});
+
+it('should return an error when passed a string', function() {
+  expect(stayPositive('Hello')).to.be.an('error');
+});
+```
+
+We can then modify our code to handle these types of errors. Writing unit tests such as these allows us to ensure our applications are robust and are able to handle a variety of potential outcomes.
 
 ### Browser and Functional Testing
 
