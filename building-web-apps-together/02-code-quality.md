@@ -221,9 +221,16 @@ Test-driven development (TDD) is a development methodology that emphasizes writi
 
 There are many great books and resources on TDD, so I won't retread that content here. If you are new to the TDD concept, I recommended exploring resources and materials for TDD in your chose language or framework. Though it can be a paradigm shift, TDD can add a newfound level of robustness and confidence to our development process.
 
+**NOTE:**
+_TDD or BDD? You may also come across the term Behavior Driven Development (BDD). There are many debates on what exactly the difference is between these two approaches. I prefer the one described by developer Josh Davis in his post [The Difference Between TDD and BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/). Essentially TDD is the process and BDD is a more verbose approach where the tests describe the expected behavior. These tend to read like a sentence. Astute readers may notice that in the unit testing example above we followed a TDD process with a BDD syntax. I encourage you to explore both and find the approach the works best for you._
+
 ## Automation
 
-Continuous integration, etc.
+Linting against your standards and writing tests are only useful when they are run. When actively developing it's easy to forget to run a test suite against our changes before pushing or making a codebase. Thankfully, automation is something that computers excel at, so we can remove this responsibility from ourselves. For open or closed source projects using a pull request model, we can use automated tooling that will alert us when a pull request contains failing tests or linting errors. This will ensure that this code does not enter the codebase before these errors are corrected. When used as part of a continuous integration pipeline, we can run our tests and cause a build to fail when our tests fail, ensuring that we don't ship broken code.
+
+For projects using GitHub and the pull request model, I recommend [TravisCI](https://travis-ci.org/). Travis supports many languages and is free for open source projects. It can also be configured to deploy to S3 and Heroku environments. For internal environments, I recommend [Jenkins](https://jenkins.io/). Jenkins is a highly extensible, self-hosted, continuous integration pipeline tool.
+
+There are a number of alternatives available in a range of languages. As always, do due diligence and find the tool that works best for you and your collaborators. The important aspect is automating our tests and ensuring they are passing before integration and release.
 
 ## Pair Programming
 
@@ -253,7 +260,70 @@ Remote pair programming tools:
 
 ## Code Reviews
 
+Often before code is merged into a codebase it is reviewed by other developers. In a Git workflow this typically comes as part of the pull request process. This type of critique process can be challenging. Writing code is both a mental and creative process over which we feel a sense of pride. When someone is critical of something we have written it can be frustrating or even upsetting. As a person reviewing code, we are challenged to conduct a thorough review to ensure that the code meets standards, expectations, and fulfills requirements while not being overly harsh. How then do we participate in successful code reviews both as a reviewer and reviewee?
+
+The design and development firm Thoughtbot has a thorough [code review guide](https://github.com/thoughtbot/guides/blob/master/code-review/README.md) that breaks down recommendations into three categories: everyone, having your code reviewed, and reviewing code. I've re-printed the Thoughtbot guide, with permission and some modification, as they perfectly summarize the approach that I would recommend.
+
+### Guidelines for Everyone Involved in a Code Review
+
+Both the code author and the reviewer play an equally important role in the code review process. To keep the process positive and effective, all participants should aim to do the following:
+
+- Accept that many programming decisions are opinions. Discuss tradeoffs, which
+  you prefer, and reach a resolution quickly.
+- Ask good questions; don't make demands. ("What do you think about naming this
+  `:user_id`?")
+- Good questions avoid judgment and avoid assumptions about the author's
+  perspective.
+- Ask for clarification. ("I didn't understand. Can you clarify?")
+- Avoid selective ownership of code. ("mine", "not mine", "yours")
+- Avoid using terms that could be seen as referring to personal traits. ("dumb",
+  "stupid"). Assume everyone is intelligent and well-meaning.
+- Be explicit. Remember people don't always understand your intentions online.
+- Be humble. ("I'm not sure - let's look it up.")
+- Don't use hyperbole. ("always", "never", "endlessly", "nothing")
+- Don't use sarcasm.
+- Keep it real. If emoji, animated gifs, or humor aren't you, don't force them.
+  If they are, use them with aplomb.
+- Talk synchronously (e.g. chat, screensharing, in person) if there are too many
+  "I didn't understand" or "Alternative solution:" comments. Post a follow-up
+  comment summarizing the discussion.
+
+### Guidelines for Having Your Code Reviewed
+
+Having our code reviewed can be a stressful process. Remember that the review is of the code, not you personally. With that in mind aim to follow these guidelines:
+
+- Be grateful for the reviewer's suggestions. ("Good call. I'll make that
+  change.")
+- Seek to understand the reviewer's perspective.
+- Explain why the code exists. ("It's like that because of these reasons. Would
+  it be more clear if I rename this class/file/method/variable?")
+- Try to respond to every comment.
+- Extract some changes and refactorings into future tickets/stories.
+- Link to the code review from the ticket/story. ("Ready for review:
+  https://github.com/organization/project/pull/1")
+- Push commits based on earlier rounds of feedback as isolated commits to the
+  branch.
+- Wait to merge the branch until Continuous Integration tells you the test suite has passed.
+- Merge once you feel confident in the code and its impact on the project.
+
+### Guidelines for Reviewing Code
+
+Reviewing someone else's code is a responsibility. Do be an effective code reviewer it is critical to first understand the author's perspective. Put yourself in their shoes and aim to communicate in a clear, non-judgmental fashion. Beginning with this empathetic perspective, also aim to do the following in your review:
+
+- Understand why the change is necessary (bug, user
+experience, refactor).
+- Communicate which ideas you feel strongly about and those you don't.
+- Identify ways to simplify the code while still solving the problem.
+- Avoid focusing on trivial issues or things outside of the purview of the changes being reviewed.
+- If discussions turn too philosophical or academic, move the discussion offline. In the meantime, let the author make the final decision on alternative implementations.
+- Offer alternative implementations, but assume the author already considered
+  them. ("What do you think about using a custom validator here?")
+- Sign off on the pull request with a `:thumbsup:` emoji or "Ready to merge" comment.
+
+
 ## Further Reading
 
 - Working Effectively with Legacy Code by Michael Feathers
 - [The Hitchhiker's Guide to Python: Testing Your Code](http://docs.python-guide.org/en/latest/writing/tests/)
+- [Code Review in the Lab](https://mozillascience.github.io/codeReview/intro.html) by Mozilla Science
+- [Effective Code Reviews without the Pain](http://www.developer.com/tech/article.php/3579756/Effective-Code-Reviews-Without-the-Pain.htm) by Robert Bogue
