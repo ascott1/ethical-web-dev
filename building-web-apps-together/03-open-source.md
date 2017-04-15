@@ -4,11 +4,13 @@
 
 ― Isaac Asimov
 
-<INSERT INTRODUCTION>
+I didn't quite "get" open source software the first time I came across it knowingly. I was a young technology-focused teacher, just scraping by and my interest in technology exceeded my expendable income. This meant that at first, open source software was, in my eyes, a stop gap to support my interests while avoiding both buying expensive software or illegally pirating it. Gradually, a funny thing happened: I stopped seeing open source tools as lesser options and came to embrace both the software and the surrounding community. This grew into a feeling of awe as I came to greatly respect the amount of, what was often, volunteer, long-distance, asynchronous, collaboration that went into building fully fledged software.
 
-A little bit about the history of OSS
+By the time I discovered open source, it was far from new. Source code has been freely distributed with some software since the days of early computing. In the 1980's and early 1990's, the culture of free software grew alongside the early Internet. Richard Stallman's Free Software Foundation, Linux, Mozilla, and the Java programming language were all foundational aspects of the development of open source. Today, open source is bigger than ever. The prevalence of Git and the popularity of [GitHub.com](https://github.com/) has created a massive social hub for open source.
 
-Why is OSS an important part of technology culture?
+Open source software is a hugely important part of technology culture. The text editing tool that I am using to write this is open source, the web browser that I am using to research this book is open source, and the operating system running on my machine is built upon the open source Unix OS. WordPress, the open source blogging software, is estimated to run over 25% of all sites on the web. Not only are large projects open source, but many of the sites, tools, and applications that we rely on are built using smaller open source libraries.
+
+As web developers, it is inevitable that we interact with open source in some way. For many developers that may be solely as consumers of open source, but many of us may maintain our own projects or contribute to others with code, bug reports, or support requests. When we do so, we are taking part in a large social web of developers. When our contributions are inclusive and empathetic we help to create a better development culture.
 
 ## Being an Open Source Maintainer
 
@@ -134,19 +136,25 @@ If you have been contributing to open source and feel burnt out, I'd offer these
 
 ## Contributing to Someone Else's Project
 
-https://github.com/jonschlinkert/idiomatic-contributing
+There are a number of ways in which we may contribute to open source projects without being a project maintainer. These may include contributing code directly to a project as well as filing bug reports, improving documentation, and requesting support. As soon as we perform any of these actions, we are a part of the community that surrounds the project. Similar to his resource for open source maintainers, developer Jon Schlinkert has also written a guide for [Idiomatic Contributing](https://github.com/jonschlinkert/idiomatic-contributing), which is a great useful reference for anyone looking to be involved in an open source community.
 
-filing issues
+In general, contributors to open source should seek to:
 
-pull requests
+- Always follow a project's code of conduct.
+- Familiarize themselves with the goals and scope of the project.
+- Check for existing issues or bug reports before filing a new one.
+- Be kind to the project maintainers and other community members.
+- Follow the coding conventions that the project already has in place.
+- Write tests for any new features or code changes. If a test suite is not in place, describe how the maintainer can test your changes.
+- Be patient and recognize the right of the maintainers to be slow to respond.
+- Be accepting of rejection when a project chooses not to merge code or implement a recommendation.
 
-support requests
+Participating in an open source community can be a wonderful experience. By following the guidelines above as well as being aware of the challenges placed upon open source maintainers, can help us be positive community contributors.
 
 ## Further Reading
 
 - [The Cathedral & the Bazaar](http://shop.oreilly.com/product/9780596001087.do) by Eric S. Raymond
 - [Open Source Guides](https://opensource.guide/)
 - [Producing Open Source Software](http://producingoss.com/) by Karl Fogel
-- [Maintainer's Guide to Staying Positive](https://github.com/jonschlinkert/maintainers-guide-to-staying-positive) by Jon Schlinkert
 - [Scaling Open Source Communities](https://krausefx.com/blog/scaling-open-source-communities) by Felix Krause
 - [A template for creating open source contributor guidelines](https://opensource.com/life/16/3/contributor-guidelines-template-and-tips) by Safia Abdalla
