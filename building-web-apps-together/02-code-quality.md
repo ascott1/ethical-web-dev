@@ -4,7 +4,7 @@
 
 — Ed Catmull, Pixar co-founder and author of _Creativity Inc._
 
-In the book _Let's Talk About Love: A Journey to the End of Taste_, music journalist Carl Wilson mulls over what it means for something to be good. The book focuses on the Celine Dion album that it is named after, which has sold 31 million copies and is one of the top-selling albums of all time. Despite this immense success, music critics such as Wilson (and likely many of us reading this), are quick to dismiss Celine Dion's music for a number of reasons. The reason for this disparity is that taste in entertainment and art is subjective. Each of us brings our own unique cultural experiences along with us when we enjoy (or don't) these things. The 18th Century philosopher David Hume wrote about subjectiveness in his essay _Of the Standard of Taste_, stating that "Beauty is no quality in things themselves: It exists merely in the mind which contemplates them."
+In the book _Let's Talk About Love: A Journey to the End of Taste_, music journalist Carl Wilson mulls over what it means for something to be good. The book focuses on the Celine Dion album that it is named after, which has sold 31 million copies and is one of the top-selling albums of all time. Despite this immense success, music critics such as Wilson (and likely many of us reading this, author included), are quick to dismiss Celine Dion's music. The reason for this disparity is that taste is subjective. Each of us brings our own unique cultural experiences along with us when we enjoy (or don't) entertainment and art. The 18th Century philosopher David Hume explored these ideas in detail, most notably in his essay _Of the Standard of Taste_, stating that "Beauty is no quality in things themselves: It exists merely in the mind which contemplates them."
 
 If things such the worthiness of art and entertainment are subjective, what about the quality of code? Is good code subjective or objective? This can be a challenging topic, as much like music we all bring our own experience and assumptions to the discussion of what constitutes "beautiful" code. With that in mind, I've sought to identify a few object measures of code quality. Doing so allows us to remove the risk of needless or even unhealthy debate that subjective taste introduces to the development process. Instead, when following these guidelines, discussions can focus on outcomes and a shared set of principles.
 
@@ -15,7 +15,7 @@ Good code does the following:
 - Is well tested
 - Utilizes automated checks
 
-Additionally, since code is often written in a collaborative or team environment, we can leverage the processes of code reviews and pair programming. Ultimately, code is intended to be executed by machines, but read by humans. When we write code that follows these guidelines, we create a codebase that is collaborative, understandable, and can safely be changed without unintended consequences
+Additionally, since code is often written in a collaborative or team environment, we can leverage the processes of code reviews and pair programming. Ultimately, code is intended to be executed by machines, but read by humans. When we write code that follows these guidelines, we create a codebase that is collaborative, understandable, and can safely be changed without unintended consequences.
 
 ## Code Standards
 
@@ -23,24 +23,30 @@ Additionally, since code is often written in a collaborative or team environment
 
 - Rick Waldron, author of [idiomatic.js](https://github.com/rwaldron/idiomatic.js)
 
-Perhaps one of the most straightforward things we can do to improve our code quality is to follow a set of standards. Standards are useful when working with a team, as they set clear expectations for all team members and minimize syntax debates in code reviews. Following standards creates code that is easier to read and understand, as there is not a mis-mash of styles across the codebase. When creating an organization style guide, I recommend treating it as code and storing the guides in version control. This enables easy contributions, history tracking, the ability to open pull requests, and issue tracking for proposed changes. For individual projects following a code standard is useful too as it can help us catch syntax errors and to avoid the types of sloppy mistakes that can result when working alone.
+Perhaps one of the most straightforward things we can do to improve our code quality is to follow a set of standards. Standards are useful when working with a team, as they set clear expectations for all team members and minimize syntax debates in code reviews. Following standards creates code that is easier to read and understand, as there is not a mis-mash of styles across the codebase.
+
+When creating a style guide for an organization, I recommend treating it as code and storing the guides in version control. This enables easy contributions, a searchable history, the ability to open pull requests, and issue tracking for proposed changes. For individual projects following a code standard is useful too as it can help us catch syntax errors and to avoid the types of sloppy mistakes that can result when working alone.
 
 Following a standard does not mean creating a document from scratch. Nearly every language has a number of style guides available that range from small open source projects to official documents created by large organizations. Some languages, such as Python, have predominantly settled on a single standard (PEP 8). Below is a list of style guides in various popular languages. This is far from complete, but I hope that it gives you a jumping off point. I've tried to provide a mix of community and corporate guidelines whenever possible.
 
 In short, successful standards follow these guidelines:
 
-- Automate checks
+- Leverage community guidelines
 - Are stored in version control
 - Are easy to read and follow
-- Leverage community guidelines
+- Automate compliance
 
-### Multiple Languages
+## Community Standards Guidelines
+
+Many development communities and companies have openly shared standards for web development. When choosing to implement standards, it often makes sense to repurpose prior art and follow existing guidelines. I've collected some of my favorites, in a range of languages.
+
+#### Multiple Languages
 
 - [Google's Style Guides](https://github.com/google/styleguide)
 - [Khan Academy's Style Guides](https://github.com/Khan/style-guides/blob/master/style/javascript.md)
 - [Thoughtbot's Style Guides](https://github.com/thoughtbot/guides)
 
-### JavaScript
+#### JavaScript
 
 - [JavaScript Standard Style](https://standardjs.com/)
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
@@ -49,37 +55,37 @@ In short, successful standards follow these guidelines:
 - [Node Style Guide](https://github.com/felixge/node-style-guide)
 - [Douglas Crockford's Code Conventions](http://javascript.crockford.com/code.html)
 
-### Python
+#### Python
 
 - [PEP 8](https://www.python.org/dev/peps/pep-0008/)
   - [The Elements of Python Style](https://github.com/amontalenti/elements-of-python-style)
 - [The Hitchhiker's Guide to Python: Code Style](https://python-guide.readthedocs.io/en/latest/writing/style/)
 
-### Ruby
+#### Ruby
 
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
 - [GitHub's Ruby Style Guide](https://github.com/github/rubocop-github/blob/master/STYLEGUIDE.md)
 - [Shopify's Ruby Style Guide](https://shopify.github.io/ruby-style-guide/)
 
-### PHP
+#### PHP
 
 - [WordPress PHP Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/)
 - [FIG Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
 - [PHP the Right Way](http://www.phptherightway.com/)
 - [CodeIgniter Style Guide](https://www.codeigniter.com/user_guide/general/styleguide.html?highlight=style%20guide)
 
-### Go
+#### Go
 
 - [Effective Go](https://golang.org/doc/effective_go.html)
 - [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments)
 
-### Java
+#### Java
 
 - [Java Programming Style Guidelines](http://geosoft.no/development/javastyle.html)
 - [Twitter's Java Style Guide](https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md)
 - [Android's Code Style for Contributors](https://source.android.com/source/code-style.html)
 
-### HTML & CSS Standards
+#### HTML & CSS Standards
 
 - [Code Guide by @mdo](http://codeguide.co/)
 - [Khan Academy's CSS Style Guide](https://github.com/Khan/style-guides/blob/master/style/css.md)
@@ -90,13 +96,13 @@ In short, successful standards follow these guidelines:
 
 If you work for an organization that does not follow a set of standards, I recommend researching various standards in the language of your choice and introducing them to your colleagues. As a team you may choose to follow a single standard or may prefer to adapt bits and pieces from several standards into your organization's own standard. Though this may seem tedious and introduce debate, when done correctly it can be an excellent team building exercise and a way of creating common expectations.
 
-### Automate Your Standards
+### Automate Standards Compliance
 
 Standards are only as useful if they are put into practice. Introducing a set of standards is a great first step, but next we must ensure that they are followed. Manually reviewing code for standards acceptance is a tedious process that code linting can help us to avoid. There are two places in which linting should take place: our text editors and anywhere our application's test suite is run.
 
-Text editors can be configured to run linting inline against our standards. Most text editors have packages available for linting that can be configured to a set of standars (or are automatically configured to a specific standard). Doing so allows us to see errors inline and correct them quickly.
+Text editors can be configured to run linting inline against our standards. Most text editors have packages available for linting that can be configured to a set of standards (or are automatically configured to a specific standard). Doing so allows us to see errors inline and correct them quickly.
 
-Even if we aim to lint our standards in real-time with our text editor, it is possible to miss something. With this in mind, we should also run our linting anywhere that our test suite is run. This is particularly useful in build pipelines (which are discussed later in the chapter). Doing so will cause our tests to fail when standards are not followed. If this is new to you, it may feel extreme, but as mentioned in the beginning of the chapter this has the advantage of removing the need for human interaction or discussion from something that can be subjectively measured.
+Even if we aim to lint our standards in real-time with our text editor, it is possible to miss something. With this in mind, we should also run our linting anywhere that our test suite is run. This is particularly useful in build pipelines (which are discussed later in the chapter). Doing so will cause our tests to fail when standards are not followed. If this is new to you, it may feel extreme, but, as previously mentioned, this has the advantage of removing the need for human interaction or discussion from something that can be subjectively measured.
 
 ## Version Control
 
@@ -117,7 +123,7 @@ If you are new to version control, I recommend using Git, which can be combined 
 
 ## Testing
 
-Writing about testing is like writing about flossing. We all know that we _should_ do it, but, for many of us, at the end of a busy day sometimes it's easier to skip over it. "I'll write those tests tomorrow," we say to ourselves, only to tackle the next important feature the next morning. Or perhaps, you don't yet see the value in testing, instead thinking "I can see that it works - why do I need to run tests?" If either of these descriptions sound familiar, that's ok. They certainly describe outlooks I've taken at different points of my professional career. My hope is that in this section to demonstrate the value of testing and look at two useful types of tests: unit tests and functional/browser tests.
+Writing about testing is like writing about flossing. We all know that we _should_ do it, but, for many of us, at the end of a busy day sometimes it's easier to skip over it. "I'll write those tests tomorrow," we say to ourselves, only to instead tackle the next important feature when we sit down at our desk the next morning. Or perhaps, you don't yet see the value in testing, instead thinking "I can see that it works - why do I need to run tests?" If either of these descriptions sound familiar, that's ok. They certainly describe outlooks I've taken at different points of my professional career. My hope is that in this section to demonstrate the value of testing and look at two useful types of tests: unit tests and functional/browser tests.
 
 **NOTE**:
 _For the purpose of this book we'll be focusing on unit testing and functional testing. In addition to these there are other forms of software testing that are worth exploring for your application, such as performance testing (encompassing things such as stress testing, scalability testing, load testing) security testing, and regression testing._
@@ -128,7 +134,7 @@ This is the big question: why test at all? When we develop web sites and applica
 
 ### Unit Testing
 
-The most straightforward way to think of a unit test is as a way to test a very small aspect of our code. Typically this would be testing that an individual function or method returns the expected value. Consider the following example, written in JavaScript (roughly based on the [Mocha](https://mochajs.org/) testing framework with the [Chai](http://chaijs.com/) assertion library).
+The most straightforward way to think of a unit test is as a way to test a very small aspect of our code. Typically this would be testing that an individual function or method returns the expected value. Consider the following example, written in JavaScript (the test format is based on the [Mocha](https://mochajs.org/) testing framework with the [Chai](http://chaijs.com/) assertion library).
 
 We'd like to write a function (called `stayPositive`) that always returns a positive number when passed a value. Let's first write our test, which expects that a positive number (2) is equal to calling our function and passing it the value 2.
 
@@ -178,11 +184,11 @@ it('should return an error when passed a string', function() {
 });
 ```
 
-We can then modify our code to handle these types of errors. Writing unit tests such as these allows us to ensure our applications are robust and are able to handle a variety of potential outcomes.
+We can then modify our code further to properly handle these types of inputs. Writing unit tests such as these allows us to ensure our applications are robust and are able to handle a variety of potential outcomes.
 
 ### Browser and Functional Testing
 
-As web developers, our applications are executed in a web browser. This is unique as it creates a wide range of variable environments, screen resolutions, and browser types in which our application could be run. Our site may be accessed by a brand new laptop, viewed through a 4k resolution monitor, over a fiber internet connection. Alternately, it could be viewed on an outdated smartphone, using a modified stock browser, on a 3G connection.
+As web developers, our applications are executed in a web browser. This means that there is a wide range of variable environments, screen resolutions, and browser types in which our application could be run. Our site may be accessed by a brand new laptop, viewed through a 4k resolution monitor, over a fiber internet connection or viewed on an outdated smartphone, using a carrier'sstock browser, on a 3G connection.
 
 The challenge of creating resilient applications that work in a variety of environments is what makes web development challenging and rewarding. If we seek to create inclusive applications, those accessing our sites through outdated browsers and devices may be the people who need the greatest access to our services.
 
@@ -193,7 +199,7 @@ _Emphasizing the need for browser testing does not equate to our sites or applic
 
 #### Browser Testing Services
 
-There are a number of services that allow you to test a range of browsers on a number of operating systems without installing each of them or running virtual machines. These services allow you to load a URL and click through them in many combinations of mobile and desktop browsers.
+There are a number of services that will allow us to test a range of browsers on a number of operating systems without installing each browser or running virtual machines. These services enable you to load URLs and click through them in many combinations of mobile and desktop browsers.
 
 - [Browser Stack](https://www.browserstack.com/)
 - [Sauce Labs](https://saucelabs.com/)
@@ -208,7 +214,7 @@ Regardless of method, integrating a browser testing service into our workflow al
 ![img/device-lab.png](img/device-lab.png)
 > The Device Lab at Clearleft. Photo by Jeremy Keith
 
-Though browser testing services are incredibly useful, it can be a rewarding (or frustrating!) experience to test our applications on a range of physical devices. It's particularly helpful to test on some of the low-powered, budget-priced tablets and phones that are popular with real users. Since few of us have a shelf full of devices, many device labs have popped up at co-working centers, makerspaces, and local businesses. The site [Open Device Lab](https://opendevicelab.com/) seeks to compile these labs that are publicly accessible. If there isn't one in your area and you work for a co-located company with a number of employees, you may also consider building your own lab. Start with a few donated devices that you and co-workers may have collecting dust on the shelf
+Though browser testing services are incredibly useful, it can be a rewarding (or frustrating!) experience to test our applications on a variety of in-the-flesh physical devices. It's particularly helpful to test on some of the low-powered, budget-priced tablets and phones that are popular with real users. Since few of us have a shelf full of devices, some helpful folks have begun to curate what are known as device labs to house a range of devices for testing purposes. These device labs have popped up at co-working centers, makerspaces, and local businesses. The site [Open Device Lab](https://opendevicelab.com/) seeks to compile these labs that are publicly accessible. If there isn't one in your area and you work for a co-located company with a number of employees, you may also consider building your own lab. Start with a few donated devices that you and co-workers may have collecting dust on the shelf as a means of getting started.
 
 ### Test-Driven Development (TDD)
 
@@ -221,7 +227,7 @@ Test-driven development (TDD) is a development methodology that emphasizes writi
 5. Refactor code
 6. Repeat
 
-There are many great books and resources on TDD, so I won't retread that content here. If you are new to the TDD concept, I recommended exploring resources and materials for TDD in your chose language or framework. Though it can be a paradigm shift, TDD can add a newfound level of robustness and confidence to our development process.
+There are many great books and resources on TDD, so I won't retread that content here. If you are new to the TDD concept, I recommended exploring resources and materials for TDD in your chosen language or framework. Though it can be a paradigm shift, TDD can add a newfound level of robustness and confidence to the development process.
 
 **NOTE:**
 _TDD or BDD? You may also come across the term Behavior Driven Development (BDD). There are many debates on what exactly the difference is between these two approaches. I prefer the one described by developer Josh Davis in his post [The Difference Between TDD and BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/). Essentially TDD is the process and BDD is a more verbose approach where the tests describe the expected behavior. These tend to read like a sentence. Astute readers may notice that in the unit testing example above we followed a TDD process with a BDD syntax. I encourage you to explore both and find the approach the works best for you._
