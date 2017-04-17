@@ -1,5 +1,9 @@
 # Code Quality
 
+> You are not your idea, and if you identify too closely with your ideas, you will take offense when they are challenged.
+
+— Ed Catmull, Pixar co-founder and author of _Creativity Inc._
+
 In the book _Let's Talk About Love: A Journey to the End of Taste_, music journalist Carl Wilson mulls over what it means for something to be good. The book focuses on the Celine Dion album that it is named after, which has sold 31 million copies and is one of the top-selling albums of all time. Despite this immense success, music critics such as Wilson (and likely many of us reading this), are quick to dismiss Celine Dion's music for a number of reasons. The reason for this disparity is that taste in entertainment and art is subjective. Each of us brings our own unique cultural experiences along with us when we enjoy (or don't) these things. The 18th Century philosopher David Hume wrote about subjectiveness in his essay _Of the Standard of Taste_, stating that "Beauty is no quality in things themselves: It exists merely in the mind which contemplates them."
 
 If things such the worthiness of art and entertainment are subjective, what about the quality of code? Is good code subjective or objective? This can be a challenging topic, as much like music we all bring our own experience and assumptions to the discussion of what constitutes "beautiful" code. With that in mind, I've sought to identify a few object measures of code quality. Doing so allows us to remove the risk of needless or even unhealthy debate that subjective taste introduces to the development process. Instead, when following these guidelines, discussions can focus on outcomes and a shared set of principles.
