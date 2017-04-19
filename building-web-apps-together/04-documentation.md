@@ -10,9 +10,9 @@ In our first scenario, meet Harlow. Today is Harlow's first day on a new project
 
 In our second scenario, meet Harrison. He's working on a web app and finds a library that, at first glance, seems incredibly useful for his project. As he attempts to integrate it with his codebase he discovers that parts of the API seem to be glossed over in the documentation or even undocumented. In the end, he walks away from the project in favor of another solution.
 
-Those these scenarios may be slightly exaggerated, I'm reasonably certain that many of us can relate. These problems were not primarily caused by low quality code, but rather by poor documentation.
+Those these scenarios may be slightly exaggerated, but I'm reasonably certain that many of us can relate. These problems were not primarily caused by low quality code, but rather by poor documentation.
 
-If useful documentation is so important to the success of projects and developer well-being, why don't we write it? The answer, I believe, is that like good code, good documentation is difficult and time consuming to write. The goal of this chapter is to convince you that writing good documentation is deserving of your valuable attention as well as provide you with concrete guidelines for writing good documentation.
+If useful documentation is so important to the success of projects and developer well-being, why don't all projects have it? The answer, I believe, is that like good code, good documentation is difficult and time consuming to write. The goal of this chapter is to convince you that writing good documentation is deserving of your valuable attention as well as provide you with concrete guidelines for doing so.
 
 ## The Eight Rules of Good Documentation
 
@@ -22,12 +22,12 @@ In my eyes there are eight rules that we can follow to produce good documentatio
 2. Write documentation that is comprehensive, detailing all aspects of the project
 3. Write documentation that is skimmable
 4. Write documentation that offers examples of how to use the software
-5. Write documentation that is Accepting of (some) Repetition In Documentation ([ARID](http://www.writethedocs.org/guide/writing/docs-principles/#arid))
+5. Write documentation that has repetition, when useful
 6. Write documentation that is up-to-date
 7. Write documentation that is easy to contribute to
 8. Write documentation that is easy to find
 
-The most important rule of good documentation is for it to **be as inviting as possible**. This means that we should aim to write it in the clearest terms possible without skipping over any steps. Avoid making assumptions about what your users may know. Sometimes this can seem to be overkill and we may be tempted to say something like "every X developer knows about Y," but we each bring our own background and set of experiences to a project. Though this may result in more verbose documentation, it is ultimately simpler as there is less guesswork involved for developers with all levels of experience.
+The most important rule of good documentation is for it to **be as inviting as possible**. This means that we should aim to write it in the clearest terms possible without skipping over any steps. We should avoid making assumptions about what our users may know. Sometimes this can seem to be overkill and we may be tempted to say something like "every X developer knows about Y," but we each bring our own background and set of experiences to a project. Though this may result in more verbose documentation, it is ultimately simpler as there is less guesswork involved for developers with all levels of experience.
 
 Our documentation should aim to **be comprehensive**. This means that all aspects of the project are documented. Undocumented features or exceptions can lead to frustration and become a time-suck as users and other developers are forced to read through code to find the answers they need. Fully documenting all features takes away this kind of ambiguity.
 
@@ -35,7 +35,7 @@ When we write documentation that is **skimmable** we help users find the content
 
 Documentation that features **examples** allows users to see how they might use the code themselves. Aim to provide examples of the most common use-cases for the project, while letting the comprehensive documentation detail every possibility.
 
-Documentation that **accepts (some) repetition** (ARID), acknowledges that users may not read the full docs or that some information is relevant in multiple places in the documentation. While good code may be DRY, good writing aims to be clear and sometimes this means repeating ourselves. The [Write the Docs project](http://www.writethedocs.org/guide/writing/docs-principles/#arid) calls out the the difference between writing that is ARID, DRY, and WET in this way:
+It is perfectly acceptable to **include some repetition** in our documentation, which the [Write the Docs project](http://www.writethedocs.org/guide/writing/docs-principles/#arid) terms ARID (accepts (some) repetition in documentation). Doing so acknowledges that users may not read the full docs or that some information is relevant in multiple places in the documentation. While good code may be DRY, good writing aims to be clear and sometimes this means repeating ourselves. The Write the Docs project calls out the the difference between writing that is ARID, DRY, and WET in this way:
 
 > The pursuit of minimizing repetition remains valiant! ARID does not mean [WET](https://en.wikipedia.org/wiki/Don't_repeat_yourself#DRY_vs_WET_solutions), hence the word choice. It means: try to keep things as DRY as possible but also recognize that you’ll inevitably need some amount of “moisture” to produce documentation.
 
@@ -142,7 +142,7 @@ I've open sourced this template and provided guidelines for use at https://githu
 
 ## Project Documentation
 
-Larger codebases will require documentation that extends beyond a README. In these instances a good README (or READMEs if the project is split into several smaller codebases) is still an incredibly valuable starting point. In these instances it is still helpful to keep the documentation as near to the code as possible. This may mean generating a static website from plain text or markdown files and storing it in the same code repository or using the repository wiki provided by a source control hosting provider, such as GitHub or GitLab.
+Larger codebases will require documentation that extends beyond a README. In these instances a good README (or READMEs if the project is split into several smaller codebases) is still an incredibly valuable starting point. It is also  helpful to keep the documentation as near to the code as possible. This may mean generating a static website from plain text or markdown files and storing it in the same code repository or using the repository wiki provided by a source control hosting provider.
 
 One other important aspect of large project documentation is to use it as a means for capturing decision making whenever possible. As developers we are constantly making tradeoffs and decisions that may have impacts on the functionality or use of the codebase. When we capture these ideas, future developers are able to understand the thinking behind this decision. All too often, when decision making is not captured, developers will attempt to re-architect something until they hit the same wall. This "oh, I see why they did it that way" epiphany and wasted energy can be avoided when we accurately capture the thinking behind our decisions.
 
