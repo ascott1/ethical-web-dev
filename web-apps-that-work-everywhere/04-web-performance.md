@@ -340,7 +340,7 @@ Putting it all together, our markup would appear as:
     alt="…">
 ```
 
-For [most responsive image use cases](http://blog.cloudfour.com/dont-use-picture-most-of-the-time/) the `img` element with `srcset` will provide the the flexibility that we need. In some instances however, we may want more fine grained control over the images served to our users. This is typically referred to as art direction in responsive images, where we may want cropped or different images served to users dependent on browser context. In these instances we can use the `picture` element. While `srcset` works as a suggestion to the browser, `picture` provides exact specifications. The syntax for the `picture` element nests `source` elements, specifying the media width and src of the image file. Again, we can fall back to a progressively enhanced standard `img` tag for non-supporting browsers.
+For [most responsive image use cases](http://blog.cloudfour.com/dont-use-picture-most-of-the-time/) the `img` element with `srcset` will provide the flexibility that we need. In some instances however, we may want more fine grained control over the images served to our users. This is typically referred to as art direction in responsive images, where we may want cropped or different images served to users dependent on browser context. In these instances we can use the `picture` element. While `srcset` works as a suggestion to the browser, `picture` provides exact specifications. The syntax for the `picture` element nests `source` elements, specifying the media width and src of the image file. Again, we can fall back to a progressively enhanced standard `img` tag for non-supporting browsers.
 
 ```
 <picture>
