@@ -11,7 +11,7 @@ Internet connection speeds: https://www.akamai.com/us/en/multimedia/documents/st
 ## File size
 
 > 80% of the end-user response time is spent on the front-end
-– [Steve Sounders](https://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html)
+– [Steve Sounders](https://web.archive.org/web/20160728171321/https://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html)
 
 As of writing, the average web page requires a user to download roughly 2.3MB worth of data[^1]. Using this metric, the first 5.25 inch hard drive, the 1980 Seagate ST-506, would be able to hold just two modern web pages. 
 
@@ -53,7 +53,7 @@ To decrease the footprint of our websites, we can aim to:
 
 By putting these four best practices in action, we ensure that our site’s users are transferring the lowest amount of data from our servers to their devices.
 
-[^1]: https://blog.jana.com/2015/01/26/the-data-trap/
+[^1]: https://blog.jana.com/blog/2015/05/21/the-data-trap-affordable-smartphones-expensive-data
 
 ### Number of Resources
 
