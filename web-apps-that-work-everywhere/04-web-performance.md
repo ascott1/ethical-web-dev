@@ -65,6 +65,7 @@ To reduce the number of requests a browser makes, it is common to bundle files t
 
 
 <aside>
+
 ### HTTP/2 
 
 The HTTP/2 protocol may challenge some of our assumptions about combining resources. While HTTP/1.1 only services a single server request at a time, HTTP/2 enables multiple simultaneous connections. This means that bundling, inlining, and combining resources may be less effective as we move to the new protocol. In fact, these techniques may slow down our site when served over HTTP/2. 
@@ -76,6 +77,8 @@ The HTTP/2 protocol may challenge some of our assumptions about combining resour
 - [HTTP/2 for Web Developers](https://blog.cloudflare.com/http-2-for-web-developers/)
 - [http2 explained](https://daniel.haxx.se/http2/)
 - [Getting Ready For HTTP/2: A Guide For Web Designers And Developers](https://www.smashingmagazine.com/2016/02/getting-ready-for-http2/)
+
+</aside>
 
 [^1]: http://www.httparchive.org/trends.php
 [^2]: http://caniuse.com/#feat=link-rel-preconnect
