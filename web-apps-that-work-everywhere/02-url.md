@@ -15,13 +15,13 @@ In 1996 the creator of the web, Tim Berners-Lee, drafted [Universal Resource Ide
 
 One of the beautiful things about developing for the web is the ability to evolve our applications over time, immediately deploying updates to every user. With this ability, however, we often introduce states of fluctuation as we change server configurations, undergo content redesigns, and adapt to new technologies and frameworks. In the paper [Perma: Scoping and Addressing the Problem of Link and Reference Rot in Legal Citations](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2329161) the authors point out that “more than 70% of the URLs within the Harvard Law Review and other journals, and 50% of the URLs found within United States Supreme Court opinions, do not link to the originally cited information.” This is often referred to as “link rot,” where once valid URLs no longer return the originally linked resource. The prevalence of link rot is something that online archiving tools such as the Internet Archive’s [Wayback Machine](https://archive.org/web/) and [permalink.cc](https://perma.cc/) attempt to combat. For his part, Tim Berners-Lee has wrote about the idea of [persistent domains](https://www.w3.org/DesignIssues/PersistentDomains) 16 years ago, but this idea has, thus far, failed to become a reality.
 
-As developers, we should avoid arbitrarily changing URLs for our applications as much as possible. If significant changes to content require a URL change, we should always forward the previous URL to the new page. When creating permanent URL’s the first step is to ensure that technology does not dictate the URL. Often sites display language filetypes at the end of a URL such as `.php` or `.asp`.  This doesn’t accommodate for future iterations of an application that may be built upon a different technology stack. By remaining technology independent in URL design we take the first step towards more permanent URLs.
+As developers, we should avoid arbitrarily changing URLs for our applications as much as possible. If significant changes to content require a URL change, we should always forward the previous URL to the new page. When creating permanent URLs the first step is to ensure that technology does not dictate the URL. Often sites display language filetypes at the end of a URL such as `.php` or `.asp`.  This doesn’t accommodate for future iterations of an application that may be built upon a different technology stack. By remaining technology independent in URL design we take the first step towards more permanent URLs.
 
 The importance or persistent URLs is that they help to preserve the web. When URLs persist, outside links remain active, user bookmarks remain relevant, and information remains consistent. By focusing on good URL design we can help to ensure the permanence of URLs across the web.
 
 ## Shareable URLs
 
-Commenting on an early draft of the [Principles for Ethical Web Development](https://ethicalweb.org/), [Dean Marano](https://github.com/deanmarano) raised the important issue of creating shareable URL’s.
+Commenting on an early draft of the [Principles for Ethical Web Development](https://ethicalweb.org/), [Dean Marano](https://github.com/deanmarano) raised the important issue of creating shareable URLs.
 
 > One thing that for me is very important when building apps is the ability to share a URL - either with myself or with others - easily. By leveraging this built in feature of the web, it makes it much easier to share, bookmark, and be a good web citizen.
 
@@ -29,7 +29,7 @@ This ability to link and share is a key advantage that web development has over 
 
 ## URL Design
 
-Simply Providing URL’s is the first step, but as Jakob Nielsen has described them [URLs are a form of user interface](https://css-tricks.com/guidelines-for-uri-design/). Even in the era of search engines, a [study from Microsoft Research](http://research.microsoft.com/apps/pubs/default.aspx?id=70395) to determine if URLs were observed by average users revealed that users spent 24% of their gaze time looking at the URLs in search results. With this in mind, how can we design URLs that are effective and usable?
+Simply Providing URLs is the first step, but as Jakob Nielsen has described them [URLs are a form of user interface](https://css-tricks.com/guidelines-for-uri-design/). Even in the era of search engines, a [study from Microsoft Research](http://research.microsoft.com/apps/pubs/default.aspx?id=70395) to determine if URLs were observed by average users revealed that users spent 24% of their gaze time looking at the URLs in search results. With this in mind, how can we design URLs that are effective and usable?
 
 ### Keep URLs simple
 
@@ -50,7 +50,7 @@ To a user this URL format is seemingly random and arbitrary. Fortunately, WordPr
 
 WordPress core contributor Eric Lewis [reportedly commented on the change](https://wptavern.com/wordpress-4-2-will-automatically-enable-pretty-permalinks-for-new-sites-on-installation) saying that “Delivering pretty permalinks by default seems in line with a bunch of core philosophies – great out-of-the-box, design for the majority, simplicity, clean, lean and mean.” I agree with Eric, this is a great change, beneficial to users across the web, and a great example of how much more legible a well designed link can be.
 
-By creating link structures that are simple and human readable, we are able to provide our users with a clear description of a URL’s content.
+By creating link structures that are simple and human readable, we are able to provide our users with a clear description of a URLs content.
 
 [^1]: https://w3techs.com/technologies/history_overview/content_management/all/y
 [^2]:https://core.trac.wordpress.org/changeset/31089
