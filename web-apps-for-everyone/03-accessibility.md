@@ -111,9 +111,9 @@ It is worth noting that the W3C does not recommended that Level AAA conformance 
 
 The WCAG 2.0 guidelines are classified according to the POUR principle. Guideline 1 encompasses areas of perception, Guideline 2 covers areas of operation, Guideline 3 is directed at ensuring understanding, and Guideline 4 is targeted at the robustness of the application. Below are the specific guidelines from WCAG 2.0:
 
-- Guideline 1.1 Text Alternatives: Provide text alternatives for any non-text content
-- Guideline 1.2 Time-based Media: Provide alternatives for time-based media
-- Guideline 1.3 Adaptable: Create content that can be presented in different ways (for example simpler layout) without losing information or structure
+- Guideline 1.1 Text Alternatives: Provide text alternatives for any non-text content.
+- Guideline 1.2 Time-based Media: Provide alternatives for time-based media.
+- Guideline 1.3 Adaptable: Create content that can be presented in different ways (for example simpler layout) without losing information or structure.
 - Guideline 1.4 Distinguishable: Make it easier for users to see and hear content including separating foreground from background.
 - Guideline 2.1 Keyboard Accessible: Make all functionality available from a keyboard.
 - Guideline 2.2 Enough Time: Provide users enough time to read and use content.
